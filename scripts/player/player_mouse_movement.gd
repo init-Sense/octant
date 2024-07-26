@@ -2,7 +2,7 @@ extends Node3D
 class_name PlayerMouseMovement3D
 
 
-#region Variables
+#region VARIABLES
 @export var speed : float = 3.0
 @export var gravity : float = 9.8
 @export var damping : float = 0.01
@@ -14,15 +14,16 @@ var crouch_speed_factor : float = 1.0
 #endregion
 
 
-#region Nodes
+#region NODE
 @onready var player_body: CharacterBody3D = %PlayerBody3D
 @onready var camera: PlayerCamera3D = %PlayerCamera3D
 #endregion
 
 
-#region Lifecycle
+#region LIFECYCLE
 func _ready() -> void:
 	print("PlayerMovement3D ready. player_body: ", player_body, ", camera: ", camera)
+	print_velocity()
 
 
 func _process(delta) -> void:
@@ -39,7 +40,8 @@ func _input(event) -> void:
 			is_moving_backward = event.pressed
 #endregion
 
-#region Movement
+
+#region MOVEMENT
 func handle_movement(delta) -> void:
 	var input_direction = Vector3.ZERO
 	if is_moving_forward and not is_moving_backward:
@@ -55,8 +57,6 @@ func handle_movement(delta) -> void:
 	else:
 		velocity.x *= pow(damping, delta)
 		velocity.z *= pow(damping, delta)
-	
-	print("Velocity: ", velocity)
 
 
 func move_player() -> void:
@@ -73,10 +73,18 @@ func adjust_speed_for_crouch(crouch_factor: float) -> void:
 #endregion
 
 
-#region Gravity
+#region GRAVITY
 func apply_gravity(delta) -> void:
 	if not player_body.is_on_floor():
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = -0.1
+#endregion
+
+
+#region UTILS
+func print_velocity() -> void:
+	while true:
+		print("Velocity: ", velocity)
+		await get_tree().create_timer(1).timeout
 #endregion
