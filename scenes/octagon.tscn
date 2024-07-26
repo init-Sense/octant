@@ -2,74 +2,43 @@
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_whfll"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_faqld"]
-size = Vector2(200, 200)
+[sub_resource type="BoxMesh" id="BoxMesh_mv2wg"]
+size = Vector3(200, 0.1, 200)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ybmxy"]
-size = Vector3(200, 200, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1wij"]
+size = Vector3(200, 0.1, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xxnag"]
-size = Vector3(2, 2, 2)
+size = Vector3(5, 2, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7ysn"]
-size = Vector3(2, 2, 2)
+size = Vector3(5, 2, 5)
 
 [node name="Octagon" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_whfll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5552, 0)
+
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Plane" type="Area3D" parent="Environment"]
+[node name="PlaneMesh" type="MeshInstance3D" parent="Environment"]
+mesh = SubResource("BoxMesh_mv2wg")
 
-[node name="PlaneMesh" type="MeshInstance3D" parent="Environment/Plane"]
-mesh = SubResource("PlaneMesh_faqld")
-skeleton = NodePath("../..")
+[node name="PlaneBody" type="StaticBody3D" parent="Environment/PlaneMesh"]
+collision_layer = 2
 
-[node name="PlaneCollider" type="CollisionShape3D" parent="Environment/Plane"]
-shape = SubResource("BoxShape3D_ybmxy")
+[node name="PlaneShape" type="CollisionShape3D" parent="Environment/PlaneMesh/PlaneBody"]
+shape = SubResource("BoxShape3D_l1wij")
 
-[node name="Box" type="Area3D" parent="Environment"]
+[node name="BoxMesh" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37356, 1.22395, 0)
-
-[node name="BoxMesh" type="MeshInstance3D" parent="Environment/Box"]
 mesh = SubResource("BoxMesh_xxnag")
+skeleton = NodePath("BoxBody")
 
-[node name="BoxCollider" type="CollisionShape3D" parent="Environment/Box"]
+[node name="BoxBody" type="StaticBody3D" parent="Environment/BoxMesh"]
+collision_layer = 2
+
+[node name="BoxCollider" type="CollisionShape3D" parent="Environment/BoxMesh/BoxBody"]
 shape = SubResource("BoxShape3D_u7ysn")
 
-[node name="Box2" type="Area3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42716, 1.09688, 6.90743)
-
-[node name="BoxMesh" type="MeshInstance3D" parent="Environment/Box2"]
-mesh = SubResource("BoxMesh_xxnag")
-
-[node name="BoxCollider" type="CollisionShape3D" parent="Environment/Box2"]
-shape = SubResource("BoxShape3D_u7ysn")
-
-[node name="Box3" type="Area3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36121, 1.22395, 0)
-
-[node name="BoxMesh" type="MeshInstance3D" parent="Environment/Box3"]
-mesh = SubResource("BoxMesh_xxnag")
-
-[node name="BoxCollider" type="CollisionShape3D" parent="Environment/Box3"]
-shape = SubResource("BoxShape3D_u7ysn")
-
-[node name="Box4" type="Area3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76534, 1.22395, -7.74912)
-
-[node name="BoxMesh" type="MeshInstance3D" parent="Environment/Box4"]
-mesh = SubResource("BoxMesh_xxnag")
-
-[node name="BoxCollider" type="CollisionShape3D" parent="Environment/Box4"]
-shape = SubResource("BoxShape3D_u7ysn")
-
-[node name="Box5" type="Area3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6135, 1.22395, 4.25628)
-
-[node name="BoxMesh" type="MeshInstance3D" parent="Environment/Box5"]
-mesh = SubResource("BoxMesh_xxnag")
-
-[node name="BoxCollider" type="CollisionShape3D" parent="Environment/Box5"]
-shape = SubResource("BoxShape3D_u7ysn")
-
-[node name="Player" parent="." instance=ExtResource("1_whfll")]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
