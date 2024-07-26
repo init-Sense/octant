@@ -10,11 +10,12 @@ extends Node3D
 #region Lifecycle
 func _ready():
 	print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
+	print_tree_pretty()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var camera_rotation = camera.rotation
 	body.rotation.y = camera_rotation.y
 	
-func _process(delta):
+func _process(_delta):
 	camera.global_position = body.global_position + Vector3(0, 0.5, 0)
 #endregion

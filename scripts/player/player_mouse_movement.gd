@@ -8,6 +8,7 @@ class_name PlayerMouseMovement3D
 
 var velocity : Vector3 = Vector3.ZERO
 var is_moving : bool = false
+var crouch_speed_factor : float = 1.0
 #endregion
 
 
@@ -49,7 +50,7 @@ func handle_movement(delta):
 
 		input_dir = forward
 
-	var target_velocity = input_dir * speed
+	var target_velocity = input_dir * speed * crouch_speed_factor
 	velocity.x = move_toward(velocity.x, target_velocity.x, speed * delta)
 	velocity.z = move_toward(velocity.z, target_velocity.z, speed * delta)
 
@@ -63,6 +64,10 @@ func move_player():
 	
 func get_movement_velocity() -> Vector3:
 	return velocity
+	
+
+func adjust_speed_for_crouch(crouch_factor: float):
+	crouch_speed_factor = max(crouch_factor, 0.5)
 #endregion
 
 
