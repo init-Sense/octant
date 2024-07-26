@@ -2,7 +2,7 @@ extends Node3D
 
 #region Nodes
 @onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
-@onready var movement : PlayerMovement3D = $PlayerMovement3D
+@onready var movement : PlayerMouseMovement3D = $PlayerMouseMovement3D
 @onready var body : CharacterBody3D = $PlayerBody3D
 #endregion
 
