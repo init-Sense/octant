@@ -1,20 +1,30 @@
 extends Node3D
 class_name PlayerCrouch3D
 
+#region Nodes
 @onready var player_body: CharacterBody3D = $"../PlayerBody3D"
 @onready var player_collision: CollisionShape3D = $"../PlayerBody3D/PlayerCollision3D"
 @onready var head: Node3D = $"../Head"
 @onready var player_camera: PlayerCamera3D = $"../Head/PlayerCamera3D"
+#endregion
 
+
+#region Constants
 const CROUCH_STEPS = 10
 const CROUCH_AMOUNT = 0.9
 const CROUCH_SPEED = 6
+#endregion
 
+
+#region Variables
 var current_crouch_step = 0
 var target_crouch_step = 0
 var initial_player_height = 0
 var initial_head_position = Vector3.ZERO
+#endregion
 
+
+#region Lifecycle
 func _ready():
 	if not player_body or not player_collision or not head or not player_camera:
 		push_error("Required nodes not found in PlayerCrouch3D. Check the node structure.")
@@ -42,7 +52,10 @@ func _process(delta):
 	if current_crouch_step != target_crouch_step:
 		current_crouch_step = move_toward(current_crouch_step, target_crouch_step, CROUCH_SPEED * delta * CROUCH_STEPS)
 		update_player_height()
+#endregion
 
+
+#region Crouching
 func crouch_down():
 	target_crouch_step = min(target_crouch_step + 1, CROUCH_STEPS)
 	print('Crouching down, target step:', target_crouch_step)
@@ -50,7 +63,9 @@ func crouch_down():
 func crouch_up():
 	target_crouch_step = max(target_crouch_step - 1, 0)
 	print('Standing up, target step:', target_crouch_step)
+#endregion
 
+#region Height
 func update_player_height():
 	var crouch_progress = float(current_crouch_step) / CROUCH_STEPS
 	var height_change = initial_player_height * CROUCH_AMOUNT * crouch_progress
@@ -60,3 +75,4 @@ func update_player_height():
 	head.position.y = initial_head_position.y - height_change
 	
 	player_body.move_and_slide()
+#endregion
