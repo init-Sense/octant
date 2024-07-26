@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=9 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_whfll"]
 
@@ -13,6 +13,19 @@ size = Vector3(5, 2, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7ysn"]
 size = Vector3(5, 2, 5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dhmyu"]
+sky_top_color = Color(0.328459, 0.619191, 0.774832, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.581657, 0.0425685, 0.793042, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_ke064"]
+sky_material = SubResource("ProceduralSkyMaterial_dhmyu")
+
+[sub_resource type="Environment" id="Environment_yuqp5"]
+background_mode = 2
+sky = SubResource("Sky_ke064")
 
 [node name="Octagon" type="Node3D"]
 
@@ -42,3 +55,6 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_u7ysn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yuqp5")

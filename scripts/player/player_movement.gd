@@ -8,13 +8,13 @@ class_name PlayerMovement3D
 var velocity : Vector3 = Vector3.ZERO
 var is_moving : bool = false
 
-@onready var player_body : CharacterBody3D = get_parent().get_node("PlayerBody3D")
-@onready var camera : PlayerCamera3D = get_parent().get_node("PlayerCamera3D")
+@onready var player_body: CharacterBody3D = get_parent().get_node("PlayerBody3D")
+@onready var camera: PlayerCamera3D = get_parent().get_node("PlayerCamera3D")
 
 func _ready():
 	print("PlayerMovement3D ready. player_body: ", player_body, ", camera: ", camera)
 
-func physics_process(delta):
+func _process(delta):
 	handle_movement(delta)
 	apply_gravity(delta)
 	move_player()
