@@ -24,8 +24,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			print('Wheel Up')
+			crouch_up()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			print('Wheel Down')
+			crouch_down()
 	elif event is InputEventPanGesture:
 		print('Pan Gesture Detected')
 
