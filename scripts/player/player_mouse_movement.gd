@@ -5,7 +5,7 @@ class_name PlayerMouseMovement3D
 #region Variables
 @export var speed : float = 3.0
 @export var gravity : float = 9.8
-@export var damping : float = 0.9
+@export var damping : float = 0.01
 
 var velocity : Vector3 = Vector3.ZERO
 var is_moving_forward : bool = false
@@ -15,8 +15,8 @@ var crouch_speed_factor : float = 1.0
 
 
 #region Nodes
-@onready var player_body: CharacterBody3D = get_parent().get_node("PlayerBody3D")
-@onready var camera: PlayerCamera3D = get_parent().get_node("Head/PlayerCamera3D")
+@onready var player_body: CharacterBody3D = %PlayerBody3D
+@onready var camera: PlayerCamera3D = %PlayerCamera3D
 #endregion
 
 
@@ -53,8 +53,8 @@ func handle_movement(delta) -> void:
 		velocity.x = target_velocity.x
 		velocity.z = target_velocity.z
 	else:
-		velocity.x *= damping
-		velocity.z *= damping
+		velocity.x *= pow(damping, delta)
+		velocity.z *= pow(damping, delta)
 	
 	print("Velocity: ", velocity)
 
@@ -62,7 +62,6 @@ func handle_movement(delta) -> void:
 func move_player() -> void:
 	player_body.velocity = velocity
 	player_body.move_and_slide()
-	velocity = player_body.velocity
 
 
 func get_movement_velocity() -> Vector3:
