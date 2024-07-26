@@ -13,15 +13,17 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_ne7vt")
 
+[node name="Head" type="Node3D" parent="."]
+
+[node name="PlayerCamera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_kf2t8")
+
 [node name="PlayerBody3D" type="CharacterBody3D" parent="."]
 collision_mask = 2
 
 [node name="PlayerCollision3D" type="CollisionShape3D" parent="PlayerBody3D"]
 shape = SubResource("CapsuleShape3D_vyse8")
-
-[node name="PlayerCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("2_kf2t8")
 
 [node name="PlayerMovement3D" parent="." instance=ExtResource("1_tw8pf")]
 
@@ -30,5 +32,3 @@ script = ExtResource("2_kf2t8")
 [node name="PlayerCrouch3D" parent="." instance=ExtResource("3_svdt6")]
 
 [node name="PlayerInteraction3D" parent="." instance=ExtResource("4_xrt8m")]
-
-[node name="PlayerMovement3D2" parent="." instance=ExtResource("1_tw8pf")]
