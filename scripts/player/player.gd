@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var camera : PlayerCamera3D = $PlayerCamera3D
+@onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
 @onready var movement : PlayerMovement3D = $PlayerMovement3D
 @onready var body : CharacterBody3D = $PlayerBody3D
 
