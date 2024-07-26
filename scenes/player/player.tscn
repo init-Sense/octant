@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu3wtrebnb1dy"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
+[ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/player_movement.tscn" id="1_tw8pf"]
+[ext_resource type="PackedScene" uid="uid://dri75rr172bm8" path="res://scenes/player/player_jump.tscn" id="2_8258e"]
+[ext_resource type="PackedScene" uid="uid://coa5srfyqm0yl" path="res://scenes/player/player_crouch.tscn" id="3_svdt6"]
+[ext_resource type="PackedScene" uid="uid://hd8bno8i2dv7" path="res://scenes/player/player_interaction.tscn" id="4_xrt8m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyse8"]
+
+[node name="Player" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_ne7vt")
+
+[node name="PlayerBody" type="CharacterBody3D" parent="."]
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody"]
+shape = SubResource("CapsuleShape3D_vyse8")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Movement" parent="." instance=ExtResource("1_tw8pf")]
+
+[node name="Jump" parent="." instance=ExtResource("2_8258e")]
+
+[node name="Crouch" parent="." instance=ExtResource("3_svdt6")]
+
+[node name="Interaction" parent="." instance=ExtResource("4_xrt8m")]
