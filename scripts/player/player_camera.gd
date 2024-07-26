@@ -3,7 +3,7 @@ class_name PlayerCamera3D
 
 #region Variables
 @export var mouse_sensitivity_x : float = 0.1
-@export var mouse_sensitivity_y : float = 0.01
+@export var mouse_sensitivity_y : float = 0.002
 @export var invert_y : bool = false
 
 var rotation_x : float = 0

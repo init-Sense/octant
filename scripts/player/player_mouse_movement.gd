@@ -1,13 +1,15 @@
 extends Node3D
 class_name PlayerMouseMovement3D
 
+
 #region Variables
 @export var speed : float = 3.0
-@export var jump_strength : float = 4.5
 @export var gravity : float = 9.8
+@export var damping : float = 0.9
 
 var velocity : Vector3 = Vector3.ZERO
-var is_moving : bool = false
+var is_moving_forward : bool = false
+var is_moving_backward : bool = false
 var crouch_speed_factor : float = 1.0
 #endregion
 
@@ -19,60 +21,61 @@ var crouch_speed_factor : float = 1.0
 
 
 #region Lifecycle
-func _ready():
+func _ready() -> void:
 	print("PlayerMovement3D ready. player_body: ", player_body, ", camera: ", camera)
 
 
-func _process(delta):
+func _process(delta) -> void:
 	handle_movement(delta)
 	apply_gravity(delta)
 	move_player()
 
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			is_moving = event.pressed
+			is_moving_forward = event.pressed
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			is_moving_backward = event.pressed
 #endregion
 
-
 #region Movement
-func handle_movement(delta):
-	var input_dir = Vector3.ZERO
-	if is_moving:
-		var camera_transform = camera.global_transform
+func handle_movement(delta) -> void:
+	var input_direction = Vector3.ZERO
+	if is_moving_forward and not is_moving_backward:
+		input_direction = -camera.global_transform.basis.z.normalized()
+	elif is_moving_backward and not is_moving_forward:
+		input_direction = camera.global_transform.basis.z.normalized()
 
-		var forward = -camera_transform.basis.z
-		var right = camera_transform.basis.x
+	var target_velocity = input_direction * speed * crouch_speed_factor
 
-		forward = Vector3(forward.x, 0, forward.z).normalized()
-		right = Vector3(right.x, 0, right.z).normalized()
+	if input_direction != Vector3.ZERO:
+		velocity.x = target_velocity.x
+		velocity.z = target_velocity.z
+	else:
+		velocity.x *= damping
+		velocity.z *= damping
+	
+	print("Velocity: ", velocity)
 
-		input_dir = forward
 
-	var target_velocity = input_dir * speed * crouch_speed_factor
-	velocity.x = move_toward(velocity.x, target_velocity.x, speed * delta)
-	velocity.z = move_toward(velocity.z, target_velocity.z, speed * delta)
-
-
-func move_player():
+func move_player() -> void:
 	player_body.velocity = velocity
 	player_body.move_and_slide()
-	
 	velocity = player_body.velocity
-	
-	
+
+
 func get_movement_velocity() -> Vector3:
 	return velocity
-	
 
-func adjust_speed_for_crouch(crouch_factor: float):
+
+func adjust_speed_for_crouch(crouch_factor: float) -> void:
 	crouch_speed_factor = max(crouch_factor, 0.5)
 #endregion
 
 
 #region Gravity
-func apply_gravity(delta):
+func apply_gravity(delta) -> void:
 	if not player_body.is_on_floor():
 		velocity.y -= gravity * delta
 	else:
