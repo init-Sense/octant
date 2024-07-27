@@ -29,7 +29,7 @@ var position_state: Position
 
 
 #region NODES
-@onready var camera : PlayerCamera3D = $Head/PlayerCamera
+@onready var camera : PlayerCamera3D = $PlayerBody/Head/PlayerCamera
 @onready var body : CharacterBody3D = $PlayerBody
 @onready var inputs_mouse: PlayerInputsMouse = $PlayerInputsMouse
 @onready var jump: PlayerJump3D = $PlayerJump
@@ -47,9 +47,7 @@ func _ready():
 
 
 func _process(_delta):
-	var camera_rotation = camera.rotation
-	body.rotation.y = camera_rotation.y
-	camera.global_position = body.global_position + Vector3(0, 0.5, 0)
+	body.rotation.y = camera.rotation.y
 #endregion
 
 

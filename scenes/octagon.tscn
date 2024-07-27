@@ -45,7 +45,7 @@ ssao_light_affect = 0.5
 [node name="Octagon" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_whfll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5552, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37652, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 

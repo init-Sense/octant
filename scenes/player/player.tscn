@@ -15,20 +15,20 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_ne7vt")
 
-[node name="Head" type="Node3D" parent="."]
-
-[node name="PlayerCamera" type="Camera3D" parent="Head"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-fov = 90.0
-script = ExtResource("2_kf2t8")
-
 [node name="PlayerBody" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 collision_mask = 6
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody"]
 shape = SubResource("CapsuleShape3D_vyse8")
+
+[node name="Head" type="Node3D" parent="PlayerBody"]
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerBody/Head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+fov = 90.0
+script = ExtResource("2_kf2t8")
 
 [node name="PlayerMovement" parent="." instance=ExtResource("1_tw8pf")]
 

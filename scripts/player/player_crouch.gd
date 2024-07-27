@@ -5,22 +5,22 @@ class_name PlayerCrouch3D
 #region NODES
 @onready var player_body: CharacterBody3D = %PlayerBody
 @onready var player_collision: CollisionShape3D = $"../PlayerBody/PlayerCollision"
-@onready var head: Node3D = $"../Head"
+@onready var head: Node3D = $"../PlayerBody/Head"
 @onready var player_camera: PlayerCamera3D = %PlayerCamera
 #endregion
 
 
 #region CONSTANTS
-const CROUCH_STEPS = 10
-const CROUCH_AMOUNT = 0.9
-const CROUCH_SPEED = 6
+const CROUCH_STEPS: float = 20
+const CROUCH_AMOUNT: float = 0.9
+const CROUCH_SPEED: float = 2.0
 #endregion
 
 
 #region VARIABLES
-var current_crouch_step = 0
-var target_crouch_step = 0
-var initial_player_height = 0
+var current_crouch_step: float = 0
+var target_crouch_step: float = 0
+var initial_player_height: float = 0
 var initial_head_position = Vector3.ZERO
 #endregion
 
