@@ -23,7 +23,7 @@ var action_state: Action
 
 #region NODES
 @onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
-@onready var movement : PlayerMouseMovement3D = $PlayerMouseMovement3D
+@onready var movement : PlayerMovementMouse3D = $PlayerMovementMouse3D
 @onready var body : CharacterBody3D = $PlayerBody3D
 @onready var jump: PlayerJump3D = $PlayerJump3D
 #endregion

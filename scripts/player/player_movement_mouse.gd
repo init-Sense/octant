@@ -1,5 +1,5 @@
 extends Node
-class_name PlayerMouseMovement3D
+class_name PlayerMovementMouse3D
 
 signal movement_changed(state)
 

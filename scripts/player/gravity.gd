@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var player_body: CharacterBody3D = %PlayerBody3D
-@onready var player_mouse_movement: PlayerMouseMovement3D = $"../PlayerMouseMovement3D"
+@onready var player_movement_mouse: PlayerMovementMouse3D = $"../PlayerMovementMouse3D"
 
 const GRAVITY : float = 9.8
 
@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 #region GRAVITY
 func apply_gravity(delta) -> void:
 	if not player_body.is_on_floor():
-		player_mouse_movement.velocity.y -= GRAVITY * delta
+		player_movement_mouse.velocity.y -= GRAVITY * delta
 	else:
-		player_mouse_movement.velocity.y = -0.1
+		player_movement_mouse.velocity.y = -0.1
 #endregion

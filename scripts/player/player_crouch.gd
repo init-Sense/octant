@@ -7,7 +7,6 @@ class_name PlayerCrouch3D
 @onready var player_collision: CollisionShape3D = $"../PlayerBody3D/PlayerCollision3D"
 @onready var head: Node3D = $"../Head"
 @onready var player_camera: PlayerCamera3D = %PlayerCamera3D
-@onready var player_mouse_movement: PlayerMouseMovement3D = $"../PlayerMouseMovement3D"
 #endregion
 
 
