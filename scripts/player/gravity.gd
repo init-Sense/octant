@@ -1,8 +1,8 @@
 extends Node
 
 
-@onready var player_body: CharacterBody3D = %PlayerBody3D
-@onready var player_movement: PlayerMovement3D = $"../PlayerMovement3D"
+@onready var player_body: CharacterBody3D = %PlayerBody
+@onready var player_movement: PlayerMovement3D = $"../PlayerMovement"
 
 const GRAVITY : float = 9.8
 

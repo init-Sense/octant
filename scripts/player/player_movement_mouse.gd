@@ -13,8 +13,8 @@ var crouch_speed_factor : float = 1.0
 
 #region NODE
 @onready var player: Node3D = $".."
-@onready var player_body: CharacterBody3D = %PlayerBody3D
-@onready var camera: PlayerCamera3D = %PlayerCamera3D
+@onready var player_body: CharacterBody3D = %PlayerBody
+@onready var camera: PlayerCamera3D = %PlayerCamera
 #endregion
 
 

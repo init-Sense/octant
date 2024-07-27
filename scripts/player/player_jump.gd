@@ -5,7 +5,7 @@ class_name PlayerJump3D
 signal action_changed(state)
 
 @onready var player: Node3D = $".."
-@onready var player_body: CharacterBody3D = %PlayerBody3D
+@onready var player_body: CharacterBody3D = %PlayerBody
 
 const JUMPING_SPEED: float = 8.0
 

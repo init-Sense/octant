@@ -17,29 +17,30 @@ script = ExtResource("1_ne7vt")
 
 [node name="Head" type="Node3D" parent="."]
 
-[node name="PlayerCamera3D" type="Camera3D" parent="Head"]
+[node name="PlayerCamera" type="Camera3D" parent="Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+fov = 90.0
 script = ExtResource("2_kf2t8")
 
-[node name="PlayerBody3D" type="CharacterBody3D" parent="."]
+[node name="PlayerBody" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 collision_mask = 6
 
-[node name="PlayerCollision3D" type="CollisionShape3D" parent="PlayerBody3D"]
+[node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody"]
 shape = SubResource("CapsuleShape3D_vyse8")
 
-[node name="PlayerMovement3D" parent="." instance=ExtResource("1_tw8pf")]
+[node name="PlayerMovement" parent="." instance=ExtResource("1_tw8pf")]
 
-[node name="PlayerJump3D" parent="." instance=ExtResource("2_8258e")]
+[node name="PlayerJump" parent="." instance=ExtResource("2_8258e")]
 
-[node name="PlayerCrouch3D" parent="." instance=ExtResource("3_svdt6")]
+[node name="PlayerCrouch" parent="." instance=ExtResource("3_svdt6")]
 
-[node name="PlayerInteraction3D" parent="." instance=ExtResource("4_xrt8m")]
-
-[node name="Gravity3D" parent="." instance=ExtResource("7_6ib4u")]
+[node name="PlayerInteraction" parent="." instance=ExtResource("4_xrt8m")]
 
 [node name="PlayerInputsMouse" parent="." instance=ExtResource("8_vgduu")]
+
+[node name="Gravity" parent="." instance=ExtResource("7_6ib4u")]
 
 [connection signal="action_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_action_changed"]
 [connection signal="movement_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_movement_changed"]

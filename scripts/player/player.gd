@@ -29,10 +29,10 @@ var position_state: Position
 
 
 #region NODES
-@onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
-@onready var body : CharacterBody3D = $PlayerBody3D
+@onready var camera : PlayerCamera3D = $Head/PlayerCamera
+@onready var body : CharacterBody3D = $PlayerBody
 @onready var inputs_mouse: PlayerInputsMouse = $PlayerInputsMouse
-@onready var jump: PlayerJump3D = $PlayerJump3D
+@onready var jump: PlayerJump3D = $PlayerJump
 #endregion
 
 
