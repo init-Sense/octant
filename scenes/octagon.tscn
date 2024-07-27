@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=12 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_whfll"]
 [ext_resource type="Texture2D" uid="uid://d004ayerwjo0g" path="res://assets/textures/sky_clouds.jpeg" id="2_0cqly"]
+[ext_resource type="Texture2D" uid="uid://clb1dcknduxpm" path="res://assets/textures/prototype_grid.png" id="2_3sk06"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_643ss"]
-albedo_color = Color(1, 0.476502, 0.267471, 1)
+albedo_color = Color(1, 0.694143, 0.632529, 1)
+albedo_texture = ExtResource("2_3sk06")
 metallic = 0.2
 roughness = 0.8
+uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mv2wg"]
 material = SubResource("StandardMaterial3D_643ss")

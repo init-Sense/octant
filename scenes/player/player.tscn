@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=13 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
 [ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/player_movement_mouse.tscn" id="1_tw8pf"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://hd8bno8i2dv7" path="res://scenes/player/player_interaction.tscn" id="4_xrt8m"]
 [ext_resource type="PackedScene" uid="uid://pxmd0xahckh5" path="res://scenes/player/gravity.tscn" id="7_6ib4u"]
 [ext_resource type="PackedScene" uid="uid://beff28ec1d70n" path="res://scenes/player/player_inputs.tscn" id="8_vgduu"]
+[ext_resource type="PackedScene" uid="uid://bswr5m5lovrx2" path="res://scenes/player/head_bob.tscn" id="9_yb2ao"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3rwi"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jhh56"]
+material = SubResource("StandardMaterial3D_g3rwi")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyse8"]
 
@@ -18,6 +25,9 @@ script = ExtResource("1_ne7vt")
 [node name="PlayerBody" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 collision_mask = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody"]
+mesh = SubResource("CapsuleMesh_jhh56")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody"]
 shape = SubResource("CapsuleShape3D_vyse8")
@@ -41,6 +51,8 @@ script = ExtResource("2_kf2t8")
 [node name="PlayerInputsMouse" parent="." instance=ExtResource("8_vgduu")]
 
 [node name="Gravity" parent="." instance=ExtResource("7_6ib4u")]
+
+[node name="HeadBob" parent="." instance=ExtResource("9_yb2ao")]
 
 [connection signal="action_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_action_changed"]
 [connection signal="movement_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_movement_changed"]

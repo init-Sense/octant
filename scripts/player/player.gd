@@ -146,6 +146,10 @@ func is_still() -> bool:
 	return movement_state == Movement.STILL
 
 
+func is_moving() -> bool:
+	return movement_state in [Movement.FORWARD, Movement.BACKWARD]
+
+
 func is_moving_forward() -> bool:
 	return movement_state == Movement.FORWARD
 
