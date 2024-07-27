@@ -6,7 +6,6 @@ signal movement_changed(state)
 
 #region VARIABLES
 const WALKING_SPEED : float = 3.0
-const GRAVITY : float = 9.8
 const DAMPING : float = 0.01
 
 var velocity : Vector3 = Vector3.ZERO
@@ -31,7 +30,6 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	handle_movement(delta)
-	apply_gravity(delta)
 	move_player()
 
 
@@ -79,15 +77,6 @@ func get_movement_velocity() -> Vector3:
 
 func adjust_speed_for_crouch(crouch_factor: float) -> void:
 	crouch_speed_factor = max(crouch_factor, 0.5)
-#endregion
-
-
-#region GRAVITY
-func apply_gravity(delta) -> void:
-	if not player_body.is_on_floor():
-		velocity.y -= GRAVITY * delta
-	else:
-		velocity.y = -0.1
 #endregion
 
 
