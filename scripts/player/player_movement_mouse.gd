@@ -1,12 +1,13 @@
 extends Node3D
 class_name PlayerMouseMovement3D
 
-signal movement_state_changed(state)
+signal movement_changed(state)
+
 
 #region VARIABLES
-@export var speed : float = 3.0
-@export var gravity : float = 9.8
-@export var damping : float = 0.01
+const WALKING_SPEED : float = 3.0
+const GRAVITY : float = 9.8
+const DAMPING : float = 0.01
 
 var velocity : Vector3 = Vector3.ZERO
 var is_moving_forward : bool = false
@@ -39,11 +40,11 @@ func _input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			is_moving_forward = event.pressed
 			if event.pressed:
-				emit_signal("movement_state_changed", player.Movement.FORWARD)
+				emit_signal("movement_changed", player.Movement.FORWARD)
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_moving_backward = event.pressed
 			if event.pressed:
-				emit_signal("movement_state_changed", player.Movement.BACKWARD)
+				emit_signal("movement_changed", player.Movement.BACKWARD)
 #endregion
 
 
@@ -58,16 +59,16 @@ func handle_movement(delta) -> void:
 		# jump function
 		pass
 	elif not player.is_still():
-		emit_signal("movement_state_changed", player.Movement.STILL)
+		emit_signal("movement_changed", player.Movement.STILL)
 
-	var target_velocity = input_direction * speed * crouch_speed_factor
+	var target_velocity = input_direction * WALKING_SPEED * crouch_speed_factor
 
 	if input_direction != Vector3.ZERO:
 		velocity.x = target_velocity.x
 		velocity.z = target_velocity.z
 	else:
-		velocity.x *= pow(damping, delta)
-		velocity.z *= pow(damping, delta)
+		velocity.x *= pow(DAMPING, delta)
+		velocity.z *= pow(DAMPING, delta)
 
 
 func move_player() -> void:
@@ -87,7 +88,7 @@ func adjust_speed_for_crouch(crouch_factor: float) -> void:
 #region GRAVITY
 func apply_gravity(delta) -> void:
 	if not player_body.is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= GRAVITY * delta
 	else:
 		velocity.y = -0.1
 #endregion

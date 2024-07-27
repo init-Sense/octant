@@ -32,7 +32,7 @@ var action_state: Action
 func _ready():
 	print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
 	print_tree_pretty()
-	movement.connect("movement_state_changed", Callable(self, "set_movement_state"))
+	movement.connect("movement_changed", Callable(self, "set_movement_state"))
 	set_movement_still()
 
 
@@ -100,6 +100,10 @@ func get_action_value() -> String:
 			return "CROUCHING"
 		Action.JUMPING:
 			return "JUMPING"
+		Action.FLYING:
+			return "FLYING"
+		Action.SWIMMING:
+			return "SWIMMING"
 		_:
 			return "UNKNOWN"
 
