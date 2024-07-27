@@ -3,9 +3,9 @@ class_name PlayerCrouch3D
 
 
 #region NODES
-@onready var player_body: CharacterBody3D = %Body
-@onready var player_collision: CollisionShape3D = $"../Body/Collision"
-@onready var head: Node3D = $"../Body/Head"
+@onready var player: CharacterBody3D = $"../.."
+@onready var player_collision: CollisionShape3D = %Collision
+@onready var head: Node3D = %Head
 @onready var player_camera: PlayerCamera3D = %Camera
 #endregion
 
@@ -27,7 +27,7 @@ var initial_head_position = Vector3.ZERO
 
 #region LIFECYCLE
 func _ready():
-	if not player_body or not player_collision or not head or not player_camera:
+	if not player or not player_collision or not head or not player_camera:
 		push_error("Required nodes not found in PlayerCrouch3D. Check the node structure.")
 	
 	initial_player_height = player_collision.shape.height
@@ -78,5 +78,5 @@ func update_player_height():
 	player_collision.shape.height = new_height
 	head.position.y = initial_head_position.y - height_change
 	
-	player_body.move_and_slide()
+	player.move_and_slide()
 #endregion

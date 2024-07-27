@@ -22,6 +22,7 @@ enum Position {
 	CROUCHED,
 }
 
+
 var movement_state: Movement
 var action_state: Action
 var position_state: Position
@@ -29,10 +30,9 @@ var position_state: Position
 
 
 #region NODES
-@onready var camera : PlayerCamera3D = $Body/Head/Camera
-@onready var body : CharacterBody3D = $Body
-@onready var inputs_mouse: PlayerInputsMouse = $Inputs
-@onready var jump: PlayerJump3D = $Jump
+@onready var camera : PlayerCamera3D = %Camera
+@onready var inputs_mouse: PlayerInputsMouse = %Inputs
+@onready var jump: PlayerJump3D = %Jump
 #endregion
 
 
@@ -46,7 +46,7 @@ func _ready():
 
 
 func _process(_delta):
-	body.rotation.y = camera.rotation.y
+	rotation.y = camera.rotation.y
 #endregion
 
 
@@ -140,6 +140,7 @@ func get_position_value() -> String:
 			return "CROUCHING_UP"
 		_:
 			return "UNKNOWN"
+
 
 func is_still() -> bool:
 	return movement_state == Movement.STILL

@@ -12,15 +12,14 @@ var crouch_speed_factor : float = 1.0
 
 
 #region NODE
-@onready var player: Node3D = $".."
-@onready var player_body: CharacterBody3D = %Body
+@onready var player: Node3D = $"../.."
 @onready var camera: PlayerCamera3D = %Camera
 #endregion
 
 
 #region LIFECYCLE
 func _ready() -> void:
-	print("PlayerMovement3D ready. player_body: ", player_body, ", camera: ", camera)
+	print("PlayerMovement3D ready. player: ", player, ", camera: ", camera)
 	#print_velocity_coroutine()
 
 
@@ -49,8 +48,8 @@ func handle_movement(delta) -> void:
 
 
 func move_player() -> void:
-	player_body.velocity = velocity
-	player_body.move_and_slide()
+	player.velocity = velocity
+	player.move_and_slide()
 
 
 func get_movement_velocity() -> Vector3:

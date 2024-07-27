@@ -2,8 +2,8 @@ extends Node
 class_name PlayerJump3D
 
 
-@onready var player: Node3D = $".."
-@onready var player_body: CharacterBody3D = %Body
+@onready var player: CharacterBody3D = $"../.."
+
 
 const JUMPING_SPEED: float = 8.0
 
@@ -26,10 +26,12 @@ func handle_jump() -> void:
 
 func jump() -> void:
 	can_jump = false
-	player_body.velocity += Vector3(0.0, JUMPING_SPEED, 0.0)
-	player_body.move_and_slide()
+	player.velocity += Vector3(0.0, JUMPING_SPEED, 0.0)
+	player.move_and_slide()
+	
 	await get_tree().create_timer(0.1).timeout
-	if player_body.is_on_floor() and player.is_jumping():
+	
+	if player.is_on_floor() and player.is_jumping():
 		can_jump = true
 		player.set_action_grounded()
 #endregion
