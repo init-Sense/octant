@@ -1,6 +1,7 @@
 extends Node3D
 class_name PlayerMouseMovement3D
 
+signal movement_state_changed(state)
 
 #region VARIABLES
 @export var speed : float = 3.0
@@ -15,6 +16,7 @@ var crouch_speed_factor : float = 1.0
 
 
 #region NODE
+@onready var player: Node3D = $".."
 @onready var player_body: CharacterBody3D = %PlayerBody3D
 @onready var camera: PlayerCamera3D = %PlayerCamera3D
 #endregion
@@ -23,7 +25,7 @@ var crouch_speed_factor : float = 1.0
 #region LIFECYCLE
 func _ready() -> void:
 	print("PlayerMovement3D ready. player_body: ", player_body, ", camera: ", camera)
-	print_velocity()
+	#print_velocity_coroutine()
 
 
 func _process(delta) -> void:
@@ -36,8 +38,12 @@ func _input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			is_moving_forward = event.pressed
+			if event.pressed:
+				emit_signal("movement_state_changed", player.Movement.FORWARD)
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_moving_backward = event.pressed
+			if event.pressed:
+				emit_signal("movement_state_changed", player.Movement.BACKWARD)
 #endregion
 
 
@@ -48,6 +54,11 @@ func handle_movement(delta) -> void:
 		input_direction = -camera.global_transform.basis.z.normalized()
 	elif is_moving_backward and not is_moving_forward:
 		input_direction = camera.global_transform.basis.z.normalized()
+	elif is_moving_forward and is_moving_backward:
+		# jump function
+		pass
+	elif not player.is_still():
+		emit_signal("movement_state_changed", player.Movement.STILL)
 
 	var target_velocity = input_direction * speed * crouch_speed_factor
 
@@ -83,7 +94,7 @@ func apply_gravity(delta) -> void:
 
 
 #region UTILS
-func print_velocity() -> void:
+func print_velocity_coroutine() -> void:
 	while true:
 		print("Velocity: ", velocity)
 		await get_tree().create_timer(1).timeout
