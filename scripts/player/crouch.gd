@@ -63,6 +63,7 @@ func crouch_down():
 	target_crouch_step = min(target_crouch_step + 1, CROUCH_STEPS)
 	#print('Crouching down, target step:', target_crouch_step)
 
+
 func crouch_up():
 	target_crouch_step = max(target_crouch_step - 1, 0)
 	#print('Standing up, target step:', target_crouch_step)

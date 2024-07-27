@@ -1,9 +1,9 @@
 extends Node
 
+
 @onready var player: CharacterBody3D = $"../.."
 @onready var camera: PlayerCamera3D = %Camera
 @onready var player_movement: PlayerMovement3D = %Movement
-
 
 
 #region VARIABLES
@@ -16,19 +16,14 @@ const CAMERA_HEIGHT: float = 0.5
 
 var bob_time: float = 0.0
 var current_offset: float = 0.0
-var current_amplitude: float = 0.0
-var current_frequency: float = 0.0
+var current_amplitude: float = DEFAULT_AMPLITUDE
+var current_frequency: float = DEFAULT_FREQUENCY
 
 var is_bobbing: bool = false
 #endregion
 
 
 #region LIFECYCLE
-func _ready() -> void:
-	current_amplitude = DEFAULT_AMPLITUDE
-	current_frequency = DEFAULT_FREQUENCY
-
-
 func _physics_process(delta: float) -> void:
 	if player.is_moving():
 		apply_head_bob(delta)

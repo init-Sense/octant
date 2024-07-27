@@ -1,6 +1,7 @@
 extends Node
 class_name PlayerInputsMouse
 
+
 @onready var player: CharacterBody3D = $"../.."
 
 

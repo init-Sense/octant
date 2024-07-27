@@ -4,7 +4,6 @@ class_name PlayerJump3D
 
 @onready var player: CharacterBody3D = $"../.."
 
-
 const JUMPING_SPEED: float = 8.0
 
 var can_jump: bool = true

@@ -19,8 +19,9 @@ var crouch_speed_factor : float = 1.0
 
 #region LIFECYCLE
 func _ready() -> void:
-	print("PlayerMovement3D ready. player: ", player, ", camera: ", camera)
+	#print("PlayerMovement3D ready. player: ", player, ", camera: ", camera)
 	#print_velocity_coroutine()
+	pass
 
 
 func _process(delta) -> void:
