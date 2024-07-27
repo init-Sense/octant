@@ -2,6 +2,9 @@ extends Node3D
 class_name PlayerJump3D
 
 
+signal action_changed(state)
+
+@onready var player: Node3D = $".."
 @onready var player_body: CharacterBody3D = %PlayerBody3D
 
 const JUMPING_SPEED: float = 8.0
@@ -27,7 +30,8 @@ func _input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
 			is_jumping = true
 			can_jump = false
-			print("Jumping")
+			jump()
+			emit_signal("action_changed", player.Action.JUMPING)
 #endregion
 
 
@@ -35,6 +39,7 @@ func _input(event) -> void:
 func handle_jump() -> void:
 	if is_jumping:
 		jump()
+	pass
 
 
 func jump() -> void:
@@ -44,5 +49,5 @@ func jump() -> void:
 	if player_body.is_on_floor() and is_jumping:
 		is_jumping = false
 		can_jump = true
-		print("On floor")
+		emit_signal("action_changed", player.Action.STANDING)
 #endregion

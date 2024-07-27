@@ -55,9 +55,6 @@ func handle_movement(delta) -> void:
 		input_direction = -camera.global_transform.basis.z.normalized()
 	elif is_moving_backward and not is_moving_forward:
 		input_direction = camera.global_transform.basis.z.normalized()
-	elif is_moving_forward and is_moving_backward:
-		# jump function
-		pass
 	elif not player.is_still():
 		emit_signal("movement_changed", player.Movement.STILL)
 

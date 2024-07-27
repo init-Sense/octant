@@ -25,6 +25,7 @@ var action_state: Action
 @onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
 @onready var movement : PlayerMouseMovement3D = $PlayerMouseMovement3D
 @onready var body : CharacterBody3D = $PlayerBody3D
+@onready var jump: PlayerJump3D = $PlayerJump3D
 #endregion
 
 
@@ -33,6 +34,7 @@ func _ready():
 	print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
 	print_tree_pretty()
 	movement.connect("movement_changed", Callable(self, "set_movement_state"))
+	jump.connect("action_changed", Callable(self, "set_action_state"))
 	set_movement_still()
 
 
@@ -46,12 +48,12 @@ func _process(_delta):
 #region SETTERS
 func set_movement_state(state) -> void:
 	movement_state = state
-	print("Movement state: ", get_movement_value())
+	print("Movement: ", get_movement_value())
 
 
 func set_action_state(state) -> void:
 	action_state = state
-	print("Action state: ", get_action_value())
+	print("Action: ", get_action_value())
 
 
 func set_movement_still() -> void:
