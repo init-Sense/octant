@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_kf2t8"]
 [ext_resource type="PackedScene" uid="uid://coa5srfyqm0yl" path="res://scenes/player/player_crouch.tscn" id="3_svdt6"]
 [ext_resource type="PackedScene" uid="uid://hd8bno8i2dv7" path="res://scenes/player/player_interaction.tscn" id="4_xrt8m"]
-[ext_resource type="Script" path="res://scripts/player/gravity.gd" id="7_fikk3"]
+[ext_resource type="PackedScene" uid="uid://pxmd0xahckh5" path="res://scenes/player/gravity.tscn" id="7_6ib4u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyse8"]
 
@@ -36,5 +36,4 @@ shape = SubResource("CapsuleShape3D_vyse8")
 
 [node name="PlayerInteraction3D" parent="." instance=ExtResource("4_xrt8m")]
 
-[node name="Gravity3D" type="Node" parent="."]
-script = ExtResource("7_fikk3")
+[node name="Gravity3D" parent="." instance=ExtResource("7_6ib4u")]

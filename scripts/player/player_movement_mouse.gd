@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 class_name PlayerMouseMovement3D
 
 signal movement_changed(state)
