@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=10 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_whfll"]
+[ext_resource type="Texture2D" uid="uid://d004ayerwjo0g" path="res://assets/textures/sky_clouds.jpeg" id="2_0cqly"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mv2wg"]
 size = Vector3(200, 0.1, 200)
@@ -15,10 +16,11 @@ size = Vector3(5, 2, 5)
 size = Vector3(5, 2, 5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dhmyu"]
-sky_top_color = Color(0.328459, 0.619191, 0.774832, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.581657, 0.0425685, 0.793042, 1)
-ground_horizon_color = Color(1, 1, 1, 1)
+sky_top_color = Color(0.283626, 0.746016, 1, 1)
+sky_horizon_color = Color(0.288143, 0.21828, 1, 1)
+sky_cover = ExtResource("2_0cqly")
+ground_bottom_color = Color(3.85046e-07, 0.42756, 0.63982, 1)
+ground_horizon_color = Color(0, 0.721569, 0.913725, 1)
 
 [sub_resource type="Sky" id="Sky_ke064"]
 sky_material = SubResource("ProceduralSkyMaterial_dhmyu")
@@ -26,6 +28,13 @@ sky_material = SubResource("ProceduralSkyMaterial_dhmyu")
 [sub_resource type="Environment" id="Environment_yuqp5"]
 background_mode = 2
 sky = SubResource("Sky_ke064")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ssao_enabled = true
+ssao_intensity = 5.0
+ssao_power = 0.8
+ssao_detail = 1.0
+ssao_light_affect = 0.5
 
 [node name="Octagon" type="Node3D"]
 
@@ -44,7 +53,7 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_l1wij")
 
 [node name="BoxMesh" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37356, 1.22395, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37356, 0.979744, 0)
 mesh = SubResource("BoxMesh_xxnag")
 skeleton = NodePath("BoxBody")
 
@@ -54,7 +63,23 @@ collision_layer = 2
 [node name="BoxCollider" type="CollisionShape3D" parent="Environment/BoxMesh/BoxBody"]
 shape = SubResource("BoxShape3D_u7ysn")
 
+[node name="BoxMesh2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546456, 2.43383, -5.05298)
+mesh = SubResource("BoxMesh_xxnag")
+skeleton = NodePath("BoxBody")
+
+[node name="BoxBody" type="StaticBody3D" parent="Environment/BoxMesh2"]
+collision_layer = 2
+
+[node name="BoxCollider" type="CollisionShape3D" parent="Environment/BoxMesh2/BoxBody"]
+shape = SubResource("BoxShape3D_u7ysn")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.608349, -0.513903, 0.604826, 0.259053, 0.848898, 0.460721, -0.750202, -0.123598, 0.649554, 0, 3.42767, 0)
+light_energy = 1.5
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_blur = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
