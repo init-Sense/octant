@@ -1,8 +1,8 @@
 extends Node
 
 @onready var player: Node3D = $".."
-@onready var camera: PlayerCamera3D = %PlayerCamera
-@onready var player_movement: PlayerMovement3D = $"../PlayerMovement"
+@onready var camera: PlayerCamera3D = %Camera
+@onready var player_movement: PlayerMovement3D = $"../Movement"
 
 
 #region VARIABLES

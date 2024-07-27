@@ -29,10 +29,10 @@ var position_state: Position
 
 
 #region NODES
-@onready var camera : PlayerCamera3D = $PlayerBody/Head/PlayerCamera
-@onready var body : CharacterBody3D = $PlayerBody
-@onready var inputs_mouse: PlayerInputsMouse = $PlayerInputsMouse
-@onready var jump: PlayerJump3D = $PlayerJump
+@onready var camera : PlayerCamera3D = $Body/Head/Camera
+@onready var body : CharacterBody3D = $Body
+@onready var inputs_mouse: PlayerInputsMouse = $Inputs
+@onready var jump: PlayerJump3D = $Jump
 #endregion
 
 
@@ -40,7 +40,6 @@ var position_state: Position
 func _ready():
 	#print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
 	#print_tree_pretty()
-	jump.connect("action_changed", Callable(self, "set_action_state"))
 	set_movement_still()
 	set_action_grounded()
 	set_position_standing()
@@ -176,18 +175,4 @@ func is_crouching_up() -> bool:
 
 func is_crouched() -> bool:
 	return position_state == Position.CROUCHED
-#endregion
-
-
-#region SIGNALS
-func _on_player_inputs_mouse_action_changed(state: Variant) -> void:
-	set_action_state(state)
-
-
-func _on_player_inputs_mouse_movement_changed(state: Variant) -> void:
-	set_movement_state(state)
-
-
-func _on_player_crouch_position_changed(state: Variant) -> void:
-	set_position_state(state)
 #endregion

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://beff28ec1d70n"]
-
-[ext_resource type="Script" path="res://scripts/player/player_inputs_mouse.gd" id="1_6fcam"]
-
-[node name="PlayerInputsMouse" type="Node"]
-script = ExtResource("1_6fcam")

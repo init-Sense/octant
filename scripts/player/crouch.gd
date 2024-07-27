@@ -3,10 +3,10 @@ class_name PlayerCrouch3D
 
 
 #region NODES
-@onready var player_body: CharacterBody3D = %PlayerBody
-@onready var player_collision: CollisionShape3D = $"../PlayerBody/PlayerCollision"
-@onready var head: Node3D = $"../PlayerBody/Head"
-@onready var player_camera: PlayerCamera3D = %PlayerCamera
+@onready var player_body: CharacterBody3D = %Body
+@onready var player_collision: CollisionShape3D = $"../Body/Collision"
+@onready var head: Node3D = $"../Body/Head"
+@onready var player_camera: PlayerCamera3D = %Camera
 #endregion
 
 

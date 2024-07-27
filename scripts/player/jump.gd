@@ -2,10 +2,8 @@ extends Node
 class_name PlayerJump3D
 
 
-signal action_changed(state)
-
 @onready var player: Node3D = $".."
-@onready var player_body: CharacterBody3D = %PlayerBody
+@onready var player_body: CharacterBody3D = %Body
 
 const JUMPING_SPEED: float = 8.0
 
@@ -33,5 +31,5 @@ func jump() -> void:
 	await get_tree().create_timer(0.1).timeout
 	if player_body.is_on_floor() and player.is_jumping():
 		can_jump = true
-		emit_signal("action_changed", player.Action.GROUNDED)
+		player.set_action_grounded()
 #endregion

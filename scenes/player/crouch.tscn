@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coa5srfyqm0yl"]
+
+[ext_resource type="Script" path="res://scripts/player/crouch.gd" id="1_tn8vl"]
+
+[node name="Crouch" type="Node"]
+script = ExtResource("1_tn8vl")
