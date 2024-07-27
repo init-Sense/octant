@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=11 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_whfll"]
 [ext_resource type="Texture2D" uid="uid://d004ayerwjo0g" path="res://assets/textures/sky_clouds.jpeg" id="2_0cqly"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_643ss"]
+albedo_color = Color(1, 0.476502, 0.267471, 1)
+metallic = 0.2
+roughness = 0.8
+
 [sub_resource type="BoxMesh" id="BoxMesh_mv2wg"]
+material = SubResource("StandardMaterial3D_643ss")
 size = Vector3(200, 0.1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1wij"]
@@ -48,6 +54,7 @@ mesh = SubResource("BoxMesh_mv2wg")
 
 [node name="PlaneBody" type="StaticBody3D" parent="Environment/PlaneMesh"]
 collision_layer = 2
+collision_mask = 5
 
 [node name="PlaneShape" type="CollisionShape3D" parent="Environment/PlaneMesh/PlaneBody"]
 shape = SubResource("BoxShape3D_l1wij")
@@ -58,7 +65,8 @@ mesh = SubResource("BoxMesh_xxnag")
 skeleton = NodePath("BoxBody")
 
 [node name="BoxBody" type="StaticBody3D" parent="Environment/BoxMesh"]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 
 [node name="BoxCollider" type="CollisionShape3D" parent="Environment/BoxMesh/BoxBody"]
 shape = SubResource("BoxShape3D_u7ysn")
@@ -69,7 +77,8 @@ mesh = SubResource("BoxMesh_xxnag")
 skeleton = NodePath("BoxBody")
 
 [node name="BoxBody" type="StaticBody3D" parent="Environment/BoxMesh2"]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 
 [node name="BoxCollider" type="CollisionShape3D" parent="Environment/BoxMesh2/BoxBody"]
 shape = SubResource("BoxShape3D_u7ysn")
