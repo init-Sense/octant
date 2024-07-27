@@ -40,7 +40,7 @@ func handle_jump() -> void:
 func jump() -> void:
 	player_body.velocity += jump_velocity
 	player_body.move_and_slide()
-	#await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	if player_body.is_on_floor() and is_jumping:
 		is_jumping = false
 		can_jump = true
