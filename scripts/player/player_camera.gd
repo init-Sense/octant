@@ -1,16 +1,17 @@
 extends Camera3D
 class_name PlayerCamera3D
 
-#region Variables
-@export var mouse_sensitivity_x : float = 0.1
-@export var mouse_sensitivity_y : float = 0.002
-@export var invert_y : bool = false
 
-var rotation_x : float = 0
+#region VARIABLES
+@export var mouse_sensitivity_x: float = 0.1
+@export var mouse_sensitivity_y: float = 0.002
+@export var invert_y: bool = false
+
+var rotation_x: float = 0
 #endregion
 
 
-#region Lifecycle
+#region LIFECYCLE
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -21,7 +22,7 @@ func _input(event):
 #endregion
 
 
-#region Movement
+#region MOVEMENT
 func handle_mouse_movement(event : InputEventMouseMotion):
 	var mouse_motion = event.relative
 	
@@ -37,7 +38,7 @@ func handle_mouse_movement(event : InputEventMouseMotion):
 #endregion
 
 
-#region Rotation
+#region ROTATION
 func get_camera_rotation() -> Vector3:
 	return rotation
 
@@ -48,7 +49,7 @@ func set_camera_rotation(new_rotation: Vector3):
 #endregion
 
 
-#region Sensitivity
+#region SENSITIVITY
 func set_sensitivity(x: float, y: float):
 	mouse_sensitivity_x = x
 	mouse_sensitivity_y = y
