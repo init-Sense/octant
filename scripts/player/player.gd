@@ -23,19 +23,21 @@ var action_state: Action
 
 #region NODES
 @onready var camera : PlayerCamera3D = $Head/PlayerCamera3D
-@onready var movement : PlayerMovementMouse3D = $PlayerMovementMouse3D
 @onready var body : CharacterBody3D = $PlayerBody3D
+@onready var inputs_mouse: Node = $PlayerInputsMouse
 @onready var jump: PlayerJump3D = $PlayerJump3D
 #endregion
 
 
 #region LIFECYCLE
 func _ready():
-	print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
-	print_tree_pretty()
-	movement.connect("movement_changed", Callable(self, "set_movement_state"))
+	#print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
+	#print_tree_pretty()
+	inputs_mouse.connect("movement_changed", Callable(self, "set_movement_state"))
+	inputs_mouse.connect("action_changed", Callable(self, "set_action_state"))
 	jump.connect("action_changed", Callable(self, "set_action_state"))
 	set_movement_still()
+	set_action_standing()
 
 
 func _process(_delta):

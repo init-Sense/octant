@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/player/player_movement_mouse.gd" id="1_jd63r"]
 
-[node name="PlayerMovementMouse" type="Node"]
+[node name="PlayerMovement" type="Node"]
 script = ExtResource("1_jd63r")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=10 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
 [ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/player_movement_mouse.tscn" id="1_tw8pf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://coa5srfyqm0yl" path="res://scenes/player/player_crouch.tscn" id="3_svdt6"]
 [ext_resource type="PackedScene" uid="uid://hd8bno8i2dv7" path="res://scenes/player/player_interaction.tscn" id="4_xrt8m"]
 [ext_resource type="PackedScene" uid="uid://pxmd0xahckh5" path="res://scenes/player/gravity.tscn" id="7_6ib4u"]
+[ext_resource type="PackedScene" uid="uid://beff28ec1d70n" path="res://scenes/player/player_inputs.tscn" id="8_vgduu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyse8"]
 
@@ -28,7 +29,7 @@ collision_mask = 6
 [node name="PlayerCollision3D" type="CollisionShape3D" parent="PlayerBody3D"]
 shape = SubResource("CapsuleShape3D_vyse8")
 
-[node name="PlayerMovementMouse3D" parent="." instance=ExtResource("1_tw8pf")]
+[node name="PlayerMovement3D" parent="." instance=ExtResource("1_tw8pf")]
 
 [node name="PlayerJump3D" parent="." instance=ExtResource("2_8258e")]
 
@@ -37,3 +38,5 @@ shape = SubResource("CapsuleShape3D_vyse8")
 [node name="PlayerInteraction3D" parent="." instance=ExtResource("4_xrt8m")]
 
 [node name="Gravity3D" parent="." instance=ExtResource("7_6ib4u")]
+
+[node name="PlayerInputsMouse" parent="." instance=ExtResource("8_vgduu")]

@@ -1,7 +1,5 @@
 extends Node
-class_name PlayerMovementMouse3D
-
-signal movement_changed(state)
+class_name PlayerMovement3D
 
 
 #region VARIABLES
@@ -9,8 +7,6 @@ const WALKING_SPEED : float = 3.0
 const MOVEMENT_DAMPING : float = 0.01
 
 var velocity : Vector3 = Vector3.ZERO
-var is_moving_forward : bool = false
-var is_moving_backward : bool = false
 var crouch_speed_factor : float = 1.0
 #endregion
 
@@ -31,30 +27,16 @@ func _ready() -> void:
 func _process(delta) -> void:
 	handle_movement(delta)
 	move_player()
-
-
-func _input(event) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			is_moving_forward = event.pressed
-			if event.pressed:
-				emit_signal("movement_changed", player.Movement.FORWARD)
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			is_moving_backward = event.pressed
-			if event.pressed:
-				emit_signal("movement_changed", player.Movement.BACKWARD)
 #endregion
 
 
 #region MOVEMENT
 func handle_movement(delta) -> void:
 	var input_direction = Vector3.ZERO
-	if is_moving_forward and not is_moving_backward:
+	if player.is_moving_forward():
 		input_direction = -camera.global_transform.basis.z.normalized()
-	elif is_moving_backward and not is_moving_forward:
+	elif player.is_moving_backward():
 		input_direction = camera.global_transform.basis.z.normalized()
-	elif not player.is_still():
-		emit_signal("movement_changed", player.Movement.STILL)
 
 	var target_velocity = input_direction * WALKING_SPEED * crouch_speed_factor
 

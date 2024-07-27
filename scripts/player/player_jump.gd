@@ -9,7 +9,6 @@ signal action_changed(state)
 
 const JUMPING_SPEED: float = 8.0
 
-var is_jumping: bool = false
 var can_jump: bool = true
 var jump_velocity: Vector3
 
@@ -20,30 +19,19 @@ func _physics_process(_delta: float) -> void:
 #endregion
 
 
-#region INPUT
-func _input(event) -> void:
-	if event is InputEventMouseButton and can_jump:
-		if event.button_index == MOUSE_BUTTON_MIDDLE:
-			is_jumping = true
-			can_jump = false
-			jump()
-			emit_signal("action_changed", player.Action.JUMPING)
-#endregion
-
-
 #region JUMP
 func handle_jump() -> void:
-	if is_jumping:
+	if player.is_jumping():
 		jump()
 	pass
 
 
 func jump() -> void:
+	can_jump = false
 	player_body.velocity += Vector3(0.0, JUMPING_SPEED, 0.0)
 	player_body.move_and_slide()
 	await get_tree().create_timer(0.1).timeout
-	if player_body.is_on_floor() and is_jumping:
-		is_jumping = false
+	if player_body.is_on_floor() and player.is_jumping():
 		can_jump = true
 		emit_signal("action_changed", player.Action.STANDING)
 #endregion
