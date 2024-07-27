@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="1_xnegd"]
 
-[node name="Interaction" type="Node"]
+[node name="PlayerInteraction" type="Node"]
 script = ExtResource("1_xnegd")

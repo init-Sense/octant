@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/player/player_crouch.gd" id="1_tn8vl"]
 
-[node name="Crouch" type="Node"]
+[node name="PlayerCrouch" type="Node"]
 script = ExtResource("1_tn8vl")

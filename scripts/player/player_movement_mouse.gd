@@ -6,7 +6,7 @@ signal movement_changed(state)
 
 #region VARIABLES
 const WALKING_SPEED : float = 3.0
-const DAMPING : float = 0.01
+const MOVEMENT_DAMPING : float = 0.01
 
 var velocity : Vector3 = Vector3.ZERO
 var is_moving_forward : bool = false
@@ -62,8 +62,8 @@ func handle_movement(delta) -> void:
 		velocity.x = target_velocity.x
 		velocity.z = target_velocity.z
 	else:
-		velocity.x *= pow(DAMPING, delta)
-		velocity.z *= pow(DAMPING, delta)
+		velocity.x *= pow(MOVEMENT_DAMPING, delta)
+		velocity.z *= pow(MOVEMENT_DAMPING, delta)
 
 
 func move_player() -> void:

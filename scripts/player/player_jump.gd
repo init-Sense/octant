@@ -15,10 +15,6 @@ var jump_velocity: Vector3
 
 
 #region LIFECYCLE
-func _ready() -> void:
-	jump_velocity = Vector3(0.0, JUMPING_SPEED, 0.0)
-
-
 func _physics_process(_delta: float) -> void:
 	handle_jump()
 #endregion
@@ -43,7 +39,7 @@ func handle_jump() -> void:
 
 
 func jump() -> void:
-	player_body.velocity += jump_velocity
+	player_body.velocity += Vector3(0.0, JUMPING_SPEED, 0.0)
 	player_body.move_and_slide()
 	await get_tree().create_timer(0.1).timeout
 	if player_body.is_on_floor() and is_jumping:

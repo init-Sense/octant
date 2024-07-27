@@ -6,8 +6,12 @@ extends Node
 
 const GRAVITY : float = 9.8
 
+
+#region LIFECYCLE
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
+#endregion
+
 
 #region GRAVITY
 func apply_gravity(delta) -> void:
