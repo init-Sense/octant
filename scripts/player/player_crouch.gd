@@ -37,10 +37,10 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			print('Wheel Up')
+			#print('Wheel Up')
 			crouch_up()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			print('Wheel Down')
+			#print('Wheel Down')
 			crouch_down()
 	elif event is InputEventPanGesture:
 		print('Pan Gesture Detected')
@@ -61,11 +61,11 @@ func _process(delta):
 #region CROUCHING
 func crouch_down():
 	target_crouch_step = min(target_crouch_step + 1, CROUCH_STEPS)
-	print('Crouching down, target step:', target_crouch_step)
+	#print('Crouching down, target step:', target_crouch_step)
 
 func crouch_up():
 	target_crouch_step = max(target_crouch_step - 1, 0)
-	print('Standing up, target step:', target_crouch_step)
+	#print('Standing up, target step:', target_crouch_step)
 #endregion
 
 

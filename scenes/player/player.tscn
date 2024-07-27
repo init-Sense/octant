@@ -40,3 +40,6 @@ shape = SubResource("CapsuleShape3D_vyse8")
 [node name="Gravity3D" parent="." instance=ExtResource("7_6ib4u")]
 
 [node name="PlayerInputsMouse" parent="." instance=ExtResource("8_vgduu")]
+
+[connection signal="action_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_action_changed"]
+[connection signal="movement_changed" from="PlayerInputsMouse" to="." method="_on_player_inputs_mouse_movement_changed"]
