@@ -3,11 +3,11 @@ class_name PlayerMovement3D
 
 
 #region VARIABLES
-const WALKING_SPEED : float = 3.0
-const MOVEMENT_DAMPING : float = 0.01
+const WALKING_SPEED: float = 5.0
+const MOVEMENT_DAMPING: float = 0.01
 
-var velocity : Vector3 = Vector3.ZERO
-var crouch_speed_factor : float = 1.0
+var velocity: Vector3 = Vector3.ZERO
+var current_speed: float = WALKING_SPEED
 #endregion
 
 
@@ -38,7 +38,7 @@ func handle_movement(delta) -> void:
 	elif player.is_moving_backward():
 		input_direction = camera.global_transform.basis.z.normalized()
 
-	var target_velocity = input_direction * WALKING_SPEED * crouch_speed_factor
+	var target_velocity = input_direction * current_speed
 
 	if input_direction != Vector3.ZERO:
 		velocity.x = target_velocity.x
@@ -55,10 +55,6 @@ func move_player() -> void:
 
 func get_movement_velocity() -> Vector3:
 	return velocity
-
-
-func adjust_speed_for_crouch(crouch_factor: float) -> void:
-	crouch_speed_factor = max(crouch_factor, 0.5)
 #endregion
 
 

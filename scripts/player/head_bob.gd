@@ -8,7 +8,7 @@ extends Node
 
 #region VARIABLES
 const DEFAULT_AMPLITUDE: float = 0.1
-const DEFAULT_FREQUENCY: float = 10.0
+const DEFAULT_FREQUENCY: float = 5.0
 const AMPLITUDE_FACTOR: float = 0.2
 const FREQUENCY_FACTOR: float = 0.4
 const RESET_SPEED: float = 1.0
