@@ -26,6 +26,7 @@ enum Position {
 
 #region SIGNALS
 signal sprinting_started
+signal jumping_started
 signal grounded
 #endregion
 
@@ -97,6 +98,7 @@ func set_action_sprinting() -> void:
 
 func set_action_jumping() -> void:
 	set_action_state(Action.JUMPING)
+	emit_signal("jumping_started")
 
 
 func set_position_standing() -> void:

@@ -11,11 +11,8 @@ func _input(event) -> void:
 		player.set_movement_forward()
 	if Input.is_action_just_pressed("move_backward"):
 		player.set_movement_backward()
-	if Input.is_action_just_pressed("move_forward") and Input.is_action_just_pressed("move_backward"):
-		player.set_action_jumping()
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
 		player.set_movement_still()
-	
 	#endregion
 
 
