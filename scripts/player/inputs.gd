@@ -17,8 +17,8 @@ func _input(event) -> void:
 		if event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT] and event.is_released():
 			player.set_movement_still()
 		#endregion
-		
-		
+
+
 		#region JUMP
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_released():
 			player.set_action_jumping()
