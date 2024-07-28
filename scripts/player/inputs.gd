@@ -23,7 +23,9 @@ func _input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_released():
 			player.set_action_jumping()
 		#endregion
-
+		
+	if Input.is_action_pressed('debug_jump'):
+		player.set_action_jumping()
 
 	#region SPRINT
 	if event.is_action_pressed("sprint"):
