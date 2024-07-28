@@ -6,30 +6,28 @@ class_name PlayerInputsMouse
 
 
 func _input(event) -> void:
-	if event is InputEventMouseButton:
-		#region MOVEMENT
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				player.set_movement_forward()
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.pressed:
-				player.set_movement_backward()
-		if event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT] and event.is_released():
-			player.set_movement_still()
-		#endregion
-
-
-		#region JUMP
-		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_released():
-			player.set_action_jumping()
-		#endregion
-		
-	if Input.is_action_pressed('debug_jump'):
+	#region MOVEMENT
+	if Input.is_action_just_pressed("move_forward"):
+		player.set_movement_forward()
+	if Input.is_action_just_pressed("move_backward"):
+		player.set_movement_backward()
+	if Input.is_action_just_pressed("move_forward") and Input.is_action_just_pressed("move_backward"):
 		player.set_action_jumping()
+	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
+		player.set_movement_still()
+	
+	#endregion
+
+
+	#region JUMP
+	if Input.is_action_just_released("jump"):
+		player.set_action_jumping()
+	#endregion
+
 
 	#region SPRINT
-	if event.is_action_pressed("sprint"):
+	if Input.is_action_just_pressed("sprint"):
 		player.set_action_sprinting()
-	elif event.is_action_released("sprint"):
+	elif Input.is_action_just_released("sprint"):
 		player.set_action_grounded()
 	#endregion
