@@ -30,14 +30,19 @@ var initial_head_position = Vector3.ZERO
 func _ready():
 	if not player or not collision or not head or not camera:
 		push_error("Required nodes not found in PlayerCrouch3D. Check the node structure.")
-	
+
 	initial_player_height = collision.shape.height
 	initial_head_position = head.position
 
 
 func _input(event):
+	if Input.is_action_pressed('debug_crouch_up'):
+		crouch_up()
+	elif Input.is_action_pressed('debug_crouch_down'):
+		crouch_down()
+
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		if event.button_index ==  MOUSE_BUTTON_WHEEL_UP:
 			crouch_up()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			crouch_down()
@@ -73,9 +78,9 @@ func update_player_height():
 	var crouch_progress = float(current_crouch_step) / CROUCH_STEPS
 	var height_change = initial_player_height * CROUCH_AMOUNT * crouch_progress
 	var new_height = initial_player_height - height_change
-	
+
 	collision.shape.height = new_height
 	head.position.y = initial_head_position.y - height_change
-	
+
 	player.move_and_slide()
 #endregion
