@@ -5,7 +5,6 @@ class_name PlayerInputsMouse
 @onready var player: CharacterBody3D = $"../.."
 
 
-#region INPUTS
 func _input(event) -> void:
 	if event is InputEventMouseButton:
 		#region MOVEMENT
@@ -19,8 +18,16 @@ func _input(event) -> void:
 			player.set_movement_still()
 		#endregion
 		
+		
 		#region JUMP
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_released():
 			player.set_action_jumping()
 		#endregion
-#endregion
+
+
+	#region SPRINT
+	if event.is_action_pressed("sprint"):
+		player.set_action_sprinting()
+	elif event.is_action_released("sprint"):
+		player.set_action_grounded()
+	#endregion

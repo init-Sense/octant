@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=14 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
 [ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/movement_mouse.tscn" id="1_tw8pf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://pxmd0xahckh5" path="res://scenes/player/gravity.tscn" id="7_6ib4u"]
 [ext_resource type="PackedScene" uid="uid://beff28ec1d70n" path="res://scenes/player/inputs.tscn" id="8_vgduu"]
 [ext_resource type="PackedScene" uid="uid://bswr5m5lovrx2" path="res://scenes/player/head_bob.tscn" id="9_yb2ao"]
+[ext_resource type="PackedScene" uid="uid://f6kx5uxedkel" path="res://scenes/player/sprint.tscn" id="10_svshq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3rwi"]
 albedo_color = Color(1, 1, 0, 1)
@@ -59,4 +60,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="HeadBob" parent="Modules" instance=ExtResource("9_yb2ao")]
+unique_name_in_owner = true
+
+[node name="Sprint" parent="Modules" instance=ExtResource("10_svshq")]
 unique_name_in_owner = true

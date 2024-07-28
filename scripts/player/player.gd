@@ -10,6 +10,7 @@ enum Movement {
 
 enum Action {
 	GROUNDED,
+	SPRINTING,
 	JUMPING,
 	FLYING,
 	SWIMMING,
@@ -21,6 +22,12 @@ enum Position {
 	CROUCHING_UP,
 	CROUCHED,
 }
+
+
+#region SIGNALS
+signal sprinting_started
+signal grounded
+#endregion
 
 
 var movement_state: Movement
@@ -80,6 +87,12 @@ func set_movement_backward() -> void:
 
 func set_action_grounded() -> void:
 	set_action_state(Action.GROUNDED)
+	emit_signal("grounded")
+
+
+func set_action_sprinting() -> void:
+	set_action_state(Action.SPRINTING)
+	emit_signal("sprinting_started")
 
 
 func set_action_jumping() -> void:
@@ -120,6 +133,8 @@ func get_action_value() -> String:
 	match action_state:
 		Action.GROUNDED:
 			return "GROUNDED"
+		Action.SPRINTING:
+			return "SPRINTING"
 		Action.JUMPING:
 			return "JUMPING"
 		Action.FLYING:
@@ -156,6 +171,14 @@ func is_moving_forward() -> bool:
 
 func is_moving_backward() -> bool:
 	return movement_state == Movement.BACKWARD
+
+
+func is_grounded() -> bool:
+	return action_state == Action.GROUNDED
+
+
+func is_sprinting() -> bool:
+	return action_state == Action.SPRINTING
 
 
 func is_jumping() -> bool:
