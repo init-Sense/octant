@@ -20,29 +20,28 @@ var current_speed: float = WALKING_SPEED
 #region LIFECYCLE
 func _ready() -> void:
 	#print("PlayerMovement3D ready. player: ", player, ", camera: ", camera)
-	#print_velocity_coroutine()
+	print_velocity_coroutine()
 	pass
 
 
-func _process(delta) -> void:
-	handle_movement(delta)
+func _physics_process(delta) -> void:
+	set_movement_velocity(delta)
 	move_player()
 #endregion
 
 
 #region MOVEMENT
-func handle_movement(delta) -> void:
-	var input_direction = Vector3.ZERO
-	if player.is_moving_forward():
-		input_direction = -camera.global_transform.basis.z.normalized()
-	elif player.is_moving_backward():
-		input_direction = camera.global_transform.basis.z.normalized()
+func set_movement_velocity(delta) -> void:
+	if player.is_moving():
+		var movement_direction = Vector3.ZERO
+		if player.is_moving_forward():
+			movement_direction = -camera.global_transform.basis.z.normalized()
+		elif player.is_moving_backward():
+			movement_direction = camera.global_transform.basis.z.normalized()
 
-	var target_velocity = input_direction * current_speed
+		velocity.x = movement_direction.normalized().x * current_speed
+		velocity.z = movement_direction.normalized().z * current_speed
 
-	if input_direction != Vector3.ZERO:
-		velocity.x = target_velocity.x
-		velocity.z = target_velocity.z
 	else:
 		velocity.x *= pow(MOVEMENT_DAMPING, delta)
 		velocity.z *= pow(MOVEMENT_DAMPING, delta)
@@ -61,6 +60,6 @@ func get_movement_velocity() -> Vector3:
 #region UTILS
 func print_velocity_coroutine() -> void:
 	while true:
-		print("Velocity: ", velocity)
-		await get_tree().create_timer(1).timeout
+		print("Velocity: ", Vector2(velocity.x, velocity.z).length())
+		await get_tree().create_timer(0.2).timeout
 #endregion
