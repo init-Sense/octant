@@ -14,7 +14,7 @@ const JUMPING_SPEED: float = 10.0
 
 #region VARIABLES
 var is_jump_requested: bool = false
-var has_jumped: bool = false
+var is_jumping: bool = false
 #endregion
 
 
@@ -27,19 +27,20 @@ func _physics_process(_delta: float) -> void:
 
 #region JUMP
 func start() -> void:
-	is_jump_requested = true
-	player.set_jumping()
+	if not is_jumping and player.is_on_floor():
+		is_jump_requested = true
+		player.set_jumping()
 
 
 func handle_jump() -> void:
-	if is_jump_requested and player.is_on_floor() and not has_jumped:
+	if is_jump_requested and player.is_on_floor():
 		movement.velocity_vector.y = JUMPING_SPEED
-		has_jumped = true
+		is_jumping = true
 		is_jump_requested = false
-		player.set_no_action()
 
 
 func ground_check() -> void:
-	if has_jumped and player.is_on_floor() and movement.velocity_vector.y <= 0:
-		has_jumped = false
+	if is_jumping and player.is_on_floor() and movement.velocity_vector.y <= 0:
+		is_jumping = false
+		player.set_no_action()
 #endregion
