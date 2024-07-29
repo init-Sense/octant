@@ -2,9 +2,9 @@ extends Node
 
 
 @onready var player: CharacterBody3D = $"../.."
-@onready var player_movement: PlayerMovement3D = %Movement
+@onready var movement: PlayerMovement3D = %Movement
 
-const GRAVITY : float = 9.8
+const GRAVITY : float = 16
 
 
 #region LIFECYCLE
@@ -15,8 +15,7 @@ func _physics_process(delta: float) -> void:
 
 #region GRAVITY
 func apply_gravity(delta) -> void:
-	if not player.is_on_floor():
-		player_movement.velocity.y -= GRAVITY * delta
-	else:
-		player_movement.velocity.y = -0.1
+	movement.velocity_vector.y -= GRAVITY * delta
+	if player.is_on_floor() and movement.velocity_vector.y < 0:
+		movement.velocity_vector.y = -0.1
 #endregion

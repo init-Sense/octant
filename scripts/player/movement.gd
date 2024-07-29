@@ -3,10 +3,10 @@ class_name PlayerMovement3D
 
 
 #region VARIABLES
-const WALKING_SPEED: float = 5.0
+const WALKING_SPEED: float = 3.0
 const MOVEMENT_DAMPING: float = 0.01
 
-var velocity: Vector3 = Vector3.ZERO
+var velocity_vector: Vector3 = Vector3.ZERO
 var current_speed: float = WALKING_SPEED
 #endregion
 
@@ -20,7 +20,7 @@ var current_speed: float = WALKING_SPEED
 #region LIFECYCLE
 func _ready() -> void:
 	#print("PlayerMovement3D ready. player: ", player, ", camera: ", camera)
-	print_velocity_coroutine()
+	#print_velocity_coroutine()
 	pass
 
 
@@ -32,34 +32,42 @@ func _physics_process(delta) -> void:
 
 #region MOVEMENT
 func set_movement_velocity(delta) -> void:
-	if player.is_moving():
-		var movement_direction = Vector3.ZERO
-		if player.is_moving_forward():
-			movement_direction = -camera.global_transform.basis.z.normalized()
-		elif player.is_moving_backward():
-			movement_direction = camera.global_transform.basis.z.normalized()
-
-		velocity.x = movement_direction.normalized().x * current_speed
-		velocity.z = movement_direction.normalized().z * current_speed
-
+	var input_dir = Vector3.ZERO
+	if player.is_moving_forward():
+		input_dir -= camera.global_transform.basis.z
+	elif player.is_moving_backward():
+		input_dir += camera.global_transform.basis.z
+	
+	input_dir = input_dir.normalized()
+	
+	if player.is_on_floor():
+		velocity_vector.x = input_dir.x * current_speed
+		velocity_vector.z = input_dir.z * current_speed
 	else:
-		velocity.x *= pow(MOVEMENT_DAMPING, delta)
-		velocity.z *= pow(MOVEMENT_DAMPING, delta)
+		# Apply less control in the air
+		velocity_vector.x = lerp(velocity_vector.x, input_dir.x * current_speed, delta * 2.0)
+		velocity_vector.z = lerp(velocity_vector.z, input_dir.z * current_speed, delta * 2.0)
+	
+	if not player.is_moving():
+		velocity_vector.x *= pow(MOVEMENT_DAMPING, delta)
+		velocity_vector.z *= pow(MOVEMENT_DAMPING, delta)
 
 
 func move_player() -> void:
-	player.velocity = velocity
+	player.velocity.x = velocity_vector.x
+	player.velocity.z = velocity_vector.z
+	player.velocity.y = velocity_vector.y
 	player.move_and_slide()
 
 
 func get_movement_velocity() -> Vector3:
-	return velocity
+	return velocity_vector
 #endregion
 
 
 #region UTILS
 func print_velocity_coroutine() -> void:
 	while true:
-		print("Velocity: ", Vector2(velocity.x, velocity.z).length())
+		print("Velocity: ", Vector2(velocity_vector.x, velocity_vector.z).length())
 		await get_tree().create_timer(0.2).timeout
 #endregion

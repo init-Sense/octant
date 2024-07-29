@@ -25,7 +25,7 @@ var is_bobbing: bool = false
 
 #region LIFECYCLE
 func _physics_process(delta: float) -> void:
-	if player.is_moving():
+	if player.is_moving() and not player.is_jumping():
 		apply_head_bob(delta)
 	elif is_bobbing:
 		smooth_reset_head_bob(delta)
@@ -51,6 +51,6 @@ func smooth_reset_head_bob(delta: float) -> void:
 
 
 func handle_bob_wave() -> void:
-	current_amplitude = DEFAULT_AMPLITUDE * player_movement.velocity.length() * AMPLITUDE_FACTOR
-	current_frequency = DEFAULT_FREQUENCY * player_movement.velocity.length() * FREQUENCY_FACTOR
+	current_amplitude = DEFAULT_AMPLITUDE * player_movement.velocity_vector.length() * AMPLITUDE_FACTOR
+	current_frequency = DEFAULT_FREQUENCY * player_movement.velocity_vector.length() * FREQUENCY_FACTOR
 #endregion

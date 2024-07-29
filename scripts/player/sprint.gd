@@ -5,7 +5,7 @@ extends Node
 @onready var movement: PlayerMovement3D = %Movement
 
 
-const SPRINT_SPEED: float = 10.0
+const SPRINT_SPEED: float = 7.0
 
 
 #region LIFECYCLE
