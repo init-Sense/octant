@@ -3,9 +3,8 @@ class_name PlayerInputsMouse
 
 
 #region NODES
-@onready var player: CharacterBody3D = $"../.."
-@onready var movement: PlayerMovement3D = %Movement
-@onready var sprint: Node = %Sprint
+@onready var direction: PlayerMovement3D = %Direction
+@onready var motion: Node = %Motion
 @onready var jump: PlayerJump3D = %Jump
 @onready var crouch: PlayerCrouch3D = %Crouch
 #endregion
@@ -14,25 +13,25 @@ class_name PlayerInputsMouse
 func _input(event) -> void:
 	#region MOVEMENT
 	if Input.is_action_just_pressed("move_forward"):
-		movement.forward()
+		direction.forward()
 	if Input.is_action_just_pressed("move_backward"):
-		movement.backward()
+		direction.backward()
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
-		movement.still()
+		direction.still()
 	#endregion
 
 
 	#region JUMP
 	if Input.is_action_just_pressed("jump"):
-		jump.start()
+		jump.up()
 	#endregion
 
 
 	#region SPRINT
 	if Input.is_action_just_pressed("sprint"):
-		sprint.start()
+		motion.run()
 	elif Input.is_action_just_released("sprint"):
-		sprint.stop()
+		motion.walk()
 	#endregion
 
 

@@ -13,6 +13,7 @@ enum Direction {
 enum Motion {
 	IDLE,
 	WALKING,
+	SNEAKING,
 	RUNNING,
 }
 
@@ -110,6 +111,9 @@ func set_idle() -> void:
 func set_walking() -> void:
 	set_motion_state(Motion.WALKING)
 	
+func set_sneaking() -> void:
+	set_motion_state(Motion.SNEAKING)
+	
 func set_running() -> void:
 	set_motion_state(Motion.RUNNING)
 #endregion
@@ -165,6 +169,8 @@ func get_motion_value() -> String:
 			return "STILL"
 		Motion.WALKING:
 			return "WALKING"
+		Motion.SNEAKING:
+			return "SNEAKING"
 		Motion.RUNNING:
 			return "RUNNING"
 		_:
@@ -219,12 +225,17 @@ func is_idle() -> bool:
 	return motion_state == Motion.IDLE
 
 
+func is_walking() -> bool:
+	return motion_state == Motion.WALKING
+
+
+func is_sneaking() -> bool:
+	return motion_state == Motion.SNEAKING
+
+
 func is_running() -> bool:
 	return motion_state == Motion.RUNNING
 
-
-func is_walking() -> bool:
-	return motion_state == Motion.WALKING
 #endregion
 
 

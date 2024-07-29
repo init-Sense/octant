@@ -3,7 +3,7 @@ extends Node
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var camera: PlayerCamera3D = %Camera
-@onready var player_movement: PlayerMovement3D = %Movement
+@onready var direction: PlayerMovement3D = %Direction
 #endregion
 
 
@@ -52,6 +52,6 @@ func smooth_reset_head_bob(delta: float) -> void:
 
 
 func handle_bob_wave() -> void:
-	current_amplitude = DEFAULT_AMPLITUDE * player_movement.velocity_vector.length() * AMPLITUDE_FACTOR
-	current_frequency = DEFAULT_FREQUENCY * player_movement.velocity_vector.length() * FREQUENCY_FACTOR
+	current_amplitude = DEFAULT_AMPLITUDE * direction.velocity_vector.length() * AMPLITUDE_FACTOR
+	current_frequency = DEFAULT_FREQUENCY * direction.velocity_vector.length() * FREQUENCY_FACTOR
 #endregion
