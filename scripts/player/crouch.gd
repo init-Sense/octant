@@ -6,6 +6,7 @@ class_name PlayerCrouch3D
 @onready var collision: CollisionShape3D = %Collision
 @onready var head: Node3D = %Head
 @onready var camera: PlayerCamera3D = %Camera
+@onready var direction: PlayerMovement3D = %Direction
 @onready var motion: Node = %Motion
 #endregion
 
@@ -60,7 +61,7 @@ func update_crouch_state():
 	update_player_height()
 	
 	var is_crouched = current_crouch_step > 0
-	motion.handle_crouch_state(is_crouched)  # Inform the motion node about crouch state
+	motion.handle_crouch_state(is_crouched)
 	
 	if current_crouch_step == CROUCH_STEPS and previous_step != CROUCH_STEPS:
 		player.set_crouched()
@@ -68,6 +69,7 @@ func update_crouch_state():
 		player.set_crouching_down()
 	elif current_crouch_step == 0 and previous_step != 0:
 		player.set_standing()
+		motion.handle_crouch_state(false)  # Ensure we reset the motion state when fully standing
 	elif current_crouch_step < previous_step:
 		player.set_crouching_up()
 #endregion

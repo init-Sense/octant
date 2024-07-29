@@ -257,4 +257,8 @@ func is_crouching_up() -> bool:
 
 func is_crouched() -> bool:
 	return position_state == Position.CROUCHED
+	
+
+func is_crouching() -> bool:
+	return position_state in [Position.CROUCHING_DOWN, Position.CROUCHING_UP, Position.CROUCHED]
 #endregion

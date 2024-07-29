@@ -31,7 +31,7 @@ func _input(event) -> void:
 	if Input.is_action_just_pressed("sprint"):
 		motion.run()
 	elif Input.is_action_just_released("sprint"):
-		motion.walk()
+		motion.stop_running() 
 	#endregion
 
 
