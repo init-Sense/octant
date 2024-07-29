@@ -1,6 +1,7 @@
 extends Node
 class_name PlayerCrouch3D
 
+
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var head: Node3D = %Head
@@ -33,6 +34,7 @@ func down() -> void:
 		current_step += 1
 		update_crouch()
 		update_crouch_state()
+		motion.on_crouch_changed()
 
 
 func up() -> void:
@@ -40,7 +42,7 @@ func up() -> void:
 		current_step -= 1
 		update_crouch()
 		update_crouch_state()
-
+		motion.on_crouch_changed()
 
 func update_crouch() -> void:
 	var t: float = float(current_step) / CROUCH_STEPS

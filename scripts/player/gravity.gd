@@ -1,5 +1,6 @@
 extends Node
 
+
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var direction: PlayerMovement3D = %Direction
