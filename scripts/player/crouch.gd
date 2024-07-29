@@ -69,7 +69,7 @@ func update_crouch_state():
 		player.set_crouching_down()
 	elif current_crouch_step == 0 and previous_step != 0:
 		player.set_standing()
-		motion.handle_crouch_state(false)  # Ensure we reset the motion state when fully standing
+		motion.handle_crouch_state(false)
 	elif current_crouch_step < previous_step:
 		player.set_crouching_up()
 #endregion

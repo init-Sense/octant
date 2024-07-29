@@ -7,6 +7,7 @@ extends Node
 @onready var crouch: PlayerCrouch3D = %Crouch
 #endregion
 
+
 #region CONSTANTS
 const SPRINT_SPEED: float = 7.0
 const WALKING_SPEED: float = 3.0
@@ -21,7 +22,7 @@ var was_running: bool = false
 
 
 #region LIFECYCLE
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_movement_speed()
 #endregion
 
