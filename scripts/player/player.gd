@@ -20,8 +20,7 @@ enum Motion {
 
 enum Position {
 	STANDING,
-	CROUCHING_DOWN,
-	CROUCHING_UP,
+	CROUCHING,
 	CROUCHED,
 }
 
@@ -130,12 +129,8 @@ func set_standing() -> void:
 	set_position_state(Position.STANDING)
 
 
-func set_crouching_down() -> void:
-	set_position_state(Position.CROUCHING_DOWN)
-
-
-func set_crouching_up() -> void:
-	set_position_state(Position.CROUCHING_UP)
+func set_crouching() -> void:
+	set_position_state(Position.CROUCHING)
 
 
 func set_crouched() -> void:
@@ -184,10 +179,8 @@ func get_position_value() -> String:
 	match position_state:
 		Position.STANDING:
 			return "STANDING"
-		Position.CROUCHING_DOWN:
-			return "CROUCHING_DOWN"
-		Position.CROUCHING_UP:
-			return "CROUCHING_UP"
+		Position.CROUCHING:
+			return "CROUCHING"
 		Position.CROUCHED:
 			return "CROUCHED"
 		_:
@@ -245,20 +238,12 @@ func is_jumping() -> bool:
 #region POSITION GETTERS
 func is_standing() -> bool:
 	return position_state == Position.STANDING
- 
-
-func is_crouching_down() -> bool:
-	return position_state == Position.CROUCHING_DOWN
 
 
-func is_crouching_up() -> bool:
-	return position_state == Position.CROUCHING_UP
+func is_crouching() -> bool:
+	return position_state == Position.CROUCHING
 
 
 func is_crouched() -> bool:
 	return position_state == Position.CROUCHED
-	
-
-func is_crouching() -> bool:
-	return position_state in [Position.CROUCHING_DOWN, Position.CROUCHING_UP, Position.CROUCHED]
 #endregion
