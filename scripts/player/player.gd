@@ -9,11 +9,13 @@ enum Direction {
 	BACKWARD,
 }
 
+
 enum Motion {
 	IDLE,
 	WALKING,
 	RUNNING,
 }
+
 
 enum Position {
 	STANDING,
@@ -21,6 +23,7 @@ enum Position {
 	CROUCHING_UP,
 	CROUCHED,
 }
+
 
 enum Action {
 	NOTHING,
@@ -186,6 +189,8 @@ func get_position_value() -> String:
 			return "CROUCHING_DOWN"
 		Position.CROUCHING_UP:
 			return "CROUCHING_UP"
+		Position.CROUCHED:
+			return "CROUCHED"
 		_:
 			return "UNKNOWN"
 #endregion

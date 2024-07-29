@@ -36,6 +36,7 @@ func _ready():
 
 func _physics_process(delta):
 	if current_crouch_step != target_crouch_step:
+		var previous_step = current_crouch_step
 		current_crouch_step = move_toward(current_crouch_step, target_crouch_step, CROUCH_SPEED * CROUCH_STEPS * delta)
 		update_player_height()
 #endregion
@@ -43,14 +44,25 @@ func _physics_process(delta):
 
 #region CROUCHING
 func down():
+	var previous_target = target_crouch_step
 	target_crouch_step = min(target_crouch_step + 1, CROUCH_STEPS)
 	handle_movement_speed()
-	print('Crouching down, target step:', target_crouch_step)
+	
+	if target_crouch_step == CROUCH_STEPS and previous_target != CROUCH_STEPS:
+		player.set_crouched()
+	elif target_crouch_step > previous_target:
+		player.set_crouching_down()
+	
 
 func up():
+	var previous_target = target_crouch_step
 	target_crouch_step = max(target_crouch_step - 1, 0)
 	handle_movement_speed()
-	print('Standing up, target step:', target_crouch_step)
+	
+	if target_crouch_step == 0 and previous_target != 0:
+		player.set_standing()
+	elif target_crouch_step < previous_target:
+		player.set_crouching_up()
 
 
 func handle_movement_speed() -> void:
