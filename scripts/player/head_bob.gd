@@ -1,9 +1,10 @@
 extends Node
 
-
+#region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var camera: PlayerCamera3D = %Camera
 @onready var player_movement: PlayerMovement3D = %Movement
+#endregion
 
 
 #region VARIABLES

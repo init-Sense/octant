@@ -1,7 +1,6 @@
 extends Node
 class_name PlayerInputsMouse
 
-@onready var player: CharacterBody3D = $"../.."
 @onready var movement: PlayerMovement3D = %Movement
 @onready var sprint: Node = %Sprint
 @onready var jump: PlayerJump3D = %Jump
@@ -16,10 +15,12 @@ func _input(event) -> void:
 		movement.still()
 	#endregion
 
+
 	#region JUMP
 	if Input.is_action_just_pressed("jump"):
 		jump.start()
 	#endregion
+
 
 	#region SPRINT
 	if Input.is_action_just_pressed("sprint"):
