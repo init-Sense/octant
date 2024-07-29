@@ -35,13 +35,6 @@ enum Action {
 #endregion
 
 
-#region SIGNALS
-signal sprinting_started
-signal jumping_started
-signal grounded
-#endregion
-
-
 #region INITIAL STATE
 @onready var direction_state: Direction = Direction.STILL
 @onready var motion_state: Motion = Motion.IDLE

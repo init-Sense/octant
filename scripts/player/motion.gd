@@ -18,7 +18,7 @@ var current_base_speed: float = WALKING_SPEED
 
 
 #region LIFECYCLE
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_movement_speed()
 #endregion
 
