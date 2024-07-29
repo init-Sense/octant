@@ -9,11 +9,11 @@ class_name PlayerInputsMouse
 func _input(event) -> void:
 	#region MOVEMENT
 	if Input.is_action_just_pressed("move_forward"):
-		player.set_forward()
+		movement.forward()
 	if Input.is_action_just_pressed("move_backward"):
-		player.set_backward()
+		movement.backward()
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
-		player.set_still()
+		movement.still()
 	#endregion
 
 	#region JUMP
