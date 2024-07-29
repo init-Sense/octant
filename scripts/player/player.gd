@@ -1,19 +1,18 @@
 extends Node3D
+class_name Player
 
 
-#region PLAYER STATES
-enum Movement {
+#region STATES
+enum Direction {
 	STILL,
 	FORWARD,
 	BACKWARD,
 }
 
-enum Action {
-	GROUNDED,
-	SPRINTING,
-	JUMPING,
-	FLYING,
-	SWIMMING,
+enum Motion {
+	IDLE,
+	WALKING,
+	RUNNING,
 }
 
 enum Position {
@@ -23,6 +22,14 @@ enum Position {
 	CROUCHED,
 }
 
+enum Action {
+	NOTHING,
+	JUMPING,
+	# FLYING,
+	# SWIMMING...
+}
+#endregion
+
 
 #region SIGNALS
 signal sprinting_started
@@ -31,9 +38,11 @@ signal grounded
 #endregion
 
 
-var movement_state: Movement
-var action_state: Action
-var position_state: Position
+#region INITIAL STATE
+@onready var direction_state: Direction = Direction.STILL
+@onready var motion_state: Motion = Motion.IDLE
+@onready var position_state: Position = Position.STANDING
+@onready var action_state: Action = Action.NOTHING
 #endregion
 
 
@@ -45,12 +54,9 @@ var position_state: Position
 
 
 #region LIFECYCLE
-func _ready():
-	#print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
-	#print_tree_pretty()
-	set_movement_still()
-	set_action_grounded()
-	set_position_standing()
+# func _ready():
+	# print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
+	# print_tree_pretty()
 
 
 func _process(_delta):
@@ -58,91 +64,116 @@ func _process(_delta):
 #endregion
 
 
-#region SETTERS
-func set_movement_state(state) -> void:
-	movement_state = state
-	print("Movement: ", get_movement_value())
+#region GENERIC SETTERS
+func set_direction_state(state: Direction) -> void:
+	direction_state = state
+	print("Direction -> ", get_direction_value())
 
 
-func set_action_state(state) -> void:
+func set_action_state(state: Action) -> void:
 	action_state = state
-	print("Action: ", get_action_value())
+	print("Action -> ", get_action_value())
 
 
-func set_position_state(state) -> void:
+func set_motion_state(state: Motion) -> void:
+	motion_state = state
+	print("Motion -> ", get_motion_value())
+
+
+func set_position_state(state: Position) -> void:
 	position_state = state
-	print("Position: ", get_position_value())
-
-
-func set_movement_still() -> void:
-	set_movement_state(Movement.STILL)
-
-
-func set_movement_forward() -> void:
-	set_movement_state(Movement.FORWARD)
-
-
-func set_movement_backward() -> void:
-	set_movement_state(Movement.BACKWARD)
-
-
-func set_action_grounded() -> void:
-	set_action_state(Action.GROUNDED)
-	emit_signal("grounded")
-
-
-func set_action_sprinting() -> void:
-	set_action_state(Action.SPRINTING)
-	emit_signal("sprinting_started")
-
-
-func set_action_jumping() -> void:
-	set_action_state(Action.JUMPING)
-	emit_signal("jumping_started")
-
-
-func set_position_standing() -> void:
-	set_action_state(Position.STANDING)
-
-
-func set_position_crouching_down() -> void:
-	set_action_state(Position.CROUCHING_DOWN)
-
-
-func set_position_crouching_up() -> void:
-	set_action_state(Position.CROUCHING_UP)
-
-
-func set_position_crouched() -> void:
-	set_action_state(Position.CROUCHED)
+	print("Position -> ", get_position_value())
 #endregion
 
 
-#region GETTERS
-func get_movement_value() -> String:
-	match movement_state:
-		Movement.STILL:
+#region DIRECTION SETTERS
+func set_still() -> void:
+	set_direction_state(Direction.STILL)
+
+
+func set_forward() -> void:
+	set_direction_state(Direction.FORWARD)
+
+
+func set_backward() -> void:
+	set_direction_state(Direction.BACKWARD)
+#endregion
+
+
+#region MOTION SETTERS
+func set_idle() -> void:
+	set_motion_state(Motion.IDLE)
+
+func set_walking() -> void:
+	set_motion_state(Motion.WALKING)
+	
+func set_running() -> void:
+	set_motion_state(Motion.RUNNING)
+#endregion
+
+
+#region ACTION SETTERS
+func set_no_action() -> void:
+	set_action_state(Action.NOTHING)
+	
+
+func set_jumping() -> void:
+	set_action_state(Action.JUMPING)
+	
+# func set_action_swimming() -> void:
+#	...
+#endregion
+
+
+#region POSITION SETTERS
+func set_standing() -> void:
+	set_position_state(Position.STANDING)
+
+
+func set_crouching_down() -> void:
+	set_position_state(Position.CROUCHING_DOWN)
+
+
+func set_crouching_up() -> void:
+	set_position_state(Position.CROUCHING_UP)
+
+
+func set_crouched() -> void:
+	set_position_state(Position.CROUCHED)
+#endregion
+
+
+#region GENERIC GETTERS
+func get_direction_value() -> String:
+	match direction_state:
+		Direction.STILL:
 			return "STILL"
-		Movement.FORWARD:
+		Direction.FORWARD:
 			return "FORWARD"
-		Movement.BACKWARD:
+		Direction.BACKWARD:
 			return "BACKWARD"
+		_:
+			return "UNKNOWN"
+
+
+func get_motion_value() -> String:
+	match motion_state:
+		Motion.IDLE:
+			return "STILL"
+		Motion.WALKING:
+			return "WALKING"
+		Motion.RUNNING:
+			return "RUNNING"
 		_:
 			return "UNKNOWN"
 
 
 func get_action_value() -> String:
 	match action_state:
-		Action.GROUNDED:
-			return "GROUNDED"
-		Action.SPRINTING:
-			return "SPRINTING"
+		Action.NOTHING:
+			return "NOTHING"
 		Action.JUMPING:
 			return "JUMPING"
-		Action.FLYING:
-			return "FLYING"
-		Action.SWIMMING:
-			return "SWIMMING"
 		_:
 			return "UNKNOWN"
 
@@ -157,39 +188,55 @@ func get_position_value() -> String:
 			return "CROUCHING_UP"
 		_:
 			return "UNKNOWN"
+#endregion
 
 
+#region DIRECTION GETTERS
 func is_still() -> bool:
-	return movement_state == Movement.STILL
+	return direction_state == Direction.STILL
 
 
 func is_moving() -> bool:
-	return movement_state in [Movement.FORWARD, Movement.BACKWARD]
+	return direction_state in [Direction.FORWARD, Direction.BACKWARD]
 
 
-func is_moving_forward() -> bool:
-	return movement_state == Movement.FORWARD
+func is_forward() -> bool:
+	return direction_state == Direction.FORWARD
 
 
-func is_moving_backward() -> bool:
-	return movement_state == Movement.BACKWARD
+func is_backward() -> bool:
+	return direction_state == Direction.BACKWARD
+#endregion
 
 
-func is_grounded() -> bool:
-	return action_state == Action.GROUNDED
+#region MOTION GETTERS
+func is_idle() -> bool:
+	return motion_state == Motion.IDLE
 
 
-func is_sprinting() -> bool:
-	return action_state == Action.SPRINTING
+func is_running() -> bool:
+	return motion_state == Motion.RUNNING
+
+
+func is_walking() -> bool:
+	return motion_state == Motion.WALKING
+#endregion
+
+
+#region ACTION GETTERS
+func is_doing_nothing() -> bool:
+	return action_state == Action.NOTHING
 
 
 func is_jumping() -> bool:
 	return action_state == Action.JUMPING
+#endregion
 
 
+#region POSITION GETTERS
 func is_standing() -> bool:
 	return position_state == Position.STANDING
-
+ 
 
 func is_crouching_down() -> bool:
 	return position_state == Position.CROUCHING_DOWN

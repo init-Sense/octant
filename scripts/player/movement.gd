@@ -33,9 +33,9 @@ func _physics_process(delta) -> void:
 #region MOVEMENT
 func set_movement_velocity(delta) -> void:
 	var input_dir = Vector3.ZERO
-	if player.is_moving_forward():
+	if player.is_forward():
 		input_dir -= camera.global_transform.basis.z
-	elif player.is_moving_backward():
+	elif player.is_backward():
 		input_dir += camera.global_transform.basis.z
 	
 	input_dir = input_dir.normalized()
