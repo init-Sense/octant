@@ -50,9 +50,8 @@ enum Action {
 
 
 #region LIFECYCLE
-# func _ready():
-	# print("Player ready. camera: ", camera, ", movement: ", movement, ", body: ", body)
-	# print_tree_pretty()
+func _ready():
+	print_tree_pretty()
 
 
 func _process(_delta):
