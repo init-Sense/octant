@@ -1,5 +1,6 @@
 extends Node
 
+
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var camera: PlayerCamera3D = %Camera
@@ -9,9 +10,9 @@ extends Node
 
 
 #region VARIABLES
-const DEFAULT_AMPLITUDE: float = 0.1
+const DEFAULT_AMPLITUDE: float = 0.05
 const DEFAULT_FREQUENCY: float = 5.0
-const AMPLITUDE_FACTOR: float = 0.2
+const AMPLITUDE_FACTOR: float = 0.15
 const FREQUENCY_FACTOR: float = 0.4
 const RESET_SPEED: float = 1.0
 const CAMERA_HEIGHT: float = 0.5
@@ -20,10 +21,12 @@ const MAX_LANDING_IMPACT_AMPLITUDE: float = 0.15
 const LANDING_IMPACT_DURATION: float = 0.2
 const LANDING_RESET_SPEED: float = 2.0
 const MAX_IMPACT_HEIGHT: float = 10.0
+const NOISE_STRENGTH: float = 0.05
+const X_FACTOR: float = 0.6
 
 
 var bob_time: float = 0.0
-var current_offset: float = 0.0
+var current_offset: Vector3 = Vector3.ZERO
 var current_amplitude: float = DEFAULT_AMPLITUDE
 var current_frequency: float = DEFAULT_FREQUENCY
 var is_bobbing: bool = false
@@ -33,10 +36,17 @@ var landing_offset: float = 0.0
 var max_jump_height: float = 0.0
 var jump_start_height: float = 0.0
 var current_landing_impact_amplitude: float = BASE_LANDING_IMPACT_AMPLITUDE
+var noise: FastNoiseLite = FastNoiseLite.new()
 #endregion
 
 
 #region LIFECYCLE
+func _ready() -> void:
+	jump.connect("jumped", Callable(self, "on_player_jumped"))
+	jump.connect("landed", Callable(self, "on_player_landed"))
+	noise.seed = randi()
+
+
 func _physics_process(delta: float) -> void:
 	if player.is_moving() and not player.is_jumping():
 		apply_head_bob(delta)
@@ -51,32 +61,35 @@ func _physics_process(delta: float) -> void:
 	elif landing_offset != 0:
 		smooth_reset_landing_impact(delta)
 	
-	camera.position.y = CAMERA_HEIGHT + current_offset + landing_offset
-
-
-func _ready() -> void:
-	jump.connect("jumped", Callable(self, "on_player_jumped"))
-	jump.connect("landed", Callable(self, "on_player_landed"))
+	camera.position = Vector3(current_offset.x, CAMERA_HEIGHT + current_offset.y + landing_offset, current_offset.z)
 #endregion
+
 
 #region HEAD BOB
 func apply_head_bob(delta: float) -> void:
 	handle_bob_wave()
 	bob_time += current_frequency * delta
-	current_offset = sin(bob_time) * current_amplitude
+	var y_offset = sin(bob_time) * current_amplitude
+	var x_offset = cos(bob_time * 0.5) * current_amplitude * X_FACTOR
+	
+	y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
+	x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
+	
+	current_offset = Vector3(x_offset, y_offset, 0)
 
 
 func smooth_reset_head_bob(delta: float) -> void:
-	current_offset = move_toward(current_offset, 0, RESET_SPEED * delta)
-	if abs(current_offset) < 0.01:
+	current_offset = current_offset.move_toward(Vector3.ZERO, RESET_SPEED * delta)
+	if current_offset.length() < 0.001:
 		bob_time = 0
-		current_offset = 0
+		current_offset = Vector3.ZERO
 		is_bobbing = false
 
 
 func handle_bob_wave() -> void:
-	current_amplitude = DEFAULT_AMPLITUDE * direction.velocity_vector.length() * AMPLITUDE_FACTOR
-	current_frequency = DEFAULT_FREQUENCY * direction.velocity_vector.length() * FREQUENCY_FACTOR
+	var speed = direction.velocity_vector.length()
+	current_amplitude = DEFAULT_AMPLITUDE * speed * AMPLITUDE_FACTOR
+	current_frequency = DEFAULT_FREQUENCY * speed * FREQUENCY_FACTOR
 #endregion
 
 

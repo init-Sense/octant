@@ -24,6 +24,7 @@ var jump_inertia: Vector2 = Vector2.ZERO
 
 
 #region SIGNALS
+signal jumped
 signal landed
 #endregion
 
@@ -47,6 +48,7 @@ func up() -> void:
 		var inertia_factor = lerp(MIN_INERTIA_FACTOR, MAX_INERTIA_FACTOR, speed_factor)
 		
 		jump_inertia = Vector2(direction.velocity_vector.x, direction.velocity_vector.z) * inertia_factor
+		emit_signal("jumped")  # Emit the jumped signal
 
 
 func handle_jump() -> void:
