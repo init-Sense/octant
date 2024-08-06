@@ -8,8 +8,8 @@ extends Node
 
 
 #region CONSTANTS
-const SPRINT_SPEED: float = 7.0
-const WALKING_SPEED: float = 3.0
+const SPRINT_SPEED: float = 8.0
+const WALKING_SPEED: float = 5.0
 const SNEAKING_SPEED: float = 1.5
 #endregion
 
