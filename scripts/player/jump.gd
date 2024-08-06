@@ -22,6 +22,7 @@ var is_jump_requested: bool = false
 var jump_inertia: Vector2 = Vector2.ZERO
 #endregion
 
+signal landed
 
 #region LIFECYCLE
 func _physics_process(delta: float) -> void:
@@ -60,4 +61,5 @@ func ground_check() -> void:
 	if player.is_jumping() and player.is_on_floor() and direction.velocity_vector.y <= 0:
 		player.set_no_action()
 		jump_inertia = Vector2.ZERO
+		emit_signal("landed")
 #endregion
