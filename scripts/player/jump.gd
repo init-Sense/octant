@@ -10,10 +10,10 @@ class_name PlayerJump
 
 
 #region CONSTANTS
-const JUMPING_SPEED: float = 8.0
+const JUMPING_SPEED: float = 7.0
 const MIN_INERTIA_FACTOR: float = 0.6
 const MAX_INERTIA_FACTOR: float = 0.9
-const INERTIA_DECELERATION: float = 3.0
+const INERTIA_DECELERATION: float = 2.0
 #endregion
 
 
@@ -48,7 +48,7 @@ func up() -> void:
 		var inertia_factor = lerp(MIN_INERTIA_FACTOR, MAX_INERTIA_FACTOR, speed_factor)
 		
 		jump_inertia = Vector2(direction.velocity_vector.x, direction.velocity_vector.z) * inertia_factor
-		emit_signal("jumped")  # Emit the jumped signal
+		emit_signal("jumped")
 
 
 func handle_jump() -> void:

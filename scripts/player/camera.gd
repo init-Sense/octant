@@ -44,7 +44,7 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 
 
 #region PROCESS
-func _process(delta):
+func _process(_delta):
 	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
 	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
 #endregion
