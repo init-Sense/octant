@@ -1,6 +1,5 @@
 extends Node
-class_name PlayerMovement3D
-
+class_name PlayerDirection
 
 #region CONSTANTS
 const DEFAULT_SPEED: float = 3.0
@@ -11,12 +10,14 @@ const MOVEMENT_DAMPING: float = 0.01
 #region VARIABLES
 var velocity_vector: Vector3 = Vector3.ZERO
 var current_speed: float = DEFAULT_SPEED
+var target_velocity: Vector3 = Vector3.ZERO
 #endregion
 
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var camera: PlayerCamera3D = %Camera
+@onready var camera: PlayerCamera = %Camera
+@onready var motion: PlayerMotion = %Motion
 #endregion
 
 
@@ -42,15 +43,15 @@ func set_movement_velocity(delta) -> void:
 	input_dir = input_dir.normalized()
 	
 	if player.is_on_floor():
-		velocity_vector.x = input_dir.x * current_speed
-		velocity_vector.z = input_dir.z * current_speed
+		target_velocity.x = input_dir.x * current_speed
+		target_velocity.z = input_dir.z * current_speed
 	else:
-		velocity_vector.x = lerp(velocity_vector.x, input_dir.x * current_speed, delta * 2.0)
-		velocity_vector.z = lerp(velocity_vector.z, input_dir.z * current_speed, delta * 2.0)
+		target_velocity.x = input_dir.x * current_speed
+		target_velocity.z = input_dir.z * current_speed
 	
-	if player.is_still():
-		velocity_vector.x *= pow(MOVEMENT_DAMPING, delta)
-		velocity_vector.z *= pow(MOVEMENT_DAMPING, delta)
+	var deceleration = motion.DECELERATION * delta
+	velocity_vector.x = move_toward(velocity_vector.x, target_velocity.x, deceleration)
+	velocity_vector.z = move_toward(velocity_vector.z, target_velocity.z, deceleration)
 
 
 func move_player() -> void:
@@ -72,6 +73,7 @@ func backward() -> void:
 
 func still() -> void:
 	player.set_still()
+	target_velocity = Vector3.ZERO
 #endregion
 
 

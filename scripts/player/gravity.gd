@@ -3,12 +3,12 @@ extends Node
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
-@onready var direction: PlayerMovement3D = %Direction
+@onready var direction: PlayerDirection = %Direction
 #endregion
 
 
 #region CONSTANTS
-const GRAVITY : float = 16
+const GRAVITY : float = 9.8
 #endregion
 
 

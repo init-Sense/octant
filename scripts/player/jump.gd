@@ -1,19 +1,19 @@
 extends Node
-class_name PlayerJump3D
+class_name PlayerJump
 
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
-@onready var direction: PlayerMovement3D = %Direction
-@onready var motion: Node = %Motion
+@onready var direction: PlayerDirection = %Direction
+@onready var motion: PlayerMotion = %Motion
 #endregion
 
 
 #region CONSTANTS
-const JUMPING_SPEED: float = 10.0
+const JUMPING_SPEED: float = 8.0
 const MIN_INERTIA_FACTOR: float = 0.6
 const MAX_INERTIA_FACTOR: float = 0.9
-const INERTIA_DECELERATION: float = 2.0
+const INERTIA_DECELERATION: float = 3.0
 #endregion
 
 

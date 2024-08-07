@@ -1,11 +1,13 @@
 extends Node
+class_name PlayerHeadBob
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
-@onready var camera: PlayerCamera3D = %Camera
-@onready var direction: PlayerMovement3D = %Direction
-@onready var jump: PlayerJump3D = %Jump
+@onready var camera: PlayerCamera = %Camera
+@onready var direction: PlayerDirection = %Direction
+@onready var jump: PlayerJump = %Jump
 #endregion
+
 
 #region VARIABLES
 const DEFAULT_AMPLITUDE: float = 0.05
@@ -107,6 +109,7 @@ func on_player_landed() -> void:
 	var jump_height = max_jump_height - jump_start_height
 	var height_factor = clamp(jump_height / MAX_IMPACT_HEIGHT, 0, 1)
 	current_landing_impact_amplitude = lerp(BASE_LANDING_IMPACT_AMPLITUDE, MAX_LANDING_IMPACT_AMPLITUDE, height_factor)
+
 
 func apply_landing_impact(delta: float) -> void:
 	landing_impact_time += delta

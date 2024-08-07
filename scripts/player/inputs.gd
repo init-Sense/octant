@@ -1,12 +1,12 @@
 extends Node
-class_name PlayerInputsMouse
+class_name PlayerInputs
 
 
 #region NODES
-@onready var direction: PlayerMovement3D = %Direction
-@onready var motion: Node = %Motion
-@onready var jump: PlayerJump3D = %Jump
-@onready var crouch: PlayerCrouch3D = %Crouch
+@onready var direction: PlayerDirection = %Direction
+@onready var motion: PlayerMotion = %Motion
+@onready var jump: PlayerJump = %Jump
+@onready var crouch: PlayerCrouch = %Crouch
 #endregion
 
 
@@ -14,10 +14,14 @@ func _input(event) -> void:
 	#region MOVEMENT
 	if Input.is_action_just_pressed("move_forward"):
 		direction.forward()
+		motion.start_moving()
 	if Input.is_action_just_pressed("move_backward"):
 		direction.backward()
+		motion.start_moving()
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
-		direction.still()
+		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
+			direction.still()
+			motion.stop_moving()
 	#endregion
 
 

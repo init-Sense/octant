@@ -1,5 +1,5 @@
 extends Camera3D
-class_name PlayerCamera3D
+class_name PlayerCamera
 
 
 #region VARIABLES

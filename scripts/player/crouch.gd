@@ -1,12 +1,13 @@
 extends Node
-class_name PlayerCrouch3D
+class_name PlayerCrouch
+
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var head: StaticBody3D = %Head
-@onready var camera: Camera3D = %Camera
-@onready var direction: Node = %Direction
-@onready var motion: Node = %Motion
+@onready var camera: PlayerCamera = %Camera
+@onready var direction: PlayerDirection = %Direction
+@onready var motion: PlayerMotion = %Motion
 @onready var body: CollisionShape3D = $"../../Collision"
 @onready var mesh: MeshInstance3D = $"../../Mesh"
 #endregion
