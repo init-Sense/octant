@@ -1,7 +1,6 @@
 extends Node
 class_name PlayerInputs
 
-
 #region NODES
 @onready var direction: PlayerDirection = %Direction
 @onready var motion: PlayerMotion = %Motion
@@ -24,12 +23,12 @@ func _input(event) -> void:
 			motion.stop_moving()
 	#endregion
 
-
 	#region JUMP
 	if Input.is_action_just_pressed("jump"):
-		jump.up()
+		jump.start_charge()
+	elif Input.is_action_just_released("jump"):
+		jump.release_jump()
 	#endregion
-
 
 	#region SPRINT
 	if Input.is_action_just_pressed("sprint") and not player.is_crouching():
@@ -37,7 +36,6 @@ func _input(event) -> void:
 	elif Input.is_action_just_released("sprint"):
 		motion.stop_running() 
 	#endregion
-
 
 	if Input.is_action_pressed('debug_crouch_up'):
 		crouch.up()

@@ -5,7 +5,9 @@ class_name PlayerJump
 @onready var player: CharacterBody3D = $"../.."
 @onready var direction: PlayerDirection = %Direction
 @onready var motion: PlayerMotion = %Motion
+@onready var head: Node3D = %Head
 #endregion
+
 
 #region CONSTANTS
 const JUMPING_SPEED: float = 7.0
@@ -16,7 +18,11 @@ const MAX_MOMENTUM_SPEED: float = 2.0
 const MOMENTUM_REDUCTION_FACTOR: float = 0.6
 const JUMP_HEIGHT_VARIATION: float = 0.2
 const MOMENTUM_VARIATION: float = 0.15
+const MAX_CHARGE_TIME: float = 1.0
+const MAX_CHARGE_MULTIPLIER: float = 1.5
+const HEAD_CHARGE_OFFSET: float = 0.2
 #endregion
+
 
 #region VARIABLES
 var is_jump_requested: bool = false
@@ -24,42 +30,61 @@ var jump_momentum: Vector3 = Vector3.ZERO
 var horizontal_momentum: Vector2 = Vector2.ZERO
 var initial_speed: float = 0.0
 var rng = RandomNumberGenerator.new()
+var charge_start_time: float = 0.0
+var is_charging: bool = false
+var original_head_position: Vector3
+var current_charge: float = 0.0
 #endregion
+
 
 #region SIGNALS
 signal jumped
 signal landed
 #endregion
 
+
 #region LIFECYCLE
 func _ready() -> void:
 	rng.randomize()
+	original_head_position = head.position
 
 func _physics_process(delta: float) -> void:
 	handle_jump()
 	apply_midair_control(delta)
 	apply_momentum(delta)
 	ground_check()
+	update_head_position(delta)
 #endregion
 
+
 #region JUMP
-func up() -> void:
+func start_charge() -> void:
 	if not player.is_jumping() and player.is_on_floor():
+		is_charging = true
+		charge_start_time = Time.get_ticks_msec() / 1000.0
+		current_charge = 0.0
+
+func release_jump() -> void:
+	if is_charging:
 		is_jump_requested = true
 		horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
 		initial_speed = horizontal_momentum.length()
 		emit_signal("jumped")
+		is_charging = false
 
 func handle_jump() -> void:
 	if is_jump_requested and player.is_on_floor():
+		var charge_multiplier = 1.0 + (current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
+		
 		var jump_variation = 1.0 + rng.randf_range(-JUMP_HEIGHT_VARIATION, JUMP_HEIGHT_VARIATION)
-		direction.velocity_vector.y = JUMPING_SPEED * jump_variation
+		direction.velocity_vector.y = JUMPING_SPEED * jump_variation * charge_multiplier
 		
 		var momentum_variation = 1.0 + rng.randf_range(-MOMENTUM_VARIATION, MOMENTUM_VARIATION)
 		jump_momentum = direction.velocity_vector * MOMENTUM_FACTOR * momentum_variation
 		
 		player.set_jumping()
 		is_jump_requested = false
+		current_charge = 0.0
 
 func apply_midair_control(delta: float) -> void:
 	if not player.is_on_floor():
@@ -91,10 +116,19 @@ func ground_check() -> void:
 		emit_signal("landed")
 #endregion
 
+
 #region UTILS
 func get_input_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	).normalized()
+
+func update_head_position(delta: float) -> void:
+	if is_charging:
+		current_charge = min(current_charge + delta, MAX_CHARGE_TIME)
+		var charge_progress = current_charge / MAX_CHARGE_TIME
+		head.position.y = original_head_position.y - (charge_progress * HEAD_CHARGE_OFFSET)
+	else:
+		head.position.y = move_toward(head.position.y, original_head_position.y, delta * 2)
 #endregion
