@@ -1,7 +1,6 @@
 extends Node
 class_name PlayerInputs
 
-
 #region NODES
 @onready var direction: PlayerDirection = %Direction
 @onready var motion: PlayerMotion = %Motion
@@ -10,6 +9,8 @@ class_name PlayerInputs
 @onready var player: CharacterBody3D = $"../.."
 #endregion
 
+
+#region INPUTS
 func _input(event) -> void:
 	#region MOVEMENT
 	if Input.is_action_just_pressed("move_forward"):
@@ -27,7 +28,9 @@ func _input(event) -> void:
 
 	#region JUMP
 	if Input.is_action_just_pressed("jump"):
-		jump.up()
+		jump.start_charge()
+	elif Input.is_action_just_released("jump"):
+		jump.release_charge()
 	#endregion
 
 
@@ -45,6 +48,7 @@ func _input(event) -> void:
 		if player.is_running():
 			motion.stop_running()
 		crouch.down()
+	
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
