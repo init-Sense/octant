@@ -8,7 +8,7 @@
 [node name="Pool" parent="." instance=ExtResource("1_0ooii")]
 
 [node name="ColumnOuter_L" parent="." instance=ExtResource("2_wbgnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96179, 0, -3.42154)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.132, 0, -3)
 
 [node name="ColumnOuter_R" parent="." instance=ExtResource("2_wbgnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.962, 0, 3.422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.128, 0.028, 3)
