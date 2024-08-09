@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cskl5bbc4k05v"]
+
+[ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/pool.glb" id="1_0ooii"]
+[ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/column_outer.glb" id="2_wbgnn"]
+
+[node name="Pool" type="Node3D"]
+
+[node name="Pool" parent="." instance=ExtResource("1_0ooii")]
+
+[node name="ColumnOuter_L" parent="." instance=ExtResource("2_wbgnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96179, 0, -3.42154)
+
+[node name="ColumnOuter_R" parent="." instance=ExtResource("2_wbgnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.962, 0, 3.422)
