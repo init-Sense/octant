@@ -10,32 +10,63 @@ class_name PlayerJump
 
 
 #region CONSTANTS
+#region JUMP CONSTANTS
 const JUMPING_SPEED: float = 7.0
-const MIDAIR_CONTROL: float = 0.8
+const JUMP_HEIGHT_VARIATION: float = 0.2
+#endregion
+
+
+#region MOMENTUM CONSTANTS
 const MOMENTUM_FACTOR: float = 0.6
 const MIN_MOMENTUM_SPEED: float = 0.3
 const MAX_MOMENTUM_SPEED: float = 2.0
 const MOMENTUM_REDUCTION_FACTOR: float = 0.6
-const JUMP_HEIGHT_VARIATION: float = 0.2
 const MOMENTUM_VARIATION: float = 0.15
+#endregion
+
+
+#region CONTROL CONSTANTS
+const MIDAIR_CONTROL: float = 0.8
+#endregion
+
+
+#region CHARGE CONSTANTS
 const MAX_CHARGE_TIME: float = 1.0
 const MAX_CHARGE_MULTIPLIER: float = 1.5
-const HEAD_CHARGE_OFFSET: float = 0.2
+const HEAD_CHARGE_OFFSET: float = 0.4
+#endregion
 #endregion
 
 
 #region VARIABLES
+#region JUMP VARIABLES
 var is_jump_requested: bool = false
 var jump_momentum: Vector3 = Vector3.ZERO
+#endregion
+
+
+#region MOMENTUM VARIABLES
 var horizontal_momentum: Vector2 = Vector2.ZERO
 var initial_speed: float = 0.0
-var rng = RandomNumberGenerator.new()
+#endregion
+
+
+#region CHARGE VARIABLES
 var charge_start_time: float = 0.0
 var is_charging: bool = false
-var original_head_position: Vector3
 var current_charge: float = 0.0
 #endregion
 
+
+#region VISUAL VARIABLES
+var original_head_position: Vector3
+#endregion
+
+
+#region UTILITY VARIABLES
+var rng = RandomNumberGenerator.new()
+#endregion
+#endregion
 
 #region SIGNALS
 signal jumped
@@ -57,12 +88,13 @@ func _physics_process(delta: float) -> void:
 #endregion
 
 
-#region JUMP
+#region JUMP MECHANICS
 func start_charge() -> void:
 	if not player.is_jumping() and player.is_on_floor():
 		is_charging = true
 		charge_start_time = Time.get_ticks_msec() / 1000.0
 		current_charge = 0.0
+
 
 func release_jump() -> void:
 	if is_charging:
@@ -71,6 +103,7 @@ func release_jump() -> void:
 		initial_speed = horizontal_momentum.length()
 		emit_signal("jumped")
 		is_charging = false
+
 
 func handle_jump() -> void:
 	if is_jump_requested and player.is_on_floor():
@@ -85,7 +118,10 @@ func handle_jump() -> void:
 		player.set_jumping()
 		is_jump_requested = false
 		current_charge = 0.0
+#endregion
 
+
+#region MOVEMENT CONTROL
 func apply_midair_control(delta: float) -> void:
 	if not player.is_on_floor():
 		var input_dir = get_input_direction()
@@ -102,10 +138,12 @@ func apply_midair_control(delta: float) -> void:
 		direction.velocity_vector.x = move_toward(direction.velocity_vector.x, target_velocity.x, motion.DECELERATION * delta)
 		direction.velocity_vector.z = move_toward(direction.velocity_vector.z, target_velocity.z, motion.DECELERATION * delta)
 
+
 func apply_momentum(delta: float) -> void:
 	if not player.is_on_floor():
 		var reduced_momentum = jump_momentum * MOMENTUM_REDUCTION_FACTOR
 		direction.velocity_vector = direction.velocity_vector.lerp(reduced_momentum, MOMENTUM_FACTOR * delta)
+
 
 func ground_check() -> void:
 	if player.is_jumping() and player.is_on_floor() and direction.velocity_vector.y <= 0:
@@ -117,13 +155,7 @@ func ground_check() -> void:
 #endregion
 
 
-#region UTILS
-func get_input_direction() -> Vector2:
-	return Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	).normalized()
-
+#region VISUAL FEEDBACK
 func update_head_position(delta: float) -> void:
 	if is_charging:
 		current_charge = min(current_charge + delta, MAX_CHARGE_TIME)
@@ -131,4 +163,13 @@ func update_head_position(delta: float) -> void:
 		head.position.y = original_head_position.y - (charge_progress * HEAD_CHARGE_OFFSET)
 	else:
 		head.position.y = move_toward(head.position.y, original_head_position.y, delta * 2)
+#endregion
+
+
+#region UTILS
+func get_input_direction() -> Vector2:
+	return Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+	).normalized()
 #endregion
