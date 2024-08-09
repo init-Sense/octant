@@ -43,7 +43,7 @@ enum Action {
 
 
 #region NODES
-@onready var camera : PlayerCamera = %Camera
+@onready var camera: PlayerCamera = %Camera
 @onready var inputs_mouse: PlayerInputs = %Inputs
 @onready var jump: PlayerJump = %Jump
 #endregion

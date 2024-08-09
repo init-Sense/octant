@@ -34,6 +34,7 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 	target_rotation.y -= deg_to_rad(mouse_motion.x * mouse_sensitivity_x)
 	
 	var change = -mouse_motion.y * mouse_sensitivity_y
+	
 	if invert_y:
 		change *= -1
 	rotation_x += change

@@ -1,9 +1,11 @@
 extends Node
 class_name PlayerDirection
 
+
 #region CONSTANTS
 const DEFAULT_SPEED: float = 3.0
 const MOVEMENT_DAMPING: float = 0.01
+const MIN_SPEED_FACTOR: float = 0.5
 #endregion
 
 
@@ -40,14 +42,17 @@ func set_movement_velocity(delta) -> void:
 	elif player.is_backward():
 		input_dir += camera.global_transform.basis.z
 	
+	input_dir.y = 0
 	input_dir = input_dir.normalized()
 	
+	var speed_modifier = calculate_tilt_speed_modifier()
+	
 	if player.is_on_floor():
-		target_velocity.x = input_dir.x * current_speed
-		target_velocity.z = input_dir.z * current_speed
+		target_velocity.x = input_dir.x * current_speed * speed_modifier
+		target_velocity.z = input_dir.z * current_speed * speed_modifier
 	else:
-		target_velocity.x = input_dir.x * current_speed
-		target_velocity.z = input_dir.z * current_speed
+		target_velocity.x = input_dir.x * current_speed * speed_modifier
+		target_velocity.z = input_dir.z * current_speed * speed_modifier
 	
 	var deceleration = motion.DECELERATION * delta
 	velocity_vector.x = move_toward(velocity_vector.x, target_velocity.x, deceleration)
@@ -78,6 +83,13 @@ func still() -> void:
 
 
 #region UTILS
+func calculate_tilt_speed_modifier() -> float:
+	var camera_forward = -camera.global_transform.basis.z
+	var tilt_angle = abs(acos(camera_forward.dot(Vector3.UP)) - PI/2)
+	var tilt_factor = tilt_angle / (PI/2)
+	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
+
+
 func print_velocity_coroutine() -> void:
 	while true:
 		print("Velocity: ", Vector2(velocity_vector.x, velocity_vector.z).length())
