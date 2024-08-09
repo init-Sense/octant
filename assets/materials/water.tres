@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://4agj4rvs7qeo"]
+
+[ext_resource type="Shader" path="res://shaders/water_scroll.gdshader" id="1_22cvw"]
+[ext_resource type="Texture2D" uid="uid://dq7djwyj4j2ok" path="res://assets/textures/water_normal.jpg" id="2_5g4sn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_22cvw")
+shader_parameter/water_color = Color(1.34766e-06, 0.760954, 0.484179, 1)
+shader_parameter/uv_scale = 2.0
+shader_parameter/time_scale = 1.0
+shader_parameter/normal = 0.5
+shader_parameter/roughness = 0.3
+shader_parameter/scroll_speed = -0.01
+shader_parameter/water_normal_texture = ExtResource("2_5g4sn")
