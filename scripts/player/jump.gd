@@ -98,11 +98,20 @@ func start_charge() -> void:
 
 func release_jump() -> void:
 	if is_charging:
-		is_jump_requested = true
-		horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
-		initial_speed = horizontal_momentum.length()
-		emit_signal("jumped")
+		if player.is_on_floor():
+			is_jump_requested = true
+			horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
+			initial_speed = horizontal_momentum.length()
+			emit_signal("jumped")
+		else:
+			cancel_jump()
 		is_charging = false
+
+
+func cancel_jump() -> void:
+	is_charging = false
+	current_charge = 0.0
+	update_head_position(0)
 
 
 func handle_jump() -> void:
@@ -152,6 +161,8 @@ func ground_check() -> void:
 		horizontal_momentum = Vector2.ZERO
 		initial_speed = 0.0
 		emit_signal("landed")
+	elif is_charging and not player.is_on_floor():
+		cancel_jump()
 #endregion
 
 
