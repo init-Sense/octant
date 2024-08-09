@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bth122y6serpa"]
+
+[ext_resource type="PackedScene" uid="uid://bvspwsixtym4v" path="res://assets/models/hub.glb" id="1_jx6bu"]
+
+[node name="hub" instance=ExtResource("1_jx6bu")]
+
+[node name="StaticBody3D" parent="Door_001-col/Door" index="0"]
+collision_layer = 4
+
+[node name="StaticBody3D" parent="Door_002-col/Door2" index="0"]
+collision_layer = 4
