@@ -97,32 +97,34 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 [node name="Pool" parent="." instance=ExtResource("6_w0lqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.226, -0.852103, 0)
 
-[node name="ColumnSphere" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSpheres" type="Node3D" parent="."]
+
+[node name="ColumnSphere" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.2752, 0, 0, 0, 5.2752, 0, 0, 0, 5.2752, -141, -148, -47)
 
-[node name="ColumnSphere10" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere10" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.2752, 0, 0, 0, 5.2752, 0, 0, 0, 5.2752, -167, -148, 62)
 
-[node name="ColumnSphere2" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere2" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.2752, 0, 0, 0, 5.2752, 0, 0, 0, 5.2752, -104, -148, 31)
 
-[node name="ColumnSphere3" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere3" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.2752, 0, 0, 0, 5.2752, 0, 0, 0, 5.2752, -155, -148, 12)
 
-[node name="ColumnSphere4" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere4" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.2752, 0, 0, 0, 5.2752, 0, 0, 0, 5.2752, -118, -148, 75)
 
-[node name="ColumnSphere5" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere5" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -196.82, -148, -88.8979)
 
-[node name="ColumnSphere6" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere6" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -177.387, -148, -18.4683)
 
-[node name="ColumnSphere7" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere7" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -225.613, -148, -35.5317)
 
-[node name="ColumnSphere8" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere8" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -206.18, -148, 34.8979)
 
-[node name="ColumnSphere9" parent="." instance=ExtResource("7_6rd6f")]
+[node name="ColumnSphere9" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -121.18, -148, -24.1021)

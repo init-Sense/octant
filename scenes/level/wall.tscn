@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccwt6ib0jvshx"]
+[gd_scene load_steps=4 format=3 uid="uid://ccwt6ib0jvshx"]
 
 [ext_resource type="PackedScene" uid="uid://dognb6in18kwm" path="res://assets/models/door.glb" id="1_vqal7"]
 [ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column_wall.glb" id="2_aj648"]
+[ext_resource type="PackedScene" uid="uid://c4huw1caufmkp" path="res://scenes/level/column_outer.tscn" id="3_bfc7a"]
 
 [node name="Wall" type="Node3D"]
 
@@ -10,3 +11,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
 
 [node name="ColumnWall" parent="." instance=ExtResource("2_aj648")]
 transform = Transform3D(0.994522, 0, 0.104528, 0, 1, 0, -0.104528, 0, 0.994522, 16.6404, 0, -40)
+
+[node name="CorridorColumns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51)
+
+[node name="ColumnOuter_1" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, -1)
+
+[node name="ColumnOuter_2" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, -1)
+
+[node name="ColumnOuter_3" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, 8)
+
+[node name="ColumnOuter_4" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, 8)
+
+[node name="ColumnOuter_5" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, -19)
+
+[node name="ColumnOuter_6" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, -19)
+
+[node name="ColumnOuter_7" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, -10)
+
+[node name="ColumnOuter_8" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, -10)
+
+[node name="ColumnOuter_9" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, -37)
+
+[node name="ColumnOuter_10" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, -37)
+
+[node name="ColumnOuter_11" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, 2, 0, -28)
+
+[node name="ColumnOuter_12" parent="CorridorColumns" instance=ExtResource("3_bfc7a")]
+transform = Transform3D(0.321663, 0, 0, 0, 0.321663, 0, 0, 0, 0.321663, -2, 0, -28)
