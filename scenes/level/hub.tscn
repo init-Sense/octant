@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://bth122y6serpa"]
+
+[ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://scenes/level/wall.tscn" id="1_mm148"]
+[ext_resource type="PackedScene" uid="uid://bey8gsrtmdss2" path="res://assets/models/hub_floor.glb" id="3_bu1ib"]
+[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column.glb" id="3_dckda"]
+[ext_resource type="PackedScene" uid="uid://d3qwaybrnw64d" path="res://assets/models/rock.glb" id="4_8p4gn"]
+
+[node name="Hub" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall_1" parent="Walls" instance=ExtResource("1_mm148")]
+
+[node name="Wall_2" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="Wall_3" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall_4" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="Wall_5" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Wall_6" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="Wall_7" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall_8" parent="Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="HubFloor" parent="." instance=ExtResource("3_bu1ib")]
+
+[node name="InnerColumns" type="Node3D" parent="."]
+
+[node name="InnerColumn_1" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="InnerColumn_5" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="InnerColumn_2" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -11.3137, 0, 11.3137)
+
+[node name="InnerColumn_6" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 11.3137, 0, -11.3137)
+
+[node name="InnerColumn_3" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -16, 0, 0)
+
+[node name="InnerColumn_7" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 16, 0, 0)
+
+[node name="InnerColumn_4" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -11.3137, 0, -11.3137)
+
+[node name="InnerColumn_8" parent="InnerColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 11.3137, 0, 11.3137)
+
+[node name="OuterColumns" type="Node3D" parent="."]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
+
+[node name="OuterColumn_1" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="OuterColumn_2" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -19.799, 0, 19.799)
+
+[node name="OuterColumn_3" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -28, 0, 9.53674e-07)
+
+[node name="OuterColumn_4" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -19.799, 0, -19.799)
+
+[node name="OuterColumn_5" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
+
+[node name="OuterColumn_6" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 19.799, 0, -19.799)
+
+[node name="OuterColumn_7" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 28, 0, 0)
+
+[node name="OuterColumn_8" parent="OuterColumns" instance=ExtResource("3_dckda")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 19.799, 0, 19.799)
+
+[node name="Rock" parent="." instance=ExtResource("4_8p4gn")]
+transform = Transform3D(1.48562, 5.54441, 0, -5.54441, 1.48562, 0, 0, 0, 5.74, -44, 4, 0)
