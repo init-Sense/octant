@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cskl5bbc4k05v"]
+[gd_scene load_steps=5 format=3 uid="uid://cskl5bbc4k05v"]
 
 [ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/pool.glb" id="1_0ooii"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/column_outer.glb" id="2_wbgnn"]
+[ext_resource type="Material" uid="uid://4agj4rvs7qeo" path="res://assets/materials/water.tres" id="3_4d6ge"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lv5sm"]
+material = ExtResource("3_4d6ge")
 
 [node name="Pool" type="Node3D"]
 
@@ -12,3 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.132, 0, -3)
 
 [node name="ColumnOuter_R" parent="." instance=ExtResource("2_wbgnn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.128, 0.028, 3)
+
+[node name="Water2" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.75081, 0, 0, 0, 1, 0, 0, 0, 4.75081, 0.0349276, 0.676399, 0)
+mesh = SubResource("PlaneMesh_lv5sm")
