@@ -14,7 +14,7 @@ class_name PlayerJump
 #region JUMP CONSTANTS
 const JUMPING_SPEED: float = 7.0
 const JUMP_HEIGHT_VARIATION: float = 0.2
-const COYOTE_TIME: float = 0.15
+const COYOTE_TIME: float = 0.01
 #endregion
 
 
@@ -64,6 +64,8 @@ var current_charge: float = 0.0
 
 #region VISUAL VARIABLES
 var original_head_position: Vector3
+var current_head_offset: float = 0.0
+var charge_offset: float = 0.0
 #endregion
 
 
@@ -83,13 +85,15 @@ signal landed
 func _ready() -> void:
 	rng.randomize()
 	original_head_position = head.position
+	current_head_offset = 0.0
+
 
 func _physics_process(delta: float) -> void:
 	handle_jump()
 	apply_midair_control(delta)
 	apply_momentum(delta)
 	ground_check()
-	update_head_position(delta)
+	update_charge_offset(delta)
 	update_coyote_time(delta)
 #endregion
 
@@ -100,6 +104,7 @@ func start_charge() -> void:
 		is_charging = true
 		charge_start_time = Time.get_ticks_msec() / 1000.0
 		current_charge = 0.0
+
 
 func release_jump() -> void:
 	if is_charging:
@@ -113,10 +118,11 @@ func release_jump() -> void:
 			cancel_jump()
 		is_charging = false
 
+
 func cancel_jump() -> void:
 	is_charging = false
 	current_charge = 0.0
-	update_head_position(0)
+
 
 func handle_jump() -> void:
 	if is_jump_requested and (player.is_on_floor() or can_coyote_jump):
@@ -181,13 +187,18 @@ func update_coyote_time(delta: float) -> void:
 
 
 #region VISUAL FEEDBACK
-func update_head_position(delta: float) -> void:
+func update_charge_offset(delta: float) -> void:
+	var target_offset = 0.0
 	if is_charging:
 		current_charge = min(current_charge + delta, MAX_CHARGE_TIME)
 		var charge_progress = current_charge / MAX_CHARGE_TIME
-		head.position.y = original_head_position.y - (charge_progress * HEAD_CHARGE_OFFSET)
-	else:
-		head.position.y = move_toward(head.position.y, original_head_position.y, delta * 2)
+		target_offset = -(charge_progress * HEAD_CHARGE_OFFSET)
+	
+	charge_offset = move_toward(charge_offset, target_offset, delta * 2)
+
+
+func get_charge_offset() -> float:
+	return charge_offset
 #endregion
 
 

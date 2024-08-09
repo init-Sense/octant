@@ -10,6 +10,7 @@ class_name PlayerCrouch
 @onready var motion: PlayerMotion = %Motion
 @onready var body: CollisionShape3D = $"../../Collision"
 @onready var mesh: MeshInstance3D = $"../../Mesh"
+@onready var jump: PlayerJump = %Jump
 #endregion
 
 
@@ -34,11 +35,11 @@ func _ready() -> void:
 	initial_head_offset = head.position.y - (STANDING_HEIGHT / 2)
 	ensure_initial_height()
 
-
 func _physics_process(delta: float) -> void:
 	if current_step != target_step:
 		current_step = move_toward(current_step, target_step, delta / TRANSITION_TIME)
 		update_crouch()
+	update_head_position()
 #endregion
 
 
@@ -46,13 +47,12 @@ func _physics_process(delta: float) -> void:
 func ensure_initial_height() -> void:
 	body.shape.height = STANDING_HEIGHT
 	mesh.mesh.height = STANDING_HEIGHT
-	update_head_position(STANDING_HEIGHT)
-
+	update_head_position()
 
 func update_player_height(new_height: float) -> void:
 	body.shape.height = new_height
 	mesh.mesh.height = new_height
-	update_head_position(new_height)
+	update_head_position()
 #endregion
 
 
@@ -76,7 +76,6 @@ func update_crouch() -> void:
 	var new_height = lerp(STANDING_HEIGHT, CROUCHING_HEIGHT, t)
 	update_player_height(new_height)
 
-
 func update_crouch_state() -> void:
 	if target_step == 0:
 		player.set_standing()
@@ -85,10 +84,11 @@ func update_crouch_state() -> void:
 	else:
 		player.set_crouching()
 
-
-func update_head_position(body_height: float) -> void:
-	head.position.y = (body_height / 2) + initial_head_offset
-
+func update_head_position() -> void:
+	var crouch_offset = (STANDING_HEIGHT - body.shape.height) / 2
+	var base_position = (STANDING_HEIGHT / 2) + initial_head_offset - crouch_offset
+	var jump_charge_offset = jump.get_charge_offset()
+	head.position.y = base_position + jump_charge_offset
 
 func get_crouch_percentage() -> float:
 	return current_step / CROUCH_STEPS
