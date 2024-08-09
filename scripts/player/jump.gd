@@ -1,6 +1,7 @@
 extends Node
 class_name PlayerJump
 
+
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var direction: PlayerDirection = %Direction
@@ -13,6 +14,7 @@ class_name PlayerJump
 #region JUMP CONSTANTS
 const JUMPING_SPEED: float = 7.0
 const JUMP_HEIGHT_VARIATION: float = 0.2
+const COYOTE_TIME: float = 0.15
 #endregion
 
 
@@ -42,6 +44,8 @@ const HEAD_CHARGE_OFFSET: float = 0.4
 #region JUMP VARIABLES
 var is_jump_requested: bool = false
 var jump_momentum: Vector3 = Vector3.ZERO
+var coyote_timer: float = 0.0
+var can_coyote_jump: bool = false
 #endregion
 
 
@@ -68,6 +72,7 @@ var rng = RandomNumberGenerator.new()
 #endregion
 #endregion
 
+
 #region SIGNALS
 signal jumped
 signal landed
@@ -85,37 +90,36 @@ func _physics_process(delta: float) -> void:
 	apply_momentum(delta)
 	ground_check()
 	update_head_position(delta)
+	update_coyote_time(delta)
 #endregion
 
 
 #region JUMP MECHANICS
 func start_charge() -> void:
-	if not player.is_jumping() and player.is_on_floor():
+	if (not player.is_jumping() and player.is_on_floor()) or can_coyote_jump:
 		is_charging = true
 		charge_start_time = Time.get_ticks_msec() / 1000.0
 		current_charge = 0.0
 
-
 func release_jump() -> void:
 	if is_charging:
-		if player.is_on_floor():
+		if player.is_on_floor() or can_coyote_jump:
 			is_jump_requested = true
 			horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
 			initial_speed = horizontal_momentum.length()
 			emit_signal("jumped")
+			can_coyote_jump = false
 		else:
 			cancel_jump()
 		is_charging = false
-
 
 func cancel_jump() -> void:
 	is_charging = false
 	current_charge = 0.0
 	update_head_position(0)
 
-
 func handle_jump() -> void:
-	if is_jump_requested and player.is_on_floor():
+	if is_jump_requested and (player.is_on_floor() or can_coyote_jump):
 		var charge_multiplier = 1.0 + (current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
 		
 		var jump_variation = 1.0 + rng.randf_range(-JUMP_HEIGHT_VARIATION, JUMP_HEIGHT_VARIATION)
@@ -127,6 +131,7 @@ func handle_jump() -> void:
 		player.set_jumping()
 		is_jump_requested = false
 		current_charge = 0.0
+		can_coyote_jump = false
 #endregion
 
 
@@ -155,14 +160,23 @@ func apply_momentum(delta: float) -> void:
 
 
 func ground_check() -> void:
-	if player.is_jumping() and player.is_on_floor() and direction.velocity_vector.y <= 0:
-		player.set_no_action()
-		jump_momentum = Vector3.ZERO
-		horizontal_momentum = Vector2.ZERO
-		initial_speed = 0.0
-		emit_signal("landed")
-	elif is_charging and not player.is_on_floor():
+	if player.is_on_floor():
+		if player.is_jumping() and direction.velocity_vector.y <= 0:
+			player.set_no_action()
+			jump_momentum = Vector3.ZERO
+			horizontal_momentum = Vector2.ZERO
+			initial_speed = 0.0
+			emit_signal("landed")
+		can_coyote_jump = true
+		coyote_timer = 0.0
+	elif is_charging and not player.is_on_floor() and not can_coyote_jump:
 		cancel_jump()
+
+func update_coyote_time(delta: float) -> void:
+	if not player.is_on_floor() and can_coyote_jump:
+		coyote_timer += delta
+		if coyote_timer >= COYOTE_TIME:
+			can_coyote_jump = false
 #endregion
 
 
