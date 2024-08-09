@@ -72,8 +72,8 @@ func apply_head_bob(delta: float) -> void:
 	var y_offset = sin(bob_time) * current_amplitude
 	var x_offset = cos(bob_time * 0.5) * current_amplitude * X_FACTOR
 	
-	y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
-	x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
+	#y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
+	#x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
 	
 	current_offset = Vector3(x_offset, y_offset, 0)
 

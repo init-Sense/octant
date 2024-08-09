@@ -20,10 +20,11 @@ sky = SubResource("Sky_ke064")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
-ssao_intensity = 5.0
-ssao_power = 0.8
-ssao_detail = 1.0
-ssao_light_affect = 0.5
+ssao_power = 0.95592
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.19
+glow_bloom = 0.5
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.0743
@@ -31,7 +32,7 @@ fog_density = 0.0743
 [node name="Octagon" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_hw2qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37652, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3765, -29)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -44,11 +45,16 @@ environment = SubResource("Environment_yuqp5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(0.608349, -0.513903, 0.604826, 0.259053, 0.848898, 0.460722, -0.750202, -0.123598, 0.649554, 0, 3.42767, 0)
+visible = false
 light_energy = 1.5
 shadow_enabled = true
-shadow_bias = 0.05
+shadow_bias = 0.0
 shadow_blur = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -38.6295)
 light_energy = 6.189
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
+visible = false
+light_energy = 3.282

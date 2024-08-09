@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dsqlaaa7ogbqu"
-path="res://.godot/imported/column.glb-8779b009e68ed568e471d730251c5710.scn"
+uid="uid://lels5yj7mcip"
+path="res://.godot/imported/stairs.glb-13a328e5b880521cf7dfa32a4e0250ad.scn"
 
 [deps]
 
-source_file="res://assets/models/column.glb"
-dest_files=["res://.godot/imported/column.glb-8779b009e68ed568e471d730251c5710.scn"]
+source_file="res://assets/models/stairs.glb"
+dest_files=["res://.godot/imported/stairs.glb-13a328e5b880521cf7dfa32a4e0250ad.scn"]
 
 [params]
 
@@ -19,16 +19,16 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}

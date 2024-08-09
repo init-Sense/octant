@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccwt6ib0jvshx"]
 
 [ext_resource type="PackedScene" uid="uid://dognb6in18kwm" path="res://assets/models/door.glb" id="1_vqal7"]
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column.glb" id="2_aj648"]
+[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column_wall.glb" id="2_aj648"]
 
 [node name="Wall" type="Node3D"]
 
 [node name="Door" parent="." instance=ExtResource("1_vqal7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
 
-[node name="Column" parent="." instance=ExtResource("2_aj648")]
+[node name="ColumnWall" parent="." instance=ExtResource("2_aj648")]
 transform = Transform3D(0.994522, 0, 0.104528, 0, 1, 0, -0.104528, 0, 0.994522, 16.6404, 0, -40)

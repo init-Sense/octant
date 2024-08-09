@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctxt0i4jj4s4"]
 
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column.glb" id="1_71o6h"]
+[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column_wall.glb" id="1_71o6h"]
 
 [node name="CentralColumns" type="Node3D"]
 
