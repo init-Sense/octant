@@ -19,8 +19,6 @@ const DOUBLE_TAP_WINDOW: float = 0.3
 #region VARIABLES
 var last_sprint_tap_time: float = 0.0
 var sprint_tap_count: int = 0
-var left_mouse_pressed: bool = false
-var right_mouse_pressed: bool = false
 var is_jumping: bool = false
 var was_moving_forward: bool = false
 #endregion
@@ -38,27 +36,23 @@ func _input(event) -> void:
 
 
 #region JUMP HANDLING
-func handle_jump_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			left_mouse_pressed = event.pressed
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			right_mouse_pressed = event.pressed
+func handle_jump_input(_event: InputEvent) -> void:	
+	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
+		is_jumping = true
+		jump.start_charge()
+		was_moving_forward = Input.is_action_pressed("move_forward")
 		
-		if left_mouse_pressed and right_mouse_pressed:
-			is_jumping = true
-			jump.start_charge()
-			was_moving_forward = Input.is_action_pressed("move_forward")
-			if not was_moving_forward:
-				direction.still()
-				motion.stop_moving()
-			motion.stop_running()
-		elif not left_mouse_pressed or not right_mouse_pressed:
-			is_jumping = false
-			jump.release_jump()
-			if not Input.is_action_pressed("move_forward"):
-				direction.still()
-				motion.stop_moving()
+		if not was_moving_forward:
+			direction.still()
+			motion.stop_moving()
+		motion.stop_running()
+	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
+		is_jumping = false
+		jump.release_jump()
+		
+		if not Input.is_action_pressed("move_forward"):
+			direction.still()
+			motion.stop_moving()
 
 
 func handle_movement_during_jump(_event: InputEvent) -> void:
