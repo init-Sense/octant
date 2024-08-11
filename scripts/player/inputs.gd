@@ -111,7 +111,7 @@ func start_sprint() -> void:
 
 
 #region CROUCH HANDLING
-func handle_crouch_input(event: InputEvent) -> void:
+func handle_crouch_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed('crouch_up'):
 		crouch.up()
 	elif Input.is_action_pressed('crouch_down'):
