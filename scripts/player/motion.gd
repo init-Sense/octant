@@ -92,8 +92,6 @@ func update_sneaking_speed() -> void:
 	var speed_range = WALKING_SPEED - SNEAKING_SPEED
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
 
-func handle_crouch_change() -> void:
-	update_movement_state()
 
 func update_movement_state() -> void:
 	if is_moving:
@@ -111,15 +109,6 @@ func update_walk_timer(delta: float) -> void:
 		walk_timer += delta
 		if walk_timer >= WALK_DELAY:
 			walk()
-#endregion
-
-
-#region CROUCH CHECK
-func on_crouch_changed() -> void:
-	handle_crouch_change()
-
-func on_stand_changed() -> void:
-	handle_crouch_change()
 #endregion
 
 

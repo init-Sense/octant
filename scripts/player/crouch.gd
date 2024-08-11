@@ -60,14 +60,14 @@ func down() -> void:
 	if target_step < CROUCH_STEPS:
 		target_step += 1
 		update_crouch_state()
-		motion.on_crouch_changed()
+		motion.update_movement_state()
 
 
 func up() -> void:
 	if target_step > 0:
 		target_step -= 1
 		update_crouch_state()
-		motion.on_crouch_changed()
+		motion.update_movement_state()
 
 
 #region CROUCH LIFECYCLE

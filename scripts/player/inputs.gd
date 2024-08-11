@@ -88,7 +88,7 @@ func handle_movement_input(_event: InputEvent) -> void:
 
 #region SPRINT HANDLING
 func handle_sprint_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("sprint"):
+	if Input.is_action_just_pressed("run"):
 		var current_time = Time.get_ticks_msec() / 1000.0
 		
 		if current_time - last_sprint_tap_time <= DOUBLE_TAP_WINDOW:
@@ -100,7 +100,7 @@ func handle_sprint_input(_event: InputEvent) -> void:
 			sprint_tap_count = 1
 		
 		last_sprint_tap_time = current_time
-	elif Input.is_action_just_released("sprint"):
+	elif Input.is_action_just_released("run"):
 		motion.stop_running() 
 
 
@@ -112,16 +112,10 @@ func start_sprint() -> void:
 
 #region CROUCH HANDLING
 func handle_crouch_input(event: InputEvent) -> void:
-	if Input.is_action_pressed('debug_crouch_up'):
+	if Input.is_action_pressed('crouch_up'):
 		crouch.up()
-	elif Input.is_action_pressed('debug_crouch_down'):
+	elif Input.is_action_pressed('crouch_down'):
 		if player.is_running():
 			motion.stop_running()
 		crouch.down()
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			crouch.up()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			crouch.down()
 #endregion
