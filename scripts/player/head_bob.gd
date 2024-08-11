@@ -18,7 +18,7 @@ const FREQUENCY_FACTOR: float = 0.4
 const RESET_SPEED: float = 1.0
 const CAMERA_HEIGHT: float = 0.5
 const X_FACTOR: float = 0.6
-const NOISE_STRENGTH: float = 0.05
+const NOISE_STRENGTH: float = 0.03
 #endregion
 
 #region LANDING CONSTANTS
@@ -27,6 +27,12 @@ const MAX_LANDING_IMPACT_AMPLITUDE: float = 0.15
 const LANDING_IMPACT_DURATION: float = 0.2
 const LANDING_RESET_SPEED: float = 2.0
 const MAX_IMPACT_HEIGHT: float = 10.0
+#endregion
+
+#region IDLE MOVEMENT CONSTANTS
+const IDLE_AMPLITUDE: float = 0.02
+const IDLE_FREQUENCY: float = 0.4
+const IDLE_NOISE_STRENGTH: float = 0.15
 #endregion
 #endregion
 
@@ -49,6 +55,11 @@ var max_jump_height: float = 0.0
 var jump_start_height: float = 0.0
 var current_landing_impact_amplitude: float = BASE_LANDING_IMPACT_AMPLITUDE
 #endregion
+
+#region IDLE MOVEMENT VARIABLES
+var idle_time: float = 0.0
+var idle_offset: Vector3 = Vector3.ZERO
+#endregion
 #endregion
 
 
@@ -60,7 +71,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	handle_head_bob(delta)
+	if player.is_moving() and not player.is_jumping():
+		handle_head_bob(delta)
+	elif is_bobbing:
+		smooth_reset_head_bob(delta)
+	else:
+		apply_idle_movement(delta)
+	
 	handle_landing(delta)
 	update_camera_position()
 #endregion
@@ -68,10 +85,7 @@ func _physics_process(delta: float) -> void:
 
 #region HEAD BOB METHODS
 func handle_head_bob(delta: float) -> void:
-	if player.is_moving() and not player.is_jumping():
-		apply_head_bob(delta)
-	elif is_bobbing:
-		smooth_reset_head_bob(delta)
+	apply_head_bob(delta)
 
 
 func apply_head_bob(delta: float) -> void:
@@ -80,10 +94,11 @@ func apply_head_bob(delta: float) -> void:
 	var y_offset = sin(bob_time) * current_amplitude
 	var x_offset = cos(bob_time * 0.5) * current_amplitude * X_FACTOR
 	
-	#y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
-	#x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
+	y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
+	x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
 	
 	current_offset = Vector3(x_offset, y_offset, 0)
+	is_bobbing = true
 
 
 func smooth_reset_head_bob(delta: float) -> void:
@@ -143,7 +158,22 @@ func smooth_reset_landing_impact(delta: float) -> void:
 #endregion
 
 
+#region IDLE MOVEMENT METHODS
+func apply_idle_movement(delta: float) -> void:
+	idle_time += delta
+	
+	var base_y_offset = sin(idle_time * IDLE_FREQUENCY) * IDLE_AMPLITUDE
+	var base_x_offset = cos(idle_time * IDLE_FREQUENCY * 0.7) * IDLE_AMPLITUDE * 0.5
+	
+	var noise_x = noise.get_noise_1d(idle_time * 5) * IDLE_NOISE_STRENGTH
+	var noise_y = noise.get_noise_1d(idle_time * 5 + 100) * IDLE_NOISE_STRENGTH
+	
+	idle_offset = Vector3(base_x_offset + noise_x, base_y_offset + noise_y, 0)
+#endregion
+
+
 #region CAMERA UPDATE
 func update_camera_position() -> void:
-	camera.position = Vector3(current_offset.x, CAMERA_HEIGHT + current_offset.y + landing_offset, current_offset.z)
+	var total_offset = current_offset + idle_offset
+	camera.position = Vector3(total_offset.x, CAMERA_HEIGHT + total_offset.y + landing_offset, total_offset.z)
 #endregion
