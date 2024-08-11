@@ -1,13 +1,12 @@
 extends Camera3D
 class_name PlayerCamera
 
-
 #region VARIABLES
 @export var mouse_sensitivity_x: float = 0.1
 @export var mouse_sensitivity_y: float = 0.002
 @export var invert_y: bool = false
 @export var smoothness: float = 0.1
-
+@export var default_fov: float = 90.0
 var rotation_x: float = 0
 var target_rotation: Vector3
 #endregion
@@ -17,6 +16,7 @@ var target_rotation: Vector3
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target_rotation = rotation
+	fov = default_fov
 #endregion
 
 
@@ -66,4 +66,10 @@ func set_camera_rotation(new_rotation: Vector3):
 func set_sensitivity(x: float, y: float):
 	mouse_sensitivity_x = x
 	mouse_sensitivity_y = y
+#endregion
+
+
+#region FOV
+func reset_fov():
+	fov = default_fov
 #endregion

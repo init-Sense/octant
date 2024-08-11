@@ -61,7 +61,7 @@ func handle_jump_input(event: InputEvent) -> void:
 				motion.stop_moving()
 
 
-func handle_movement_during_jump(event: InputEvent) -> void:
+func handle_movement_during_jump(_event: InputEvent) -> void:
 	if Input.is_action_pressed("move_forward") or was_moving_forward:
 		direction.forward()
 		motion.start_moving()
@@ -72,7 +72,7 @@ func handle_movement_during_jump(event: InputEvent) -> void:
 
 
 #region MOVEMENT HANDLING
-func handle_movement_input(event: InputEvent) -> void:
+func handle_movement_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("move_forward"):
 		direction.forward()
 		motion.start_moving()
@@ -87,7 +87,7 @@ func handle_movement_input(event: InputEvent) -> void:
 
 
 #region SPRINT HANDLING
-func handle_sprint_input(event: InputEvent) -> void:
+func handle_sprint_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("sprint"):
 		var current_time = Time.get_ticks_msec() / 1000.0
 		
