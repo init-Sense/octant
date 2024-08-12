@@ -18,7 +18,7 @@ const DECELERATION: float = 15.0
 const MAX_FOV_CHANGE: float = 12.0
 const FOV_TRANSITION_SPEED: float = 50.0
 const FOV_RESET_THRESHOLD: float = 0.1
-const WALK_DELAY: float = 0.1
+const WALK_DELAY: float = 0.2
 #endregion
 
 
