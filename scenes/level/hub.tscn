@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bth122y6serpa"]
+[gd_scene load_steps=10 format=3 uid="uid://bth122y6serpa"]
 
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://scenes/level/wall.tscn" id="1_mm148"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/hub_floor.glb" id="3_bu1ib"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://scenes/level/pool.tscn" id="6_w0lqu"]
 [ext_resource type="PackedScene" uid="uid://came0orlh5e0u" path="res://scenes/level/column_sphere.tscn" id="7_6rd6f"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://scenes/level/stairs.tscn" id="7_w6sy5"]
+[ext_resource type="PackedScene" uid="uid://btuwttqwlnc4e" path="res://scenes/level/corridor.tscn" id="8_vnct2"]
+[ext_resource type="PackedScene" uid="uid://bk238qv21nsvm" path="res://assets/models/hub_roof.glb" id="9_4enfk"]
 
 [node name="Hub" type="Node3D"]
 
@@ -138,3 +140,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)
 
 [node name="hub_floor" parent="." instance=ExtResource("3_bu1ib")]
+
+[node name="Corridor" parent="." instance=ExtResource("8_vnct2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.8, 0, 0)
+
+[node name="hub_roof" parent="." instance=ExtResource("9_4enfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.7, 0)

@@ -10,10 +10,10 @@
 [node name="Pool" parent="." instance=ExtResource("1_0ooii")]
 
 [node name="ColumnOuter_L" parent="." instance=ExtResource("2_wbgnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.132, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8665, 0, -3)
 
 [node name="ColumnOuter_R" parent="." instance=ExtResource("2_wbgnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.128, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8625, 0, 3)
 
 [node name="PoolWater" parent="." instance=ExtResource("3_iir4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
