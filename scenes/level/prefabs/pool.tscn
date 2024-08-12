@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cskl5bbc4k05v"]
+
+[ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/pool.glb" id="1_0ooii"]
+[ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="2_wbgnn"]
+[ext_resource type="PackedScene" uid="uid://f4l11amraffi" path="res://assets/models/pool_water.glb" id="3_iir4r"]
+[ext_resource type="PackedScene" uid="uid://dyne314wtm6us" path="res://scenes/level/prefabs/columns/column_pool.tscn" id="4_bqy4h"]
+
+[node name="Pool" type="Node3D"]
+
+[node name="Pool" parent="." instance=ExtResource("1_0ooii")]
+
+[node name="ColumnOuter_L" parent="." instance=ExtResource("2_wbgnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8665, 0, -3)
+
+[node name="ColumnOuter_R" parent="." instance=ExtResource("2_wbgnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8625, 0, 3)
+
+[node name="PoolWater" parent="." instance=ExtResource("3_iir4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+
+[node name="Columns" type="Node3D" parent="."]
+
+[node name="ColumnPool_1" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, -7.4)
+
+[node name="ColumnPool_5" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 0, -3)
+
+[node name="ColumnPool_6" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 0, 3)
+
+[node name="ColumnPool_2" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, 7.4)
+
+[node name="ColumnPool_3" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -7.4)
+
+[node name="ColumnPool_4" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 7.4)
+
+[node name="ColumnPool_7" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -4.8)
+
+[node name="ColumnPool_8" parent="Columns" instance=ExtResource("4_bqy4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 4.8)

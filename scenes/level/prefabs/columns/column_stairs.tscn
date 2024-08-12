@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://claexohxvbssh"]
+
+[ext_resource type="PackedScene" uid="uid://dmftuq1vpiqy8" path="res://assets/models/columns/column_stairs.glb" id="1_sg6e3"]
+
+[node name="ColumnStairs" type="Node3D"]
+
+[node name="column_stairs" parent="." instance=ExtResource("1_sg6e3")]
