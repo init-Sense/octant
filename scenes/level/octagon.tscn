@@ -43,18 +43,6 @@ environment = SubResource("Environment_yuqp5")
 
 [node name="Lighting" type="Node3D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(0.608349, -0.513903, 0.604826, 0.259053, 0.848898, 0.460722, -0.750202, -0.123598, 0.649554, 0, 3.42767, 0)
-visible = false
-light_energy = 1.5
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_blur = 2.0
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -38.6295)
 light_energy = 6.189
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
-visible = false
-light_energy = 3.282

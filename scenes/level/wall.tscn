@@ -1,44 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccwt6ib0jvshx"]
+[gd_scene load_steps=9 format=3 uid="uid://ccwt6ib0jvshx"]
 
 [ext_resource type="PackedScene" uid="uid://dognb6in18kwm" path="res://assets/models/door.glb" id="1_vqal7"]
 [ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/column_wall.glb" id="2_aj648"]
 [ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/door_entrance.glb" id="2_ninu8"]
-[ext_resource type="PackedScene" uid="uid://btuwttqwlnc4e" path="res://scenes/level/corridor.tscn" id="3_3g7in"]
-[ext_resource type="PackedScene" uid="uid://d4amm7eqipb2t" path="res://assets/models/corridor_floor.glb" id="4_fbnxd"]
 [ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/corridor_vault.glb" id="4_w3wxt"]
+[ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/door_polygon.glb" id="5_o28wp"]
+
+[sub_resource type="Animation" id="Animation_k4vun"]
+resource_name = "rotation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2fn5g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4wiy"]
+_data = {
+"RESET": SubResource("Animation_2fn5g"),
+"rotation": SubResource("Animation_k4vun")
+}
 
 [node name="Wall" type="Node3D"]
 
-[node name="Door" parent="." instance=ExtResource("1_vqal7")]
+[node name="corridor_vault" parent="." instance=ExtResource("4_w3wxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.7968)
+
+[node name="door" parent="." instance=ExtResource("1_vqal7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
 
-[node name="door_entrance" parent="Door" instance=ExtResource("2_ninu8")]
+[node name="door_entrance" parent="." instance=ExtResource("2_ninu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
 
 [node name="ColumnWall" parent="." instance=ExtResource("2_aj648")]
 transform = Transform3D(0.994522, 0, 0.104528, 0, 1, 0, -0.104528, 0, 0.994522, 16.6404, 0, -40)
 
-[node name="Corridor" type="Node3D" parent="."]
+[node name="Polygon" type="Node3D" parent="."]
 
-[node name="Corridor_1" parent="Corridor" instance=ExtResource("3_3g7in")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -53)
+[node name="door_polygon" parent="Polygon" instance=ExtResource("5_o28wp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.93672, -42.6105)
 
-[node name="Corridor_2" parent="Corridor" instance=ExtResource("3_3g7in")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -63.5492)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Polygon/door_polygon"]
+libraries = {
+"": SubResource("AnimationLibrary_i4wiy")
+}
+autoplay = "rotation"
+speed_scale = 0.3
 
-[node name="Corridor_3" parent="Corridor" instance=ExtResource("3_3g7in")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -74.1259)
-
-[node name="Corridor_4" parent="Corridor" instance=ExtResource("3_3g7in")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -84.69)
-
-[node name="Corridor_5" parent="Corridor" instance=ExtResource("3_3g7in")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -95.2616)
-
-[node name="corridor_floor_1" parent="Corridor" instance=ExtResource("4_fbnxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
-
-[node name="corridor_floor_2" parent="Corridor" instance=ExtResource("4_fbnxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
-
-[node name="corridor_vault" parent="." instance=ExtResource("4_w3wxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.7968)
+[node name="OmniLight3D" type="OmniLight3D" parent="Polygon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -41.4584)
+light_color = Color(1, 0.460201, 0.591338, 1)
+light_energy = 2.0
