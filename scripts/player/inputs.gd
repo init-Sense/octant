@@ -1,7 +1,6 @@
 extends Node
 class_name PlayerInputs
 
-
 #region NODES
 @onready var direction: PlayerDirection = %Direction
 @onready var motion: PlayerMotion = %Motion
@@ -10,17 +9,14 @@ class_name PlayerInputs
 @onready var player: CharacterBody3D = $"../.."
 #endregion
 
-
 #region CONSTANTS
 const DOUBLE_TAP_WINDOW: float = 0.3
 #endregion
-
 
 #region VARIABLES
 var last_sprint_tap_time: float = 0.0
 var sprint_tap_count: int = 0
 var is_jumping: bool = false
-var was_moving_forward: bool = false
 #endregion
 
 
@@ -38,24 +34,28 @@ func _input(_event) -> void:
 #region JUMP HANDLING
 func handle_jump_input() -> void:    
 	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
-		is_jumping = true
-		jump.start_charge()
-		was_moving_forward = Input.is_action_pressed("move_forward")
-		
-		if not was_moving_forward:
-			direction.still()
+		if not is_jumping:
+			is_jumping = true
+			jump.start_charge()
+			if Input.is_action_pressed("move_forward") and player.is_forward():
+				direction.forward()
+			elif Input.is_action_pressed("move_backward") and player.is_backward():
+				direction.backward()
+			else:
+				direction.still()
 			motion.stop_running()
 	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
 		is_jumping = false
 		jump.release_jump()
 		
-		if not Input.is_action_pressed("move_forward"):
+		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
 			direction.still()
 
-
 func handle_movement_during_jump() -> void:
-	if Input.is_action_pressed("move_forward") or was_moving_forward:
+	if Input.is_action_pressed("move_forward") and player.is_forward():
 		direction.forward()
+	elif Input.is_action_pressed("move_backward") and player.is_backward():
+		direction.backward()
 	else:
 		direction.still()
 #endregion
@@ -90,7 +90,6 @@ func handle_sprint_input() -> void:
 		last_sprint_tap_time = current_time
 	elif Input.is_action_just_released("run"):
 		motion.stop_running() 
-
 
 func start_sprint() -> void:
 	if not player.is_crouching():
