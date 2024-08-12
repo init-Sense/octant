@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b77afiips05e2"
-path="res://.godot/imported/column_outer.glb-caaf40d0741914d0d8d5290fc205f4a7.scn"
+uid="uid://h682cudtrt30"
+path="res://.godot/imported/stairs_slope.glb-ecbea44e8520184c5f060a1fe6ad5fd1.scn"
 
 [deps]
 
-source_file="res://assets/models/column_outer.glb"
-dest_files=["res://.godot/imported/column_outer.glb-caaf40d0741914d0d8d5290fc205f4a7.scn"]
+source_file="res://assets/models/stairs_slope.glb"
+dest_files=["res://.godot/imported/stairs_slope.glb-ecbea44e8520184c5f060a1fe6ad5fd1.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"ColumnOuter": {
-"use_external/enabled": false,
-"use_external/path": "res://assets/materials/stairs.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

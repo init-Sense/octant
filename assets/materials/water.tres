@@ -7,7 +7,7 @@
 render_priority = 0
 shader = ExtResource("1_22cvw")
 shader_parameter/water_color = Color(1.34766e-06, 0.760954, 0.484179, 1)
-shader_parameter/uv_scale = 2.0
+shader_parameter/uv_scale = 4.0
 shader_parameter/time_scale = 1.0
 shader_parameter/normal = 0.5
 shader_parameter/roughness = 0.3

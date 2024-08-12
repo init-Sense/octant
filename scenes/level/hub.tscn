@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bey8gsrtmdss2" path="res://assets/models/hub_floor.glb" id="3_bu1ib"]
 [ext_resource type="PackedScene" uid="uid://jju1c84c67ya" path="res://scenes/level/column_inner.tscn" id="3_yuyl5"]
 [ext_resource type="PackedScene" uid="uid://c4huw1caufmkp" path="res://scenes/level/column_outer.tscn" id="4_d3pkk"]
-[ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/stairs.glb" id="6_ubd5h"]
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://scenes/level/pool.tscn" id="6_w0lqu"]
 [ext_resource type="PackedScene" uid="uid://came0orlh5e0u" path="res://scenes/level/column_sphere.tscn" id="7_6rd6f"]
+[ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://scenes/level/stairs.tscn" id="7_w6sy5"]
 
 [node name="Hub" type="Node3D"]
 
@@ -90,12 +90,8 @@ transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -9.536
 [node name="ColumnOuter_8" parent="ColumnsOuter" instance=ExtResource("4_d3pkk")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.3848, 0, -18.3848)
 
-[node name="Stairs" type="Node3D" parent="."]
-
-[node name="stairs" parent="Stairs" instance=ExtResource("6_ubd5h")]
-
 [node name="Pool" parent="." instance=ExtResource("6_w0lqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.226, -0.852103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.226, -0.00274444, 0)
 
 [node name="ColumnSpheres" type="Node3D" parent="."]
 
@@ -128,3 +124,17 @@ transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545,
 
 [node name="ColumnSphere9" parent="ColumnSpheres" instance=ExtResource("7_6rd6f")]
 transform = Transform3D(5.09545, 0, -1.36532, 0, 5.2752, 0, 1.36532, 0, 5.09545, -121.18, -148, -24.1021)
+
+[node name="Staircase" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="Stairs_1" parent="Staircase" instance=ExtResource("7_w6sy5")]
+
+[node name="Stairs_2" parent="Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+
+[node name="Stairs_3" parent="Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="Stairs_4" parent="Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)

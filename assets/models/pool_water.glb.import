@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b77afiips05e2"
-path="res://.godot/imported/column_outer.glb-caaf40d0741914d0d8d5290fc205f4a7.scn"
+uid="uid://f4l11amraffi"
+path="res://.godot/imported/pool_water.glb-0e0ace85ab0fae543741e60e9ec4f19e.scn"
 
 [deps]
 
-source_file="res://assets/models/column_outer.glb"
-dest_files=["res://.godot/imported/column_outer.glb-caaf40d0741914d0d8d5290fc205f4a7.scn"]
+source_file="res://assets/models/pool_water.glb"
+dest_files=["res://.godot/imported/pool_water.glb-0e0ace85ab0fae543741e60e9ec4f19e.scn"]
 
 [params]
 
@@ -19,23 +19,28 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=false
+meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"ColumnOuter": {
-"use_external/enabled": false,
-"use_external/path": "res://assets/materials/stairs.tres"
+"Water": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/water.tres"
+}
+},
+"nodes": {
+"PATH:PoolWater": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }

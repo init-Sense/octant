@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode cull_disabled; // Disable face culling to render both sides
 
 uniform vec3 water_color : source_color;
-uniform float uv_scale : hint_range(0.0, 80.0, 1) = 2.0;
+uniform float uv_scale : hint_range(0.0, 80.0, 1) = 4.0;
 uniform float time_scale : hint_range(0.0, 2.0, 0.25) = 1.0;
 uniform sampler2D water_normal_texture;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable;
