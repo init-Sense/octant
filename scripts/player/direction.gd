@@ -13,6 +13,7 @@ const MIN_SPEED_FACTOR: float = 0.5
 var velocity_vector: Vector3 = Vector3.ZERO
 var current_speed: float = DEFAULT_SPEED
 var target_velocity: Vector3 = Vector3.ZERO
+var input_dir: Vector3 = Vector3.ZERO
 #endregion
 
 
@@ -32,13 +33,6 @@ func _physics_process(delta) -> void:
 
 #region MOVEMENT
 func set_movement_velocity(delta) -> void:
-	var input_dir = Vector3.ZERO
-	if player.is_forward():
-		input_dir -= camera.global_transform.basis.z
-	elif player.is_backward():
-		input_dir += camera.global_transform.basis.z
-	
-	input_dir.y = 0
 	input_dir = input_dir.normalized()
 	
 	var speed_modifier = calculate_tilt_speed_modifier()
@@ -65,16 +59,25 @@ func get_movement_velocity() -> Vector3:
 
 
 func forward() -> void:
+	input_dir = -camera.global_transform.basis.z
+	input_dir.y = 0
 	player.set_forward()
 
 
 func backward() -> void:
+	input_dir = camera.global_transform.basis.z
+	input_dir.y = 0
 	player.set_backward()
 
 
 func still() -> void:
-	player.set_still()
+	input_dir = Vector3.ZERO
 	target_velocity = Vector3.ZERO
+	player.set_still()
+
+
+func get_input_dir() -> Vector3:
+	return input_dir
 #endregion
 
 

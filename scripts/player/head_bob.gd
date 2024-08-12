@@ -71,7 +71,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if player.is_moving() and not player.is_jumping():
+	if player.has_direction() and not player.is_jumping():
 		handle_head_bob(delta)
 	elif is_bobbing:
 		smooth_reset_head_bob(delta)

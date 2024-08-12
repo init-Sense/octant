@@ -1,6 +1,7 @@
 extends Node
 class_name PlayerInputs
 
+
 #region NODES
 @onready var direction: PlayerDirection = %Direction
 @onready var motion: PlayerMotion = %Motion
@@ -9,9 +10,11 @@ class_name PlayerInputs
 @onready var player: CharacterBody3D = $"../.."
 #endregion
 
+
 #region CONSTANTS
 const DOUBLE_TAP_WINDOW: float = 0.3
 #endregion
+
 
 #region VARIABLES
 var last_sprint_tap_time: float = 0.0
@@ -20,7 +23,7 @@ var is_jumping: bool = false
 #endregion
 
 
-func _input(_event) -> void:
+func _input(event) -> void:
 	handle_jump_input()
 	
 	if is_jumping:
@@ -50,6 +53,7 @@ func handle_jump_input() -> void:
 		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
 			direction.still()
 
+
 func handle_movement_during_jump() -> void:
 	if Input.is_action_pressed("move_forward") and player.is_forward():
 		direction.forward()
@@ -64,12 +68,12 @@ func handle_movement_during_jump() -> void:
 func handle_movement_input() -> void:
 	if Input.is_action_pressed("move_forward"):
 		direction.forward()
-		motion.start_moving()
 	elif Input.is_action_pressed("move_backward"):
 		direction.backward()
-		motion.start_moving()
 	else:
 		direction.still()
+	
+	motion.update_movement_state()
 #endregion
 
 
@@ -81,18 +85,14 @@ func handle_sprint_input() -> void:
 		if current_time - last_sprint_tap_time <= DOUBLE_TAP_WINDOW:
 			sprint_tap_count += 1
 			if sprint_tap_count == 2:
-				start_sprint()
+				motion.start_sprint()
 				sprint_tap_count = 0
 		else:
 			sprint_tap_count = 1
 		
 		last_sprint_tap_time = current_time
 	elif Input.is_action_just_released("run"):
-		motion.stop_running() 
-
-func start_sprint() -> void:
-	if not player.is_crouching():
-		motion.run()
+		motion.stop_sprint()
 #endregion
 
 
@@ -101,7 +101,6 @@ func handle_crouch_input() -> void:
 	if Input.is_action_pressed('crouch_up'):
 		crouch.up()
 	elif Input.is_action_pressed('crouch_down'):
-		if player.is_running():
-			motion.stop_running()
 		crouch.down()
+		motion.stop_sprint()
 #endregion

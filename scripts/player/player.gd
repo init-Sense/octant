@@ -196,7 +196,7 @@ func is_still() -> bool:
 	return direction_state == Direction.STILL
 
 
-func is_moving() -> bool:
+func has_direction() -> bool:
 	return direction_state in [Direction.FORWARD, Direction.BACKWARD]
 
 
@@ -225,6 +225,9 @@ func is_sneaking() -> bool:
 func is_running() -> bool:
 	return motion_state == Motion.RUNNING
 
+
+func in_motion() -> bool:
+	return motion_state in [Motion.WALKING, Motion.SNEAKING, Motion.RUNNING]
 #endregion
 
 
