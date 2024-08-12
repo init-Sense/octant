@@ -43,7 +43,6 @@ func handle_jump_input() -> void:
 				direction.backward()
 			else:
 				direction.still()
-			motion.stop_running()
 	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
 		is_jumping = false
 		jump.release_jump()
