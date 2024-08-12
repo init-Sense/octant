@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://btuwttqwlnc4e"]
+
+[ext_resource type="PackedScene" uid="uid://dkwr1almp3pud" path="res://assets/models/corridor.glb" id="1_ku8yy"]
+[ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/corridor_vault.glb" id="2_uxgmg"]
+
+[node name="Corridor" type="Node3D"]
+
+[node name="corridor" parent="." instance=ExtResource("1_ku8yy")]
+
+[node name="corridor_vault" parent="." instance=ExtResource("2_uxgmg")]

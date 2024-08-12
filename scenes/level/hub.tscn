@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bth122y6serpa"]
 
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://scenes/level/wall.tscn" id="1_mm148"]
-[ext_resource type="PackedScene" uid="uid://bey8gsrtmdss2" path="res://assets/models/hub_floor.glb" id="3_bu1ib"]
+[ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/hub_floor.glb" id="3_bu1ib"]
 [ext_resource type="PackedScene" uid="uid://jju1c84c67ya" path="res://scenes/level/column_inner.tscn" id="3_yuyl5"]
 [ext_resource type="PackedScene" uid="uid://c4huw1caufmkp" path="res://scenes/level/column_outer.tscn" id="4_d3pkk"]
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://scenes/level/pool.tscn" id="6_w0lqu"]
@@ -34,8 +34,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Wall_8" parent="Walls" instance=ExtResource("1_mm148")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-
-[node name="HubFloor" parent="." instance=ExtResource("3_bu1ib")]
 
 [node name="ColumnsInner" type="Node3D" parent="."]
 
@@ -91,7 +89,7 @@ transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -9.536
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.3848, 0, -18.3848)
 
 [node name="Pool" parent="." instance=ExtResource("6_w0lqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.226, -0.00274444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.326, -0.00274444, 0)
 
 [node name="ColumnSpheres" type="Node3D" parent="."]
 
@@ -138,3 +136,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="Stairs_4" parent="Staircase" instance=ExtResource("7_w6sy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)
+
+[node name="hub_floor" parent="." instance=ExtResource("3_bu1ib")]

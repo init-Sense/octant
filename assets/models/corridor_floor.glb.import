@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c0vuxkseu3v47"
-path="res://.godot/imported/hub_floor.glb-a10aae24484a1c4f5ae075104340d22c.scn"
+uid="uid://d4amm7eqipb2t"
+path="res://.godot/imported/corridor_floor.glb-e9504dad8c86ac21441fc8ce9c939bda.scn"
 
 [deps]
 
-source_file="res://assets/models/hub_floor.glb"
-dest_files=["res://.godot/imported/hub_floor.glb-a10aae24484a1c4f5ae075104340d22c.scn"]
+source_file="res://assets/models/corridor_floor.glb"
+dest_files=["res://.godot/imported/corridor_floor.glb-e9504dad8c86ac21441fc8ce9c939bda.scn"]
 
 [params]
 
