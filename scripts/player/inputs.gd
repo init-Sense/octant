@@ -24,19 +24,19 @@ var was_moving_forward: bool = false
 #endregion
 
 
-func _input(event) -> void:
-	handle_jump_input(event)
+func _input(_event) -> void:
+	handle_jump_input()
 	
 	if is_jumping:
-		handle_movement_during_jump(event)
+		handle_movement_during_jump()
 	else:
-		handle_movement_input(event)
-		handle_sprint_input(event)
-		handle_crouch_input(event)
+		handle_movement_input()
+		handle_sprint_input()
+		handle_crouch_input()
 
 
 #region JUMP HANDLING
-func handle_jump_input(_event: InputEvent) -> void:	
+func handle_jump_input() -> void:    
 	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
 		is_jumping = true
 		jump.start_charge()
@@ -44,44 +44,38 @@ func handle_jump_input(_event: InputEvent) -> void:
 		
 		if not was_moving_forward:
 			direction.still()
-			motion.stop_moving()
-		motion.stop_running()
+			motion.stop_running()
 	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
 		is_jumping = false
 		jump.release_jump()
 		
 		if not Input.is_action_pressed("move_forward"):
 			direction.still()
-			motion.stop_moving()
 
 
-func handle_movement_during_jump(_event: InputEvent) -> void:
+func handle_movement_during_jump() -> void:
 	if Input.is_action_pressed("move_forward") or was_moving_forward:
 		direction.forward()
-		motion.start_moving()
 	else:
 		direction.still()
-		motion.stop_moving()
 #endregion
 
 
 #region MOVEMENT HANDLING
-func handle_movement_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("move_forward"):
+func handle_movement_input() -> void:
+	if Input.is_action_pressed("move_forward"):
 		direction.forward()
 		motion.start_moving()
-	if Input.is_action_just_pressed("move_backward"):
+	elif Input.is_action_pressed("move_backward"):
 		direction.backward()
 		motion.start_moving()
-	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_backward"):
-		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
-			direction.still()
-			motion.stop_moving()
+	else:
+		direction.still()
 #endregion
 
 
 #region SPRINT HANDLING
-func handle_sprint_input(_event: InputEvent) -> void:
+func handle_sprint_input() -> void:
 	if Input.is_action_just_pressed("run"):
 		var current_time = Time.get_ticks_msec() / 1000.0
 		
@@ -105,7 +99,7 @@ func start_sprint() -> void:
 
 
 #region CROUCH HANDLING
-func handle_crouch_input(_event: InputEvent) -> void:
+func handle_crouch_input() -> void:
 	if Input.is_action_pressed('crouch_up'):
 		crouch.up()
 	elif Input.is_action_pressed('crouch_down'):

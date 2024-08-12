@@ -61,23 +61,27 @@ func _process(_delta):
 
 #region GENERIC SETTERS
 func set_direction_state(state: Direction) -> void:
-	direction_state = state
-	print("Direction -> ", get_direction_value())
+	if state != direction_state:
+		direction_state = state
+		print("Direction -> ", get_direction_value())
 
 
 func set_action_state(state: Action) -> void:
-	action_state = state
-	print("Action -> ", get_action_value())
+	if state != action_state:
+		action_state = state
+		print("Action -> ", get_action_value())
 
 
 func set_motion_state(state: Motion) -> void:
-	motion_state = state
-	print("Motion -> ", get_motion_value())
+	if state != motion_state:
+		motion_state = state
+		print("Motion -> ", get_motion_value())
 
 
 func set_position_state(state: Position) -> void:
-	position_state = state
-	print("Position -> ", get_position_value())
+	if state != position_state:
+		position_state = state
+		print("Position -> ", get_position_value())
 #endregion
 
 

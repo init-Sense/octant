@@ -24,10 +24,6 @@ var target_velocity: Vector3 = Vector3.ZERO
 
 
 #region LIFECYCLE
-func _ready() -> void:
-	pass
-
-
 func _physics_process(delta) -> void:
 	set_movement_velocity(delta)
 	move_player()
