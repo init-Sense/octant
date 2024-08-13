@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=13 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_es12s"]
 [ext_resource type="Texture2D" uid="uid://bvdlyc0863m43" path="res://assets/textures/water_1024.jpg" id="2_6gxqr"]
 [ext_resource type="PackedScene" uid="uid://biuw0fsrenfey" path="res://assets/models/thing_1.glb" id="3_nvi3c"]
 [ext_resource type="PackedScene" uid="uid://71y11cyjb8kd" path="res://assets/models/platform.glb" id="4_w0lt1"]
+[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/cave/stalactite_1.glb" id="5_sjp55"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ekhpq"]
 
@@ -81,3 +82,7 @@ environment = SubResource("Environment_jv8p7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
+
+[node name="Cave" type="Node3D" parent="."]
+
+[node name="stalactite_1" parent="Cave" instance=ExtResource("5_sjp55")]
