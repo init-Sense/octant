@@ -57,7 +57,6 @@ func _snap_up_stairs_check(delta) -> bool:
 	return false
 
 
-
 func _snap_down_the_stairs_check() -> void:
 	var did_snap := false
 	var floor_below: bool = stairs_below_ray_cast_3d.is_colliding() and not is_surface_too_steep(stairs_below_ray_cast_3d.get_collision_normal())

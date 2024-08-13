@@ -7,7 +7,7 @@ class_name Inputs
 @onready var motion: Motion = %Motion
 @onready var jump: Jump = %Jump
 @onready var crouch: Crouch = %Crouch
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: Player = $"../.."
 #endregion
 
 
@@ -37,8 +37,8 @@ func _input(_event) -> void:
 #region JUMP HANDLING
 func handle_jump_input() -> void:    
 	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
-		if not is_jumping:
-			is_jumping = true
+		if not player.is_jumping():
+			player.set_jumping()
 			jump.start_charge()
 			if Input.is_action_pressed("move_forward") and player.is_forward():
 				movement.forward()
@@ -47,12 +47,10 @@ func handle_jump_input() -> void:
 			else:
 				movement.still()
 	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
-		is_jumping = false
 		jump.release_jump()
 		
 		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
 			movement.still()
-
 
 func handle_movement_during_jump() -> void:
 	if Input.is_action_pressed("move_forward") and player.is_forward():
