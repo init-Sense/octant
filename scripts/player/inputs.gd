@@ -3,7 +3,7 @@ class_name Inputs
 
 
 #region NODES
-@onready var direction: Movement = %Direction
+@onready var movement: Movement = %Direction
 @onready var motion: Motion = %Motion
 @onready var jump: Jump = %Jump
 @onready var crouch: Crouch = %Crouch
@@ -41,37 +41,37 @@ func handle_jump_input() -> void:
 			is_jumping = true
 			jump.start_charge()
 			if Input.is_action_pressed("move_forward") and player.is_forward():
-				direction.forward()
+				movement.forward()
 			elif Input.is_action_pressed("move_backward") and player.is_backward():
-				direction.backward()
+				movement.backward()
 			else:
-				direction.still()
+				movement.still()
 	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
 		is_jumping = false
 		jump.release_jump()
 		
 		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
-			direction.still()
+			movement.still()
 
 
 func handle_movement_during_jump() -> void:
 	if Input.is_action_pressed("move_forward") and player.is_forward():
-		direction.forward()
+		movement.forward()
 	elif Input.is_action_pressed("move_backward") and player.is_backward():
-		direction.backward()
+		movement.backward()
 	else:
-		direction.still()
+		movement.still()
 #endregion
 
 
 #region MOVEMENT HANDLING
 func handle_movement_input() -> void:
 	if Input.is_action_pressed("move_forward"):
-		direction.forward()
+		movement.forward()
 	elif Input.is_action_pressed("move_backward"):
-		direction.backward()
+		movement.backward()
 	else:
-		direction.still()
+		movement.still()
 	
 	motion.update_movement_state()
 #endregion
