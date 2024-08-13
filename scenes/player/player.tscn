@@ -46,17 +46,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 4
 collision_mask = 3
 
-[node name="Camera" type="Camera3D" parent="Head"]
+[node name="Collision" type="CollisionShape3D" parent="Head"]
+shape = SubResource("SphereShape3D_r8biq")
+
+[node name="CameraSmooth" type="Node3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera3D" parent="Head/CameraSmooth"]
 unique_name_in_owner = true
 fov = 80.0
 near = 0.01
 far = 1000.0
 script = ExtResource("2_kf2t8")
 
-[node name="PostProcessing" parent="Head/Camera" instance=ExtResource("3_do34h")]
-
-[node name="Collision" type="CollisionShape3D" parent="Head"]
-shape = SubResource("SphereShape3D_r8biq")
+[node name="PostProcessing" parent="Head/CameraSmooth/Camera" instance=ExtResource("3_do34h")]
 
 [node name="Modules" type="Node" parent="."]
 
