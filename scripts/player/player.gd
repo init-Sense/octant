@@ -34,11 +34,16 @@ enum Action {
 #endregion
 
 
-#region INITIAL STATE
+#region INITIAL STATES
 @onready var direction_state: Direction = Direction.STILL
 @onready var motion_state: Motion = Motion.IDLE
 @onready var position_state: Position = Position.STANDING
 @onready var action_state: Action = Action.NOTHING
+#endregion
+
+
+#region PREVIOUS STATES
+@onready var previous_motion_state: Motion = Motion.IDLE
 #endregion
 
 
@@ -65,18 +70,17 @@ func set_direction_state(state: Direction) -> void:
 		direction_state = state
 		print("Direction -> ", get_direction_value())
 
-
 func set_action_state(state: Action) -> void:
 	if state != action_state:
 		action_state = state
 		print("Action -> ", get_action_value())
 
-
 func set_motion_state(state: Motion) -> void:
 	if state != motion_state:
+		previous_motion_state = motion_state
 		motion_state = state
 		print("Motion -> ", get_motion_value())
-
+		print("Previous Motion -> ", get_previous_motion_value())
 
 func set_position_state(state: Position) -> void:
 	if state != position_state:
@@ -121,9 +125,6 @@ func set_no_action() -> void:
 
 func set_jumping() -> void:
 	set_action_state(Action.JUMPING)
-	
-# func set_action_swimming() -> void:
-#	...
 #endregion
 
 
@@ -157,7 +158,21 @@ func get_direction_value() -> String:
 func get_motion_value() -> String:
 	match motion_state:
 		Motion.IDLE:
-			return "STILL"
+			return "IDLE"
+		Motion.WALKING:
+			return "WALKING"
+		Motion.SNEAKING:
+			return "SNEAKING"
+		Motion.RUNNING:
+			return "RUNNING"
+		_:
+			return "UNKNOWN"
+
+
+func get_previous_motion_value() -> String:
+	match previous_motion_state:
+		Motion.IDLE:
+			return "IDLE"
 		Motion.WALKING:
 			return "WALKING"
 		Motion.SNEAKING:
@@ -209,25 +224,37 @@ func is_backward() -> bool:
 #endregion
 
 
+
 #region MOTION GETTERS
 func is_idle() -> bool:
 	return motion_state == Motion.IDLE
 
-
 func is_walking() -> bool:
 	return motion_state == Motion.WALKING
-
 
 func is_sneaking() -> bool:
 	return motion_state == Motion.SNEAKING
 
-
 func is_running() -> bool:
 	return motion_state == Motion.RUNNING
 
-
 func in_motion() -> bool:
 	return motion_state in [Motion.WALKING, Motion.SNEAKING, Motion.RUNNING]
+
+func was_idle() -> bool:
+	return previous_motion_state == Motion.IDLE
+
+func was_walking() -> bool:
+	return previous_motion_state == Motion.WALKING
+
+func was_sneaking() -> bool:
+	return previous_motion_state == Motion.SNEAKING
+
+func was_running() -> bool:
+	return previous_motion_state == Motion.RUNNING
+
+func was_in_motion() -> bool:
+	return previous_motion_state in [Motion.WALKING, Motion.SNEAKING, Motion.RUNNING]
 #endregion
 
 

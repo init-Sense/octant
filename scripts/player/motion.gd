@@ -14,11 +14,17 @@ class_name PlayerMotion
 const SPRINT_SPEED: float = 8.0
 const WALKING_SPEED: float = 3.0
 const SNEAKING_SPEED: float = 1.5
-const DECELERATION: float = 15.0
-const MAX_FOV_CHANGE: float = 12.0
-const FOV_TRANSITION_SPEED: float = 50.0
-const FOV_RESET_THRESHOLD: float = 0.1
 const WALK_DELAY: float = 0.2
+#endregion
+
+
+#region FOV CONSTANTS
+const DECELERATION: float = 15.0
+const FOV_CHANGE_WHEN_RUNNING: float = 12.0
+const FOV_CHANGE_WHEN_WALKING: float = 5.0
+const FOV_TRANSITION_SPEED_RUNNING: float = 50.0
+const FOV_TRANSITION_SPEED_WALKING: float = 15.0
+const FOV_RESET_THRESHOLD: float = 0.1
 #endregion
 
 
@@ -108,14 +114,23 @@ func update_walk_timer(delta: float) -> void:
 
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
-	var current_speed = player.velocity.length()
-	var speed_ratio = current_speed / SPRINT_SPEED
-	var target_fov_change = MAX_FOV_CHANGE * speed_ratio
-	
-	current_fov_change = move_toward(current_fov_change, target_fov_change, FOV_TRANSITION_SPEED * delta)
-	
+	var target_fov_change = 0.0
+	var transition_speed = FOV_TRANSITION_SPEED_WALKING
+
+	if player.is_running():
+		target_fov_change = FOV_CHANGE_WHEN_RUNNING
+		transition_speed = FOV_TRANSITION_SPEED_RUNNING
+	elif player.is_walking():
+		target_fov_change = FOV_CHANGE_WHEN_WALKING
+		transition_speed = FOV_TRANSITION_SPEED_WALKING
+	else:
+		target_fov_change = 0.0
+		transition_speed = max(FOV_TRANSITION_SPEED_RUNNING, FOV_TRANSITION_SPEED_WALKING)
+
+	current_fov_change = move_toward(current_fov_change, target_fov_change, transition_speed * delta)
+
 	if abs(current_fov_change) < FOV_RESET_THRESHOLD:
 		current_fov_change = 0.0
-	
+
 	camera.fov = camera.default_fov + current_fov_change
 #endregion

@@ -23,7 +23,7 @@ var is_jumping: bool = false
 #endregion
 
 
-func _input(event) -> void:
+func _input(_event) -> void:
 	handle_jump_input()
 	
 	if is_jumping:
