@@ -1,5 +1,5 @@
 extends Camera3D
-class_name PlayerCamera
+class_name Camera
 
 #region VARIABLES
 @export var mouse_sensitivity_x: float = 0.1

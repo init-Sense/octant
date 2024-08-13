@@ -1,11 +1,11 @@
 extends Node
-class_name PlayerHeadBob
+class_name HeadBob
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
-@onready var camera: PlayerCamera = %Camera
-@onready var direction: PlayerDirection = %Direction
-@onready var jump: PlayerJump = %Jump
+@onready var camera: Camera = %Camera
+@onready var direction: Movement = %Direction
+@onready var jump: Jump = %Jump
 #endregion
 
 

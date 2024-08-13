@@ -1,12 +1,13 @@
 extends Node
-class_name PlayerJump
+class_name Jump
 
 
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
-@onready var direction: PlayerDirection = %Direction
-@onready var motion: PlayerMotion = %Motion
+@onready var direction: Movement = %Direction
+@onready var motion: Motion = %Motion
 @onready var head: Node3D = %Head
+@onready var climb: Climb = %Climb
 #endregion
 
 
@@ -70,7 +71,7 @@ var charge_offset: float = 0.0
 
 
 #region UTILITY VARIABLES
-var rng = RandomNumberGenerator.new()
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 #endregion
 #endregion
 
@@ -100,7 +101,7 @@ func _physics_process(delta: float) -> void:
 
 #region JUMP MECHANICS
 func start_charge() -> void:
-	if (not player.is_jumping() and player.is_on_floor()) or can_coyote_jump:
+	if (not player.is_jumping() and player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump:
 		is_charging = true
 		charge_start_time = Time.get_ticks_msec() / 1000.0
 		current_charge = 0.0
@@ -108,7 +109,7 @@ func start_charge() -> void:
 
 func release_jump() -> void:
 	if is_charging:
-		if player.is_on_floor() or can_coyote_jump:
+		if (player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump:
 			is_jump_requested = true
 			horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
 			initial_speed = horizontal_momentum.length()
@@ -125,13 +126,13 @@ func cancel_jump() -> void:
 
 
 func handle_jump() -> void:
-	if is_jump_requested and (player.is_on_floor() or can_coyote_jump):
-		var charge_multiplier = 1.0 + (current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
+	if is_jump_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump):
+		var charge_multiplier: float = 1.0 + (current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
 		
-		var jump_variation = 1.0 + rng.randf_range(-JUMP_HEIGHT_VARIATION, JUMP_HEIGHT_VARIATION)
+		var jump_variation: float = 1.0 + rng.randf_range(-JUMP_HEIGHT_VARIATION, JUMP_HEIGHT_VARIATION)
 		direction.velocity_vector.y = JUMPING_SPEED * jump_variation * charge_multiplier
 		
-		var momentum_variation = 1.0 + rng.randf_range(-MOMENTUM_VARIATION, MOMENTUM_VARIATION)
+		var momentum_variation: float = 1.0 + rng.randf_range(-MOMENTUM_VARIATION, MOMENTUM_VARIATION)
 		jump_momentum = direction.velocity_vector * MOMENTUM_FACTOR * momentum_variation
 		
 		player.set_jumping()
@@ -160,13 +161,13 @@ func apply_midair_control(delta: float) -> void:
 
 
 func apply_momentum(delta: float) -> void:
-	if not player.is_on_floor():
+	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
 		var reduced_momentum = jump_momentum * MOMENTUM_REDUCTION_FACTOR
 		direction.velocity_vector = direction.velocity_vector.lerp(reduced_momentum, MOMENTUM_FACTOR * delta)
 
 
 func ground_check() -> void:
-	if player.is_on_floor():
+	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
 		if player.is_jumping() and direction.velocity_vector.y <= 0:
 			player.set_no_action()
 			jump_momentum = Vector3.ZERO
@@ -175,11 +176,11 @@ func ground_check() -> void:
 			emit_signal("landed")
 		can_coyote_jump = true
 		coyote_timer = 0.0
-	elif is_charging and not player.is_on_floor() and not can_coyote_jump:
+	elif is_charging and not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and not can_coyote_jump:
 		cancel_jump()
 
 func update_coyote_time(delta: float) -> void:
-	if not player.is_on_floor() and can_coyote_jump:
+	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and can_coyote_jump:
 		coyote_timer += delta
 		if coyote_timer >= COYOTE_TIME:
 			can_coyote_jump = false

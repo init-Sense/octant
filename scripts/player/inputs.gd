@@ -1,12 +1,12 @@
 extends Node
-class_name PlayerInputs
+class_name Inputs
 
 
 #region NODES
-@onready var direction: PlayerDirection = %Direction
-@onready var motion: PlayerMotion = %Motion
-@onready var jump: PlayerJump = %Jump
-@onready var crouch: PlayerCrouch = %Crouch
+@onready var direction: Movement = %Direction
+@onready var motion: Motion = %Motion
+@onready var jump: Jump = %Jump
+@onready var crouch: Crouch = %Crouch
 @onready var player: CharacterBody3D = $"../.."
 #endregion
 
@@ -80,7 +80,7 @@ func handle_movement_input() -> void:
 #region SPRINT HANDLING
 func handle_sprint_input() -> void:
 	if Input.is_action_just_pressed("run"):
-		var current_time = Time.get_ticks_msec() / 1000.0
+		var current_time: float = Time.get_ticks_msec() / 1000.0
 		
 		if current_time - last_sprint_tap_time <= DOUBLE_TAP_WINDOW:
 			sprint_tap_count += 1

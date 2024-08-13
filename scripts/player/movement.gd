@@ -1,5 +1,5 @@
 extends Node
-class_name PlayerDirection
+class_name Movement
 
 
 #region CONSTANTS
@@ -19,15 +19,23 @@ var input_dir: Vector3 = Vector3.ZERO
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var camera: PlayerCamera = %Camera
-@onready var motion: PlayerMotion = %Motion
+@onready var camera: Camera = %Camera
+@onready var motion: Motion = %Motion
+@onready var climb: Climb = %Climb
 #endregion
 
 
 #region LIFECYCLE
 func _physics_process(delta) -> void:
 	set_movement_velocity(delta)
-	move_player()
+	
+	if player.is_on_floor(): climb._last_frame_was_on_floor = Engine.get_physics_frames()
+	
+	player.velocity = velocity_vector
+	
+	if not climb._snap_up_stairs_check(delta):
+		player.move_and_slide()
+		climb._snap_down_the_stairs_check()
 #endregion
 
 
@@ -35,7 +43,7 @@ func _physics_process(delta) -> void:
 func set_movement_velocity(delta) -> void:
 	input_dir = input_dir.normalized()
 	
-	var speed_modifier = calculate_tilt_speed_modifier()
+	var speed_modifier: float = calculate_tilt_speed_modifier()
 	
 	if player.is_on_floor():
 		target_velocity.x = input_dir.x * current_speed * speed_modifier
@@ -47,11 +55,6 @@ func set_movement_velocity(delta) -> void:
 	var deceleration = motion.DECELERATION * delta
 	velocity_vector.x = move_toward(velocity_vector.x, target_velocity.x, deceleration)
 	velocity_vector.z = move_toward(velocity_vector.z, target_velocity.z, deceleration)
-
-
-func move_player() -> void:
-	player.velocity = velocity_vector
-	player.move_and_slide()
 
 
 func get_movement_velocity() -> Vector3:
@@ -83,8 +86,8 @@ func get_input_dir() -> Vector3:
 
 #region UTILS
 func calculate_tilt_speed_modifier() -> float:
-	var camera_forward = -camera.global_transform.basis.z
-	var tilt_angle = abs(acos(camera_forward.dot(Vector3.UP)) - PI/2)
+	var camera_forward: Vector3 = -camera.global_transform.basis.z
+	var tilt_angle              = abs(acos(camera_forward.dot(Vector3.UP)) - PI/2)
 	var tilt_factor = tilt_angle / (PI/2)
 	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
 

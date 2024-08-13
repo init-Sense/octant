@@ -1,9 +1,10 @@
 extends Node
+class_name Gravity
 
 
 #region NODES
-@onready var player: CharacterBody3D = $"../.."
-@onready var direction: PlayerDirection = %Direction
+@onready var player: Player = $"../.."
+@onready var direction: Movement = %Direction
 #endregion
 
 

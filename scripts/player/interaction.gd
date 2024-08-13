@@ -1,5 +1,5 @@
 extends Node
-class_name PlayerInteraction
+class_name Interaction
 
 
 func _ready() -> void:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=17 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
-[ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/direction.tscn" id="1_tw8pf"]
+[ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/movement.tscn" id="1_tw8pf"]
 [ext_resource type="PackedScene" uid="uid://dri75rr172bm8" path="res://scenes/player/jump.tscn" id="2_8258e"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_kf2t8"]
 [ext_resource type="PackedScene" uid="uid://dx2llx4q87ij" path="res://scenes/post_processing/post_processing.tscn" id="3_do34h"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://beff28ec1d70n" path="res://scenes/player/inputs.tscn" id="8_vgduu"]
 [ext_resource type="PackedScene" uid="uid://bswr5m5lovrx2" path="res://scenes/player/head_bob.tscn" id="9_yb2ao"]
 [ext_resource type="PackedScene" uid="uid://f6kx5uxedkel" path="res://scenes/player/motion.tscn" id="10_svshq"]
+[ext_resource type="PackedScene" uid="uid://11vyvpjcp4v7" path="res://scenes/player/climb.tscn" id="12_4v7yu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3rwi"]
 albedo_color = Color(1, 1, 0, 1)
@@ -26,6 +27,7 @@ height = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_r8biq"]
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ne7vt")
@@ -38,11 +40,9 @@ mesh = SubResource("CapsuleMesh_jhh56")
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape3D_vyse8")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-
 [node name="Head" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343679, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 4
 collision_mask = 3
 
@@ -83,3 +83,14 @@ unique_name_in_owner = true
 
 [node name="Motion" parent="Modules" instance=ExtResource("10_svshq")]
 unique_name_in_owner = true
+
+[node name="Climb" parent="Modules" instance=ExtResource("12_4v7yu")]
+unique_name_in_owner = true
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1094, -0.869294)
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.855594, 0)
+target_position = Vector3(0, -0.75, 0)

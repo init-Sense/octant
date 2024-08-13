@@ -1,12 +1,12 @@
 extends Node
-class_name PlayerMotion
+class_name Motion
 
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var direction: PlayerDirection = %Direction
-@onready var crouch: PlayerCrouch = %Crouch
-@onready var camera: PlayerCamera = %Camera
+@onready var direction: Movement = %Direction
+@onready var crouch: Crouch = %Crouch
+@onready var camera: Camera = %Camera
 #endregion
 
 
@@ -75,13 +75,13 @@ func sneak() -> void:
 
 
 func update_sneaking_speed() -> void:
-	var crouch_percentage = crouch.get_crouch_percentage()
-	var speed_range = WALKING_SPEED - SNEAKING_SPEED
+	var crouch_percentage: float = crouch.get_crouch_percentage()
+	var speed_range: float       = WALKING_SPEED - SNEAKING_SPEED
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
 
 
 func update_movement_state() -> void:
-	var input_dir = direction.get_input_dir()
+	var input_dir: Vector3 = direction.get_input_dir()
 	
 	if input_dir == Vector3.ZERO:
 		idle()
@@ -114,8 +114,8 @@ func update_walk_timer(delta: float) -> void:
 
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
-	var target_fov_change = 0.0
-	var transition_speed = FOV_TRANSITION_SPEED_WALKING
+	var target_fov_change: float = 0.0
+	var transition_speed: float  = FOV_TRANSITION_SPEED_WALKING
 
 	if player.is_running():
 		target_fov_change = FOV_CHANGE_WHEN_RUNNING
