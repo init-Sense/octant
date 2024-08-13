@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx2llx4q87ij"]
+
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_2o5ni"]
+[ext_resource type="Shader" path="res://shaders/underwater.gdshader" id="2_ja6pt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ixpf"]
+noise_type = 0
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l4a3s"]
+width = 128
+height = 128
+seamless = true
+noise = SubResource("FastNoiseLite_4ixpf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kryne"]
+shader = ExtResource("2_ja6pt")
+shader_parameter/refraction_stretch = Vector2(0.5, 0.5)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(1, 1, 1, 0.1)
+shader_parameter/speed = 0.08
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_l4a3s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxovj"]
+shader = ExtResource("1_2o5ni")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.0
+shader_parameter/vignette_color = null
+
+[node name="PostProcessing" type="Node"]
+
+[node name="UnderwaterCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Underwater" type="ColorRect" parent="UnderwaterCanvas"]
+material = SubResource("ShaderMaterial_kryne")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VignetteCanvas" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="VignetteCanvas"]
+material = SubResource("ShaderMaterial_mxovj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

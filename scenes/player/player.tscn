@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=16 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
 [ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/direction.tscn" id="1_tw8pf"]
 [ext_resource type="PackedScene" uid="uid://dri75rr172bm8" path="res://scenes/player/jump.tscn" id="2_8258e"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_kf2t8"]
-[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="3_3odcv"]
+[ext_resource type="PackedScene" uid="uid://dx2llx4q87ij" path="res://scenes/post_processing/post_processing.tscn" id="3_do34h"]
 [ext_resource type="PackedScene" uid="uid://coa5srfyqm0yl" path="res://scenes/player/crouch.tscn" id="3_svdt6"]
 [ext_resource type="PackedScene" uid="uid://hd8bno8i2dv7" path="res://scenes/player/interaction.tscn" id="4_xrt8m"]
 [ext_resource type="PackedScene" uid="uid://pxmd0xahckh5" path="res://scenes/player/gravity.tscn" id="7_6ib4u"]
@@ -22,14 +22,6 @@ height = 1.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyse8"]
 radius = 0.15
 height = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukljm"]
-shader = ExtResource("3_3odcv")
-shader_parameter/inner_radius = 0.1
-shader_parameter/outer_radius = 1.0
-shader_parameter/vignette_strength = 1.0
-shader_parameter/dither_strength = 0.0
-shader_parameter/vignette_color = null
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r8biq"]
 
@@ -61,21 +53,7 @@ near = 0.01
 far = 1000.0
 script = ExtResource("2_kf2t8")
 
-[node name="Shaders" type="Control" parent="Head/Camera"]
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Head/Camera/Shaders"]
-material = SubResource("ShaderMaterial_ukljm")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PostProcessing" parent="Head/Camera" instance=ExtResource("3_do34h")]
 
 [node name="Collision" type="CollisionShape3D" parent="Head"]
 shape = SubResource("SphereShape3D_r8biq")
