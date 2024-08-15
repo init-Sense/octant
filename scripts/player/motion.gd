@@ -1,7 +1,6 @@
 extends Node
 class_name Motion
 
-
 #region NODES
 @onready var player: Player = $"../.."
 @onready var direction: Movement = %Direction
@@ -9,16 +8,12 @@ class_name Motion
 @onready var camera: Camera = %Camera
 #endregion
 
-
 #region CONSTANTS
 const SPRINT_SPEED: float = 8.0
 const WALKING_SPEED: float = 3.0
 const SNEAKING_SPEED: float = 1.5
 const WALK_DELAY: float = 0.1
-#endregion
 
-
-#region FOV CONSTANTS
 const DECELERATION: float = 15.0
 const FOV_CHANGE_WHEN_RUNNING: float = 12.0
 const FOV_CHANGE_WHEN_WALKING: float = 5.0
@@ -26,7 +21,6 @@ const FOV_TRANSITION_SPEED_RUNNING: float = 50.0
 const FOV_TRANSITION_SPEED_WALKING: float = 15.0
 const FOV_RESET_THRESHOLD: float = 0.1
 #endregion
-
 
 #region VARIABLES
 var target_speed: float = 0.0
@@ -36,7 +30,6 @@ var walk_timer: float = 0.0
 var is_walk_delayed: bool = false
 #endregion
 
-
 #region LIFECYCLE
 func _physics_process(delta: float) -> void:
 	direction.current_speed = move_toward(direction.current_speed, target_speed, DECELERATION * delta)
@@ -44,13 +37,11 @@ func _physics_process(delta: float) -> void:
 	update_walk_timer(delta)
 #endregion
 
-
 #region MOVEMENT STATES
 func idle() -> void:
 	player.set_idle()
 	target_speed = 0.0
 	is_walk_delayed = false
-
 
 func walk() -> void:
 	if not is_walk_delayed:
@@ -61,26 +52,22 @@ func walk() -> void:
 		target_speed = WALKING_SPEED
 		is_walk_delayed = false
 
-
 func run() -> void:
 	player.set_running()
 	target_speed = SPRINT_SPEED
 	is_walk_delayed = false
-
 
 func sneak() -> void:
 	player.set_sneaking()
 	update_sneaking_speed()
 	is_walk_delayed = false
 
-
 func update_sneaking_speed() -> void:
 	var crouch_percentage: float = crouch.get_crouch_percentage()
-	var speed_range: float       = WALKING_SPEED - SNEAKING_SPEED
+	var speed_range: float = WALKING_SPEED - SNEAKING_SPEED
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
 
-
-func update_movement_state() -> void:	
+func update_movement_state() -> void:    
 	if player.is_still():
 		idle()
 	elif player.is_crouching() or player.is_crouched():
@@ -90,16 +77,13 @@ func update_movement_state() -> void:
 	else:
 		walk()
 
-
 func start_sprint() -> void:
 	player.set_running()
 	is_walk_delayed = false
 	update_movement_state()
 
-
 func stop_sprint() -> void:
 	update_movement_state()
-
 
 func update_walk_timer(delta: float) -> void:
 	if is_walk_delayed:
@@ -108,26 +92,37 @@ func update_walk_timer(delta: float) -> void:
 			update_movement_state()
 #endregion
 
-
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
 	var target_fov_change: float = 0.0
-	var transition_speed: float  = FOV_TRANSITION_SPEED_WALKING
-
+	var transition_speed: float = FOV_TRANSITION_SPEED_WALKING
+	var direction_multiplier: float = get_movement_direction()
+	
 	if player.is_running():
-		target_fov_change = FOV_CHANGE_WHEN_RUNNING
+		target_fov_change = FOV_CHANGE_WHEN_RUNNING * direction_multiplier
 		transition_speed = FOV_TRANSITION_SPEED_RUNNING
 	elif player.is_walking():
-		target_fov_change = FOV_CHANGE_WHEN_WALKING
+		target_fov_change = FOV_CHANGE_WHEN_WALKING * direction_multiplier
 		transition_speed = FOV_TRANSITION_SPEED_WALKING
 	else:
 		target_fov_change = 0.0
 		transition_speed = max(FOV_TRANSITION_SPEED_RUNNING, FOV_TRANSITION_SPEED_WALKING)
-
+	
 	current_fov_change = move_toward(current_fov_change, target_fov_change, transition_speed * delta)
-
+	
 	if abs(current_fov_change) < FOV_RESET_THRESHOLD:
 		current_fov_change = 0.0
-
+	
 	camera.fov = camera.default_fov + current_fov_change
+
+func get_movement_direction() -> float:
+	var forward_strength: float = Input.get_action_strength("move_forward")
+	var backward_strength: float = Input.get_action_strength("move_backward")
+	
+	if forward_strength > backward_strength:
+		return 1.0
+	elif backward_strength > forward_strength:
+		return -1.0
+	else:
+		return 0.0
 #endregion

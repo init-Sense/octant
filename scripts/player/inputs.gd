@@ -19,70 +19,44 @@ const DOUBLE_TAP_WINDOW: float = 0.3
 #region VARIABLES
 var last_sprint_tap_time: float = 0.0
 var sprint_tap_count: int = 0
+var is_jump_charged: bool = false
 #endregion
 
 
 func _input(_event) -> void:
 	handle_jump_input()
 	
-	if player.is_charging_jump():
-		handle_movement_during_jump()
-	else:
-		handle_movement_input()
-		handle_sprint_input()
-		handle_crouch_input()
+	handle_movement_input()
+	handle_sprint_input()
+	handle_crouch_input()
 
 
 #region JUMP HANDLING
 func handle_jump_input() -> void:
-	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
-		if not player.is_charging_jump():
+	if Input.is_action_pressed("jump"):
+		if not is_jump_charged:
 			jump.start_charge()
-	else:
-		if player.is_charging_jump():
+			is_jump_charged = true
+	elif Input.is_action_just_released("jump"):
+		if is_jump_charged:
 			jump.release_jump()
-			reset_movement()
-
-
-func handle_movement_during_jump() -> void:
-	if not player.is_charging_jump():
-		return
-	
-	if player.is_forward():
-		if Input.is_action_pressed("move_forward"):
-			movement.forward()
-		else:
-			movement.still()
-	elif player.is_backward():
-		if Input.is_action_pressed("move_backward"):
-			movement.backward()
-		else:
-			movement.still()
-	elif player.is_still():
-		movement.still()
-
-
-func reset_movement() -> void:
-	if player.is_forward():
-		movement.forward()
-	elif player.is_backward():
-		movement.backward()
-	else:
-		movement.still()
+			is_jump_charged = false
+	elif not Input.is_action_pressed("jump") and is_jump_charged:
+		jump.cancel_jump()
+		is_jump_charged = false
 #endregion
 
 
 #region MOVEMENT HANDLING
 func handle_movement_input() -> void:
-	if not player.is_charging_jump():
-		if Input.is_action_pressed("move_forward"):
-			movement.forward()
-		elif Input.is_action_pressed("move_backward"):
-			movement.backward()
-		else:
-			movement.still()
+	if Input.is_action_pressed("move_forward"):
+		movement.forward()
+	elif Input.is_action_pressed("move_backward"):
+		movement.backward()
+	else:
+		movement.still()
 		
-		motion.update_movement_state()
+	motion.update_movement_state()
 #endregion
 
 
