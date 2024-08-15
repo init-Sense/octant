@@ -37,6 +37,13 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://assets/materials/stone.tres"
 }
+},
+"nodes": {
+"PATH:StairsSide": {
+"generate/physics": true,
+"physics/layer": 0,
+"physics/mask": 0
+}
 }
 }
 gltf/naming_version=1

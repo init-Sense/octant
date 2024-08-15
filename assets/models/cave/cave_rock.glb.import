@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://lels5yj7mcip"
-path="res://.godot/imported/stairs.glb-c11f9b53d7694d4b9ec937195e738b51.scn"
+uid="uid://dwl04hgr7ko2x"
+path="res://.godot/imported/cave_rock.glb-6d2485a508125b079ede4a72d753ecb0.scn"
 
 [deps]
 
-source_file="res://assets/models/stairs/stairs.glb"
-dest_files=["res://.godot/imported/stairs.glb-c11f9b53d7694d4b9ec937195e738b51.scn"]
+source_file="res://assets/models/cave/cave_rock.glb"
+dest_files=["res://.godot/imported/cave_rock.glb-6d2485a508125b079ede4a72d753ecb0.scn"]
 
 [params]
 
@@ -33,17 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Stairs": {
+"CaveRock": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/stairs.tres"
-}
-},
-"nodes": {
-"PATH:Stairs": {
-"generate/physics": true,
-"mesh_instance/cast_shadow": 0,
-"physics/layer": 0,
-"physics/mask": 0
+"use_external/path": "res://assets/materials/cave_rock.tres"
 }
 }
 }

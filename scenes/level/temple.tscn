@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bth122y6serpa"]
+[gd_scene load_steps=17 format=3 uid="uid://bth122y6serpa"]
 
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://scenes/level/prefabs/temple_wall.tscn" id="1_mm148"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/temple_floor.glb" id="3_bu1ib"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bk238qv21nsvm" path="res://assets/models/temple_roof.glb" id="9_4enfk"]
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/door_polygon.glb" id="10_65mrv"]
 [ext_resource type="PackedScene" uid="uid://claexohxvbssh" path="res://scenes/level/prefabs/columns/column_stairs.tscn" id="11_g75yv"]
-[ext_resource type="PackedScene" uid="uid://dohfla54w6ntx" path="res://assets/models/stairs/stairs_top.glb" id="12_7slr3"]
 [ext_resource type="PackedScene" uid="uid://bbxj6i7gue40w" path="res://assets/models/debug/debug_slope.glb" id="13_nl0kj"]
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
 
@@ -239,9 +238,6 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="ColumnStairs_8" parent="ColumnsStairs" instance=ExtResource("11_g75yv")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.53553, -30, -3.53553)
-
-[node name="stairs_top" parent="." instance=ExtResource("12_7slr3")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 1.3, 0)
 
 [node name="Playground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7, 0, 0)
