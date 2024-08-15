@@ -19,14 +19,13 @@ const DOUBLE_TAP_WINDOW: float = 0.3
 #region VARIABLES
 var last_sprint_tap_time: float = 0.0
 var sprint_tap_count: int = 0
-var is_jumping: bool = false
 #endregion
 
 
 func _input(_event) -> void:
 	handle_jump_input()
 	
-	if is_jumping:
+	if player.is_charging_jump():
 		handle_movement_during_jump()
 	else:
 		handle_movement_input()
@@ -35,27 +34,38 @@ func _input(_event) -> void:
 
 
 #region JUMP HANDLING
-func handle_jump_input() -> void:    
+func handle_jump_input() -> void:
 	if Input.is_action_pressed("move_forward") and Input.is_action_pressed("move_backward"):
-		if not player.is_jumping():
-			player.set_jumping()
+		if not player.is_charging_jump():
 			jump.start_charge()
-			if Input.is_action_pressed("move_forward") and player.is_forward():
-				movement.forward()
-			elif Input.is_action_pressed("move_backward") and player.is_backward():
-				movement.backward()
-			else:
-				movement.still()
-	elif not Input.is_action_pressed("move_forward") or not Input.is_action_pressed("move_backward"):
-		jump.release_jump()
-		
-		if not Input.is_action_pressed("move_forward") and not Input.is_action_pressed("move_backward"):
-			movement.still()
+	else:
+		if player.is_charging_jump():
+			jump.release_jump()
+			reset_movement()
+
 
 func handle_movement_during_jump() -> void:
-	if Input.is_action_pressed("move_forward") and player.is_forward():
+	if not player.is_charging_jump():
+		return
+
+	if player.is_forward():
+		if Input.is_action_pressed("move_forward"):
+			movement.forward()
+		else:
+			movement.still()
+	elif player.is_backward():
+		if Input.is_action_pressed("move_backward"):
+			movement.backward()
+		else:
+			movement.still()
+	elif player.is_still() and player.is_idle():
+		movement.still()
+
+
+func reset_movement() -> void:
+	if Input.is_action_pressed("move_forward"):
 		movement.forward()
-	elif Input.is_action_pressed("move_backward") and player.is_backward():
+	elif Input.is_action_pressed("move_backward"):
 		movement.backward()
 	else:
 		movement.still()
@@ -64,14 +74,15 @@ func handle_movement_during_jump() -> void:
 
 #region MOVEMENT HANDLING
 func handle_movement_input() -> void:
-	if Input.is_action_pressed("move_forward"):
-		movement.forward()
-	elif Input.is_action_pressed("move_backward"):
-		movement.backward()
-	else:
-		movement.still()
-	
-	motion.update_movement_state()
+	if not player.is_charging_jump():
+		if Input.is_action_pressed("move_forward"):
+			movement.forward()
+		elif Input.is_action_pressed("move_backward"):
+			movement.backward()
+		else:
+			movement.still()
+		
+		motion.update_movement_state()
 #endregion
 
 

@@ -3,7 +3,7 @@ class_name Jump
 
 
 #region NODES
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: Player = $"../.."
 @onready var direction: Movement = %Direction
 @onready var motion: Motion = %Motion
 @onready var head: Node3D = %Head
@@ -58,7 +58,6 @@ var initial_speed: float = 0.0
 
 #region CHARGE VARIABLES
 var charge_start_time: float = 0.0
-var is_charging: bool = false
 var current_charge: float = 0.0
 #endregion
 
@@ -102,13 +101,13 @@ func _physics_process(delta: float) -> void:
 #region JUMP MECHANICS
 func start_charge() -> void:
 	if (not player.is_jumping() and player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump:
-		is_charging = true
+		player.set_charging_jump()
 		charge_start_time = Time.get_ticks_msec() / 1000.0
 		current_charge = 0.0
 
 
 func release_jump() -> void:
-	if is_charging:
+	if player.is_charging_jump():
 		if (player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump:
 			is_jump_requested = true
 			horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
@@ -117,11 +116,11 @@ func release_jump() -> void:
 			can_coyote_jump = false
 		else:
 			cancel_jump()
-		is_charging = false
+		player.set_no_action()
 
 
 func cancel_jump() -> void:
-	is_charging = false
+	player.set_no_action()
 	current_charge = 0.0
 
 
@@ -145,15 +144,15 @@ func handle_jump() -> void:
 #region MOVEMENT CONTROL
 func apply_midair_control(delta: float) -> void:
 	if not player.is_on_floor():
-		var input_dir = get_input_direction()
+		var input_dir: Vector2 = get_input_direction()
 		var target_velocity: Vector3
 		
 		if input_dir.length() > 0.1:
 			target_velocity = direction.target_velocity * MIDAIR_CONTROL
 		else:
-			var momentum_speed = clamp(initial_speed, MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED)
-			var momentum_factor = inverse_lerp(MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED, momentum_speed)
-			var preserved_speed = lerp(MIN_MOMENTUM_SPEED, initial_speed, momentum_factor) * MOMENTUM_REDUCTION_FACTOR
+			var momentum_speed         = clamp(initial_speed, MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED)
+			var momentum_factor: float = inverse_lerp(MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED, momentum_speed)
+			var preserved_speed        = lerp(MIN_MOMENTUM_SPEED, initial_speed, momentum_factor) * MOMENTUM_REDUCTION_FACTOR
 			target_velocity = Vector3(horizontal_momentum.x, 0, horizontal_momentum.y).normalized() * preserved_speed
 		
 		direction.velocity_vector.x = move_toward(direction.velocity_vector.x, target_velocity.x, motion.DECELERATION * delta)
@@ -162,7 +161,7 @@ func apply_midair_control(delta: float) -> void:
 
 func apply_momentum(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
-		var reduced_momentum = jump_momentum * MOMENTUM_REDUCTION_FACTOR
+		var reduced_momentum: Vector3 = jump_momentum * MOMENTUM_REDUCTION_FACTOR
 		direction.velocity_vector = direction.velocity_vector.lerp(reduced_momentum, MOMENTUM_FACTOR * delta)
 
 
@@ -176,7 +175,7 @@ func ground_check() -> void:
 			emit_signal("landed")
 		can_coyote_jump = true
 		coyote_timer = 0.0
-	elif is_charging and not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and not can_coyote_jump:
+	elif player.is_charging_jump() and not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and not can_coyote_jump:
 		cancel_jump()
 
 func update_coyote_time(delta: float) -> void:
@@ -189,10 +188,10 @@ func update_coyote_time(delta: float) -> void:
 
 #region VISUAL FEEDBACK
 func update_charge_offset(delta: float) -> void:
-	var target_offset = 0.0
-	if is_charging:
+	var target_offset: float = 0.0
+	if player.is_charging_jump():
 		current_charge = min(current_charge + delta, MAX_CHARGE_TIME)
-		var charge_progress = current_charge / MAX_CHARGE_TIME
+		var charge_progress: float = current_charge / MAX_CHARGE_TIME
 		target_offset = -(charge_progress * HEAD_CHARGE_OFFSET)
 	
 	charge_offset = move_toward(charge_offset, target_offset, delta * 2)

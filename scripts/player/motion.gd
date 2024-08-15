@@ -14,7 +14,7 @@ class_name Motion
 const SPRINT_SPEED: float = 8.0
 const WALKING_SPEED: float = 3.0
 const SNEAKING_SPEED: float = 1.5
-const WALK_DELAY: float = 0.2
+const WALK_DELAY: float = 0.1
 #endregion
 
 
@@ -80,27 +80,24 @@ func update_sneaking_speed() -> void:
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
 
 
-func update_movement_state() -> void:
-	var input_dir: Vector3 = direction.get_input_dir()
-	
-	if input_dir == Vector3.ZERO:
+func update_movement_state() -> void:	
+	if player.is_still():
 		idle()
 	elif player.is_crouching() or player.is_crouched():
 		sneak()
-	elif is_sprinting and not player.is_crouched():
+	elif player.is_running() and not player.is_crouched():
 		run()
 	else:
 		walk()
 
 
 func start_sprint() -> void:
-	is_sprinting = true
+	player.set_running()
 	is_walk_delayed = false
 	update_movement_state()
 
 
 func stop_sprint() -> void:
-	is_sprinting = false
 	update_movement_state()
 
 
