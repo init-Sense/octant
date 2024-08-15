@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dx1wy8bwchdi6"
-path="res://.godot/imported/stalactite_2.glb-e3c40ab4882db77adcfe07d0d0f13eeb.scn"
+uid="uid://dwl04hgr7ko2x"
+path="res://.godot/imported/cave_rock.glb-6d2485a508125b079ede4a72d753ecb0.scn"
 
 [deps]
 
-source_file="res://assets/models/cave/stalactite_2.glb"
-dest_files=["res://.godot/imported/stalactite_2.glb-e3c40ab4882db77adcfe07d0d0f13eeb.scn"]
+source_file="res://assets/models/cave/cave_rock.glb"
+dest_files=["res://.godot/imported/cave_rock.glb-6d2485a508125b079ede4a72d753ecb0.scn"]
 
 [params]
 
@@ -31,6 +31,13 @@ animation/trimming=false
 animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"CaveRock": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/cave_rock.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

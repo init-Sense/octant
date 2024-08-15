@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c1yxjn8c8310t"
-path="res://.godot/imported/stalactite_1.glb-ff88eb407fb94c75d68284a96f9eca6e.scn"
+uid="uid://bq1hr5sbi8uuu"
+path="res://.godot/imported/stalagmite_b.glb-fa6f213e315b34913204a8602f305e05.scn"
 
 [deps]
 
-source_file="res://assets/models/cave/stalactite_1.glb"
-dest_files=["res://.godot/imported/stalactite_1.glb-ff88eb407fb94c75d68284a96f9eca6e.scn"]
+source_file="res://assets/models/cave/stalagmite_b.glb"
+dest_files=["res://.godot/imported/stalagmite_b.glb-fa6f213e315b34913204a8602f305e05.scn"]
 
 [params]
 
