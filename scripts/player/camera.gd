@@ -29,11 +29,11 @@ func _input(event):
 
 #region MOVEMENT
 func handle_mouse_movement(event: InputEventMouseMotion):
-	var mouse_motion = event.relative
+	var mouse_motion: Vector2 = event.relative
 	
 	target_rotation.y -= deg_to_rad(mouse_motion.x * mouse_sensitivity_x)
 	
-	var change = -mouse_motion.y * mouse_sensitivity_y
+	var change: float = -mouse_motion.y * mouse_sensitivity_y
 	
 	if invert_y:
 		change *= -1
