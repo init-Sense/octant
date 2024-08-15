@@ -4,7 +4,7 @@ class_name Jump
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var direction: Movement = %Direction
+@onready var movement: Movement = %Direction
 @onready var motion: Motion = %Motion
 @onready var head: Node3D = %Head
 @onready var climb: Climb = %Climb
@@ -110,7 +110,7 @@ func release_jump() -> void:
 	if player.is_charging_jump():
 		if (player.is_on_floor() or climb._snapped_to_stairs_last_frame) or can_coyote_jump:
 			is_jump_requested = true
-			horizontal_momentum = Vector2(direction.velocity_vector.x, direction.velocity_vector.z)
+			horizontal_momentum = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
 			initial_speed = horizontal_momentum.length()
 			emit_signal("jumped")
 			can_coyote_jump = false
@@ -129,10 +129,10 @@ func handle_jump() -> void:
 		var charge_multiplier: float = 1.0 + (current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
 		
 		var jump_variation: float = 1.0 + rng.randf_range(-JUMP_HEIGHT_VARIATION, JUMP_HEIGHT_VARIATION)
-		direction.velocity_vector.y = JUMPING_SPEED * jump_variation * charge_multiplier
+		movement.velocity_vector.y = JUMPING_SPEED * jump_variation * charge_multiplier
 		
 		var momentum_variation: float = 1.0 + rng.randf_range(-MOMENTUM_VARIATION, MOMENTUM_VARIATION)
-		jump_momentum = direction.velocity_vector * MOMENTUM_FACTOR * momentum_variation
+		jump_momentum = movement.velocity_vector * MOMENTUM_FACTOR * momentum_variation
 		
 		player.set_jumping()
 		is_jump_requested = false
@@ -148,26 +148,26 @@ func apply_midair_control(delta: float) -> void:
 		var target_velocity: Vector3
 		
 		if input_dir.length() > 0.1:
-			target_velocity = direction.target_velocity * MIDAIR_CONTROL
+			target_velocity = movement.target_velocity * MIDAIR_CONTROL
 		else:
 			var momentum_speed         = clamp(initial_speed, MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED)
 			var momentum_factor: float = inverse_lerp(MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED, momentum_speed)
 			var preserved_speed        = lerp(MIN_MOMENTUM_SPEED, initial_speed, momentum_factor) * MOMENTUM_REDUCTION_FACTOR
 			target_velocity = Vector3(horizontal_momentum.x, 0, horizontal_momentum.y).normalized() * preserved_speed
 		
-		direction.velocity_vector.x = move_toward(direction.velocity_vector.x, target_velocity.x, motion.DECELERATION * delta)
-		direction.velocity_vector.z = move_toward(direction.velocity_vector.z, target_velocity.z, motion.DECELERATION * delta)
+		movement.velocity_vector.x = move_toward(movement.velocity_vector.x, target_velocity.x, motion.DECELERATION * delta)
+		movement.velocity_vector.z = move_toward(movement.velocity_vector.z, target_velocity.z, motion.DECELERATION * delta)
 
 
 func apply_momentum(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
 		var reduced_momentum: Vector3 = jump_momentum * MOMENTUM_REDUCTION_FACTOR
-		direction.velocity_vector = direction.velocity_vector.lerp(reduced_momentum, MOMENTUM_FACTOR * delta)
+		movement.velocity_vector = movement.velocity_vector.lerp(reduced_momentum, MOMENTUM_FACTOR * delta)
 
 
 func ground_check() -> void:
 	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
-		if player.is_jumping() and direction.velocity_vector.y <= 0:
+		if player.is_jumping() and movement.velocity_vector.y <= 0:
 			player.set_no_action()
 			jump_momentum = Vector3.ZERO
 			horizontal_momentum = Vector2.ZERO

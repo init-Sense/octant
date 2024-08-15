@@ -47,7 +47,7 @@ func handle_jump_input() -> void:
 func handle_movement_during_jump() -> void:
 	if not player.is_charging_jump():
 		return
-
+	
 	if player.is_forward():
 		if Input.is_action_pressed("move_forward"):
 			movement.forward()
@@ -58,14 +58,14 @@ func handle_movement_during_jump() -> void:
 			movement.backward()
 		else:
 			movement.still()
-	elif player.is_still() and player.is_idle():
+	elif player.is_still():
 		movement.still()
 
 
 func reset_movement() -> void:
-	if Input.is_action_pressed("move_forward"):
+	if player.is_forward():
 		movement.forward()
-	elif Input.is_action_pressed("move_backward"):
+	elif player.is_backward():
 		movement.backward()
 	else:
 		movement.still()
