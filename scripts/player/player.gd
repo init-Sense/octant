@@ -36,16 +36,16 @@ enum ActionState {
 
 
 #region INITIAL STATES
-@onready var movement_state: MovementState = MovementState.STILL
-@onready var motion_state: MotionState = MotionState.IDLE
-@onready var position_state: PositionState = PositionState.STANDING
-@onready var action_state: ActionState = ActionState.NOTHING
+@onready var movement_state: int = MovementState.STILL
+@onready var motion_state: int = MotionState.IDLE
+@onready var position_state: int = PositionState.STANDING
+@onready var action_state: int = ActionState.NOTHING
 #endregion
 
 
 #region PREVIOUS STATES
-@onready var previous_motion_state: MotionState = MotionState.IDLE
-@onready var previous_movement_state: MovementState = MovementState.STILL
+@onready var previous_motion_state: int = MotionState.IDLE
+@onready var previous_movement_state: int = MovementState.STILL
 #endregion
 
 
@@ -67,7 +67,7 @@ func _process(_delta):
 
 
 #region GENERIC SETTERS
-func set_movement_state(state: MovementState) -> void:
+func set_movement_state(state: int) -> void:
 	if state != movement_state:
 		previous_movement_state = movement_state
 		movement_state = state
@@ -75,13 +75,13 @@ func set_movement_state(state: MovementState) -> void:
 		print("Previous Movement -> ", get_previous_movement_value())
 
 
-func set_action_state(state: ActionState) -> void:
+func set_action_state(state: int) -> void:
 	if state != action_state:
 		action_state = state
 		print("Action -> ", get_action_value())
 
 
-func set_motion_state(state: MotionState) -> void:
+func set_motion_state(state: int) -> void:
 	if state != motion_state:
 		previous_motion_state = motion_state
 		motion_state = state
@@ -89,7 +89,7 @@ func set_motion_state(state: MotionState) -> void:
 		print("Previous Motion -> ", get_previous_motion_value())
 
 
-func set_position_state(state: PositionState) -> void:
+func set_position_state(state: int) -> void:
 	if state != position_state:
 		position_state = state
 		print("Position -> ", get_position_value())
