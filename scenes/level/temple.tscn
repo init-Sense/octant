@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bth122y6serpa"]
+[gd_scene load_steps=19 format=3 uid="uid://bth122y6serpa"]
 
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://scenes/level/prefabs/temple_wall.tscn" id="1_mm148"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/temple_floor.glb" id="3_bu1ib"]
@@ -12,7 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/door_polygon.glb" id="10_65mrv"]
 [ext_resource type="PackedScene" uid="uid://claexohxvbssh" path="res://scenes/level/prefabs/columns/column_stairs.tscn" id="11_g75yv"]
 [ext_resource type="PackedScene" uid="uid://bbxj6i7gue40w" path="res://assets/models/debug/debug_slope.glb" id="13_nl0kj"]
+[ext_resource type="Script" path="res://scripts/scenes/to_loading_screen.gd" id="14_1ystk"]
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwye7"]
+size = Vector3(5, 4, 4)
 
 [sub_resource type="Animation" id="Animation_2fn5g"]
 length = 0.001
@@ -135,6 +139,16 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="Pool" parent="." instance=ExtResource("6_w0lqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.326, -0.00274444, 0)
+
+[node name="Teleport" type="Area3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.755221, 0)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("14_1ystk")
+scene_to_load = "res://scenes/level/water_world.tscn"
+
+[node name="TeleportCollision" type="CollisionShape3D" parent="Pool/Teleport"]
+shape = SubResource("BoxShape3D_bwye7")
 
 [node name="ColumnSpheres" type="Node3D" parent="."]
 
