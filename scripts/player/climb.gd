@@ -24,7 +24,7 @@ func _slide_camera_smooth_back_to_origin(delta) -> void:
 	if _saved_camera_global_pos == null: return
 	camera_smooth.global_position.y = _saved_camera_global_pos.y
 	camera_smooth.position.y = clampf(camera_smooth.position.y, -0.7, 0.7)
-	var move_amount = max(player.velocity.length() * delta, motion.WALKING_SPEED / 2 * delta)
+	var _move_amount = max(player.velocity.length() * delta, motion.WALKING_SPEED / 2 * delta)
 	_saved_camera_global_pos = camera_smooth.global_position
 	if camera_smooth.position.y == 0:
 		_saved_camera_global_pos = null
