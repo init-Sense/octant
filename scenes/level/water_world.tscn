@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=16 format=3 uid="uid://ckuna2c8v1tpx"]
 
-[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_upe15"]
-[ext_resource type="Texture2D" uid="uid://bvdlyc0863m43" path="res://assets/textures/water_1024.jpg" id="2_2y124"]
+[ext_resource type="Material" uid="uid://nilegr3s5dgl" path="res://assets/materials/water_3d.tres" id="2_w0tsl"]
 [ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://scenes/level/prefabs/cave/cave_floor.tscn" id="3_yv3yc"]
 [ext_resource type="PackedScene" uid="uid://dwl04hgr7ko2x" path="res://assets/models/cave/cave_rock.glb" id="4_ghekc"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="5_6vmuf"]
@@ -40,34 +39,9 @@ volumetric_fog_length = 85.94
 volumetric_fog_detail_spread = 0.5
 volumetric_fog_sky_affect = 0.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekhpq"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bddd0"]
-width = 128
-height = 128
-noise = SubResource("FastNoiseLite_ekhpq")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_od1y5"]
-render_priority = 0
-shader = ExtResource("1_upe15")
-shader_parameter/albedo = Color(0.426724, 0.597497, 1, 1)
-shader_parameter/scroll_speed1 = Vector2(0.02, 0.01)
-shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
-shader_parameter/blend_factor = 8.305
-shader_parameter/scale1 = Vector2(32, 32)
-shader_parameter/scale2 = Vector2(1, 1)
-shader_parameter/wave_strength = 0.4
-shader_parameter/wave_scale = 0.02
-shader_parameter/pixelation_level = 512
-shader_parameter/FoamSize = 0.5
-shader_parameter/WaterOpacity = 0.7
-shader_parameter/FoamGlowIntensity = 6.24
-shader_parameter/water_texture1 = ExtResource("2_2y124")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_bddd0")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_cnuu1"]
 lightmap_size_hint = Vector2i(4002, 4002)
-material = SubResource("ShaderMaterial_od1y5")
+material = ExtResource("2_w0tsl")
 size = Vector2(800, 800)
 subdivide_width = 128
 subdivide_depth = 128

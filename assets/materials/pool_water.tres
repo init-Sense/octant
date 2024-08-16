@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://53al4wu1e68g"]
+
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_y4fpe"]
+[ext_resource type="Texture2D" uid="uid://bvdlyc0863m43" path="res://assets/textures/water_1024.jpg" id="2_0a87n"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekhpq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bddd0"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_ekhpq")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_y4fpe")
+shader_parameter/albedo = Color(0.426724, 0.597497, 1, 1)
+shader_parameter/scroll_speed1 = Vector2(0, 0)
+shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
+shader_parameter/blend_factor = 8.305
+shader_parameter/scale1 = Vector2(1, 0.6)
+shader_parameter/scale2 = Vector2(1, 1)
+shader_parameter/wave_strength = 0.16
+shader_parameter/wave_scale = 0.01
+shader_parameter/pixelation_level = 1024
+shader_parameter/FoamSize = 0.5
+shader_parameter/WaterOpacity = 0.7
+shader_parameter/FoamGlowIntensity = 6.24
+shader_parameter/water_texture1 = ExtResource("2_0a87n")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_bddd0")
