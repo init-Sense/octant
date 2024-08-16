@@ -14,11 +14,16 @@ var current_fov_change: float = 0.0
 
 
 #region CONSTANTS
-const FOV_CHANGE_WHEN_RUNNING: float = 12.0
-const FOV_CHANGE_WHEN_WALKING: float = 5.0
-const FOV_TRANSITION_SPEED_RUNNING: float = 50.0
-const FOV_TRANSITION_SPEED_WALKING: float = 15.0
-const FOV_RESET_THRESHOLD: float = 0.1
+const FOV_DEFAULT: float = 70.0
+
+const FOV_RUNNING: float = 90.0
+const FOV_WALKING: float = 75.0
+
+const FOV_TRANSITION_RUNNING: float = 2.0
+const FOV_TRANSITION_WALKING: float = 6.0
+
+const FOV_RESET_RUNNING: float = 3.0
+const FOV_RESET_WALKING: float = 2.0
 #endregion
 
 
@@ -86,27 +91,27 @@ func set_sensitivity(x: float, y: float):
 
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
-	var target_fov_change: float = 0.0
-	var transition_speed: float = FOV_TRANSITION_SPEED_WALKING
-	var direction_multiplier: float = movement.get_direction()
-	
-	if player.is_running():
-		target_fov_change = FOV_CHANGE_WHEN_RUNNING * direction_multiplier
-		transition_speed = FOV_TRANSITION_SPEED_RUNNING
-	elif player.is_walking():
-		target_fov_change = FOV_CHANGE_WHEN_WALKING * direction_multiplier
-		transition_speed = FOV_TRANSITION_SPEED_WALKING
-	else:
-		target_fov_change = 0.0
-		transition_speed = max(FOV_TRANSITION_SPEED_RUNNING, FOV_TRANSITION_SPEED_WALKING)
-	
-	current_fov_change = move_toward(current_fov_change, target_fov_change, transition_speed * delta)
-	
-	if abs(current_fov_change) < FOV_RESET_THRESHOLD:
-		current_fov_change = 0.0
-	
-	fov = default_fov + current_fov_change
+	var target_fov: float
+	var fov_reset_speed: float
+	var fov_transition_speed: float
 
-func reset_fov():
-	fov = default_fov
+	if player.is_running():
+		target_fov = FOV_RUNNING
+		fov_transition_speed = FOV_TRANSITION_RUNNING
+		fov_reset_speed = FOV_RESET_RUNNING
+	elif player.is_walking():
+		target_fov = FOV_WALKING
+		fov_transition_speed = FOV_TRANSITION_WALKING
+		fov_reset_speed = FOV_RESET_WALKING
+	else:
+		fov_reset_speed = FOV_RESET_WALKING
+		target_fov = FOV_DEFAULT
+
+	if player.is_running() or player.is_walking():
+		fov = lerp(fov, target_fov, fov_transition_speed * delta)
+	else:
+		fov = lerp(fov, target_fov, fov_reset_speed * delta)
+	
+	if abs(fov - target_fov) < 0.1:
+		fov = target_fov
 #endregion
