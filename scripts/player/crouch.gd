@@ -5,7 +5,7 @@ class_name Crouch
 @onready var player: Player = $"../.."
 @onready var head: StaticBody3D = %Head
 @onready var camera: Camera = %Camera
-@onready var motion: Motion = %Motion
+@onready var movement: Movement = %Movement
 @onready var body: CollisionShape3D = $"../../Collision"
 @onready var mesh: MeshInstance3D = $"../../Mesh"
 @onready var jump: Jump = %Jump
@@ -60,14 +60,14 @@ func down() -> void:
 	if target_step < CROUCH_STEPS:
 		target_step += 1
 		update_crouch_state()
-		motion.update_movement_state()
+		movement.update_movement_state()
 
 
 func up() -> void:
 	if target_step > 0:
 		target_step -= 1
 		update_crouch_state()
-		motion.update_movement_state()
+		movement.update_movement_state()
 
 
 #region CROUCH LIFECYCLE

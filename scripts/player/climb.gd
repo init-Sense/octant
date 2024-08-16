@@ -10,9 +10,8 @@ var _saved_camera_global_pos = null
 @onready var player: Player = $"../.."
 @onready var stairs_below_ray_cast_3d: RayCast3D = $"../../StairsBelowRayCast3D"
 @onready var stairs_ahead_ray_cast_3d: RayCast3D = $"../../StairsAheadRayCast3D"
-@onready var motion: Motion = %Motion
 @onready var camera_smooth: Node3D = %CameraSmooth
-
+@onready var movement: Movement = %Movement
 
 #region CLIMB SMOOTHING
 func _save_camera_pos_for_smoothing():
@@ -24,7 +23,7 @@ func _slide_camera_smooth_back_to_origin(delta) -> void:
 	if _saved_camera_global_pos == null: return
 	camera_smooth.global_position.y = _saved_camera_global_pos.y
 	camera_smooth.position.y = clampf(camera_smooth.position.y, -0.7, 0.7)
-	var _move_amount = max(player.velocity.length() * delta, motion.WALKING_SPEED / 2 * delta)
+	var _move_amount = max(player.velocity.length() * delta, movement.WALKING_SPEED / 2 * delta)
 	_saved_camera_global_pos = camera_smooth.global_position
 	if camera_smooth.position.y == 0:
 		_saved_camera_global_pos = null

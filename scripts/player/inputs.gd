@@ -4,7 +4,6 @@ class_name Inputs
 
 #region NODES
 @onready var movement: Movement = %Movement
-@onready var motion: Motion = %Motion
 @onready var jump: Jump = %Jump
 @onready var crouch: Crouch = %Crouch
 @onready var player: Player = $"../.."
@@ -56,7 +55,7 @@ func handle_movement_input() -> void:
 	else:
 		movement.still()
 		
-	motion.update_movement_state()
+	movement.update_movement_state()
 #endregion
 
 
@@ -68,14 +67,14 @@ func handle_sprint_input() -> void:
 		if current_time - last_sprint_tap_time <= DOUBLE_TAP_WINDOW:
 			sprint_tap_count += 1
 			if sprint_tap_count == 2:
-				motion.start_sprint()
+				movement.start_sprint()
 				sprint_tap_count = 0
 		else:
 			sprint_tap_count = 1
 		
 		last_sprint_tap_time = current_time
 	elif Input.is_action_just_released("run"):
-		motion.stop_sprint()
+		movement.stop_sprint()
 #endregion
 
 
@@ -85,5 +84,5 @@ func handle_crouch_input() -> void:
 		crouch.up()
 	elif Input.is_action_pressed('crouch_down'):
 		crouch.down()
-		motion.stop_sprint()
+		movement.stop_sprint()
 #endregion

@@ -5,7 +5,6 @@ class_name Jump
 #region NODES
 @onready var player: Player = $"../.."
 @onready var movement: Movement = %Movement
-@onready var motion: Motion = %Motion
 @onready var head: Node3D = %Head
 @onready var climb: Climb = %Climb
 #endregion
@@ -118,8 +117,8 @@ func apply_midair_control(delta: float) -> void:
 			var preserved_speed: float = lerp(JUMP_CONSTANTS.MIN_MOMENTUM_SPEED, jump_state.initial_speed, momentum_factor) * JUMP_CONSTANTS.MOMENTUM_REDUCTION
 			target_velocity = Vector3(jump_state.horizontal_momentum.x, 0, jump_state.horizontal_momentum.y).normalized() * preserved_speed
 		
-		movement.velocity_vector.x = move_toward(movement.velocity_vector.x, target_velocity.x, motion.DECELERATION * delta)
-		movement.velocity_vector.z = move_toward(movement.velocity_vector.z, target_velocity.z, motion.DECELERATION * delta)
+		movement.velocity_vector.x = move_toward(movement.velocity_vector.x, target_velocity.x, movement.DECELERATION * delta)
+		movement.velocity_vector.z = move_toward(movement.velocity_vector.z, target_velocity.z, movement.DECELERATION * delta)
 
 func apply_momentum(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
