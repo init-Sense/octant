@@ -85,6 +85,17 @@ func get_input_dir() -> Vector3:
 
 
 #region UTILS
+func get_direction() -> float:
+	var forward_strength: float = Input.get_action_strength("move_forward")
+	var backward_strength: float = Input.get_action_strength("move_backward")
+	
+	if forward_strength > backward_strength:
+		return 1.0
+	elif backward_strength > forward_strength:
+		return -1.0
+	else:
+		return 0.0
+
 func calculate_tilt_speed_modifier() -> float:
 	var camera_forward: Vector3 = -camera.global_transform.basis.z
 	var tilt_angle              = abs(acos(camera_forward.dot(Vector3.UP)) - PI/2)

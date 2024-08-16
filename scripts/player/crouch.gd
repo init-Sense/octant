@@ -5,7 +5,6 @@ class_name Crouch
 @onready var player: Player = $"../.."
 @onready var head: StaticBody3D = %Head
 @onready var camera: Camera = %Camera
-@onready var direction: Movement = %Direction
 @onready var motion: Motion = %Motion
 @onready var body: CollisionShape3D = $"../../Collision"
 @onready var mesh: MeshInstance3D = $"../../Mesh"
@@ -96,5 +95,4 @@ func update_head_position() -> void:
 
 func get_crouch_percentage() -> float:
 	return current_step / CROUCH_STEPS
-	
 #endregion

@@ -3,7 +3,7 @@ class_name Inputs
 
 
 #region NODES
-@onready var movement: Movement = %Direction
+@onready var movement: Movement = %Movement
 @onready var motion: Motion = %Motion
 @onready var jump: Jump = %Jump
 @onready var crouch: Crouch = %Crouch

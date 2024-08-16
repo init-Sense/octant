@@ -4,7 +4,7 @@ class_name HeadBob
 #region NODES
 @onready var player: CharacterBody3D = $"../.."
 @onready var camera: Camera = %Camera
-@onready var direction: Movement = %Direction
+@onready var movement: Movement = %Movement
 @onready var jump: Jump = %Jump
 #endregion
 
@@ -110,7 +110,7 @@ func smooth_reset_head_bob(delta: float) -> void:
 
 
 func handle_bob_wave() -> void:
-	var speed = direction.velocity_vector.length()
+	var speed = movement.velocity_vector.length()
 	current_amplitude = DEFAULT_AMPLITUDE * speed * AMPLITUDE_FACTOR
 	current_frequency = DEFAULT_FREQUENCY * speed * FREQUENCY_FACTOR
 #endregion

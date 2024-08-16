@@ -63,7 +63,7 @@ script = ExtResource("2_kf2t8")
 
 [node name="Modules" type="Node" parent="."]
 
-[node name="Direction" parent="Modules" instance=ExtResource("1_tw8pf")]
+[node name="Movement" parent="Modules" instance=ExtResource("1_tw8pf")]
 unique_name_in_owner = true
 
 [node name="Jump" parent="Modules" instance=ExtResource("2_8258e")]

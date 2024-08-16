@@ -4,7 +4,7 @@ class_name Gravity
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var direction: Movement = %Direction
+@onready var movement: Movement = %Movement
 #endregion
 
 
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 
 #region GRAVITY
 func apply_gravity(delta) -> void:
-	direction.velocity_vector.y -= GRAVITY * delta
-	if player.is_on_floor() and direction.velocity_vector.y < 0:
-		direction.velocity_vector.y = -0.1
+	movement.velocity_vector.y -= GRAVITY * delta
+	if player.is_on_floor() and movement.velocity_vector.y < 0:
+		movement.velocity_vector.y = -0.1
 #endregion

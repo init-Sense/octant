@@ -4,7 +4,7 @@ class_name Jump
 
 #region NODES
 @onready var player: Player = $"../.."
-@onready var movement: Movement = %Direction
+@onready var movement: Movement = %Movement
 @onready var motion: Motion = %Motion
 @onready var head: Node3D = %Head
 @onready var climb: Climb = %Climb

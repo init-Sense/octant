@@ -9,6 +9,22 @@ class_name Camera
 @export var default_fov: float = 90.0
 var rotation_x: float = 0
 var target_rotation: Vector3
+var current_fov_change: float = 0.0
+#endregion
+
+
+#region CONSTANTS
+const FOV_CHANGE_WHEN_RUNNING: float = 12.0
+const FOV_CHANGE_WHEN_WALKING: float = 5.0
+const FOV_TRANSITION_SPEED_RUNNING: float = 50.0
+const FOV_TRANSITION_SPEED_WALKING: float = 15.0
+const FOV_RESET_THRESHOLD: float = 0.1
+#endregion
+
+
+#region NODES
+@onready var movement: Movement = %Movement
+@onready var player = $"../../.."
 #endregion
 
 
@@ -17,6 +33,12 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target_rotation = rotation
 	fov = default_fov
+	
+	
+func _process(delta: float):
+	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
+	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
+	update_fov(delta)
 #endregion
 
 
@@ -44,13 +66,6 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 #endregion
 
 
-#region PROCESS
-func _process(_delta):
-	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
-	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
-#endregion
-
-
 #region ROTATION
 func get_camera_rotation() -> Vector3:
 	return rotation
@@ -69,7 +84,29 @@ func set_sensitivity(x: float, y: float):
 #endregion
 
 
-#region FOV
+#region FOV CHANGE
+func update_fov(delta: float) -> void:
+	var target_fov_change: float = 0.0
+	var transition_speed: float = FOV_TRANSITION_SPEED_WALKING
+	var direction_multiplier: float = movement.get_direction()
+	
+	if player.is_running():
+		target_fov_change = FOV_CHANGE_WHEN_RUNNING * direction_multiplier
+		transition_speed = FOV_TRANSITION_SPEED_RUNNING
+	elif player.is_walking():
+		target_fov_change = FOV_CHANGE_WHEN_WALKING * direction_multiplier
+		transition_speed = FOV_TRANSITION_SPEED_WALKING
+	else:
+		target_fov_change = 0.0
+		transition_speed = max(FOV_TRANSITION_SPEED_RUNNING, FOV_TRANSITION_SPEED_WALKING)
+	
+	current_fov_change = move_toward(current_fov_change, target_fov_change, transition_speed * delta)
+	
+	if abs(current_fov_change) < FOV_RESET_THRESHOLD:
+		current_fov_change = 0.0
+	
+	fov = default_fov + current_fov_change
+
 func reset_fov():
 	fov = default_fov
 #endregion
