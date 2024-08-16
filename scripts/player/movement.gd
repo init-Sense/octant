@@ -123,10 +123,10 @@ func stop_sprint() -> void:
 func set_movement_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
 	
-	var horizontal_velocity = input_dir * current_speed * speed_modifier
+	var target_horizontal_velocity = input_dir * current_speed * speed_modifier
 	
-	velocity_vector.x = horizontal_velocity.x
-	velocity_vector.z = horizontal_velocity.z
+	velocity_vector.x = lerp(velocity_vector.x, target_horizontal_velocity.x, DECELERATION * delta)
+	velocity_vector.z = lerp(velocity_vector.z, target_horizontal_velocity.z, DECELERATION * delta)
 #endregion
 
 

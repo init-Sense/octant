@@ -91,10 +91,17 @@ func handle_jump() -> void:
 	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump):
 		var charge_multiplier: float = 1.0 + (jump_state.current_charge / JUMP_CONSTANTS.MAX_CHARGE_TIME) * (JUMP_CONSTANTS.MAX_CHARGE_MULTIPLIER - 1.0)
 		var jump_variation: float = 1.0 + rng.randf_range(-JUMP_CONSTANTS.HEIGHT_VARIATION, JUMP_CONSTANTS.HEIGHT_VARIATION)
-		movement.velocity_vector.y = JUMP_CONSTANTS.SPEED * jump_variation * charge_multiplier
+		var jump_velocity = JUMP_CONSTANTS.SPEED * jump_variation * charge_multiplier
+		
+		var horizontal_velocity = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
+		var preserved_horizontal_velocity = horizontal_velocity * JUMP_CONSTANTS.MOMENTUM_FACTOR
+		
+		movement.velocity_vector.y = jump_velocity
+		movement.velocity_vector.x = preserved_horizontal_velocity.x
+		movement.velocity_vector.z = preserved_horizontal_velocity.y
 		
 		var momentum_variation: float = 1.0 + rng.randf_range(-JUMP_CONSTANTS.MOMENTUM_VARIATION, JUMP_CONSTANTS.MOMENTUM_VARIATION)
-		jump_state.momentum = movement.velocity_vector * JUMP_CONSTANTS.MOMENTUM_FACTOR * momentum_variation
+		jump_state.momentum = Vector3(movement.velocity_vector.x, 0, movement.velocity_vector.z) * momentum_variation
 		
 		player.set_jumping()
 		jump_state.is_requested = false
@@ -123,7 +130,9 @@ func apply_midair_control(delta: float) -> void:
 func apply_momentum(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
 		var reduced_momentum: Vector3 = jump_state.momentum * JUMP_CONSTANTS.MOMENTUM_REDUCTION
-		movement.velocity_vector = movement.velocity_vector.lerp(reduced_momentum, JUMP_CONSTANTS.MOMENTUM_FACTOR * delta)
+		
+		movement.velocity_vector.x = lerp(movement.velocity_vector.x, reduced_momentum.x, JUMP_CONSTANTS.MOMENTUM_FACTOR * delta)
+		movement.velocity_vector.z = lerp(movement.velocity_vector.z, reduced_momentum.z, JUMP_CONSTANTS.MOMENTUM_FACTOR * delta)
 #endregion
 
 
