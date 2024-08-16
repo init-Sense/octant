@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cajfis5w5wtp0"]
+
+[ext_resource type="PackedScene" uid="uid://bxn6asuk0m5ew" path="res://assets/models/cave/cave_wall.glb" id="1_cf2yk"]
+
+[node name="CaveWall" type="Node3D"]
+
+[node name="cave_wall_1" parent="." instance=ExtResource("1_cf2yk")]
+transform = Transform3D(0.995962, 0, 0.0897809, 0, 1.41543, 0, -0.0897809, 0, 0.995962, 0, 0, 0)
+
+[node name="cave_wall_3" parent="." instance=ExtResource("1_cf2yk")]
+transform = Transform3D(0.629167, 0, -0.0612691, 0, 1.39206, 0, 0.0612691, 0, 0.629167, -2.5669, 0, -9.63072)
+
+[node name="cave_wall_2" parent="." instance=ExtResource("1_cf2yk")]
+transform = Transform3D(1.33956, 0, 0.428204, 0, 1.40634, 0, -0.428204, 0, 1.33956, -2.779, 0, -4.48191)
+
+[node name="cave_wall_4" parent="." instance=ExtResource("1_cf2yk")]
+transform = Transform3D(0.998938, 0, -0.691646, 0, 1.38107, 0, 0.691646, 0, 0.998938, -2.779, 0, -14.757)
