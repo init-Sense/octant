@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=8 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_hw2qh"]
+[ext_resource type="Script" path="res://scripts/scenes/to_loading_screen.gd" id="3_hoeav"]
 [ext_resource type="PackedScene" uid="uid://bth122y6serpa" path="res://scenes/level/temple.tscn" id="4_bsoy5"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
@@ -21,10 +22,17 @@ fog_density = 0.12
 fog_sky_affect = 0.0
 fog_height_density = 0.16
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_8g7s8"]
+radius = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_37a7n"]
+radius = 2.0
+height = 4.0
+
 [node name="Octagon" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_hw2qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.3765, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.68461, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
@@ -36,3 +44,19 @@ transform = Transform3D(0.612373, -0.5, -0.612373, 0.707107, -3.09086e-08, 0.707
 light_energy = 0.3
 
 [node name="Temple" parent="." instance=ExtResource("4_bsoy5")]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34825, 4.04448, 4.15469)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("3_hoeav")
+scene_to_load = "res://scenes/level/water_world.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9999, 0.0141716, 0, -0.0141716, 0.9999, 0, 0, 0)
+shape = SubResource("SphereShape3D_8g7s8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("SphereMesh_37a7n")
+
+[connection signal="body_entered" from="Area3D" to="Player" method="_on_area_3d_body_entered"]
