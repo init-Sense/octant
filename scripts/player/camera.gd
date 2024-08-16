@@ -16,14 +16,14 @@ var current_fov_change: float = 0.0
 #region CONSTANTS
 const FOV_DEFAULT: float = 70.0
 
-const FOV_RUNNING: float = 90.0
+const FOV_RUNNING: float = 86.0
 const FOV_WALKING: float = 75.0
 
 const FOV_TRANSITION_RUNNING: float = 2.0
 const FOV_TRANSITION_WALKING: float = 6.0
 
-const FOV_RESET_RUNNING: float = 3.0
-const FOV_RESET_WALKING: float = 2.0
+const FOV_RESET_RUNNING: float = 8.0
+const FOV_RESET_WALKING: float = 3.0
 #endregion
 
 

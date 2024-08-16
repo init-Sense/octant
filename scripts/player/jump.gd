@@ -12,7 +12,7 @@ class_name Jump
 
 #region CONSTANTS
 const JUMP_CONSTANTS = {
-	SPEED = 7.0,
+	SPEED = 8.0,
 	HEIGHT_VARIATION = 0.2,
 	COYOTE_TIME = 0.01,
 	MOMENTUM_FACTOR = 0.6,
