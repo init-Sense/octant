@@ -15,6 +15,10 @@ run/main_scene="res://scenes/level/octagon.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneManager="*res://scripts/scenes/scene_manager.gd"
+
 [display]
 
 window/size/viewport_width=1920
