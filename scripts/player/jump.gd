@@ -23,7 +23,8 @@ const JUMP_CONSTANTS = {
 	MIDAIR_CONTROL = 0.8,
 	MAX_CHARGE_TIME = 1.0,
 	MAX_CHARGE_MULTIPLIER = 1.5,
-	HEAD_CHARGE_OFFSET = 0.4
+	HEAD_CHARGE_OFFSET = 0.4,
+	VERTICAL_JUMP_FACTOR = 0.1, 
 }
 #endregion
 
@@ -93,8 +94,14 @@ func handle_jump() -> void:
 		var jump_variation: float = 1.0 + rng.randf_range(-JUMP_CONSTANTS.HEIGHT_VARIATION, JUMP_CONSTANTS.HEIGHT_VARIATION)
 		var jump_velocity = JUMP_CONSTANTS.SPEED * jump_variation * charge_multiplier
 		
+		var input_dir = get_input_direction()
 		var horizontal_velocity = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
-		var preserved_horizontal_velocity = horizontal_velocity * JUMP_CONSTANTS.MOMENTUM_FACTOR
+		var input_strength = input_dir.length()
+		
+		var preserved_horizontal_velocity = horizontal_velocity * JUMP_CONSTANTS.MOMENTUM_FACTOR * input_strength
+		preserved_horizontal_velocity += input_dir * JUMP_CONSTANTS.SPEED * (1 - input_strength)
+		
+		preserved_horizontal_velocity *= lerp(JUMP_CONSTANTS.VERTICAL_JUMP_FACTOR, 1.0, input_strength)
 		
 		movement.velocity_vector.y = jump_velocity
 		movement.velocity_vector.x = preserved_horizontal_velocity.x

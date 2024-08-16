@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn8sjedbwyxjo"]
+
+[ext_resource type="Script" path="res://scripts/scenes/loading_screen.gd" id="1_wxhkf"]
+
+[node name="LoadingScreen" type="Node3D"]
+script = ExtResource("1_wxhkf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(1, 0.1, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.991489, 0.260483, 0)
+size = Vector3(1, 0.1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771313, 0.260483, 0)
+size = Vector3(1, 0.1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.911525, 0.411244, 0, -0.411244, 0.911525, 0, 1, 1.55335)

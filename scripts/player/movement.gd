@@ -4,7 +4,7 @@ class_name Movement
 
 #region CONSTANTS
 const DEFAULT_SPEED: float = 3.0
-const SPRINT_SPEED: float = 7.2
+const SPRINT_SPEED: float = 9.0
 const WALKING_SPEED: float = 3.8
 const SNEAKING_SPEED: float = 1.5
 const WALK_DELAY: float = 0.1
@@ -160,9 +160,10 @@ func get_direction() -> float:
 
 #region UTILS
 func calculate_tilt_speed_modifier() -> float:
+	var up_vector: Vector3 = Vector3.UP
 	var camera_forward: Vector3 = -camera.global_transform.basis.z
-	var tilt_angle              = abs(acos(camera_forward.dot(Vector3.UP)) - PI/2)
-	var tilt_factor = tilt_angle / (PI/2)
+	var tilt_angle = acos(camera_forward.dot(up_vector))
+	var tilt_factor = abs(sin(tilt_angle))
 	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
 
 func update_walk_timer(delta: float) -> void:
