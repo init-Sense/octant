@@ -123,7 +123,7 @@ func stop_sprint() -> void:
 func set_movement_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
 	
-	var target_horizontal_velocity = input_dir * current_speed * speed_modifier
+	var target_horizontal_velocity: Vector3 = input_dir * current_speed * speed_modifier
 	
 	velocity_vector.x = lerp(velocity_vector.x, target_horizontal_velocity.x, DECELERATION * delta)
 	velocity_vector.z = lerp(velocity_vector.z, target_horizontal_velocity.z, DECELERATION * delta)
@@ -162,8 +162,8 @@ func get_direction() -> float:
 func calculate_tilt_speed_modifier() -> float:
 	var up_vector: Vector3 = Vector3.UP
 	var camera_forward: Vector3 = -camera.global_transform.basis.z
-	var tilt_angle = acos(camera_forward.dot(up_vector))
-	var tilt_factor = abs(sin(tilt_angle))
+	var tilt_angle: float       = acos(camera_forward.dot(up_vector))
+	var tilt_factor             = abs(sin(tilt_angle))
 	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
 
 func update_walk_timer(delta: float) -> void:
