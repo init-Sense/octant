@@ -24,7 +24,7 @@ fog_height_density = 0.16
 [node name="Octagon" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_hw2qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.3765, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.68461, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
