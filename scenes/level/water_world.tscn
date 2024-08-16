@@ -131,7 +131,7 @@ transform = Transform3D(0.990198, 0, 0.292013, 0, 1.03236, 0, -0.292013, 0, 0.99
 transform = Transform3D(0.605358, 0, 0.178522, 0, 0.631133, 0, -0.178522, 0, 0.605358, -6.55467, 1.36785, 1.19709)
 
 [node name="cave_rock_13" parent="CaveWalls" instance=ExtResource("4_ghekc")]
-transform = Transform3D(1.28843, 3.53765e-08, 0.801854, -3.75272e-08, -1.51757, 1.27252e-07, 0.801854, -1.27867e-07, -1.28843, -7.73687, -10.2738, 5.25071)
+transform = Transform3D(1.28843, 1.15446e-08, 0.801854, -3.75272e-08, -0.495235, 1.27252e-07, 0.801854, -4.17273e-08, -1.28843, -7.73687, -10.2738, 5.25071)
 
 [node name="cave_rock_2" parent="CaveWalls" instance=ExtResource("4_ghekc")]
 transform = Transform3D(1.04469, 0, -0.725913, 0, 1.27213, 0, 0.725913, 0, 1.04469, 7.30519, 9.16296, 9.10317)
@@ -171,3 +171,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5639)
 
 [node name="stalagmite_3" parent="Stalagmites" instance=ExtResource("11_1v2ev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10579, 0, -7.92742)
+
+[node name="CaveRoof" type="Node3D" parent="."]
+
+[node name="cave_rock_15" parent="CaveRoof" instance=ExtResource("4_ghekc")]
+transform = Transform3D(1.28843, 3.30814e-09, 0.801854, -3.75272e-08, -0.141911, 1.27252e-07, 0.801854, -1.19571e-08, -1.28843, 0.299199, 17.4208, 2.9788)
+
+[node name="cave_rock_16" parent="CaveRoof" instance=ExtResource("4_ghekc")]
+transform = Transform3D(1.92733, 2.74258e-09, 1.19947, -5.61359e-08, -0.11765, 1.90353e-07, 1.19947, -9.91294e-09, -1.92733, -3.02223, 16.1395, -2.06836)
+
+[node name="cave_rock_17" parent="CaveRoof" instance=ExtResource("4_ghekc")]
+transform = Transform3D(1.45421, 4.13463e-10, 0.905025, -4.23557e-08, -0.0177366, 1.43625e-07, 0.905025, -1.49445e-09, -1.45421, -3.05277, 11.1312, -9.34607)
+
+[node name="cave_rock_18" parent="CaveRoof" instance=ExtResource("4_ghekc")]
+transform = Transform3D(1.45421, 8.29287e-10, 0.905025, -4.23557e-08, -0.0355745, 1.43625e-07, 0.905025, -2.99743e-09, -1.45421, 1.21412, 8.7579, -14.033)
