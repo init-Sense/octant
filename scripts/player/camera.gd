@@ -107,11 +107,10 @@ func update_fov(delta: float) -> void:
 		fov_reset_speed = FOV_RESET_WALKING
 		target_fov = FOV_DEFAULT
 
-	if player.is_running() or player.is_walking():
+	if abs(fov - target_fov) < 0.1:
+		fov = target_fov
+	elif player.is_running() or player.is_walking():
 		fov = lerp(fov, target_fov, fov_transition_speed * delta)
 	else:
 		fov = lerp(fov, target_fov, fov_reset_speed * delta)
-	
-	if abs(fov - target_fov) < 0.1:
-		fov = target_fov
 #endregion
