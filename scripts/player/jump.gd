@@ -11,21 +11,18 @@ class_name Jump
 
 
 #region CONSTANTS
-const JUMP_CONSTANTS = {
-	SPEED = 8.0,
-	HEIGHT_VARIATION = 0.2,
-	COYOTE_TIME = 0.01,
-	MOMENTUM_FACTOR = 0.6,
-	MIN_MOMENTUM_SPEED = 0.3,
-	MAX_MOMENTUM_SPEED = 2.0,
-	MOMENTUM_REDUCTION = 0.6,
-	MOMENTUM_VARIATION = 0.15,
-	MIDAIR_CONTROL = 0.8,
-	MAX_CHARGE_TIME = 1.0,
-	MAX_CHARGE_MULTIPLIER = 1.5,
-	HEAD_CHARGE_OFFSET = 0.4,
-	VERTICAL_JUMP_FACTOR = 0.1, 
-}
+const SPEED = 8.0
+const COYOTE_TIME = 0.01
+const MOMENTUM_FACTOR = 0.6
+const MIN_MOMENTUM_SPEED = 0.3
+const MAX_MOMENTUM_SPEED = 2.0
+const MOMENTUM_REDUCTION = 0.6
+const MOMENTUM_VARIATION = 0.15
+const MIDAIR_CONTROL = 0.8
+const MAX_CHARGE_TIME = 1.0
+const MAX_CHARGE_MULTIPLIER = 1.7
+const HEAD_CHARGE_OFFSET = 0.8
+const VERTICAL_JUMP_FACTOR = 0.1
 #endregion
 
 
@@ -90,25 +87,23 @@ func cancel_jump() -> void:
 
 func handle_jump() -> void:
 	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump):
-		var charge_multiplier: float = 1.0 + (jump_state.current_charge / JUMP_CONSTANTS.MAX_CHARGE_TIME) * (JUMP_CONSTANTS.MAX_CHARGE_MULTIPLIER - 1.0)
-		var jump_variation: float = 1.0 + rng.randf_range(-JUMP_CONSTANTS.HEIGHT_VARIATION, JUMP_CONSTANTS.HEIGHT_VARIATION)
-		var jump_velocity = JUMP_CONSTANTS.SPEED * jump_variation * charge_multiplier
+		var charge_multiplier: float = 1.0 + (jump_state.current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
+		var jump_velocity = SPEED * charge_multiplier
 		
 		var input_dir = get_input_direction()
 		var horizontal_velocity = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
 		var input_strength = input_dir.length()
 		
-		var preserved_horizontal_velocity = horizontal_velocity * JUMP_CONSTANTS.MOMENTUM_FACTOR * input_strength
-		preserved_horizontal_velocity += input_dir * JUMP_CONSTANTS.SPEED * (1 - input_strength)
+		var preserved_horizontal_velocity = horizontal_velocity * MOMENTUM_FACTOR * input_strength
+		preserved_horizontal_velocity += input_dir * SPEED * (1 - input_strength)
 		
-		preserved_horizontal_velocity *= lerp(JUMP_CONSTANTS.VERTICAL_JUMP_FACTOR, 1.0, input_strength)
+		preserved_horizontal_velocity *= lerp(VERTICAL_JUMP_FACTOR, 1.0, input_strength)
 		
 		movement.velocity_vector.y = jump_velocity
 		movement.velocity_vector.x = preserved_horizontal_velocity.x
 		movement.velocity_vector.z = preserved_horizontal_velocity.y
 		
-		var momentum_variation: float = 1.0 + rng.randf_range(-JUMP_CONSTANTS.MOMENTUM_VARIATION, JUMP_CONSTANTS.MOMENTUM_VARIATION)
-		jump_state.momentum = Vector3(movement.velocity_vector.x, 0, movement.velocity_vector.z) * momentum_variation
+		jump_state.momentum = Vector3(movement.velocity_vector.x, 0, movement.velocity_vector.z)
 		
 		player.set_jumping()
 		jump_state.is_requested = false
@@ -124,11 +119,11 @@ func apply_midair_control(delta: float) -> void:
 		var target_velocity: Vector3 = Vector3.ZERO
 		
 		if input_dir.length() > 0.1:
-			target_velocity = movement.target_velocity * JUMP_CONSTANTS.MIDAIR_CONTROL
+			target_velocity = movement.target_velocity * MIDAIR_CONTROL
 		else:
-			var momentum_speed: float = clamp(jump_state.initial_speed, JUMP_CONSTANTS.MIN_MOMENTUM_SPEED, JUMP_CONSTANTS.MAX_MOMENTUM_SPEED)
-			var momentum_factor: float = inverse_lerp(JUMP_CONSTANTS.MIN_MOMENTUM_SPEED, JUMP_CONSTANTS.MAX_MOMENTUM_SPEED, momentum_speed)
-			var preserved_speed: float = lerp(JUMP_CONSTANTS.MIN_MOMENTUM_SPEED, jump_state.initial_speed, momentum_factor) * JUMP_CONSTANTS.MOMENTUM_REDUCTION
+			var momentum_speed: float = clamp(jump_state.initial_speed, MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED)
+			var momentum_factor: float = inverse_lerp(MIN_MOMENTUM_SPEED, MAX_MOMENTUM_SPEED, momentum_speed)
+			var preserved_speed: float = lerp(MIN_MOMENTUM_SPEED, jump_state.initial_speed, momentum_factor) * MOMENTUM_REDUCTION
 			target_velocity = Vector3(jump_state.horizontal_momentum.x, 0, jump_state.horizontal_momentum.y).normalized() * preserved_speed
 		
 		movement.velocity_vector.x = move_toward(movement.velocity_vector.x, target_velocity.x, movement.DECELERATION * delta)
@@ -136,10 +131,10 @@ func apply_midair_control(delta: float) -> void:
 
 func apply_momentum(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame):
-		var reduced_momentum: Vector3 = jump_state.momentum * JUMP_CONSTANTS.MOMENTUM_REDUCTION
+		var reduced_momentum: Vector3 = jump_state.momentum * MOMENTUM_REDUCTION
 		
-		movement.velocity_vector.x = lerp(movement.velocity_vector.x, reduced_momentum.x, JUMP_CONSTANTS.MOMENTUM_FACTOR * delta)
-		movement.velocity_vector.z = lerp(movement.velocity_vector.z, reduced_momentum.z, JUMP_CONSTANTS.MOMENTUM_FACTOR * delta)
+		movement.velocity_vector.x = lerp(movement.velocity_vector.x, reduced_momentum.x, MOMENTUM_FACTOR * delta)
+		movement.velocity_vector.z = lerp(movement.velocity_vector.z, reduced_momentum.z, MOMENTUM_FACTOR * delta)
 #endregion
 
 
@@ -151,6 +146,7 @@ func ground_check() -> void:
 			jump_state.momentum = Vector3.ZERO
 			jump_state.horizontal_momentum = Vector2.ZERO
 			jump_state.initial_speed = 0.0
+			jump_state.current_charge = 0.0
 			landed.emit()
 		jump_state.can_coyote_jump = true
 		jump_state.coyote_timer = 0.0
@@ -160,7 +156,7 @@ func ground_check() -> void:
 func update_coyote_time(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and jump_state.can_coyote_jump:
 		jump_state.coyote_timer += delta
-		if jump_state.coyote_timer >= JUMP_CONSTANTS.COYOTE_TIME:
+		if jump_state.coyote_timer >= COYOTE_TIME:
 			jump_state.can_coyote_jump = false
 #endregion
 
@@ -169,9 +165,9 @@ func update_coyote_time(delta: float) -> void:
 func update_charge_offset(delta: float) -> void:
 	var target_offset: float = 0.0
 	if player.is_charging_jump():
-		jump_state.current_charge = min(jump_state.current_charge + delta, JUMP_CONSTANTS.MAX_CHARGE_TIME)
-		var charge_progress: float = jump_state.current_charge / JUMP_CONSTANTS.MAX_CHARGE_TIME
-		target_offset = -(charge_progress * JUMP_CONSTANTS.HEAD_CHARGE_OFFSET)
+		jump_state.current_charge = min(jump_state.current_charge + delta, MAX_CHARGE_TIME)
+		var charge_progress: float = jump_state.current_charge / MAX_CHARGE_TIME
+		target_offset = -(charge_progress * HEAD_CHARGE_OFFSET)
 	
 	jump_state.charge_offset = move_toward(jump_state.charge_offset, target_offset, delta * 2)
 
