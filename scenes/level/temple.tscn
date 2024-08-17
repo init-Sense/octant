@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=22 format=3 uid="uid://bth122y6serpa"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://assets/prefabs/temple/temple_wall.tscn" id="1_mm148"]
