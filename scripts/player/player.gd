@@ -62,7 +62,6 @@ enum ActionState {
 func _ready():
 	print_tree_pretty()
 
-
 func _process(_delta):
 	rotation.y = camera.rotation.y
 #endregion
