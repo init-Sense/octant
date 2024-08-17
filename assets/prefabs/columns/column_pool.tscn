@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyne314wtm6us"]
-
-[ext_resource type="PackedScene" uid="uid://dnim2fcq145wp" path="res://assets/models/columns/column_pool.glb" id="1_47irr"]
-
-[node name="ColumnPool" type="Node3D"]
-
-[node name="column_pool" parent="." instance=ExtResource("1_47irr")]

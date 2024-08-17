@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/stairs/stairs_steps.glb" id="1_vlfly"]
 [ext_resource type="PackedScene" uid="uid://h682cudtrt30" path="res://assets/models/stairs/stairs_slope.glb" id="2_a3q0x"]
 [ext_resource type="PackedScene" uid="uid://dx5ktq68neuft" path="res://assets/models/stairs/stairs_side.glb" id="3_bbvn8"]
-[ext_resource type="PackedScene" uid="uid://claexohxvbssh" path="res://assets/prefabs/columns/column_stairs.tscn" id="4_o5xpu"]
+[ext_resource type="PackedScene" uid="uid://dmftuq1vpiqy8" path="res://assets/models/columns/column_stairs.glb" id="4_647s7"]
 
 [node name="Stairs" type="Node3D"]
 
@@ -15,28 +15,28 @@ visible = false
 [node name="stairs_side" parent="." instance=ExtResource("3_bbvn8")]
 
 [node name="ColumnStairs" type="Node3D" parent="."]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
+transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, 0, 0, 0)
 
-[node name="ColumnStairs" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, 0)
+[node name="column_stairs_1" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, 0)
 
-[node name="ColumnStairs2" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0, 0)
+[node name="column_stairs_2" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 0, 0)
 
-[node name="ColumnStairs3" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.60624, 0, 3.60624)
+[node name="column_stairs_3" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.67695, 0, 3.67695)
 
-[node name="ColumnStairs4" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.60624, 0, -3.60624)
+[node name="column_stairs_4" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.67695, 0, -3.67695)
 
-[node name="ColumnStairs5" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 5.1)
+[node name="column_stairs_5" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 5.2)
 
-[node name="ColumnStairs6" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, -5.1)
+[node name="column_stairs_6" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, -5.2)
 
-[node name="ColumnStairs7" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.60624, 0, 3.60624)
+[node name="column_stairs_7" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(-0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, -0.707106, -3.67695, 0, 3.67695)
 
-[node name="ColumnStairs8" parent="ColumnStairs" instance=ExtResource("4_o5xpu")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.60624, 0, -3.60624)
+[node name="column_stairs_8" parent="ColumnStairs" instance=ExtResource("4_647s7")]
+transform = Transform3D(-0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, -0.707106, 3.67695, 0, -3.67695)
