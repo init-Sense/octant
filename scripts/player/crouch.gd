@@ -13,16 +13,16 @@ class_name Crouch
 
 
 #region CONSTANTS
-const CROUCH_STEPS: int       = 10
-const TRANSITION_TIME: float  = 0.05
-const STANDING_HEIGHT: float  = 1.8
+const CROUCH_STEPS: int = 2
+const TRANSITION_TIME: float = 0.2
+const STANDING_HEIGHT: float = 1.8
 const CROUCHING_HEIGHT: float = 0.6
 #endregion
 
 
 #region VARIABLES
 var current_step: float = 0
-var target_step: float  = 0
+var target_step: float = 0
 var current_tween: Tween
 var initial_head_offset: float
 #endregion
@@ -56,6 +56,7 @@ func update_player_height(new_height: float) -> void:
 #endregion
 
 
+#region UP & DOWN
 func down() -> void:
 	if target_step < CROUCH_STEPS:
 		target_step += 1
@@ -68,6 +69,7 @@ func up() -> void:
 		target_step -= 1
 		update_crouch_state()
 		movement.update_movement_state()
+#endregion
 
 
 #region CROUCH LIFECYCLE
