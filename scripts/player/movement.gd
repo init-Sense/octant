@@ -58,10 +58,12 @@ func forward() -> void:
 	input_dir.y = 0
 	player.set_forward()
 
+
 func backward() -> void:
 	input_dir = camera.global_transform.basis.z
 	input_dir.y = 0
 	player.set_backward()
+
 
 func still() -> void:
 	input_dir = Vector3.ZERO
@@ -75,6 +77,7 @@ func idle() -> void:
 	target_speed = 0.0
 	is_walk_delayed = false
 
+
 func walk() -> void:
 	if not is_walk_delayed:
 		is_walk_delayed = true
@@ -84,10 +87,12 @@ func walk() -> void:
 		target_speed = WALKING_SPEED
 		is_walk_delayed = false
 
+
 func run() -> void:
 	player.set_running()
 	target_speed = SPRINT_SPEED
 	is_walk_delayed = false
+
 
 func sneak() -> void:
 	player.set_sneaking()
@@ -102,6 +107,7 @@ func update_sneaking_speed() -> void:
 	var speed_range: float = WALKING_SPEED - SNEAKING_SPEED
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
 
+
 func update_movement_state() -> void:
 	if player.is_still():
 		idle()
@@ -112,13 +118,16 @@ func update_movement_state() -> void:
 	else:
 		walk()
 
+
 func start_sprint() -> void:
 	player.set_running()
 	is_walk_delayed = false
 	update_movement_state()
 
+
 func stop_sprint() -> void:
 	update_movement_state()
+
 
 func update_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
@@ -154,6 +163,7 @@ func update_input_direction() -> void:
 		input_dir = Vector3.ZERO
 		player.set_still()
 
+
 func get_direction() -> float:
 	var forward_strength: float = Input.get_action_strength("move_forward")
 	var backward_strength: float = Input.get_action_strength("move_backward")
@@ -174,6 +184,7 @@ func calculate_tilt_speed_modifier() -> float:
 	var tilt_angle: float = acos(camera_forward.dot(up_vector))
 	var tilt_factor = abs(sin(tilt_angle))
 	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
+
 
 func update_walk_timer(delta: float) -> void:
 	if is_walk_delayed:

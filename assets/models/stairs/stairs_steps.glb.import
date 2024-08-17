@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://lels5yj7mcip"
-path="res://.godot/imported/stairs.glb-c11f9b53d7694d4b9ec937195e738b51.scn"
+path="res://.godot/imported/stairs_steps.glb-9a18272965551f7c92cac754d687807b.scn"
 
 [deps]
 
-source_file="res://assets/models/stairs/stairs.glb"
-dest_files=["res://.godot/imported/stairs.glb-c11f9b53d7694d4b9ec937195e738b51.scn"]
+source_file="res://assets/models/stairs/stairs_steps.glb"
+dest_files=["res://.godot/imported/stairs_steps.glb-9a18272965551f7c92cac754d687807b.scn"]
 
 [params]
 
@@ -40,7 +40,6 @@ _subresources={
 },
 "nodes": {
 "PATH:Stairs": {
-"generate/physics": true,
 "mesh_instance/cast_shadow": 0,
 "physics/layer": 0,
 "physics/mask": 0

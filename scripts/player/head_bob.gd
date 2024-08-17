@@ -1,6 +1,7 @@
 extends Node
 class_name HeadBob
 
+
 #region NODES
 @onready var player: Player = $"../.."
 @onready var camera: Camera = %Camera

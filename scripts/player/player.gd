@@ -9,7 +9,6 @@ enum MovementState {
 	BACKWARD,
 }
 
-
 enum MotionState {
 	IDLE,
 	WALKING,
@@ -17,13 +16,11 @@ enum MotionState {
 	RUNNING,
 }
 
-
 enum PositionState {
 	STANDING,
 	CROUCHING,
 	CROUCHED,
 }
-
 
 enum ActionState {
 	NOTHING,
@@ -61,6 +58,7 @@ enum ActionState {
 #region LIFECYCLE
 func _ready():
 	print_tree_pretty()
+
 
 func _process(_delta):
 	rotation.y = camera.rotation.y
@@ -103,10 +101,8 @@ func set_position_state(state: int) -> void:
 func set_still() -> void:
 	set_movement_state(MovementState.STILL)
 
-
 func set_forward() -> void:
 	set_movement_state(MovementState.FORWARD)
-
 
 func set_backward() -> void:
 	set_movement_state(MovementState.BACKWARD)
@@ -117,14 +113,11 @@ func set_backward() -> void:
 func set_idle() -> void:
 	set_motion_state(MotionState.IDLE)
 
-
 func set_walking() -> void:
 	set_motion_state(MotionState.WALKING)
 
-
 func set_sneaking() -> void:
 	set_motion_state(MotionState.SNEAKING)
-
 
 func set_running() -> void:
 	set_motion_state(MotionState.RUNNING)
@@ -147,10 +140,8 @@ func set_jumping() -> void:
 func set_standing() -> void:
 	set_position_state(PositionState.STANDING)
 
-
 func set_crouching() -> void:
 	set_position_state(PositionState.CROUCHING)
-
 
 func set_crouched() -> void:
 	set_position_state(PositionState.CROUCHED)
@@ -221,6 +212,7 @@ func get_action_value() -> String:
 		_:
 			return "UNKNOWN"
 
+
 func get_previous_action_value() -> String:
 	match previous_action_state:
 		ActionState.NOTHING:
@@ -231,6 +223,7 @@ func get_previous_action_value() -> String:
 			return "JUMPING"
 		_:
 			return "UNKNOWN"
+
 
 func get_position_value() -> String:
 	match position_state:
@@ -310,7 +303,6 @@ func was_in_motion() -> bool:
 func is_doing_nothing() -> bool:
 	return action_state == ActionState.NOTHING
 
-
 func is_charging_jump() -> bool:
 	return action_state == ActionState.CHARGING_JUMP
 	
@@ -332,10 +324,8 @@ func was_jumping() -> bool:
 func is_standing() -> bool:
 	return position_state == PositionState.STANDING
 
-
 func is_crouching() -> bool:
 	return position_state == PositionState.CROUCHING
-
 
 func is_crouched() -> bool:
 	return position_state == PositionState.CROUCHED

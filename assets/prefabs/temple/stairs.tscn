@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlgjbjwqlvaln"]
 
-[ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/stairs/stairs.glb" id="1_vlfly"]
+[ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/stairs/stairs_steps.glb" id="1_vlfly"]
 [ext_resource type="PackedScene" uid="uid://h682cudtrt30" path="res://assets/models/stairs/stairs_slope.glb" id="2_a3q0x"]
 [ext_resource type="PackedScene" uid="uid://dx5ktq68neuft" path="res://assets/models/stairs/stairs_side.glb" id="3_bbvn8"]
 [ext_resource type="PackedScene" uid="uid://claexohxvbssh" path="res://assets/prefabs/columns/column_stairs.tscn" id="4_o5xpu"]
 
 [node name="Stairs" type="Node3D"]
 
-[node name="stairs" parent="." instance=ExtResource("1_vlfly")]
+[node name="stairs_steps" parent="." instance=ExtResource("1_vlfly")]
 
 [node name="stairs_slope" parent="." instance=ExtResource("2_a3q0x")]
 visible = false

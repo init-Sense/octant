@@ -12,19 +12,19 @@ class_name Jump
 
 
 #region CONSTANTS
-const SPEED: float           = 8.0
-const COYOTE_TIME: float        = 0.01
-const MOMENTUM_FACTOR: float    = 0.6
+const SPEED: float = 8.0
+const COYOTE_TIME: float = 0.01
+const MOMENTUM_FACTOR: float = 0.6
 const MIN_MOMENTUM_SPEED: float = 0.3
 const MAX_MOMENTUM_SPEED: float = 2.0
 const MOMENTUM_REDUCTION: float = 0.6
-const MOMENTUM_VARIATION: float    = 0.15
-const MIDAIR_CONTROL: float        = 0.8
-const MAX_CHARGE_TIME: float       = 0.5
+const MOMENTUM_VARIATION: float = 0.15
+const MIDAIR_CONTROL: float = 0.8
+const MAX_CHARGE_TIME: float = 0.5
 const MAX_CHARGE_MULTIPLIER: float = 1.7
-const HEAD_CHARGE_OFFSET: float    = 0.8
+const HEAD_CHARGE_OFFSET: float = 0.8
 const CROUCHED_HEAD_CHARGE_OFFSET: float = 0.2
-const VERTICAL_JUMP_FACTOR: float  = 0.1
+const VERTICAL_JUMP_FACTOR: float = 0.1
 #endregion
 
 
@@ -91,11 +91,11 @@ func cancel_jump() -> void:
 func handle_jump() -> void:
 	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump):
 		var charge_multiplier: float = 1.0 + (jump_state.current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
-		var jump_velocity: float     = SPEED * charge_multiplier
+		var jump_velocity: float = SPEED * charge_multiplier
 		
-		var input_dir: Vector2           = get_input_direction()
+		var input_dir: Vector2 = get_input_direction()
 		var horizontal_velocity: Vector2 = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
-		var input_strength: float        = input_dir.length()
+		var input_strength: float = input_dir.length()
 		
 		var preserved_horizontal_velocity: Vector2 = horizontal_velocity * MOMENTUM_FACTOR * input_strength
 		preserved_horizontal_velocity += input_dir * SPEED * (1 - input_strength)
