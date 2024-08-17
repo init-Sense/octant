@@ -2,7 +2,7 @@ extends Node
 class_name HeadBob
 
 #region NODES
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: Player = $"../.."
 @onready var camera: Camera = %Camera
 @onready var movement: Movement = %Movement
 @onready var jump: Jump = %Jump
@@ -91,8 +91,8 @@ func handle_head_bob(delta: float) -> void:
 func apply_head_bob(delta: float) -> void:
 	handle_bob_wave()
 	bob_time += current_frequency * delta
-	var y_offset = sin(bob_time) * current_amplitude
-	var x_offset = cos(bob_time * 0.5) * current_amplitude * X_FACTOR
+	var y_offset: float = sin(bob_time) * current_amplitude
+	var x_offset: float = cos(bob_time * 0.5) * current_amplitude * X_FACTOR
 	
 	y_offset += noise.get_noise_1d(bob_time * 10) * NOISE_STRENGTH
 	x_offset += noise.get_noise_1d(bob_time * 10 + 100) * NOISE_STRENGTH
@@ -110,7 +110,7 @@ func smooth_reset_head_bob(delta: float) -> void:
 
 
 func handle_bob_wave() -> void:
-	var speed = movement.velocity_vector.length()
+	var speed: float = movement.velocity_vector.length()
 	current_amplitude = DEFAULT_AMPLITUDE * speed * AMPLITUDE_FACTOR
 	current_frequency = DEFAULT_FREQUENCY * speed * FREQUENCY_FACTOR
 #endregion
@@ -139,14 +139,14 @@ func track_jump_height() -> void:
 func on_player_landed() -> void:
 	is_landing = true
 	landing_impact_time = 0.0
-	var jump_height = max_jump_height - jump_start_height
-	var height_factor = clamp(jump_height / MAX_IMPACT_HEIGHT, 0, 1)
+	var jump_height: float = max_jump_height - jump_start_height
+	var height_factor      = clamp(jump_height / MAX_IMPACT_HEIGHT, 0, 1)
 	current_landing_impact_amplitude = lerp(BASE_LANDING_IMPACT_AMPLITUDE, MAX_LANDING_IMPACT_AMPLITUDE, height_factor)
 
 
 func apply_landing_impact(delta: float) -> void:
 	landing_impact_time += delta
-	var impact_progress = landing_impact_time / LANDING_IMPACT_DURATION
+	var impact_progress: float = landing_impact_time / LANDING_IMPACT_DURATION
 	landing_offset = -sin(impact_progress * PI) * current_landing_impact_amplitude
 	
 	if landing_impact_time >= LANDING_IMPACT_DURATION:
@@ -162,11 +162,11 @@ func smooth_reset_landing_impact(delta: float) -> void:
 func apply_idle_movement(delta: float) -> void:
 	idle_time += delta
 	
-	var base_y_offset = sin(idle_time * IDLE_FREQUENCY) * IDLE_AMPLITUDE
-	var base_x_offset = cos(idle_time * IDLE_FREQUENCY * 0.7) * IDLE_AMPLITUDE * 0.5
+	var base_y_offset: float = sin(idle_time * IDLE_FREQUENCY) * IDLE_AMPLITUDE
+	var base_x_offset: float = cos(idle_time * IDLE_FREQUENCY * 0.7) * IDLE_AMPLITUDE * 0.5
 	
-	var noise_x = noise.get_noise_1d(idle_time * 5) * IDLE_NOISE_STRENGTH
-	var noise_y = noise.get_noise_1d(idle_time * 5 + 100) * IDLE_NOISE_STRENGTH
+	var noise_x: float = noise.get_noise_1d(idle_time * 5) * IDLE_NOISE_STRENGTH
+	var noise_y: float = noise.get_noise_1d(idle_time * 5 + 100) * IDLE_NOISE_STRENGTH
 	
 	idle_offset = Vector3(base_x_offset + noise_x, base_y_offset + noise_y, 0)
 #endregion
@@ -174,6 +174,6 @@ func apply_idle_movement(delta: float) -> void:
 
 #region CAMERA UPDATE
 func update_camera_position() -> void:
-	var total_offset = current_offset + idle_offset
+	var total_offset: Vector3 = current_offset + idle_offset
 	camera.position = Vector3(total_offset.x, CAMERA_HEIGHT + total_offset.y + landing_offset, total_offset.z)
 #endregion
