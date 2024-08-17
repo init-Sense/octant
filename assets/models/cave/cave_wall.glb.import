@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://f4l11amraffi"
-path="res://.godot/imported/pool_water.glb-0e0ace85ab0fae543741e60e9ec4f19e.scn"
+uid="uid://bxn6asuk0m5ew"
+path="res://.godot/imported/cave_wall.glb-c314ffbf4a90240b65115c2b1c9c6b66.scn"
 
 [deps]
 
-source_file="res://assets/models/pool_water.glb"
-dest_files=["res://.godot/imported/pool_water.glb-0e0ace85ab0fae543741e60e9ec4f19e.scn"]
+source_file="res://assets/models/cave/cave_wall.glb"
+dest_files=["res://.godot/imported/cave_wall.glb-c314ffbf4a90240b65115c2b1c9c6b66.scn"]
 
 [params]
 
@@ -33,14 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Water": {
+"CaveRock": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/water.tres"
-}
-},
-"nodes": {
-"PATH:PoolWater": {
-"mesh_instance/cast_shadow": 0
+"use_external/path": "res://assets/materials/cave_rock.tres"
 }
 }
 }

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccwt6ib0jvshx"]
+
+[ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/corridor/corridor_vault.glb" id="1_io7me"]
+[ext_resource type="PackedScene" uid="uid://dognb6in18kwm" path="res://assets/models/door.glb" id="2_tqedr"]
+[ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/door_entrance.glb" id="3_lwv6q"]
+[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="4_tlil4"]
+
+[node name="TempleWall" type="Node3D"]
+
+[node name="corridor_vault" parent="." instance=ExtResource("1_io7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.7968)
+
+[node name="door" parent="." instance=ExtResource("2_tqedr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
+
+[node name="door_entrance" parent="." instance=ExtResource("3_lwv6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
+
+[node name="ColumnWall" parent="." instance=ExtResource("4_tlil4")]
+transform = Transform3D(0.994522, 0, 0.104528, 0, 1, 0, -0.104528, 0, 0.994522, 16.6404, 0, -40)
