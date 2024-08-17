@@ -20,6 +20,8 @@ const FOV_RUNNING: float = 80.0
 const FOV_WALKING: float = 75.0
 const FOV_CROUCHING: float = 65.0
 
+const FOV_JUMP_OFFSET: float = 5.0
+
 const FOV_TRANSITION_RUNNING: float = 4.0
 const FOV_TRANSITION_WALKING: float = 6.0
 const FOV_TRANSITION_CROUCHING: float = 6.0
@@ -95,8 +97,9 @@ func set_sensitivity(x: float, y: float):
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
 	var target_fov: float
-	var fov_reset_speed: float
 	var fov_transition_speed: float
+	var fov_reset_speed: float
+	var is_moving: bool = true
 
 	if player.is_running():
 		target_fov = FOV_RUNNING
@@ -111,14 +114,17 @@ func update_fov(delta: float) -> void:
 		fov_transition_speed = FOV_TRANSITION_CROUCHING
 		fov_reset_speed = FOV_RESET_CROUCHING
 	else:
-		fov_reset_speed = FOV_RESET_WALKING
 		target_fov = FOV_DEFAULT
+		fov_reset_speed = FOV_RESET_WALKING
+		fov_transition_speed = FOV_RESET_WALKING
+		is_moving = false
 
-	if player.is_running() or player.is_walking() or player.is_crouching() or player.is_crouched():
-		fov = lerpf(fov, target_fov, fov_transition_speed * delta)
-	else:
-		fov = lerpf(fov, target_fov, fov_reset_speed * delta)
-	
+	if player.is_jumping():
+		target_fov += FOV_JUMP_OFFSET
+
 	if abs(fov - target_fov) < 0.1:
 		fov = target_fov
+	else:
+		var current_speed = fov_transition_speed if is_moving else fov_reset_speed
+		fov = lerpf(fov, target_fov, current_speed * delta)
 #endregion
