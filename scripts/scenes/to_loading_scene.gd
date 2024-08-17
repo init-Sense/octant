@@ -45,4 +45,4 @@ func _on_audio_finished():
 		call_deferred("_change_scene")
 
 func _change_scene():
-	get_tree().change_scene_to_file("res://scenes/loading_screen/loading_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/level/loading_scene.tscn")
