@@ -22,13 +22,13 @@ const FOV_CROUCHING: float = 65.0
 
 const FOV_JUMP_OFFSET: float = 5.0
 
-const FOV_TRANSITION_RUNNING: float = 4.0
-const FOV_TRANSITION_WALKING: float = 6.0
-const FOV_TRANSITION_CROUCHING: float = 6.0
+const FOV_INCREASE_SPEED_RUNNING: float = 4.0
+const FOV_INCREASE_SPEED_WALKING: float = 6.0
+const FOV_INCREASE_SPEED_CROUCHING: float = 6.0
 
-const FOV_RESET_RUNNING: float = 8.0
-const FOV_RESET_WALKING: float = 3.0
-const FOV_RESET_CROUCHING: float = 2.0
+const FOV_RESET_SPEED_RUNNING: float = 8.0
+const FOV_RESET_SPEED_WALKING: float = 4.0
+const FOV_RESET_SPEED_CROUCHING: float = 2.0
 #endregion
 
 
@@ -97,26 +97,26 @@ func set_sensitivity(x: float, y: float):
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
 	var target_fov: float
-	var fov_transition_speed: float
+	var fov_increase_speed: float
 	var fov_reset_speed: float
 	var is_moving: bool = true
 
 	if player.is_running():
 		target_fov = FOV_RUNNING
-		fov_transition_speed = FOV_TRANSITION_RUNNING
-		fov_reset_speed = FOV_RESET_RUNNING
+		fov_increase_speed = FOV_INCREASE_SPEED_RUNNING
+		fov_reset_speed = FOV_RESET_SPEED_RUNNING
 	elif player.is_walking():
 		target_fov = FOV_WALKING
-		fov_transition_speed = FOV_TRANSITION_WALKING
-		fov_reset_speed = FOV_RESET_WALKING
+		fov_increase_speed = FOV_INCREASE_SPEED_WALKING
+		fov_reset_speed = FOV_RESET_SPEED_WALKING
 	elif player.is_crouching() or player.is_crouched():
 		target_fov = FOV_CROUCHING
-		fov_transition_speed = FOV_TRANSITION_CROUCHING
-		fov_reset_speed = FOV_RESET_CROUCHING
+		fov_increase_speed = FOV_INCREASE_SPEED_CROUCHING
+		fov_reset_speed = FOV_RESET_SPEED_CROUCHING
 	else:
 		target_fov = FOV_DEFAULT
-		fov_reset_speed = FOV_RESET_WALKING
-		fov_transition_speed = FOV_RESET_WALKING
+		fov_reset_speed = FOV_RESET_SPEED_WALKING
+		fov_increase_speed = FOV_INCREASE_SPEED_WALKING
 		is_moving = false
 
 	if player.is_jumping():
@@ -125,6 +125,6 @@ func update_fov(delta: float) -> void:
 	if abs(fov - target_fov) < 0.1:
 		fov = target_fov
 	else:
-		var current_speed = fov_transition_speed if is_moving else fov_reset_speed
+		var current_speed = fov_increase_speed if is_moving else fov_reset_speed
 		fov = lerpf(fov, target_fov, current_speed * delta)
 #endregion
