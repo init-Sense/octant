@@ -3,11 +3,11 @@ class_name Movement
 
 
 #region CONSTANTS
-const SPRINT_SPEED: float = 15.0
-const WALKING_SPEED: float = 6.0
-const SNEAKING_SPEED: float = 1.5
-const WALK_DELAY: float = 0.1
-const DECELERATION: float = 15.0
+const SPRINT_SPEED: float = 16.0
+const WALKING_SPEED: float = 10.0
+const SNEAKING_SPEED: float = 2.0
+const WALK_DELAY: float = 0.08
+const DECELERATION: float = 8.0
 const MOVEMENT_DAMPING: float = 0.01
 const MIN_SPEED_FACTOR: float = 0.5
 #endregion

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/pool.glb" id="1_hrp2w"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="2_1bdjo"]
 [ext_resource type="PackedScene" uid="uid://dyne314wtm6us" path="res://assets/prefabs/columns/column_pool.tscn" id="4_ilns1"]
-[ext_resource type="Material" uid="uid://c4rxsn4fomo88" path="res://assets/materials/pool_water.tres" id="4_xg8ap"]
+[ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://assets/materials/pool_water.tres" id="4_xg8ap"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v53lh"]
 material = ExtResource("4_xg8ap")
