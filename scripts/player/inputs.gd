@@ -16,17 +16,21 @@ const DOUBLE_TAP_WINDOW: float = 0.3
 
 
 #region VARIABLES
-var last_sprint_tap_time: float = 0.0
-var sprint_tap_count: int = 0
+var last_forward_sprint_tap_time: float = 0.0
+var last_backward_sprint_tap_time: float = 0.0
+var forward_sprint_tap_count: int = 0
+var backward_sprint_tap_count: int = 0
 var is_jump_charged: bool = false
 #endregion
 
 
 func _input(_event) -> void:
 	handle_jump_input()
-	
 	handle_movement_input()
-	handle_sprint_input()
+	
+	handle_forward_sprint_input()
+	handle_backward_sprint_input()
+	
 	handle_crouch_input()
 
 
@@ -60,20 +64,36 @@ func handle_movement_input() -> void:
 
 
 #region SPRINT HANDLING
-func handle_sprint_input() -> void:
-	if Input.is_action_just_pressed("run"):
+func handle_forward_sprint_input() -> void:
+	if Input.is_action_just_pressed("move_forward"):
 		var current_time: float = Time.get_ticks_msec() / 1000.0
 		
-		if current_time - last_sprint_tap_time <= DOUBLE_TAP_WINDOW:
-			sprint_tap_count += 1
-			if sprint_tap_count == 2:
+		if current_time - last_forward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
+			forward_sprint_tap_count += 1
+			if forward_sprint_tap_count == 2:
 				movement.start_sprint()
-				sprint_tap_count = 0
+				forward_sprint_tap_count = 0
 		else:
-			sprint_tap_count = 1
+			forward_sprint_tap_count = 1
 		
-		last_sprint_tap_time = current_time
-	elif Input.is_action_just_released("run"):
+		last_forward_sprint_tap_time = current_time
+	elif Input.is_action_just_released("move_forward"):
+		movement.stop_sprint()
+
+func handle_backward_sprint_input() -> void:
+	if Input.is_action_just_pressed("move_backward"):
+		var current_time: float = Time.get_ticks_msec() / 1000.0
+		
+		if current_time - last_backward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
+			backward_sprint_tap_count += 1
+			if backward_sprint_tap_count == 2:
+				movement.start_sprint()
+				backward_sprint_tap_count = 0
+		else:
+			backward_sprint_tap_count = 1
+		
+		last_backward_sprint_tap_time = current_time
+	elif Input.is_action_just_released("move_backward"):
 		movement.stop_sprint()
 #endregion
 
