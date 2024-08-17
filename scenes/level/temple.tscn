@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=22 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://assets/prefabs/temple/temple_wall.tscn" id="1_mm148"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://btuwttqwlnc4e" path="res://assets/prefabs/temple/corridor.tscn" id="8_vnct2"]
 [ext_resource type="PackedScene" uid="uid://bk238qv21nsvm" path="res://assets/models/temple_roof.glb" id="9_4enfk"]
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/door_polygon.glb" id="10_65mrv"]
-[ext_resource type="PackedScene" uid="uid://claexohxvbssh" path="res://assets/prefabs/columns/column_stairs.tscn" id="11_g75yv"]
 [ext_resource type="PackedScene" uid="uid://bbxj6i7gue40w" path="res://assets/models/debug/debug_slope.glb" id="13_nl0kj"]
 [ext_resource type="Script" path="res://scripts/scenes/to_loading_scene.gd" id="14_1ystk"]
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
@@ -246,55 +245,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
 [node name="Stairs_1" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
 
 [node name="Stairs_2" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="Stairs_3" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
 
 [node name="Stairs_4" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
 
 [node name="Stairs_5" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
 
 [node name="Stairs_6" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 
 [node name="Stairs_7" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 
 [node name="Stairs_8" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56, 0)
 
 [node name="Stairs_9" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
 
 [node name="Stairs_10" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 67.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
 
 [node name="Stairs_11" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 
 [node name="Stairs_12" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 82.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 88, 0)
 
 [node name="Stairs_13" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96, 0)
 
 [node name="Stairs_14" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 97.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104, 0)
 
 [node name="Stairs_15" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 105, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112, 0)
 
 [node name="Stairs_16" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.5, 0)
-
-[node name="Stairs_17" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 120, 0)
-
-[node name="Stairs_18" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 127.5, 0)
 
 [node name="hub_floor" parent="Level" instance=ExtResource("3_bu1ib")]
 
@@ -325,33 +318,6 @@ light_energy = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 0)
 light_color = Color(1, 0.460201, 0.591338, 1)
 light_energy = 2.0
-
-[node name="ColumnsStairs" type="Node3D" parent="Level"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
-
-[node name="ColumnStairs_1" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, -5)
-
-[node name="ColumnStairs_2" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 5)
-
-[node name="ColumnStairs_3" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 5, -30, 2.38419e-07)
-
-[node name="ColumnStairs_4" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -5, -30, -2.38419e-07)
-
-[node name="ColumnStairs_5" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.53553, -30, -3.53553)
-
-[node name="ColumnStairs_6" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.53553, -30, 3.53553)
-
-[node name="ColumnStairs_7" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.53553, -30, 3.53553)
-
-[node name="ColumnStairs_8" parent="Level/ColumnsStairs" instance=ExtResource("11_g75yv")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.53553, -30, -3.53553)
 
 [node name="Playground" type="Node3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7, 0, 0)
