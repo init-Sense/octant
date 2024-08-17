@@ -80,6 +80,7 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 func get_camera_rotation() -> Vector3:
 	return rotation
 
+
 func set_camera_rotation(new_rotation: Vector3):
 	rotation = new_rotation
 	target_rotation = new_rotation
