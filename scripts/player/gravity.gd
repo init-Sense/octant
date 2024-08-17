@@ -9,7 +9,7 @@ class_name Gravity
 
 
 #region CONSTANTS
-const GRAVITY : float = 12.0
+const GRAVITY : float = 9.8
 #endregion
 
 

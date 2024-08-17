@@ -13,6 +13,7 @@ var _saved_camera_global_pos = null
 @onready var camera_smooth: Node3D = %CameraSmooth
 @onready var movement: Movement = %Movement
 
+
 #region CLIMB SMOOTHING
 func _save_camera_pos_for_smoothing():
 	if _saved_camera_global_pos == null:

@@ -3,11 +3,12 @@ class_name Movement
 
 
 #region CONSTANTS
-const SPRINT_SPEED: float = 16.0
-const WALKING_SPEED: float = 10.0
-const SNEAKING_SPEED: float = 2.0
-const WALK_DELAY: float = 0.08
-const DECELERATION: float = 8.0
+const SPRINT_SPEED: float = 15.0
+const WALKING_SPEED: float = 6.0
+const SNEAKING_SPEED: float = 1.5
+const WALK_DELAY: float = 0.1
+const ACCELERATION: float = 30.0
+const DECELERATION: float = 15.0
 const MOVEMENT_DAMPING: float = 0.01
 const MIN_SPEED_FACTOR: float = 0.5
 #endregion
@@ -15,7 +16,7 @@ const MIN_SPEED_FACTOR: float = 0.5
 
 #region VARIABLES
 var velocity_vector: Vector3 = Vector3.ZERO
-var current_speed: float = WALKING_SPEED
+var current_speed: float = 0.0
 var target_velocity: Vector3 = Vector3.ZERO
 var input_dir: Vector3 = Vector3.ZERO
 var target_speed: float = 0.0
@@ -30,15 +31,15 @@ var is_walk_delayed: bool = false
 @onready var camera: Camera = %Camera
 @onready var climb: Climb = %Climb
 @onready var crouch: Crouch = %Crouch
+@onready var gravity: Gravity = %Gravity
 #endregion
 
 
 #region LIFECYCLE
 func _physics_process(delta) -> void:
 	update_input_direction()
-	current_speed = move_toward(current_speed, target_speed, DECELERATION * delta)
+	update_velocity(delta)
 	update_walk_timer(delta)
-	set_movement_velocity(delta)
 	
 	if player.is_on_floor():
 		climb._last_frame_was_on_floor = Engine.get_physics_frames()
@@ -64,7 +65,6 @@ func backward() -> void:
 
 func still() -> void:
 	input_dir = Vector3.ZERO
-	target_velocity = Vector3.ZERO
 	player.set_still()
 #endregion
 
@@ -120,13 +120,22 @@ func start_sprint() -> void:
 func stop_sprint() -> void:
 	update_movement_state()
 
-func set_movement_velocity(delta) -> void:
+func update_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
+	var target_velocity: Vector3 = input_dir * target_speed * speed_modifier
 	
-	var target_horizontal_velocity: Vector3 = input_dir * current_speed * speed_modifier
+	var horizontal_velocity: Vector2 = Vector2(velocity_vector.x, velocity_vector.z)
+	var target_horizontal_velocity: Vector2 = Vector2(target_velocity.x, target_velocity.z)
 	
-	velocity_vector.x = lerp(velocity_vector.x, target_horizontal_velocity.x, DECELERATION * delta)
-	velocity_vector.z = lerp(velocity_vector.z, target_horizontal_velocity.z, DECELERATION * delta)
+	if input_dir.length() > 0:
+		horizontal_velocity = horizontal_velocity.move_toward(target_horizontal_velocity, ACCELERATION * delta)
+	else:
+		horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, DECELERATION * delta)
+	
+	velocity_vector.x = horizontal_velocity.x
+	velocity_vector.z = horizontal_velocity.y
+	
+	current_speed = horizontal_velocity.length()
 #endregion
 
 
@@ -162,8 +171,8 @@ func get_direction() -> float:
 func calculate_tilt_speed_modifier() -> float:
 	var up_vector: Vector3 = Vector3.UP
 	var camera_forward: Vector3 = -camera.global_transform.basis.z
-	var tilt_angle: float       = acos(camera_forward.dot(up_vector))
-	var tilt_factor             = abs(sin(tilt_angle))
+	var tilt_angle: float = acos(camera_forward.dot(up_vector))
+	var tilt_factor = abs(sin(tilt_angle))
 	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
 
 func update_walk_timer(delta: float) -> void:
