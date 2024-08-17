@@ -122,7 +122,7 @@ func stop_sprint() -> void:
 
 func update_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
-	var target_velocity: Vector3 = input_dir * target_speed * speed_modifier
+	target_velocity = input_dir * target_speed * speed_modifier
 	
 	var horizontal_velocity: Vector2 = Vector2(velocity_vector.x, velocity_vector.z)
 	var target_horizontal_velocity: Vector2 = Vector2(target_velocity.x, target_velocity.z)
