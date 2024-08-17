@@ -3,9 +3,8 @@ class_name Movement
 
 
 #region CONSTANTS
-const DEFAULT_SPEED: float = 3.0
-const SPRINT_SPEED: float = 9.0
-const WALKING_SPEED: float = 3.8
+const SPRINT_SPEED: float = 15.0
+const WALKING_SPEED: float = 6.0
 const SNEAKING_SPEED: float = 1.5
 const WALK_DELAY: float = 0.1
 const DECELERATION: float = 15.0
@@ -16,7 +15,7 @@ const MIN_SPEED_FACTOR: float = 0.5
 
 #region VARIABLES
 var velocity_vector: Vector3 = Vector3.ZERO
-var current_speed: float = DEFAULT_SPEED
+var current_speed: float = WALKING_SPEED
 var target_velocity: Vector3 = Vector3.ZERO
 var input_dir: Vector3 = Vector3.ZERO
 var target_speed: float = 0.0
@@ -49,6 +48,7 @@ func _physics_process(delta) -> void:
 	if not climb._snap_up_stairs_check(delta):
 		player.move_and_slide()
 		climb._snap_down_the_stairs_check()
+#endregion
 
 
 #region DIRECTION
