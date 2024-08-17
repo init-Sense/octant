@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bth122y6serpa"]
+[gd_scene load_steps=22 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://assets/prefabs/temple/temple_wall.tscn" id="1_mm148"]
@@ -228,6 +228,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="Stairs_4" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)
+
+[node name="Stairs_5" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+
+[node name="Stairs_6" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.5, 0)
+
+[node name="Stairs_7" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+
+[node name="Stairs_8" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.5, 0)
+
+[node name="Stairs_9" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
+
+[node name="Stairs_10" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 67.5, 0)
+
+[node name="Stairs_11" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 75, 0)
+
+[node name="Stairs_12" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 82.5, 0)
+
+[node name="Stairs_13" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0)
+
+[node name="Stairs_14" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 97.5, 0)
+
+[node name="Stairs_15" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 105, 0)
+
+[node name="Stairs_16" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.5, 0)
+
+[node name="Stairs_17" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 120, 0)
+
+[node name="Stairs_18" parent="Level/Staircase" instance=ExtResource("7_w6sy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 127.5, 0)
 
 [node name="hub_floor" parent="Level" instance=ExtResource("3_bu1ib")]
 
