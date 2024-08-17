@@ -46,6 +46,8 @@ enum ActionState {
 #region PREVIOUS STATES
 @onready var previous_motion_state: int = MotionState.IDLE
 @onready var previous_movement_state: int = MovementState.STILL
+@onready var previous_position_state: int = PositionState.STANDING
+@onready var previous_action_state: int = ActionState.NOTHING
 #endregion
 
 
@@ -77,8 +79,10 @@ func set_movement_state(state: int) -> void:
 
 func set_action_state(state: int) -> void:
 	if state != action_state:
+		previous_action_state = action_state
 		action_state = state
 		print("Action -> ", get_action_value())
+		print("Previous Action -> ", get_previous_action_value())
 
 
 func set_motion_state(state: int) -> void:
@@ -218,6 +222,16 @@ func get_action_value() -> String:
 		_:
 			return "UNKNOWN"
 
+func get_previous_action_value() -> String:
+	match previous_action_state:
+		ActionState.NOTHING:
+			return "NOTHING"
+		ActionState.CHARGING_JUMP:
+			return "CHARGING_JUMP"
+		ActionState.JUMPING:
+			return "JUMPING"
+		_:
+			return "UNKNOWN"
 
 func get_position_value() -> String:
 	match position_state:
@@ -236,30 +250,23 @@ func get_position_value() -> String:
 func is_still() -> bool:
 	return movement_state == MovementState.STILL
 
-
 func has_direction() -> bool:
 	return movement_state in [MovementState.FORWARD, MovementState.BACKWARD]
-
 
 func is_forward() -> bool:
 	return movement_state == MovementState.FORWARD
 
-
 func is_backward() -> bool:
 	return movement_state == MovementState.BACKWARD
-	
 
 func was_still() -> bool:
 	return previous_movement_state == MovementState.STILL
 
-
 func had_direction() -> bool:
 	return previous_movement_state in [MovementState.FORWARD, MovementState.BACKWARD]
 
-
 func was_forward() -> bool:
 	return previous_movement_state == MovementState.FORWARD
-
 
 func was_backward() -> bool:
 	return previous_movement_state == MovementState.BACKWARD
@@ -271,38 +278,29 @@ func was_backward() -> bool:
 func is_idle() -> bool:
 	return motion_state == MotionState.IDLE
 
-
 func is_walking() -> bool:
 	return motion_state == MotionState.WALKING
-
 
 func is_sneaking() -> bool:
 	return motion_state == MotionState.SNEAKING
 
-
 func is_running() -> bool:
 	return motion_state == MotionState.RUNNING
-
 
 func in_motion() -> bool:
 	return motion_state in [MotionState.WALKING, MotionState.SNEAKING, MotionState.RUNNING]
 
-
 func was_idle() -> bool:
 	return previous_motion_state == MotionState.IDLE
-
 
 func was_walking() -> bool:
 	return previous_motion_state == MotionState.WALKING
 
-
 func was_sneaking() -> bool:
 	return previous_motion_state == MotionState.SNEAKING
 
-
 func was_running() -> bool:
 	return previous_motion_state == MotionState.RUNNING
-
 
 func was_in_motion() -> bool:
 	return previous_motion_state in [MotionState.WALKING, MotionState.SNEAKING, MotionState.RUNNING]
@@ -317,9 +315,17 @@ func is_doing_nothing() -> bool:
 func is_charging_jump() -> bool:
 	return action_state == ActionState.CHARGING_JUMP
 	
-	
 func is_jumping() -> bool:
 	return action_state == ActionState.JUMPING
+	
+func was_doing_nothing() -> bool:
+	return previous_action_state == ActionState.NOTHING
+	
+func was_charging_jump() -> bool:
+	return previous_action_state == ActionState.NOTHING
+	
+func was_jumping() -> bool:
+	return previous_action_state == ActionState.NOTHING
 #endregion
 
 

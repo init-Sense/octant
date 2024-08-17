@@ -7,6 +7,7 @@ class_name Jump
 @onready var movement: Movement = %Movement
 @onready var head: Node3D = %Head
 @onready var climb: Climb = %Climb
+@onready var crouch: Crouch = %Crouch
 #endregion
 
 
@@ -22,6 +23,7 @@ const MIDAIR_CONTROL: float        = 0.8
 const MAX_CHARGE_TIME: float       = 0.5
 const MAX_CHARGE_MULTIPLIER: float = 1.7
 const HEAD_CHARGE_OFFSET: float    = 0.8
+const CROUCHED_HEAD_CHARGE_OFFSET: float = 0.2
 const VERTICAL_JUMP_FACTOR: float  = 0.1
 #endregion
 
@@ -61,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	update_charge_offset(delta)
 	update_coyote_time(delta)
 #endregion
+
 
 
 #region JUMP MECHANICS
@@ -167,7 +170,9 @@ func update_charge_offset(delta: float) -> void:
 	if player.is_charging_jump():
 		jump_state.current_charge = min(jump_state.current_charge + delta, MAX_CHARGE_TIME)
 		var charge_progress: float = jump_state.current_charge / MAX_CHARGE_TIME
-		target_offset = -(charge_progress * HEAD_CHARGE_OFFSET)
+		
+		var max_offset: float = HEAD_CHARGE_OFFSET if not (player.is_crouched() or player.is_crouching()) else CROUCHED_HEAD_CHARGE_OFFSET
+		target_offset = -(charge_progress * max_offset)
 	
 	jump_state.charge_offset = move_toward(jump_state.charge_offset, target_offset, delta * 2)
 
