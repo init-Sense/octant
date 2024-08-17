@@ -18,12 +18,15 @@ const FOV_DEFAULT: float = 70.0
 
 const FOV_RUNNING: float = 80.0
 const FOV_WALKING: float = 75.0
+const FOV_CROUCHING: float = 65.0
 
 const FOV_TRANSITION_RUNNING: float = 4.0
 const FOV_TRANSITION_WALKING: float = 6.0
+const FOV_TRANSITION_CROUCHING: float = 6.0
 
 const FOV_RESET_RUNNING: float = 8.0
 const FOV_RESET_WALKING: float = 3.0
+const FOV_RESET_CROUCHING: float = 2.0
 #endregion
 
 
@@ -103,14 +106,18 @@ func update_fov(delta: float) -> void:
 		target_fov = FOV_WALKING
 		fov_transition_speed = FOV_TRANSITION_WALKING
 		fov_reset_speed = FOV_RESET_WALKING
+	elif player.is_crouching() or player.is_crouched():
+		target_fov = FOV_CROUCHING
+		fov_transition_speed = FOV_TRANSITION_CROUCHING
+		fov_reset_speed = FOV_RESET_CROUCHING
 	else:
 		fov_reset_speed = FOV_RESET_WALKING
 		target_fov = FOV_DEFAULT
 
-	if player.is_running() or player.is_walking():
-		fov = lerp(fov, target_fov, fov_transition_speed * delta)
+	if player.is_running() or player.is_walking() or player.is_crouching() or player.is_crouched():
+		fov = lerpf(fov, target_fov, fov_transition_speed * delta)
 	else:
-		fov = lerp(fov, target_fov, fov_reset_speed * delta)
+		fov = lerpf(fov, target_fov, fov_reset_speed * delta)
 	
 	if abs(fov - target_fov) < 0.1:
 		fov = target_fov
