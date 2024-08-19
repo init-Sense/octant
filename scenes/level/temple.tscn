@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=25 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
+[ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_fu1dj"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://assets/prefabs/temple/temple_wall.tscn" id="1_mm148"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/temple_floor.glb" id="3_bu1ib"]
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="3_k6j5q"]
@@ -79,6 +80,10 @@ _data = {
 size = Vector3(5, 4, 4)
 
 [node name="Temple" type="Node3D"]
+script = ExtResource("1_fu1dj")
+lower_boundary_node = NodePath("LowerBoundary")
+upper_boundary_node = NodePath("UpperBoundary")
+player_path = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_agx3r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.68461, 0)
@@ -354,3 +359,9 @@ transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 25.3, 26
 
 [node name="bridge_junction_1" parent="Level/Bridges" instance=ExtResource("17_d2kk4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2, 26.8, -5.68434e-14)
+
+[node name="LowerBoundary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -166.621, 0)
+
+[node name="UpperBoundary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 242.674, 0)
