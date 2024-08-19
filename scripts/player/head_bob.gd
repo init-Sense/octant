@@ -77,8 +77,8 @@ var idle_offset: Vector3 = Vector3.ZERO
 
 #region LIFECYCLE METHODS
 func _ready() -> void:
-	jump.connect("jumped", Callable(self, "_on_player_jumped"))
-	jump.connect("landed", Callable(self, "_on_player_landed"))
+	jump.connect("jumped", Callable(self, "on_player_jumped"))
+	jump.connect("landed", Callable(self, "on_player_landed"))
 	noise.seed = randi()
 
 
@@ -173,7 +173,7 @@ func handle_landing(delta: float) -> void:
 		smooth_reset_landing_impact(delta)
 
 
-func _on_player_jumped() -> void:
+func on_player_jumped() -> void:
 	jump_start_height = player.global_position.y
 	max_jump_height = jump_start_height
 
@@ -182,7 +182,7 @@ func track_jump_height() -> void:
 	max_jump_height = max(max_jump_height, player.global_position.y)
 
 
-func _on_player_landed() -> void:
+func on_player_landed() -> void:
 	is_landing = true
 	landing_impact_time = 0.0
 	var jump_height: float = max_jump_height - jump_start_height
@@ -222,4 +222,4 @@ func apply_idle_movement(delta: float) -> void:
 func update_camera_position() -> void:
 	var total_offset: Vector3 = current_offset + idle_offset + fall_bob_offset
 	camera.position = Vector3(total_offset.x, CAMERA_HEIGHT + total_offset.y + landing_offset, total_offset.z)
-	#endregion
+#endregion

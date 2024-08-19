@@ -54,6 +54,10 @@ enum ActionState {
 @onready var jump: Jump = %Jump
 #endregion
 
+#region DEBUG
+var print_state: bool = true
+var print_previous_state: bool = false
+#endregion
 
 #region LIFECYCLE
 func _ready():
@@ -70,30 +74,30 @@ func set_movement_state(state: int) -> void:
 	if state != movement_state:
 		previous_movement_state = movement_state
 		movement_state = state
-		print("Movement -> ", get_movement_value())
-		print("Previous Movement -> ", get_previous_movement_value())
+		if print_state: print("Movement -> ", get_movement_value())
+		if print_previous_state: print("Previous Movement -> ", get_previous_movement_value())
 
 
 func set_action_state(state: int) -> void:
 	if state != action_state:
 		previous_action_state = action_state
 		action_state = state
-		print("Action -> ", get_action_value())
-		print("Previous Action -> ", get_previous_action_value())
+		if print_state: print("Action -> ", get_action_value())
+		if print_previous_state: print("Previous Action -> ", get_previous_action_value())
 
 
 func set_motion_state(state: int) -> void:
 	if state != motion_state:
 		previous_motion_state = motion_state
 		motion_state = state
-		print("Motion -> ", get_motion_value())
-		print("Previous Motion -> ", get_previous_motion_value())
+		if print_state: print("Motion -> ", get_motion_value())
+		if print_previous_state: print("Previous Motion -> ", get_previous_motion_value())
 
 
 func set_position_state(state: int) -> void:
 	if state != position_state:
 		position_state = state
-		print("Position -> ", get_position_value())
+		if print_state: print("Position -> ", get_position_value())
 #endregion
 
 
