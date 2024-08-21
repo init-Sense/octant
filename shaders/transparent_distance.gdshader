@@ -13,5 +13,5 @@ void fragment() {
     float distance_from_player = length(VERTEX - camera_position);
     float transparency_factor = clamp((distance_from_player - transparency_start_distance) / (transparency_end_distance - transparency_start_distance), 0.0, 1.0);
     ALPHA = mix(1.0, transparency_min, transparency_factor);
-    BASE_COLOR = mix(albedo_color, fog_color, 1.0 - exp(-fog_density * distance_from_player));
+    // BASE_COLOR = mix(albedo_color, fog_color, 1.0 - exp(-fog_density * distance_from_player));
 }
