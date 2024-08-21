@@ -55,7 +55,7 @@ enum ActionState {
 #endregion
 
 #region DEBUG
-var print_state: bool = true
+var print_state: bool = false
 var print_previous_state: bool = false
 #endregion
 
@@ -131,7 +131,7 @@ func set_running() -> void:
 #region ACTION SETTERS
 func set_no_action() -> void:
 	set_action_state(ActionState.NOTHING)
-	
+
 func set_charging_jump() -> void:
 	set_action_state(ActionState.CHARGING_JUMP)
 
@@ -309,16 +309,16 @@ func is_doing_nothing() -> bool:
 
 func is_charging_jump() -> bool:
 	return action_state == ActionState.CHARGING_JUMP
-	
+
 func is_jumping() -> bool:
 	return action_state == ActionState.JUMPING
-	
+
 func was_doing_nothing() -> bool:
 	return previous_action_state == ActionState.NOTHING
-	
+
 func was_charging_jump() -> bool:
 	return previous_action_state == ActionState.NOTHING
-	
+
 func was_jumping() -> bool:
 	return previous_action_state == ActionState.NOTHING
 #endregion

@@ -11,6 +11,7 @@ extends Node3D
 #region VARIABLES
 @export var teleport_offset: float = 1.0
 @export var max_lower_hits: int = 4
+@export var lower_hits_limit: bool = false
 
 var player: Player
 var lower_boundary: Node3D
@@ -27,9 +28,9 @@ func _ready():
 	lower_boundary = get_node(lower_boundary_node_path)
 	upper_boundary = get_node(upper_boundary_node_path)
 	safe_spot = get_node(safe_spot_node)
-	
+
 	player.jump.connect("landed", Callable(self, "on_player_landed"))
-	
+
 	if not player:
 		push_error("Player node not found!")
 	if not lower_boundary:
@@ -44,10 +45,10 @@ func _physics_process(_delta):
 		var player_pos: Vector3 = player.global_transform.origin
 		var lower_y: float = lower_boundary.global_transform.origin.y
 		var upper_y: float = upper_boundary.global_transform.origin.y
-		
+
 		if player_pos.y < lower_y:
 			lower_hit_counter += 1
-			if lower_hit_counter >= max_lower_hits:
+			if lower_hit_counter >= max_lower_hits and lower_hits_limit:
 				safety_teleport()
 			else:
 				teleport_player(player_pos, upper_y + teleport_offset)
@@ -59,7 +60,7 @@ func teleport_player(current_pos: Vector3, new_y: float):
 	is_teleporting = true
 	player.velocity = Vector3.ZERO
 	player.global_transform.origin = Vector3(current_pos.x, new_y, current_pos.z)
-	
+
 	await get_tree().create_timer(0.1).timeout
 	is_teleporting = false
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://1lvnxcflhddg"]
+[gd_scene load_steps=5 format=3 uid="uid://bguk4vbk6340g"]
 
 [ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://assets/environments/sky_world.tres" id="1_0ti8n"]
 [ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://assets/prefabs/bridge_tutorial.tscn" id="2_yovbx"]
+[ext_resource type="PackedScene" uid="uid://biubqcrn8d65d" path="res://assets/prefabs/portal.tscn" id="3_8xgqj"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="3_i84he"]
 
 [node name="SkyWorld" type="Node3D"]
@@ -284,6 +285,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
 [node name="BridgeTutorial_36" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
+
+[node name="Portal" parent="BridgeLayer_1" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
+transform = Transform3D(-0.0431486, 0, 0.999069, 0, 1, 0, -0.999069, 0, -0.0431486, -23, 1.799, 0)
+exit_portal = NodePath("../Portal2")
+
+[node name="Portal2" parent="BridgeLayer_1" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
+transform = Transform3D(-0.0688336, 0, -0.997628, 0, 1, 0, 0.997628, 0, -0.0688336, 23, 1.744, 0)
+exit_portal = NodePath("../Portal")
 
 [node name="BridgeLayer_2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
@@ -1793,4 +1802,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
 [node name="Player" parent="." instance=ExtResource("3_i84he")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34.3, 1.9, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.4687, 1.9, 7.35718e-07)
