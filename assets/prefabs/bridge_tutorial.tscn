@@ -1,43 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dquoxo4hj0hpa"]
+[gd_scene load_steps=2 format=3 uid="uid://dquoxo4hj0hpa"]
 
-[ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/bridge_junction.glb" id="1_44m4t"]
-[ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/bridge.glb" id="2_o6f0x"]
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="3_g6sw0"]
+[ext_resource type="PackedScene" uid="uid://b4um1gdrnusu1" path="res://assets/models/columns/column_sky.glb" id="1_s63sx"]
 
 [node name="BridgeTutorial" type="Node3D"]
 
-[node name="Bridge_1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+[node name="column_sky_1" parent="." instance=ExtResource("1_s63sx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -30, 0, 0)
 
-[node name="bridge_junction_1" parent="Bridge_1" instance=ExtResource("1_44m4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="bridge_1" parent="Bridge_1" instance=ExtResource("2_o6f0x")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.1, 0)
-
-[node name="bridge_2" parent="Bridge_1" instance=ExtResource("2_o6f0x")]
-transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 1.90735e-06, -80, 10)
-
-[node name="column_wall_1" parent="Bridge_1" instance=ExtResource("3_g6sw0")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -100, 0)
-
-[node name="column_wall_2" parent="Bridge_1" instance=ExtResource("3_g6sw0")]
-transform = Transform3D(-0.91, -1.37406e-07, 0, 1.37406e-07, -0.91, 0, 0, 0, 0.91, 0, 100, 0)
-
-[node name="Bridge_2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-
-[node name="bridge_junction_2" parent="Bridge_2" instance=ExtResource("1_44m4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="column_wall_2" parent="Bridge_2" instance=ExtResource("3_g6sw0")]
-transform = Transform3D(0.91, 0, 0, 0, 0.91, 0, 0, 0, 0.91, 0, -100, 0)
-
-[node name="column_wall_3" parent="Bridge_2" instance=ExtResource("3_g6sw0")]
-transform = Transform3D(-0.91, -1.37406e-07, 0, 1.37406e-07, -0.91, 0, 0, 0, 0.91, 0, 100, 0)
-
-[node name="bridge_2" parent="Bridge_2" instance=ExtResource("2_o6f0x")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.1, 0)
-
-[node name="bridge_3" parent="Bridge_2" instance=ExtResource("2_o6f0x")]
-transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 0, -80, 10)
+[node name="column_sky_2" parent="." instance=ExtResource("1_s63sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)

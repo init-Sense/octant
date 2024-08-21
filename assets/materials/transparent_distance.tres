@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ltk4p80dseev"]
+
+[ext_resource type="Shader" path="res://shaders/transparent_distance.gdshader" id="1_vb2at"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vb2at")
+shader_parameter/camera_position = null
+shader_parameter/transparency_start_distance = 100.0
+shader_parameter/transparency_end_distance = 300.0
+shader_parameter/transparency_min = 0.0

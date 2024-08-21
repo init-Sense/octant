@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "TempleRock": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/stone.tres"
+"use_external/path": "res://assets/materials/transparent_distance.tres"
 }
 }
 }
