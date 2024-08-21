@@ -43,6 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VignetteCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Vignette" type="ColorRect" parent="VignetteCanvas"]
 material = SubResource("ShaderMaterial_mxovj")

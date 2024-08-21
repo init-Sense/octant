@@ -1,0 +1,10 @@
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://dk46c2wgktjm4"]
+
+[ext_resource type="Texture2D" uid="uid://d004ayerwjo0g" path="res://assets/textures/sky_clouds.jpeg" id="1_tnsvt"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j1v5j"]
+panorama = ExtResource("1_tnsvt")
+
+[resource]
+sky_material = SubResource("PanoramaSkyMaterial_j1v5j")
+radiance_size = 1
