@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "ColumnWall": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/transparent_distance.tres"
+"use_external/path": "res://assets/materials/test.tres"
 }
 }
 }
