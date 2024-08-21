@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bguk4vbk6340g"]
+[gd_scene load_steps=6 format=3 uid="uid://bguk4vbk6340g"]
 
 [ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://assets/environments/sky_world.tres" id="1_0ti8n"]
 [ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://assets/prefabs/bridge_tutorial.tscn" id="2_yovbx"]
 [ext_resource type="PackedScene" uid="uid://biubqcrn8d65d" path="res://assets/prefabs/portal.tscn" id="3_8xgqj"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="3_i84he"]
+[ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="3_oeidr"]
 
 [node name="SkyWorld" type="Node3D"]
 
@@ -13,1792 +14,1797 @@ environment = ExtResource("1_0ti8n")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.965926, 0.183013, -0.183013, 0, 0.707107, 0.707107, 0.258819, -0.683013, 0.683013, 0, 0, 0)
 
-[node name="BridgeLayer_0" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -80, 0)
+[node name="BridgeLayer_REAL" type="Node3D" parent="."]
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_REAL" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+script = ExtResource("3_oeidr")
+player_path = NodePath("../../Player")
+teleport_offset = 0.01
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
-
-[node name="BridgeTutorial_5" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
-
-[node name="BridgeTutorial_6" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
-
-[node name="BridgeTutorial_7" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
-
-[node name="BridgeTutorial_3" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
-
-[node name="BridgeTutorial_4" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
-
-[node name="BridgeTutorial_8" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
-
-[node name="BridgeTutorial_9" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
-
-[node name="BridgeTutorial_10" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
-
-[node name="BridgeTutorial_11" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
-
-[node name="BridgeTutorial_12" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
-
-[node name="BridgeTutorial_13" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
-
-[node name="BridgeTutorial_14" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
-
-[node name="BridgeTutorial_15" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
-
-[node name="BridgeTutorial_16" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
-
-[node name="BridgeTutorial_17" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
-
-[node name="BridgeTutorial_18" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
-
-[node name="BridgeTutorial_37" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
-
-[node name="BridgeTutorial_38" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
-
-[node name="BridgeTutorial_39" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
-
-[node name="BridgeTutorial_40" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
-
-[node name="BridgeTutorial_41" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
-
-[node name="BridgeTutorial_42" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
-
-[node name="BridgeTutorial_43" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
-
-[node name="BridgeTutorial_44" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
-
-[node name="BridgeTutorial_45" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
-
-[node name="BridgeTutorial_19" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
-
-[node name="BridgeTutorial_20" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
-
-[node name="BridgeTutorial_21" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
-
-[node name="BridgeTutorial_22" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
-
-[node name="BridgeTutorial_23" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
-
-[node name="BridgeTutorial_24" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
-
-[node name="BridgeTutorial_25" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
-
-[node name="BridgeTutorial_26" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
-
-[node name="BridgeTutorial_27" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
-
-[node name="BridgeTutorial_28" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
-
-[node name="BridgeTutorial_29" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
-
-[node name="BridgeTutorial_30" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
-
-[node name="BridgeTutorial_31" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
-
-[node name="BridgeTutorial_32" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
-
-[node name="BridgeTutorial_33" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
-
-[node name="BridgeTutorial_34" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
-
-[node name="BridgeTutorial_35" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
-
-[node name="BridgeTutorial_36" parent="BridgeLayer_0" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
-
-[node name="BridgeLayer_1" type="Node3D" parent="."]
-
-[node name="BridgeTutorial_1" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-
-[node name="BridgeTutorial_2" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
-
-[node name="BridgeTutorial_5" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
-
-[node name="BridgeTutorial_6" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
-
-[node name="BridgeTutorial_7" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
-
-[node name="BridgeTutorial_3" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
-
-[node name="BridgeTutorial_4" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
-
-[node name="BridgeTutorial_8" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
-
-[node name="BridgeTutorial_9" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
-
-[node name="BridgeTutorial_10" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
-
-[node name="BridgeTutorial_11" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
-
-[node name="BridgeTutorial_12" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
-
-[node name="BridgeTutorial_13" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
-
-[node name="BridgeTutorial_14" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
-
-[node name="BridgeTutorial_15" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
-
-[node name="BridgeTutorial_16" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
-
-[node name="BridgeTutorial_17" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
-
-[node name="BridgeTutorial_18" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
-
-[node name="BridgeTutorial_37" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
-
-[node name="BridgeTutorial_38" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
-
-[node name="BridgeTutorial_39" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
-
-[node name="BridgeTutorial_40" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
-
-[node name="BridgeTutorial_41" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
-
-[node name="BridgeTutorial_42" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
-
-[node name="BridgeTutorial_43" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
-
-[node name="BridgeTutorial_44" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
-
-[node name="BridgeTutorial_45" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
-
-[node name="BridgeTutorial_19" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
-
-[node name="BridgeTutorial_20" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
-
-[node name="BridgeTutorial_21" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
-
-[node name="BridgeTutorial_22" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
-
-[node name="BridgeTutorial_23" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
-
-[node name="BridgeTutorial_24" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
-
-[node name="BridgeTutorial_25" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
-
-[node name="BridgeTutorial_26" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
-
-[node name="BridgeTutorial_27" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
-
-[node name="BridgeTutorial_28" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
-
-[node name="BridgeTutorial_29" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
-
-[node name="BridgeTutorial_30" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
-
-[node name="BridgeTutorial_31" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
-
-[node name="BridgeTutorial_32" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
-
-[node name="BridgeTutorial_33" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
-
-[node name="BridgeTutorial_34" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
-
-[node name="BridgeTutorial_35" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
-
-[node name="BridgeTutorial_36" parent="BridgeLayer_1" instance=ExtResource("2_yovbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
-
-[node name="Portal" parent="BridgeLayer_1" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
+[node name="Portal" parent="BridgeLayer_REAL/BridgeTutorial_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
 transform = Transform3D(-0.0431486, 0, 0.999069, 0, 1, 0, -0.999069, 0, -0.0431486, -23, 1.799, 0)
 exit_portal = NodePath("../Portal2")
 
-[node name="Portal2" parent="BridgeLayer_1" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
+[node name="Portal2" parent="BridgeLayer_REAL/BridgeTutorial_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("3_8xgqj")]
 transform = Transform3D(-0.0688336, 0, -0.997628, 0, 1, 0, 0.997628, 0, -0.0688336, 23, 1.744, 0)
 exit_portal = NodePath("../Portal")
 
-[node name="BridgeLayer_2" type="Node3D" parent="."]
+[node name="BridgeTutorial_2" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
+
+[node name="BridgeTutorial_5" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="BridgeTutorial_6" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
+
+[node name="BridgeTutorial_7" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
+
+[node name="BridgeTutorial_3" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+
+[node name="BridgeTutorial_4" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+
+[node name="BridgeTutorial_8" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="BridgeTutorial_9" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
+
+[node name="BridgeTutorial_10" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="BridgeTutorial_11" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
+
+[node name="BridgeTutorial_12" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+
+[node name="BridgeTutorial_13" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
+
+[node name="BridgeTutorial_14" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
+
+[node name="BridgeTutorial_15" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+
+[node name="BridgeTutorial_16" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
+
+[node name="BridgeTutorial_17" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
+
+[node name="BridgeTutorial_18" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
+
+[node name="BridgeTutorial_37" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
+
+[node name="BridgeTutorial_38" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
+
+[node name="BridgeTutorial_39" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
+
+[node name="BridgeTutorial_40" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
+
+[node name="BridgeTutorial_41" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
+
+[node name="BridgeTutorial_42" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
+
+[node name="BridgeTutorial_43" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
+
+[node name="BridgeTutorial_44" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
+
+[node name="BridgeTutorial_45" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
+
+[node name="BridgeTutorial_19" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="BridgeTutorial_20" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
+
+[node name="BridgeTutorial_21" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
+
+[node name="BridgeTutorial_22" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
+
+[node name="BridgeTutorial_23" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
+
+[node name="BridgeTutorial_24" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
+
+[node name="BridgeTutorial_25" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
+
+[node name="BridgeTutorial_26" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
+
+[node name="BridgeTutorial_27" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
+
+[node name="BridgeTutorial_28" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+
+[node name="BridgeTutorial_29" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
+
+[node name="BridgeTutorial_30" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="BridgeTutorial_31" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
+
+[node name="BridgeTutorial_32" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
+
+[node name="BridgeTutorial_33" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+
+[node name="BridgeTutorial_34" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
+
+[node name="BridgeTutorial_35" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
+
+[node name="BridgeTutorial_36" parent="BridgeLayer_REAL" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
+
+[node name="Copies" type="Node" parent="."]
+
+[node name="BridgeLayer_1" type="Node3D" parent="Copies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -80, 0)
+
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
+
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
+
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
+
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
+
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
+
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
+
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
+
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
+
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
+
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
+
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
+
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
+
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
+
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
+
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
+
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
+
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
+
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
+
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
+
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
+
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
+
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
+
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
+
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
+
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
+
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
+
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
+
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
+
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
+
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
+
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
+
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
+
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_1" instance=ExtResource("2_yovbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
+
+[node name="BridgeLayer_2" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_2" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_2" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_3" type="Node3D" parent="."]
+[node name="BridgeLayer_3" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 320, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_3" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_3" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_4" type="Node3D" parent="."]
+[node name="BridgeLayer_4" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 240, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_4" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_4" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_5" type="Node3D" parent="."]
+[node name="BridgeLayer_5" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 160, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_5" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_5" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_6" type="Node3D" parent="."]
+[node name="BridgeLayer_6" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -160, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_6" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_6" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_7" type="Node3D" parent="."]
+[node name="BridgeLayer_7" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -240, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_7" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_7" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_8" type="Node3D" parent="."]
+[node name="BridgeLayer_8" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -320, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_8" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_8" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_9" type="Node3D" parent="."]
+[node name="BridgeLayer_9" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_9" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_9" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_10" type="Node3D" parent="."]
+[node name="BridgeLayer_10" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -480, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_10" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_10" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_11" type="Node3D" parent="."]
+[node name="BridgeLayer_11" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 480, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_11" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_11" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
-[node name="BridgeLayer_12" type="Node3D" parent="."]
+[node name="BridgeLayer_12" type="Node3D" parent="Copies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 400, 0)
 
-[node name="BridgeTutorial_1" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_1" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 
-[node name="BridgeTutorial_2" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_2" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="BridgeTutorial_5" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_5" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
 
-[node name="BridgeTutorial_6" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_6" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 192)
 
-[node name="BridgeTutorial_7" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_7" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
-[node name="BridgeTutorial_3" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_3" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="BridgeTutorial_4" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_4" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 
-[node name="BridgeTutorial_8" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_8" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
-[node name="BridgeTutorial_9" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_9" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
 
-[node name="BridgeTutorial_10" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_10" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
 
-[node name="BridgeTutorial_11" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_11" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
 
-[node name="BridgeTutorial_12" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_12" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
 
-[node name="BridgeTutorial_13" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_13" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 192)
 
-[node name="BridgeTutorial_14" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_14" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
 
-[node name="BridgeTutorial_15" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_15" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
-[node name="BridgeTutorial_16" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_16" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
 
-[node name="BridgeTutorial_17" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_17" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
 
-[node name="BridgeTutorial_18" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_18" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
 
-[node name="BridgeTutorial_37" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_37" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="BridgeTutorial_38" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_38" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 64)
 
-[node name="BridgeTutorial_39" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_39" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
 
-[node name="BridgeTutorial_40" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_40" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 192)
 
-[node name="BridgeTutorial_41" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_41" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 
-[node name="BridgeTutorial_42" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_42" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
 
-[node name="BridgeTutorial_43" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_43" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -64)
 
-[node name="BridgeTutorial_44" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_44" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
-[node name="BridgeTutorial_45" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_45" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -192)
 
-[node name="BridgeTutorial_19" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_19" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
 
-[node name="BridgeTutorial_20" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_20" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 64)
 
-[node name="BridgeTutorial_21" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_21" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
 
-[node name="BridgeTutorial_22" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_22" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 192)
 
-[node name="BridgeTutorial_23" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_23" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
 
-[node name="BridgeTutorial_24" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_24" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
 
-[node name="BridgeTutorial_25" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_25" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -64)
 
-[node name="BridgeTutorial_26" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_26" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
 
-[node name="BridgeTutorial_27" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_27" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -192)
 
-[node name="BridgeTutorial_28" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_28" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
 
-[node name="BridgeTutorial_29" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_29" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 
-[node name="BridgeTutorial_30" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_30" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
 
-[node name="BridgeTutorial_31" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_31" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 192)
 
-[node name="BridgeTutorial_32" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_32" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
 
-[node name="BridgeTutorial_33" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_33" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
 
-[node name="BridgeTutorial_34" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_34" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
 
-[node name="BridgeTutorial_35" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_35" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
 
-[node name="BridgeTutorial_36" parent="BridgeLayer_12" instance=ExtResource("2_yovbx")]
+[node name="BridgeTutorial_36" parent="Copies/BridgeLayer_12" instance=ExtResource("2_yovbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -192)
 
 [node name="Player" parent="." instance=ExtResource("3_i84he")]

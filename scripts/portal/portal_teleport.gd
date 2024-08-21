@@ -16,7 +16,7 @@ var parent_portal: Portal
 
 func _ready():
 	parent_portal = get_parent() as Portal
-	print("Parent portal: ", parent_portal)
+	#print("Parent portal: ", parent_portal)
 	if parent_portal == null:
 		push_error("The PortalTeleport \"%s\" is not a child of a Portal instance" % name)
 	area_entered.connect(on_area_entered)

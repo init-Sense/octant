@@ -48,7 +48,7 @@ script = ExtResource("1_700jk")
 disable_viewport_distance = 13.0
 fade_out_distance_max = 12.0
 fade_out_distance_min = 10.0
-fade_out_color = Color(0, 0, 0, 1)
+fade_out_color = Color(0.520014, 0.000758926, 0.630331, 1)
 
 [node name="Teleport" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.38318)

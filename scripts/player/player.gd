@@ -61,7 +61,8 @@ var print_previous_state: bool = false
 
 #region LIFECYCLE
 func _ready():
-	print_tree_pretty()
+	pass
+	#print_tree_pretty()
 
 
 func _process(_delta):

@@ -80,11 +80,6 @@ _data = {
 size = Vector3(5, 4, 4)
 
 [node name="Temple" type="Node3D"]
-script = ExtResource("1_fu1dj")
-lower_boundary_node_path = NodePath("LowerBoundary")
-upper_boundary_node_path = NodePath("UpperBoundary")
-player_path = NodePath("Player")
-safe_spot_node = NodePath("SafeSpot")
 
 [node name="Player" parent="." instance=ExtResource("1_agx3r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.68461, 0)
@@ -99,6 +94,8 @@ transform = Transform3D(0.612373, -0.5, -0.612373, 0.707107, -3.09086e-08, 0.707
 light_energy = 0.3
 
 [node name="Level" type="Node3D" parent="."]
+script = ExtResource("1_fu1dj")
+player_path = NodePath("../Player")
 
 [node name="ColumnsInner" type="Node3D" parent="Level"]
 
@@ -360,12 +357,3 @@ transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 25.3, 26
 
 [node name="bridge_junction_1" parent="Level/Bridges" instance=ExtResource("17_d2kk4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2, 26.8, -5.68434e-14)
-
-[node name="LowerBoundary" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -166.621, 0)
-
-[node name="UpperBoundary" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 242.674, 0)
-
-[node name="SafeSpot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.5554, 0)

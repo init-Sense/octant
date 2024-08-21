@@ -1,79 +1,70 @@
 extends Node3D
 
 #region NODES
-@export var lower_boundary_node_path: NodePath
-@export var upper_boundary_node_path: NodePath
 @export var player_path: NodePath
-@export var safe_spot_node: NodePath
 #endregion
 
 
 #region VARIABLES
 @export var teleport_offset: float = 1.0
-@export var max_lower_hits: int = 4
-@export var lower_hits_limit: bool = false
-
-var player: Player
-var lower_boundary: Node3D
-var upper_boundary: Node3D
-var safe_spot: Node3D
+var player: CharacterBody3D
 var is_teleporting: bool = false
-var lower_hit_counter: int = 0
+var bounds: AABB
 #endregion
 
 
 #region LIFECYCLE
 func _ready():
 	player = get_node(player_path)
-	lower_boundary = get_node(lower_boundary_node_path)
-	upper_boundary = get_node(upper_boundary_node_path)
-	safe_spot = get_node(safe_spot_node)
-
-	player.jump.connect("landed", Callable(self, "on_player_landed"))
-
 	if not player:
 		push_error("Player node not found!")
-	if not lower_boundary:
-		push_error("Lower boundary node not found!")
-	if not upper_boundary:
-		push_error("Upper boundary node not found!")
-	if not safe_spot:
-		push_error("Safe spot node not found!")
+
+	bounds = _calculate_spatial_bounds(self, true)
 
 func _physics_process(_delta):
-	if player and lower_boundary and upper_boundary and safe_spot and not is_teleporting:
+	if player and not is_teleporting:
 		var player_pos: Vector3 = player.global_transform.origin
-		var lower_y: float = lower_boundary.global_transform.origin.y
-		var upper_y: float = upper_boundary.global_transform.origin.y
+		var lower_y: float = global_transform.origin.y + bounds.position.y
+		var upper_y: float = lower_y + bounds.size.y
 
 		if player_pos.y < lower_y:
-			lower_hit_counter += 1
-			if lower_hit_counter >= max_lower_hits and lower_hits_limit:
-				safety_teleport()
-			else:
-				teleport_player(player_pos, upper_y + teleport_offset)
+			teleport_player(player_pos, upper_y + teleport_offset)
+		elif player_pos.y > upper_y:
+			teleport_player(player_pos, lower_y + teleport_offset)
 #endregion
 
 
 #region TELEPORT
 func teleport_player(current_pos: Vector3, new_y: float):
 	is_teleporting = true
-	player.velocity = Vector3.ZERO
+	var current_velocity: Vector3 = player.velocity
 	player.global_transform.origin = Vector3(current_pos.x, new_y, current_pos.z)
-
+	player.velocity = current_velocity
 	await get_tree().create_timer(0.1).timeout
 	is_teleporting = false
-
-func safety_teleport():
-	print("Safety teleport activated after ", lower_hit_counter, " lower boundary hits")
-	player.velocity = Vector3.ZERO
-	player.global_transform.origin = safe_spot.global_transform.origin
-	lower_hit_counter = 0
 #endregion
 
 
-#region SIGNALS
-func on_player_landed():
-	print("Lower boundary hit count has been reset")
-	lower_hit_counter = 0
+#region BOUNDS CALCULATION
+func _calculate_spatial_bounds(parent: Node, exclude_top_level_transform: bool) -> AABB:
+	var bounds: AABB = AABB()
+	if parent is VisualInstance3D:
+		bounds = parent.get_aabb()
+
+	for i in range(parent.get_child_count()):
+		var child: Node = parent.get_child(i)
+		if child is Node3D:
+			var child_bounds: AABB = _calculate_spatial_bounds(child, false)
+			if bounds.size == Vector3.ZERO and parent is Node3D:
+				bounds = child_bounds
+			else:
+				bounds = bounds.merge(child_bounds)
+
+	if bounds.size == Vector3.ZERO and parent is Node3D:
+		bounds = AABB(Vector3(-0.2, -0.2, -0.2), Vector3(0.4, 0.4, 0.4))
+
+	if not exclude_top_level_transform and parent is Node3D:
+		bounds = parent.transform * bounds
+
+	return bounds
 #endregion
