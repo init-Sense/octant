@@ -64,7 +64,7 @@ script = ExtResource("2_kf2t8")
 [node name="PostProcessing" parent="Head/CameraSmooth/Camera" instance=ExtResource("3_do34h")]
 
 [node name="TeleportTrigger" type="Area3D" parent="Head/CameraSmooth/Camera"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.99079e-08, 0, -0.0037539)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 monitoring = false
 metadata/teleportable_root = NodePath("../../../..")
 
