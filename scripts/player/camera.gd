@@ -1,3 +1,25 @@
+# Camera.gd
+# Class: Camera
+#
+# This script extends the Camera3D node to provide smooth camera movement,
+# mouse look functionality, and dynamic field of view (FOV) adjustments based
+# on player state (running, walking, crouching, jumping).
+#
+# Key Components:
+# - Mouse Look: Handles mouse input for camera rotation
+# - Smooth Camera Movement: Interpolates camera rotation for smooth movement
+# - Dynamic FOV: Adjusts the camera's FOV based on player movement state
+# - Sensitivity Settings: Allows adjustment of mouse sensitivity
+#
+# Usage:
+# 1. Attach this script to a Camera3D node in your scene.
+# 2. Set up the necessary export variables (mouse sensitivity, smoothness, etc.)
+# 3. Ensure the Movement node is properly referenced.
+# 4. The script will automatically handle mouse input and FOV adjustments.
+#
+# Note: This script assumes the existence of specific player states (is_running,
+# is_walking, etc.) in the player node.
+
 extends Camera3D
 class_name Camera
 
@@ -8,6 +30,7 @@ class_name Camera
 @export var invert_y: bool = false
 @export var smoothness: float = 0.1
 @export var default_fov: float = 90.0
+
 var rotation_x: float = 0
 var target_rotation: Vector3
 var current_fov_change: float = 0.0
@@ -16,18 +39,14 @@ var current_fov_change: float = 0.0
 
 #region CONSTANTS
 const FOV_DEFAULT: float = 70.0
-
 const FOV_RUNNING: float = 80.0
 const FOV_WALKING: float = 75.0
 const FOV_CROUCHING: float = 65.0
 const FOV_CROUCHED: float = 60.0
-
 const FOV_JUMP_OFFSET: float = 8.0
-
 const FOV_CHANGE_SPEED_RUNNING: float = 3.0
 const FOV_CHANGE_SPEED_WALKING: float = 4.0
 const FOV_CHANGE_SPEED_CROUCHING: float = 6.0
-
 const FOV_RESET_SPEED_RUNNING: float = 8.0
 const FOV_RESET_SPEED_WALKING: float = 6.0
 const FOV_RESET_SPEED_CROUCHING: float = 30.0
@@ -45,8 +64,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target_rotation = rotation
 	fov = default_fov
-	
-	
+
 func _process(delta: float):
 	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
 	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
@@ -64,16 +82,15 @@ func _input(event):
 #region MOVEMENT
 func handle_mouse_movement(event: InputEventMouseMotion):
 	var mouse_motion: Vector2 = event.relative
-	
+
 	target_rotation.y -= deg_to_rad(mouse_motion.x * mouse_sensitivity_x)
-	
+
 	var change: float = -mouse_motion.y * mouse_sensitivity_y
-	
 	if invert_y:
 		change *= -1
 	rotation_x += change
 	rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
-	
+
 	target_rotation.x = rotation_x
 #endregion
 
@@ -81,7 +98,6 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 #region ROTATION
 func get_camera_rotation() -> Vector3:
 	return rotation
-
 
 func set_camera_rotation(new_rotation: Vector3):
 	rotation = new_rotation

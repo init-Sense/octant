@@ -1,3 +1,25 @@
+# Inputs.gd
+# Class: Inputs
+#
+# This script manages input handling for the player, including movement,
+# jumping, sprinting, and crouching. It processes user inputs and delegates
+# actions to the appropriate components (Movement, Jump, Crouch).
+#
+# Key Components:
+# - Movement Input: Handles basic movement (forward, backward, left, right)
+# - Jump Input: Manages jump charging, releasing, and canceling
+# - Sprint Input: Detects double-tap for sprint activation in both forward and backward directions
+# - Crouch Input: Handles crouching up and down actions
+#
+# Usage:
+# Attach this script to a Node in your player's scene hierarchy. Ensure that
+# the required child nodes (Movement, Jump, Crouch) are properly set up
+# and accessible via the @onready variables.
+#
+# Note: This script assumes the existence of specific input actions in your project's
+# input map, such as "move_forward", "move_backward", "move_left", "move_right",
+# "jump", "crouch_up", and "crouch_down".
+
 extends Node
 class_name Inputs
 
@@ -24,13 +46,13 @@ var is_jump_charged: bool = false
 #endregion
 
 
-func _input(_event) -> void:
+func _input(event) -> void:
 	handle_jump_input()
 	handle_movement_input()
-	
+
 	handle_forward_sprint_input()
 	handle_backward_sprint_input()
-	
+
 	handle_crouch_input()
 
 
@@ -52,13 +74,20 @@ func handle_jump_input() -> void:
 
 #region MOVEMENT HANDLING
 func handle_movement_input() -> void:
-	if Input.is_action_pressed("move_forward"):
-		movement.forward()
-	elif Input.is_action_pressed("move_backward"):
-		movement.backward()
+	var input_vector = Vector3.ZERO
+	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input_vector.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+
+	if input_vector != Vector3.ZERO:
+		movement.input_dir = input_vector.normalized()
+		if input_vector.z < 0:
+			player.set_forward()
+		else:
+			player.set_backward()
 	else:
-		movement.still()
-		
+		movement.input_dir = Vector3.ZERO
+		player.set_still()
+
 	movement.update_movement_state()
 #endregion
 
@@ -67,7 +96,7 @@ func handle_movement_input() -> void:
 func handle_forward_sprint_input() -> void:
 	if Input.is_action_just_pressed("move_forward"):
 		var current_time: float = Time.get_ticks_msec() / 1000.0
-		
+
 		if current_time - last_forward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
 			forward_sprint_tap_count += 1
 			if forward_sprint_tap_count == 2:
@@ -75,7 +104,7 @@ func handle_forward_sprint_input() -> void:
 				forward_sprint_tap_count = 0
 		else:
 			forward_sprint_tap_count = 1
-		
+
 		last_forward_sprint_tap_time = current_time
 	elif Input.is_action_just_released("move_forward"):
 		movement.stop_sprint()
@@ -83,7 +112,7 @@ func handle_forward_sprint_input() -> void:
 func handle_backward_sprint_input() -> void:
 	if Input.is_action_just_pressed("move_backward"):
 		var current_time: float = Time.get_ticks_msec() / 1000.0
-		
+
 		if current_time - last_backward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
 			backward_sprint_tap_count += 1
 			if backward_sprint_tap_count == 2:
@@ -91,7 +120,7 @@ func handle_backward_sprint_input() -> void:
 				backward_sprint_tap_count = 0
 		else:
 			backward_sprint_tap_count = 1
-		
+
 		last_backward_sprint_tap_time = current_time
 	elif Input.is_action_just_released("move_backward"):
 		movement.stop_sprint()
