@@ -3,8 +3,8 @@ class_name Movement
 
 
 #region CONSTANTS
-const SPRINT_SPEED: float = 15.0
-const WALKING_SPEED: float = 7.0
+const SPRINT_SPEED: float = 8.0
+const WALKING_SPEED: float = 4.0
 const SNEAKING_SPEED: float = 1.5
 const WALK_DELAY: float = 0.1
 const ACCELERATION: float = 30.0
