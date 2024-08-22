@@ -11,6 +11,7 @@ const ACCELERATION: float = 30.0
 const DECELERATION: float = 15.0
 const MOVEMENT_DAMPING: float = 0.01
 const MIN_SPEED_FACTOR: float = 0.5
+const ZERO_G_DECELERATION: float = 5.0
 #endregion
 
 
@@ -24,6 +25,7 @@ var is_sprinting: bool = false
 var walk_timer: float = 0.0
 var is_walk_delayed: bool = false
 var is_zero_g: bool = false
+var zero_g_momentum: Vector3 = Vector3.ZERO
 #endregion
 
 
@@ -46,7 +48,11 @@ func _physics_process(delta) -> void:
 	if not is_zero_g and player.is_on_floor():
 		climb._last_frame_was_on_floor = Engine.get_physics_frames()
 	
-	player.velocity = velocity_vector
+	if is_zero_g:
+		update_zero_g_momentum(delta)
+		player.velocity = zero_g_momentum
+	else:
+		player.velocity = velocity_vector
 	
 	if not is_zero_g:
 		if not climb._snap_up_stairs_check(delta):
@@ -140,9 +146,7 @@ func update_velocity(delta) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
 	target_velocity = input_dir * target_speed * speed_modifier
 	
-	if is_zero_g:
-		velocity_vector = velocity_vector.move_toward(target_velocity, ACCELERATION * delta)
-	else:
+	if not is_zero_g:
 		var horizontal_velocity: Vector2 = Vector2(velocity_vector.x, velocity_vector.z)
 		var target_horizontal_velocity: Vector2 = Vector2(target_velocity.x, target_velocity.z)
 		
@@ -155,6 +159,18 @@ func update_velocity(delta) -> void:
 		velocity_vector.z = horizontal_velocity.y
 	
 	current_speed = velocity_vector.length()
+
+
+func update_zero_g_momentum(delta: float) -> void:
+	if input_dir.length() > 0:
+		zero_g_momentum += input_dir * ACCELERATION * delta
+	elif zero_g_momentum.length() > 0:
+		var deceleration_dir = -zero_g_momentum.normalized()
+		var deceleration_amount = min(ZERO_G_DECELERATION * delta, zero_g_momentum.length())
+		zero_g_momentum += deceleration_dir * deceleration_amount
+
+	if zero_g_momentum.length() > SPRINT_SPEED:
+		zero_g_momentum = zero_g_momentum.normalized() * SPRINT_SPEED
 #endregion
 
 
@@ -169,9 +185,13 @@ func update_input_direction() -> void:
 	
 	if input_vector != Vector3.ZERO:
 		var camera_basis: Basis = camera.global_transform.basis
-		input_dir = (camera_basis * input_vector).normalized()
+		input_dir = camera_basis * input_vector
+		
 		if not is_zero_g:
-			input_dir.y = 0
+			input_dir = input_dir.slide(Vector3.UP).normalized()
+		else:
+			input_dir = input_dir.normalized()
+		
 		player.set_forward() if input_vector.z < 0 else player.set_backward()
 	else:
 		input_dir = Vector3.ZERO
@@ -193,13 +213,21 @@ func get_direction() -> float:
 
 #region UTILS
 func calculate_tilt_speed_modifier() -> float:
-	if is_zero_g:
+	if is_zero_g or not player.is_on_floor():
 		return 1.0
-	var up_vector: Vector3 = Vector3.UP
-	var camera_forward: Vector3 = -camera.global_transform.basis.z
-	var tilt_angle: float = acos(camera_forward.dot(up_vector))
-	var tilt_factor = abs(sin(tilt_angle))
-	return lerp(1.0, MIN_SPEED_FACTOR, tilt_factor)
+
+	var camera_pitch: float = camera.rotation.x
+
+	var pitch_factor = abs(camera_pitch) / (PI / 2)
+
+	var max_slowdown: float = 0.3
+	var pitch_threshold: float = 0.3
+
+	if pitch_factor < pitch_threshold:
+		return 1.0
+	else:
+		var slowdown_factor = (pitch_factor - pitch_threshold) / (1 - pitch_threshold)
+		return 1.0 - (max_slowdown * slowdown_factor)
 
 
 func update_walk_timer(delta: float) -> void:
