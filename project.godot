@@ -21,13 +21,14 @@ SceneManager="*res://scripts/scenes/scene_manager.gd"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "orange",
+"res://prefabs/": "yellow",
 "res://scenes/": "blue",
 "res://scripts/": "teal"
 }

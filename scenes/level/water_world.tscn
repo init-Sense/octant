@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="2_w0tsl"]
-[ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://assets/prefabs/cave/cave_floor.tscn" id="3_yv3yc"]
+[ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://prefabs/cave/cave_floor.tscn" id="3_yv3yc"]
 [ext_resource type="PackedScene" uid="uid://dwl04hgr7ko2x" path="res://assets/models/cave/cave_rock.glb" id="4_ghekc"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="5_6vmuf"]
 [ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/cave/stalactite_a.glb" id="6_3umyr"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/cave/stalagmite_a.glb" id="9_7wy6g"]
 [ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/cave/stalagmite_b.glb" id="10_vnec2"]
 [ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/cave/stalagmite_c.glb" id="11_1v2ev"]
-[ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://assets/prefabs/cave/cave_wall.tscn" id="12_6a7qw"]
+[ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://prefabs/cave/cave_wall.tscn" id="12_6a7qw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
 sky_top_color = Color(0.33478, 0.31395, 1, 1)

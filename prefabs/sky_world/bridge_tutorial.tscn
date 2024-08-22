@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dquoxo4hj0hpa"]
+
+[ext_resource type="PackedScene" uid="uid://b4um1gdrnusu1" path="res://assets/models/columns/column_sky.glb" id="1_s63sx"]
+
+[node name="BridgeTutorial" type="Node3D"]
+
+[node name="column_sky_1" parent="." instance=ExtResource("1_s63sx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -30, 0, 0)
+
+[node name="column_sky_2" parent="." instance=ExtResource("1_s63sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="Boundaries" type="Node3D" parent="."]
+
+[node name="Boundary_X_1" type="Node3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="Boundary_X_2" type="Node3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+
+[node name="Boundary_Z_1" type="Node3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="Boundary_Z_2" type="Node3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
