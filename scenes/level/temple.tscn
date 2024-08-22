@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=25 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_fu1dj"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://came0orlh5e0u" path="res://prefabs/columns/column_sphere.tscn" id="7_6rd6f"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://prefabs/temple/stairs.tscn" id="7_w6sy5"]
 [ext_resource type="PackedScene" uid="uid://btuwttqwlnc4e" path="res://prefabs/temple/corridor.tscn" id="8_vnct2"]
-[ext_resource type="PackedScene" uid="uid://bk238qv21nsvm" path="res://assets/models/temple_roof.glb" id="9_4enfk"]
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/door_polygon.glb" id="10_65mrv"]
 [ext_resource type="PackedScene" uid="uid://bbxj6i7gue40w" path="res://assets/models/debug/debug_slope.glb" id="13_nl0kj"]
 [ext_resource type="Script" path="res://scripts/scenes/to_loading_scene.gd" id="14_1ystk"]
@@ -316,9 +315,6 @@ shape = SubResource("BoxShape3D_bwye7")
 [node name="Structure" type="Node3D" parent="Level"]
 
 [node name="hub_floor" parent="Level/Structure" instance=ExtResource("3_bu1ib")]
-
-[node name="hub_roof" parent="Level/Structure" instance=ExtResource("9_4enfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.7, 0)
 
 [node name="Walls" type="Node3D" parent="Level/Structure"]
 
