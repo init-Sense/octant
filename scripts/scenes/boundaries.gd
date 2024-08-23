@@ -98,7 +98,7 @@ func teleport_player(new_pos: Vector3):
 
 #region BOUNDS CALCULATION
 func _calculate_spatial_bounds(parent: Node, exclude_top_level_transform: bool) -> AABB:
-	bounds = AABB()
+	var bounds: AABB = AABB()
 
 	if parent is VisualInstance3D:
 		bounds = parent.get_aabb()
