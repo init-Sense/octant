@@ -64,6 +64,7 @@ var slippery_momentum: Vector3 = Vector3.ZERO
 @onready var climb: Climb = %Climb
 @onready var crouch: Crouch = %Crouch
 @onready var gravity: Gravity = %Gravity
+@onready var jump: Jump = %Jump
 #endregion
 
 
@@ -133,7 +134,7 @@ func update_velocity(delta: float) -> void:
 	target_velocity = input_dir * target_speed * speed_modifier
 	
 	if is_zero_g or is_on_slippery_surface:
-		return  # Handled in their respective update functions
+		return
 	
 	var horizontal_velocity: Vector2 = Vector2(velocity_vector.x, velocity_vector.z)
 	var target_horizontal_velocity: Vector2 = Vector2(target_velocity.x, target_velocity.z)
@@ -172,6 +173,9 @@ func update_slippery_momentum(delta: float) -> void:
 
 	if player.is_on_floor():
 		slippery_momentum = slippery_momentum.slide(player.get_floor_normal())
+		
+	if jump.jump_state.is_requested and player.is_on_floor():
+		execute_slippery_jump()
 #endregion
 
 
@@ -279,4 +283,20 @@ func update_walk_timer(delta: float) -> void:
 		walk_timer += delta
 		if walk_timer >= WALK_DELAY:
 			update_movement_state()
+			
+func execute_slippery_jump() -> void:
+	var charge_multiplier: float = 1.0 + (jump.jump_state.current_charge / jump.MAX_CHARGE_TIME) * (jump.MAX_CHARGE_MULTIPLIER - 1.0)
+	var jump_velocity: float = jump.SPEED * charge_multiplier
+	
+	var target_vertical_momentum: float = jump_velocity * 3
+	slippery_momentum.y = lerp(slippery_momentum.y, target_vertical_momentum, 0.5)
+	
+	var horizontal_jump_boost: Vector2 = Vector2(input_dir.x, input_dir.z) * jump_velocity * 0.5
+	slippery_momentum.x = lerp(slippery_momentum.x, slippery_momentum.x + horizontal_jump_boost.x, 0.5)
+	slippery_momentum.z = lerp(slippery_momentum.z, slippery_momentum.z + horizontal_jump_boost.y, 0.5)
+	
+	jump.jump_state.is_requested = false
+	jump.jump_state.current_charge = 0.0
+	player.set_jumping()
+	jump.jumped.emit()
 #endregion
