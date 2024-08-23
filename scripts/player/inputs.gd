@@ -57,17 +57,18 @@ func _input(event) -> void:
 
 #region JUMP HANDLING
 func handle_jump_input() -> void:
-	if Input.is_action_pressed("jump"):
-		if not is_jump_charged:
-			jump.start_charge()
-			is_jump_charged = true
-	elif Input.is_action_just_released("jump"):
-		if is_jump_charged:
-			jump.release_jump()
+	if not movement.slippery:
+		if Input.is_action_pressed("jump"):
+			if not is_jump_charged:
+				jump.start_charge()
+				is_jump_charged = true
+		elif Input.is_action_just_released("jump"):
+			if is_jump_charged:
+				jump.release_jump()
+				is_jump_charged = false
+		elif not Input.is_action_pressed("jump") and is_jump_charged:
+			jump.cancel_jump()
 			is_jump_charged = false
-	elif not Input.is_action_pressed("jump") and is_jump_charged:
-		jump.cancel_jump()
-		is_jump_charged = false
 #endregion
 
 
@@ -93,20 +94,23 @@ func handle_movement_input() -> void:
 
 #region SPRINT HANDLING
 func handle_forward_sprint_input() -> void:
-	if Input.is_action_just_pressed("move_forward"):
-		var current_time: float = Time.get_ticks_msec() / 1000.0
+	if movement.is_zero_g or movement.slippery:
+		return
+	else:
+		if Input.is_action_just_pressed("move_forward"):
+			var current_time: float = Time.get_ticks_msec() / 1000.0
 
-		if current_time - last_forward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
-			forward_sprint_tap_count += 1
-			if forward_sprint_tap_count == 2:
-				movement.start_sprint()
-				forward_sprint_tap_count = 0
-		else:
-			forward_sprint_tap_count = 1
+			if current_time - last_forward_sprint_tap_time <= DOUBLE_TAP_WINDOW:
+				forward_sprint_tap_count += 1
+				if forward_sprint_tap_count == 2:
+					movement.start_sprint()
+					forward_sprint_tap_count = 0
+			else:
+				forward_sprint_tap_count = 1
 
-		last_forward_sprint_tap_time = current_time
-	elif Input.is_action_just_released("move_forward"):
-		movement.stop_sprint()
+			last_forward_sprint_tap_time = current_time
+		elif Input.is_action_just_released("move_forward"):
+			movement.stop_sprint()
 
 
 func handle_backward_sprint_input() -> void:

@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
 [ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/bridge.glb" id="16_tyh20"]
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/bridge_junction.glb" id="17_d2kk4"]
-[ext_resource type="PackedScene" uid="uid://b4a6dgs5ubqui" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
+[ext_resource type="PackedScene" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
 
@@ -81,8 +81,8 @@ _data = {
 size = Vector3(5, 4, 4)
 
 [node name="Temple" type="Node3D"]
-metadata/slippery = true
-metadata/zero_g = true
+metadata/slippery = false
+metadata/zero_g = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
