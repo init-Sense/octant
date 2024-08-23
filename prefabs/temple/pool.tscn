@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cskl5bbc4k05v"]
 
-[ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/pool.glb" id="1_hrp2w"]
+[ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/temple/pool.glb" id="1_hrp2w"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="2_1bdjo"]
 [ext_resource type="PackedScene" uid="uid://dnim2fcq145wp" path="res://assets/models/columns/column_pool.glb" id="3_1qwwn"]
 [ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://assets/materials/pool_water.tres" id="4_xg8ap"]

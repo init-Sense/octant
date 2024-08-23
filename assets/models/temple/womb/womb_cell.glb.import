@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bk238qv21nsvm"
-path="res://.godot/imported/temple_roof.glb-9670865dcb55c9e5e01fbcdf5b3d1b6b.scn"
+uid="uid://dsfu0d3b8r4sl"
+path="res://.godot/imported/womb_cell.glb-3462a29f92b2245fdffb9f92dfc2dc0f.scn"
 
 [deps]
 
-source_file="res://assets/models/temple_roof.glb"
-dest_files=["res://.godot/imported/temple_roof.glb-9670865dcb55c9e5e01fbcdf5b3d1b6b.scn"]
+source_file="res://assets/models/temple/womb/womb_cell.glb"
+dest_files=["res://.godot/imported/womb_cell.glb-3462a29f92b2245fdffb9f92dfc2dc0f.scn"]
 
 [params]
 
@@ -31,18 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Floor": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/stone.tres"
-}
-},
-"nodes": {
-"PATH:HubRoof": {
-"mesh_instance/cast_shadow": 0
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

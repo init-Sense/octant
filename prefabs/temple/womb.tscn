@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwt1xodku6ibw"]
+
+[ext_resource type="PackedScene" uid="uid://c2gykwco5opxs" path="res://assets/models/temple/womb/womb_interior_top.glb" id="1_gw42o"]
+[ext_resource type="PackedScene" uid="uid://b5hckfqich7bk" path="res://assets/models/temple/womb/womb_shell_bottom.glb" id="2_1mukv"]
+[ext_resource type="PackedScene" uid="uid://cafy4rnjhwwkl" path="res://assets/models/temple/womb/womb_interior_bottom.glb" id="3_vkuor"]
+[ext_resource type="PackedScene" uid="uid://ct82h1qt1kmxq" path="res://assets/models/temple/womb/womb_shell_top.glb" id="4_vwisv"]
+[ext_resource type="PackedScene" uid="uid://dsfu0d3b8r4sl" path="res://assets/models/temple/womb/womb_cell.glb" id="5_ria3n"]
+
+[node name="Womb" type="Node3D"]
+
+[node name="Womb" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="womb_shell_top" parent="Womb" instance=ExtResource("4_vwisv")]
+
+[node name="womb_interior_top" parent="Womb" instance=ExtResource("1_gw42o")]
+
+[node name="womb_shell_bottom" parent="Womb" instance=ExtResource("2_1mukv")]
+
+[node name="womb_interior_bottom" parent="Womb/womb_shell_bottom" instance=ExtResource("3_vkuor")]
+
+[node name="womb_cell" parent="." instance=ExtResource("5_ria3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0)
