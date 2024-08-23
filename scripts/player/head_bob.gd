@@ -32,6 +32,7 @@ class_name HeadBob
 @onready var gravity: Gravity = %Gravity
 #endregion
 
+
 #region CONSTANTS
 const DEFAULT_AMPLITUDE: float = 0.05
 const DEFAULT_FREQUENCY: float = 5.0
@@ -93,6 +94,7 @@ func _ready() -> void:
 	jump.connect("landed", Callable(self, "on_player_landed"))
 	noise.seed = randi()
 
+
 func _physics_process(delta: float) -> void:
 	if player.is_on_floor():
 		if player.has_direction() and not player.is_jumping():
@@ -113,6 +115,7 @@ func _physics_process(delta: float) -> void:
 func handle_head_bob(delta: float) -> void:
 	apply_head_bob(delta)
 
+
 func apply_head_bob(delta: float) -> void:
 	handle_bob_wave()
 	bob_time += current_frequency * delta
@@ -125,12 +128,14 @@ func apply_head_bob(delta: float) -> void:
 	current_offset = Vector3(x_offset, y_offset, 0)
 	is_bobbing = true
 
+
 func smooth_reset_head_bob(delta: float) -> void:
 	current_offset = current_offset.move_toward(Vector3.ZERO, RESET_SPEED * delta)
 	if current_offset.length() < 0.001:
 		bob_time = 0
 		current_offset = Vector3.ZERO
 		is_bobbing = false
+
 
 func handle_bob_wave() -> void:
 	var speed: float = movement.velocity_vector.length()
@@ -149,12 +154,15 @@ func handle_landing(delta: float) -> void:
 	elif landing_offset != 0:
 		smooth_reset_landing_impact(delta)
 
+
 func on_player_jumped() -> void:
 	jump_start_height = player.global_position.y
 	max_jump_height = jump_start_height
 
+
 func track_jump_height() -> void:
 	max_jump_height = max(max_jump_height, player.global_position.y)
+
 
 func on_player_landed() -> void:
 	is_landing = true
@@ -163,6 +171,7 @@ func on_player_landed() -> void:
 	var height_factor = clamp(jump_height / MAX_IMPACT_HEIGHT, 0, 1)
 	current_landing_impact_amplitude = lerp(BASE_LANDING_IMPACT_AMPLITUDE, MAX_LANDING_IMPACT_AMPLITUDE, height_factor)
 
+
 func apply_landing_impact(delta: float) -> void:
 	landing_impact_time += delta
 	var impact_progress: float = landing_impact_time / LANDING_IMPACT_DURATION
@@ -170,6 +179,7 @@ func apply_landing_impact(delta: float) -> void:
 
 	if landing_impact_time >= LANDING_IMPACT_DURATION:
 		is_landing = false
+
 
 func smooth_reset_landing_impact(delta: float) -> void:
 	landing_offset = move_toward(landing_offset, 0, LANDING_RESET_SPEED * delta)
@@ -198,6 +208,7 @@ func handle_fall_bob(delta: float) -> void:
 	else:
 		smooth_reset_fall_bob(delta)
 
+
 func apply_fall_bob(delta: float, fall_speed: float) -> void:
 	fall_bob_time += FALL_BOB_FREQUENCY * delta
 	var speed_factor = clamp((fall_speed - FALL_BOB_VELOCITY_THRESHOLD) / (gravity.TERMINAL_VELOCITY - FALL_BOB_VELOCITY_THRESHOLD), 0, 1)
@@ -210,6 +221,7 @@ func apply_fall_bob(delta: float, fall_speed: float) -> void:
 	y_offset += noise.get_noise_1d(fall_bob_time * 15 + 100) * NOISE_STRENGTH * speed_factor
 
 	fall_bob_offset = Vector3(x_offset, y_offset, 0)
+
 
 func smooth_reset_fall_bob(delta: float) -> void:
 	fall_bob_offset = fall_bob_offset.move_toward(Vector3.ZERO, RESET_SPEED * delta)

@@ -65,6 +65,7 @@ func _ready():
 	target_rotation = rotation
 	fov = default_fov
 
+
 func _process(delta: float):
 	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
 	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
@@ -98,6 +99,7 @@ func handle_mouse_movement(event: InputEventMouseMotion):
 #region ROTATION
 func get_camera_rotation() -> Vector3:
 	return rotation
+
 
 func set_camera_rotation(new_rotation: Vector3):
 	rotation = new_rotation

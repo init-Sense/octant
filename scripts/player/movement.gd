@@ -38,7 +38,7 @@ const DECELERATION: float = 15.0
 const MOVEMENT_DAMPING: float = 0.01
 const MIN_SPEED_FACTOR: float = 0.5
 const ZERO_G_DECELERATION: float = 5.0
-const SLIPPERY_DECELERATION: float = 0.0
+const SLIPPERY_DECELERATION: float = 1.2
 #endregion
 
 
@@ -72,13 +72,15 @@ var slippery_momentum: Vector3 = Vector3.ZERO
 func _ready() -> void:
 	player.tree_entered.connect(_on_player_tree_entered)
 
+
 func _physics_process(delta: float) -> void:
 	update_environment()
 	update_input_direction()
 	update_velocity(delta)
 	update_walk_timer(delta)
-	
+	print(player.velocity)
 	apply_movement(delta)
+
 
 func _on_player_tree_entered() -> void:
 	update_environment()
@@ -122,12 +124,14 @@ func apply_movement(delta: float) -> void:
 
 	reset_vertical_velocity()
 
+
 func reset_vertical_velocity() -> void:
 	if player.is_on_floor():
 		if is_on_slippery_surface:
 			slippery_momentum.y = -0.1
 		else:
 			velocity_vector.y = -0.1
+
 
 func update_velocity(delta: float) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
@@ -149,6 +153,7 @@ func update_velocity(delta: float) -> void:
 	
 	current_speed = velocity_vector.length()
 
+
 func update_zero_g_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
 		zero_g_momentum += input_dir * ACCELERATION * delta
@@ -158,6 +163,7 @@ func update_zero_g_momentum(delta: float) -> void:
 		zero_g_momentum += deceleration_dir * deceleration_amount
 
 	zero_g_momentum = zero_g_momentum.limit_length(SPRINT_SPEED)
+
 
 func update_slippery_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
@@ -199,6 +205,7 @@ func update_input_direction() -> void:
 		input_dir = Vector3.ZERO
 		player.set_still()
 
+
 func get_direction() -> float:
 	var forward_strength: float = Input.get_action_strength("move_forward")
 	var backward_strength: float = Input.get_action_strength("move_backward")
@@ -218,6 +225,7 @@ func idle() -> void:
 	target_speed = 0.0
 	is_walk_delayed = false
 
+
 func walk() -> void:
 	if not is_walk_delayed:
 		is_walk_delayed = true
@@ -227,20 +235,24 @@ func walk() -> void:
 		target_speed = WALKING_SPEED
 		is_walk_delayed = false
 
+
 func run() -> void:
 	player.set_running()
 	target_speed = SPRINT_SPEED
 	is_walk_delayed = false
+
 
 func sneak() -> void:
 	player.set_sneaking()
 	update_sneaking_speed()
 	is_walk_delayed = false
 
+
 func update_sneaking_speed() -> void:
 	var crouch_percentage: float = crouch.get_crouch_percentage()
 	var speed_range: float = WALKING_SPEED - SNEAKING_SPEED
 	target_speed = WALKING_SPEED - (speed_range * crouch_percentage)
+
 
 func update_movement_state() -> void:
 	if player.is_still():
@@ -252,10 +264,12 @@ func update_movement_state() -> void:
 	else:
 		walk()
 
+
 func start_sprint() -> void:
 	player.set_running()
 	is_walk_delayed = false
 	update_movement_state()
+
 
 func stop_sprint() -> void:
 	update_movement_state()
@@ -278,12 +292,14 @@ func calculate_tilt_speed_modifier() -> float:
 		var slowdown_factor = (pitch_factor - pitch_threshold) / (1 - pitch_threshold)
 		return 1.0 - (max_slowdown * slowdown_factor)
 
+
 func update_walk_timer(delta: float) -> void:
 	if is_walk_delayed:
 		walk_timer += delta
 		if walk_timer >= WALK_DELAY:
 			update_movement_state()
-			
+
+
 func execute_slippery_jump() -> void:
 	var charge_multiplier: float = 1.0 + (jump.jump_state.current_charge / jump.MAX_CHARGE_TIME) * (jump.MAX_CHARGE_MULTIPLIER - 1.0)
 	var jump_velocity: float = jump.SPEED * charge_multiplier

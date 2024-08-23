@@ -60,6 +60,7 @@ enum ActionState {
 @onready var action_state: int = ActionState.NOTHING
 #endregion
 
+
 #region PREVIOUS STATES
 @onready var previous_motion_state: int = MotionState.IDLE
 @onready var previous_movement_state: int = MovementState.STILL
@@ -67,24 +68,29 @@ enum ActionState {
 @onready var previous_action_state: int = ActionState.NOTHING
 #endregion
 
+
 #region NODES
 @onready var camera: Camera = %Camera
 @onready var jump: Jump = %Jump
 #endregion
+
 
 #region DEBUG
 var print_state: bool = true
 var print_previous_state: bool = false
 #endregion
 
+
 #region LIFECYCLE
 func _ready():
 	pass
 	#print_tree_pretty()
 
+
 func _process(_delta):
 	rotation.y = camera.rotation.y
 #endregion
+
 
 #region GENERIC SETTERS
 # These methods update the player's states and handle debug printing
@@ -116,6 +122,7 @@ func set_position_state(state: int) -> void:
 		if print_state: print("Position -> ", get_position_value())
 #endregion
 
+
 #region MOVEMENT SETTERS
 # These methods set specific movement states
 func set_still() -> void:
@@ -127,6 +134,7 @@ func set_forward() -> void:
 func set_backward() -> void:
 	set_movement_state(MovementState.BACKWARD)
 #endregion
+
 
 #region MOTION SETTERS
 # These methods set specific motion states
@@ -143,6 +151,7 @@ func set_running() -> void:
 	set_motion_state(MotionState.RUNNING)
 #endregion
 
+
 #region ACTION SETTERS
 # These methods set specific action states
 func set_no_action() -> void:
@@ -155,6 +164,7 @@ func set_jumping() -> void:
 	set_action_state(ActionState.JUMPING)
 #endregion
 
+
 #region POSITION SETTERS
 # These methods set specific position states
 func set_standing() -> void:
@@ -166,6 +176,7 @@ func set_crouching() -> void:
 func set_crouched() -> void:
 	set_position_state(PositionState.CROUCHED)
 #endregion
+
 
 #region GENERIC GETTERS
 # These methods return string representations of the current states
@@ -221,6 +232,7 @@ func get_position_value() -> String:
 		_: return "UNKNOWN"
 #endregion
 
+
 #region MOVEMENT GETTERS
 # These methods check for specific movement states
 func is_still() -> bool:
@@ -247,6 +259,7 @@ func was_forward() -> bool:
 func was_backward() -> bool:
 	return previous_movement_state == MovementState.BACKWARD
 #endregion
+
 
 #region MOTION GETTERS
 # These methods check for specific motion states
@@ -281,6 +294,7 @@ func was_in_motion() -> bool:
 	return previous_motion_state in [MotionState.WALKING, MotionState.SNEAKING, MotionState.RUNNING]
 #endregion
 
+
 #region ACTION GETTERS
 # These methods check for specific action states
 func is_doing_nothing() -> bool:
@@ -301,6 +315,7 @@ func was_charging_jump() -> bool:
 func was_jumping() -> bool:
 	return previous_action_state == ActionState.JUMPING
 #endregion
+
 
 #region POSITION GETTERS
 # These methods check for specific position states

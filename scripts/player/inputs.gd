@@ -23,7 +23,6 @@
 extends Node
 class_name Inputs
 
-
 #region NODES
 @onready var movement: Movement = %Movement
 @onready var jump: Jump = %Jump
@@ -108,6 +107,7 @@ func handle_forward_sprint_input() -> void:
 		last_forward_sprint_tap_time = current_time
 	elif Input.is_action_just_released("move_forward"):
 		movement.stop_sprint()
+
 
 func handle_backward_sprint_input() -> void:
 	if Input.is_action_just_pressed("move_backward"):

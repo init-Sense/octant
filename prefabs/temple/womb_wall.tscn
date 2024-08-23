@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj5n2cw87nvhe"]
+[gd_scene load_steps=3 format=3 uid="uid://bj5n2cw87nvhe"]
 
 [ext_resource type="PackedScene" uid="uid://bwt1xodku6ibw" path="res://prefabs/temple/womb.tscn" id="1_ml8iq"]
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="2_e41h0"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k57ja"]
 size = Vector2(18, 26.26)
@@ -64,5 +63,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.8, 0)
 
 [node name="Womb_14" parent="Wombs" instance=ExtResource("1_ml8iq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5.8, 0)
-
-[node name="column_wall" parent="." instance=ExtResource("2_e41h0")]

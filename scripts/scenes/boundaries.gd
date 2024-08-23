@@ -39,6 +39,7 @@ func _ready():
 		push_error("Player node not found!")
 	bounds = _calculate_spatial_bounds(self, true)
 
+
 func _physics_process(_delta):
 	if player and not is_teleporting:
 		check_and_teleport_player()
@@ -85,6 +86,7 @@ func check_and_teleport_player():
 
 	if teleport_needed:
 		teleport_player(new_pos)
+
 
 func teleport_player(new_pos: Vector3):
 	is_teleporting = true

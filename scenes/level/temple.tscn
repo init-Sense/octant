@@ -82,7 +82,7 @@ size = Vector3(5, 4, 4)
 
 [node name="Temple" type="Node3D"]
 metadata/slippery = true
-metadata/zero_g = false
+metadata/zero_g = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")

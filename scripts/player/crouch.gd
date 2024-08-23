@@ -57,6 +57,7 @@ func _ready() -> void:
 	initial_head_offset = head.position.y - (STANDING_HEIGHT / 2)
 	ensure_initial_height()
 
+
 func _physics_process(delta: float) -> void:
 	if player.is_jumping():
 		handle_jump_crouch(delta)
@@ -74,11 +75,13 @@ func ensure_initial_height() -> void:
 	mesh.mesh.height = STANDING_HEIGHT
 	update_head_position()
 
+
 func update_player_height(new_height: float) -> void:
 	body.shape.height = new_height
 	mesh.mesh.height = new_height
 	update_head_position()
 #endregion
+
 
 #region CROUCH CONTROLS
 func down() -> void:
@@ -87,11 +90,13 @@ func down() -> void:
 		update_crouch_state()
 		movement.update_movement_state()
 
+
 func up() -> void:
 	if target_step > 0:
 		target_step -= 1
 		update_crouch_state()
 		movement.update_movement_state()
+
 
 func reset_crouch() -> void:
 	target_step = 0
@@ -109,6 +114,7 @@ func update_crouch() -> void:
 	update_player_height(new_height)
 	update_crouch_state()
 
+
 func update_crouch_state() -> void:
 	if current_step == 0:
 		player.set_standing()
@@ -117,11 +123,13 @@ func update_crouch_state() -> void:
 	else:
 		player.set_crouching()
 
+
 func update_head_position() -> void:
 	var crouch_offset = (STANDING_HEIGHT - body.shape.height) / 2
 	var base_position = (STANDING_HEIGHT / 2) + initial_head_offset - crouch_offset
 	var jump_charge_offset: float = jump.get_charge_offset()
 	head.position.y = base_position + jump_charge_offset
+
 
 func get_crouch_percentage() -> float:
 	return current_step / CROUCH_STEPS
@@ -134,9 +142,11 @@ func handle_jump_crouch(delta: float) -> void:
 	current_step = move_toward(current_step, 0, delta * JUMP_UNCROUCH_SPEED)
 	update_crouch()
 
+
 func handle_landing() -> void:
 	was_jumping = false
 	reset_crouch()
+
 
 func handle_crouch_transition(delta: float) -> void:
 	current_step = move_toward(current_step, target_step, delta / TRANSITION_TIME)
