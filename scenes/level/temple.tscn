@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=25 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_fu1dj"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="3_k6j5q"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="4_guomw"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="5_5gfhx"]
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="5_nplgn"]
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://prefabs/temple/pool.tscn" id="6_w0lqu"]
 [ext_resource type="PackedScene" uid="uid://came0orlh5e0u" path="res://prefabs/columns/column_sphere.tscn" id="7_6rd6f"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://prefabs/temple/stairs.tscn" id="7_w6sy5"]
@@ -173,33 +172,6 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="column_outer_8" parent="Level/ColumnsOuter" instance=ExtResource("5_5gfhx")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.3848, 0, -18.3848)
-
-[node name="ColumnsWalls" type="Node3D" parent="Level"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
-
-[node name="column_wall_1" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 0)
-
-[node name="column_wall_2" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 0)
-
-[node name="column_wall_3" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -29.6985, 0, -29.6985)
-
-[node name="column_wall_4" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 29.6985, 0, 29.6985)
-
-[node name="column_wall_5" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 2.86102e-06, 0, -42)
-
-[node name="column_wall_6" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -2.86102e-06, 0, 42)
-
-[node name="column_wall_7" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 29.6985, 0, -29.6985)
-
-[node name="column_wall_8" parent="Level/ColumnsWalls" instance=ExtResource("5_nplgn")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -29.6985, 0, 29.6985)
 
 [node name="ColumnSpheres" type="Node3D" parent="Level"]
 

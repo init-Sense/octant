@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cth3s3ydhuyfh" path="res://assets/models/temple/womb/womb_frame.glb" id="6_jyoax"]
 
 [node name="Womb" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="WombCapsule" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
