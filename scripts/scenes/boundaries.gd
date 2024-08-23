@@ -1,5 +1,4 @@
-# SpatialWrap.gd
-# Class: SpatialWrap
+# boundaries.gd
 #
 # This script implements a spatial wrapping mechanism for a player character
 # within a defined 3D space. When the player crosses the boundaries of this space,
@@ -99,7 +98,7 @@ func teleport_player(new_pos: Vector3):
 
 #region BOUNDS CALCULATION
 func _calculate_spatial_bounds(parent: Node, exclude_top_level_transform: bool) -> AABB:
-	var bounds: AABB = AABB()
+	bounds = AABB()
 
 	if parent is VisualInstance3D:
 		bounds = parent.get_aabb()
