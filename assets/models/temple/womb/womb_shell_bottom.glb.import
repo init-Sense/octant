@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://vqtapcimp5km"
-path="res://.godot/imported/pool.glb-15157a5cfb9b472398b7b531504b1fb4.scn"
+uid="uid://b5hckfqich7bk"
+path="res://.godot/imported/womb_shell_bottom.glb-12a353bc825c51881b5d248d54dbbb04.scn"
 
 [deps]
 
-source_file="res://assets/models/pool.glb"
-dest_files=["res://.godot/imported/pool.glb-15157a5cfb9b472398b7b531504b1fb4.scn"]
+source_file="res://assets/models/temple/womb/womb_shell_bottom.glb"
+dest_files=["res://.godot/imported/womb_shell_bottom.glb-12a353bc825c51881b5d248d54dbbb04.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/stone.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

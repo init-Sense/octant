@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dognb6in18kwm"
-path="res://.godot/imported/door.glb-6ec4a70da9a18e80919c8f7540efcb20.scn"
+uid="uid://doap8gflmeimv"
+path="res://.godot/imported/door_polygon.glb-b797c824baa26f68edbd0f31f35443cb.scn"
 
 [deps]
 
-source_file="res://assets/models/door.glb"
-dest_files=["res://.godot/imported/door.glb-6ec4a70da9a18e80919c8f7540efcb20.scn"]
+source_file="res://assets/models/temple/door_polygon.glb"
+dest_files=["res://.godot/imported/door_polygon.glb-b797c824baa26f68edbd0f31f35443cb.scn"]
 
 [params]
 
@@ -19,23 +19,23 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=false
+meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Door": {
+"DoorPolygon": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/stone.tres"
+"use_external/path": "res://assets/materials/door_polygon.tres"
 }
 }
 }

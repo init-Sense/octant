@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://doap8gflmeimv"
-path="res://.godot/imported/door_polygon.glb-a37353bdf4b67d25368a0a05e0863105.scn"
+uid="uid://cafy4rnjhwwkl"
+path="res://.godot/imported/womb_interior_bottom.glb-3f4373443c96da6d9453a578c16eaaf0.scn"
 
 [deps]
 
-source_file="res://assets/models/door_polygon.glb"
-dest_files=["res://.godot/imported/door_polygon.glb-a37353bdf4b67d25368a0a05e0863105.scn"]
+source_file="res://assets/models/temple/womb/womb_interior_bottom.glb"
+dest_files=["res://.godot/imported/womb_interior_bottom.glb-3f4373443c96da6d9453a578c16eaaf0.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"DoorPolygon": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/door_polygon.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
