@@ -1,17 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccwt6ib0jvshx"]
 
 [ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/corridor/corridor_vault.glb" id="1_io7me"]
-[ext_resource type="PackedScene" uid="uid://dognb6in18kwm" path="res://assets/models/temple/door.glb" id="2_tqedr"]
 [ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/temple/door_entrance.glb" id="3_lwv6q"]
 [ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="4_tlil4"]
 [ext_resource type="PackedScene" uid="uid://bwt1xodku6ibw" path="res://prefabs/temple/womb.tscn" id="5_kswtj"]
+[ext_resource type="PackedScene" uid="uid://euykgxuvdlro" path="res://assets/models/columns/column_womb.glb" id="5_owcu1"]
 
 [node name="TempleWall" type="Node3D"]
 
 [node name="corridor_vault" parent="." instance=ExtResource("1_io7me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7968)
-
-[node name="door" parent="." instance=ExtResource("2_tqedr")]
 
 [node name="door_entrance" parent="." instance=ExtResource("3_lwv6q")]
 
@@ -23,126 +21,193 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73695e-07, 36.5, 0)
 
 [node name="Womb_1" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
 [node name="Womb_2" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="Womb_3" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
 [node name="Womb_15" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 11.6, 0)
 
 [node name="Womb_16" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11.6, 0)
 
 [node name="Womb_17" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 11.6, 0)
 
 [node name="Womb_8" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -11.6, 0)
 
 [node name="Womb_9" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -11.6, 0)
 
 [node name="Womb_10" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -11.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -11.6, 0)
 
 [node name="Womb_4" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -5.8, 0)
 
 [node name="Womb_5" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, -5.8, 0)
 
 [node name="Womb_7" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5.8, 0)
 
 [node name="Womb_6" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5.8, 0)
 
 [node name="Womb_11" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5.8, 0)
 
 [node name="Womb_12" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 5.8, 0)
 
 [node name="Womb_13" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5.8, 0)
 
 [node name="Womb_14" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5.8, 0)
 
 [node name="Womb_18" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 17.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 17.4, 0)
 
 [node name="Womb_19" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 17.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 17.4, 0)
 
 [node name="Womb_20" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 17.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17.4, 0)
 
 [node name="Womb_21" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 17.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 17.4, 0)
 
 [node name="Womb_22" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 34.8, 0)
 
 [node name="Womb_23" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 34.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 34.8, 0)
 
 [node name="Womb_24" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 34.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 34.8, 0)
 
 [node name="Womb_25" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 46.4, 0)
 
 [node name="Womb_26" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 46.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 46.4, 0)
 
 [node name="Womb_27" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 46.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 46.4, 0)
 
 [node name="Womb_28" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 23.2, 0)
 
 [node name="Womb_29" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 23.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 23.2, 0)
 
 [node name="Womb_30" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 23.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 23.2, 0)
 
 [node name="Womb_31" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 29, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 29, 0)
 
 [node name="Womb_32" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 29, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 29, 0)
 
 [node name="Womb_33" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 29, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 29, 0)
 
 [node name="Womb_34" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 29, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 29, 0)
 
 [node name="Womb_35" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 40.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 40.6, 0)
 
 [node name="Womb_36" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 40.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 40.6, 0)
 
 [node name="Womb_37" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 40.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 40.6, 0)
 
 [node name="Womb_38" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 40.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 40.6, 0)
 
 [node name="Womb_39" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 52.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 52.2, 0)
 
 [node name="Womb_40" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 52.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 52.2, 0)
 
 [node name="Womb_41" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 52.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 52.2, 0)
+
+[node name="Womb_43" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="Womb_44" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 11.6, 0)
+
+[node name="Womb_45" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -11.6, 0)
+
+[node name="Womb_46" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -5.8, 0)
+
+[node name="Womb_47" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5.8, 0)
+
+[node name="Womb_48" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 17.4, 0)
+
+[node name="Womb_49" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 34.8, 0)
+
+[node name="Womb_50" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 46.4, 0)
+
+[node name="Womb_51" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 23.2, 0)
+
+[node name="Womb_52" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 29, 0)
+
+[node name="Womb_53" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 40.6, 0)
+
+[node name="Womb_54" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 52.2, 0)
 
 [node name="Womb_42" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 52.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 52.2, 0)
+
+[node name="Womb_55" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 58.1, 0)
+
+[node name="Womb_56" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 58.1, 0)
+
+[node name="Womb_57" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 58.1, 0)
+
+[node name="Womb_58" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 63.9, 0)
+
+[node name="Womb_59" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 63.9, 0)
+
+[node name="Womb_60" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 63.9, 0)
+
+[node name="Womb_61" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 58.1, 0)
+
+[node name="Womb_62" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 63.9, 0)
+
+[node name="Womb_63" parent="Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 63.9, 0)
+
+[node name="column_womb" parent="." instance=ExtResource("5_owcu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 7.2, -9.9)
