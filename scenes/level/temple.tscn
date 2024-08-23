@@ -81,7 +81,7 @@ _data = {
 size = Vector3(5, 4, 4)
 
 [node name="Temple" type="Node3D"]
-metadata/slippery = false
+metadata/slippery = true
 metadata/zero_g = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
