@@ -28,7 +28,7 @@ extends Node3D
 @export var teleport_offset: float = 0.01
 var player: CharacterBody3D
 var is_teleporting: bool = false
-var bounds: AABB
+var level_bounds: AABB
 #endregion
 
 
@@ -37,7 +37,7 @@ func _ready():
 	player = get_node(player_path)
 	if not player:
 		push_error("Player node not found!")
-	bounds = _calculate_spatial_bounds(self, true)
+	level_bounds = _calculate_spatial_bounds(self, true)
 
 
 func _physics_process(_delta):
@@ -49,12 +49,12 @@ func _physics_process(_delta):
 #region TELEPORT
 func check_and_teleport_player():
 	var player_pos: Vector3 = player.global_transform.origin
-	var lower_y: float = global_transform.origin.y + bounds.position.y
-	var upper_y: float = lower_y + bounds.size.y
-	var left_x: float = global_transform.origin.x + bounds.position.x
-	var right_x: float = left_x + bounds.size.x
-	var back_z: float = global_transform.origin.z + bounds.position.z
-	var front_z: float = back_z + bounds.size.z
+	var lower_y: float = global_transform.origin.y + level_bounds.position.y
+	var upper_y: float = lower_y + level_bounds.size.y
+	var left_x: float = global_transform.origin.x + level_bounds.position.x
+	var right_x: float = left_x + level_bounds.size.x
+	var back_z: float = global_transform.origin.z + level_bounds.position.z
+	var front_z: float = back_z + level_bounds.size.z
 
 	var new_pos: Vector3 = player_pos
 	var teleport_needed: bool = false
