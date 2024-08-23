@@ -23,7 +23,6 @@
 # - Set "slippery" metadata on the current scene's root node to enable slippery surface physics
 # Note: Zero-g takes precedence over slippery if both are set.
 
-# FIXME: When in a slippery environment you can't jump!
 extends Node
 class_name Movement
 
@@ -53,7 +52,7 @@ var walk_timer: float = 0.0
 var is_walk_delayed: bool = false
 var is_zero_g: bool = false
 var zero_g_momentum: Vector3 = Vector3.ZERO
-var is_on_slippery_surface: bool = false
+var slippery: bool = false
 var slippery_momentum: Vector3 = Vector3.ZERO
 #endregion
 
@@ -78,7 +77,6 @@ func _physics_process(delta: float) -> void:
 	update_input_direction()
 	update_velocity(delta)
 	update_walk_timer(delta)
-	print(player.velocity)
 	apply_movement(delta)
 
 
@@ -89,11 +87,11 @@ func _on_player_tree_entered() -> void:
 
 #region ENVIRONMENT
 func update_environment() -> void:
-	var current_scene = player.get_tree().current_scene
-	
+	var current_scene: Node = player.get_tree().current_scene
+
 	is_zero_g = current_scene.has_meta("zero_g") and current_scene.get_meta("zero_g")
-	is_on_slippery_surface = not is_zero_g and current_scene.has_meta("slippery") and current_scene.get_meta("slippery")
-	
+	slippery = not is_zero_g and current_scene.has_meta("slippery") and current_scene.get_meta("slippery")
+
 	if is_zero_g:
 		gravity.set_gravity(0.0)
 	else:
@@ -105,16 +103,16 @@ func update_environment() -> void:
 func apply_movement(delta: float) -> void:
 	if not is_zero_g and player.is_on_floor():
 		climb._last_frame_was_on_floor = Engine.get_physics_frames()
-	
+
 	if is_zero_g:
 		update_zero_g_momentum(delta)
 		player.velocity = zero_g_momentum
-	elif is_on_slippery_surface:
+	elif slippery:
 		update_slippery_momentum(delta)
 		player.velocity = slippery_momentum
 	else:
 		player.velocity = velocity_vector
-	
+
 	if not is_zero_g:
 		if not climb._snap_up_stairs_check(delta):
 			player.move_and_slide()
@@ -127,7 +125,7 @@ func apply_movement(delta: float) -> void:
 
 func reset_vertical_velocity() -> void:
 	if player.is_on_floor():
-		if is_on_slippery_surface:
+		if slippery:
 			slippery_momentum.y = -0.1
 		else:
 			velocity_vector.y = -0.1
@@ -136,21 +134,21 @@ func reset_vertical_velocity() -> void:
 func update_velocity(delta: float) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()
 	target_velocity = input_dir * target_speed * speed_modifier
-	
-	if is_zero_g or is_on_slippery_surface:
+
+	if is_zero_g or slippery:
 		return
-	
+
 	var horizontal_velocity: Vector2 = Vector2(velocity_vector.x, velocity_vector.z)
 	var target_horizontal_velocity: Vector2 = Vector2(target_velocity.x, target_velocity.z)
-	
+
 	if input_dir.length() > 0:
 		horizontal_velocity = horizontal_velocity.move_toward(target_horizontal_velocity, ACCELERATION * delta)
 	else:
 		horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, DECELERATION * delta)
-	
+
 	velocity_vector.x = horizontal_velocity.x
 	velocity_vector.z = horizontal_velocity.y
-	
+
 	current_speed = velocity_vector.length()
 
 
@@ -158,8 +156,8 @@ func update_zero_g_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
 		zero_g_momentum += input_dir * ACCELERATION * delta
 	elif zero_g_momentum.length() > 0:
-		var deceleration_dir = -zero_g_momentum.normalized()
-		var deceleration_amount = min(ZERO_G_DECELERATION * delta, zero_g_momentum.length())
+		var deceleration_dir: Vector3 = -zero_g_momentum.normalized()
+		var deceleration_amount       = min(ZERO_G_DECELERATION * delta, zero_g_momentum.length())
 		zero_g_momentum += deceleration_dir * deceleration_amount
 
 	zero_g_momentum = zero_g_momentum.limit_length(SPRINT_SPEED)
@@ -169,8 +167,8 @@ func update_slippery_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
 		slippery_momentum += input_dir * ACCELERATION * delta
 	elif slippery_momentum.length() > 0:
-		var deceleration_dir = -slippery_momentum.normalized()
-		var deceleration_amount = min(SLIPPERY_DECELERATION * delta, slippery_momentum.length())
+		var deceleration_dir: Vector3 = -slippery_momentum.normalized()
+		var deceleration_amount       = min(SLIPPERY_DECELERATION * delta, slippery_momentum.length())
 		slippery_momentum += deceleration_dir * deceleration_amount
 
 	slippery_momentum = slippery_momentum.limit_length(SPRINT_SPEED)
@@ -179,7 +177,7 @@ func update_slippery_momentum(delta: float) -> void:
 
 	if player.is_on_floor():
 		slippery_momentum = slippery_momentum.slide(player.get_floor_normal())
-		
+
 	if jump.jump_state.is_requested and player.is_on_floor():
 		execute_slippery_jump()
 #endregion
@@ -190,16 +188,16 @@ func update_input_direction() -> void:
 	var input_vector: Vector3 = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	
+
 	if input_vector != Vector3.ZERO:
 		var camera_basis: Basis = camera.global_transform.basis
 		input_dir = camera_basis * input_vector
-		
+
 		if not is_zero_g:
 			input_dir = input_dir.slide(Vector3.UP).normalized()
 		else:
 			input_dir = input_dir.normalized()
-		
+
 		player.set_forward() if input_vector.z < 0 else player.set_backward()
 	else:
 		input_dir = Vector3.ZERO
@@ -209,7 +207,7 @@ func update_input_direction() -> void:
 func get_direction() -> float:
 	var forward_strength: float = Input.get_action_strength("move_forward")
 	var backward_strength: float = Input.get_action_strength("move_backward")
-	
+
 	if forward_strength > backward_strength:
 		return 1.0
 	elif backward_strength > forward_strength:
@@ -303,14 +301,14 @@ func update_walk_timer(delta: float) -> void:
 func execute_slippery_jump() -> void:
 	var charge_multiplier: float = 1.0 + (jump.jump_state.current_charge / jump.MAX_CHARGE_TIME) * (jump.MAX_CHARGE_MULTIPLIER - 1.0)
 	var jump_velocity: float = jump.SPEED * charge_multiplier
-	
+
 	var target_vertical_momentum: float = jump_velocity * 3
 	slippery_momentum.y = lerp(slippery_momentum.y, target_vertical_momentum, 0.5)
-	
+
 	var horizontal_jump_boost: Vector2 = Vector2(input_dir.x, input_dir.z) * jump_velocity * 0.5
 	slippery_momentum.x = lerp(slippery_momentum.x, slippery_momentum.x + horizontal_jump_boost.x, 0.5)
 	slippery_momentum.z = lerp(slippery_momentum.z, slippery_momentum.z + horizontal_jump_boost.y, 0.5)
-	
+
 	jump.jump_state.is_requested = false
 	jump.jump_state.current_charge = 0.0
 	player.set_jumping()
