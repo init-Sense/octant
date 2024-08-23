@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/bridge_junction.glb" id="17_d2kk4"]
 [ext_resource type="PackedScene" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
 [ext_resource type="PackedScene" uid="uid://d01yjdwrxsspi" path="res://assets/models/temple/ray.glb" id="19_wplhp"]
-[ext_resource type="Script" path="res://scripts/portal/ray.gd" id="20_ro3f7"]
+[ext_resource type="Script" path="res://scripts/portal/mirror_object.gd" id="20_ro3f7"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
 
