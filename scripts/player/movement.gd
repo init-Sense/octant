@@ -77,7 +77,6 @@ func _physics_process(delta: float) -> void:
 	update_input_direction()
 	update_velocity(delta)
 	update_walk_timer(delta)
-	print(player.velocity)
 	apply_movement(delta)
 
 
