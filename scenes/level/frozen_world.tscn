@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckuna2c8v1tpx"]
+
+[ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="1_f88pe"]
+[ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="2_w0tsl"]
+[ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://prefabs/cave/cave_floor.tscn" id="3_yv3yc"]
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="5_6vmuf"]
+[ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://prefabs/cave/cave_wall.tscn" id="12_6a7qw"]
+[ext_resource type="PackedScene" uid="uid://bs5xf6waxfyvi" path="res://assets/models/world_frozen/ice_tunnel.glb" id="12_17slt"]
+[ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="13_72hgm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
+sky_top_color = Color(0.33478, 0.31395, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+sky_curve = 0.270375
+ground_bottom_color = Color(0.312519, 0.00122984, 0.618719, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+ground_curve = 0.0721002
+ground_energy_multiplier = 1.1
+
+[sub_resource type="Sky" id="Sky_usx73"]
+sky_material = SubResource("ProceduralSkyMaterial_1wwuf")
+
+[sub_resource type="Environment" id="Environment_jv8p7"]
+background_mode = 2
+sky = SubResource("Sky_usx73")
+ambient_light_source = 3
+fog_mode = 1
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 1.2
+fog_density = 1.0
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.0286
+volumetric_fog_emission = Color(0.0927145, 0.330201, 1, 1)
+volumetric_fog_length = 85.94
+volumetric_fog_detail_spread = 0.5
+volumetric_fog_sky_affect = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cnuu1"]
+lightmap_size_hint = Vector2i(4002, 4002)
+material = ExtResource("2_w0tsl")
+size = Vector2(800, 800)
+subdivide_width = 128
+subdivide_depth = 128
+
+[node name="WaterWorld" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("5_6vmuf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 2.43013, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Environment_1" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_jv8p7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
+shadow_enabled = true
+
+[node name="Surface" type="Node3D" parent="."]
+
+[node name="mountains" parent="Surface" instance=ExtResource("13_72hgm")]
+transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
+
+[node name="ice_tunnel" parent="Surface" instance=ExtResource("12_17slt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9999, 0, -2)
+
+[node name="CaveFloors" type="Node3D" parent="Surface"]
+
+[node name="CaveFloor_1" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0401785, 0)
+
+[node name="CaveFloor_4" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(-0.876164, 0, 0.482014, 0, 1, 0, -0.482014, 0, -0.876164, -1.66834, 0.091965, 12.2408)
+
+[node name="CaveFloor_3" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(-0.263503, 0, -0.964659, 0, 1, 0, 0.964659, 0, -0.263503, 11.2036, -0.0749489, 1.85375)
+
+[node name="CaveFloor_6" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(0.599862, 0, 0.800104, 0, 1, 0, -0.800104, 0, 0.599862, 15.9087, -0.0241517, 3.94871)
+
+[node name="CaveFloor_2" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(0.889416, 0, -0.457098, 0, 1, 0, 0.457098, 0, 0.889416, 2.88962, 0, -9.69887)
+
+[node name="CaveFloor_5" parent="Surface/CaveFloors" instance=ExtResource("3_yv3yc")]
+transform = Transform3D(-0.988145, 0, 0.153521, 0, 1, 0, -0.153521, 0, -0.988145, 20.2257, 0, -2.63439)
+
+[node name="CaveWalls" type="Node3D" parent="Surface"]
+
+[node name="CaveWall_1" parent="Surface/CaveWalls" instance=ExtResource("12_6a7qw")]
+transform = Transform3D(0.962479, 0, -0.271356, 0, 1, 0, 0.271356, 0, 0.962479, -9.47645, -0.967201, 5.29086)
+
+[node name="CaveWall_4" parent="Surface/CaveWalls" instance=ExtResource("12_6a7qw")]
+transform = Transform3D(0.795389, 0, 0.606099, 0, 1, 0, -0.606099, 0, 0.795389, 3.39412, -0.967199, 18.9054)
+
+[node name="CaveWall_2" parent="Surface/CaveWalls" instance=ExtResource("12_6a7qw")]
+transform = Transform3D(-0.346772, 0, -0.937949, 0, 1, 0, 0.937949, 0, -0.346772, -5.64495, -0.967201, -13.8377)
+
+[node name="CaveWall_3" parent="Surface/CaveWalls" instance=ExtResource("12_6a7qw")]
+transform = Transform3D(-0.0360508, 0, -0.99935, 0, 1, 0, 0.99935, 0, -0.0360508, 12.7765, -0.967201, -8.41893)
+
+[node name="Sea" type="MeshInstance3D" parent="Surface"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45952, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_cnuu1")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="Caves" type="Node3D" parent="."]
+
+[node name="IceTerrain" type="Node3D" parent="Caves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -93, -55)
+
+[node name="ice_terrain_1" parent="Caves/IceTerrain" instance=ExtResource("1_f88pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
+
+[node name="ice_terrain_2" parent="Caves/IceTerrain" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80, 0, 32)
+
+[node name="ice_terrain_3" parent="Caves/IceTerrain" instance=ExtResource("1_f88pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 88)
+
+[node name="ice_terrain_4" parent="Caves/IceTerrain" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0, 88)
+
+[node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
+
+[node name="Nucleus" type="Node3D" parent="."]
