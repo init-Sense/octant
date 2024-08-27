@@ -64,14 +64,12 @@ var slippery_momentum: Vector3 = Vector3.ZERO
 @onready var crouch: Crouch = %Crouch
 @onready var gravity: Gravity = %Gravity
 @onready var jump: Jump = %Jump
-@onready var area_detector: Area3D = $AreaDetector
 #endregion
 
 
 #region LIFECYCLE
 func _ready() -> void:
-	area_detector.area_entered.connect(_on_area_entered)
-	area_detector.area_exited.connect(_on_area_exited)
+	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -79,28 +77,6 @@ func _physics_process(delta: float) -> void:
 	update_velocity(delta)
 	update_walk_timer(delta)
 	apply_movement(delta)
-#endregion
-
-
-#region ENVIRONMENT
-func _on_area_entered(area: Area3D) -> void:
-	update_environment(area)
-
-func _on_area_exited(_area: Area3D) -> void:
-	is_zero_g = false
-	slippery = false
-	gravity.set_gravity(Gravity.DEFAULT_GRAVITY)
-
-func update_environment(area: Area3D) -> void:
-	is_zero_g = area.has_meta("zero_g") and area.get_meta("zero_g")
-	slippery = not is_zero_g and area.has_meta("slippery") and area.get_meta("slippery")
-
-	if is_zero_g:
-		gravity.set_gravity(0.0)
-	else:
-		gravity.set_gravity(Gravity.DEFAULT_GRAVITY)
-
-	print("suca")
 #endregion
 
 
