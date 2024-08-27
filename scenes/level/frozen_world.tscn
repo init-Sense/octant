@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=15 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
@@ -43,6 +43,9 @@ material = ExtResource("6_kad0g")
 size = Vector2(800, 800)
 subdivide_width = 128
 subdivide_depth = 128
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7iyap"]
+size = Vector3(179, 21, 134)
 
 [node name="FrozenWorld" type="Node3D"]
 metadata/slippery = false
@@ -111,8 +114,14 @@ mesh = SubResource("PlaneMesh_cnuu1")
 skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
 
-[node name="Caves" type="Node3D" parent="."]
+[node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
+metadata/slippery = true
+metadata/zero_g = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)
+shape = SubResource("BoxShape3D_7iyap")
 
 [node name="IceTerrain" type="Node3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -63)

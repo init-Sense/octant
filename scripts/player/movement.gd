@@ -99,6 +99,8 @@ func update_environment(area: Area3D) -> void:
 		gravity.set_gravity(0.0)
 	else:
 		gravity.set_gravity(Gravity.DEFAULT_GRAVITY)
+
+	print("suca")
 #endregion
 
 

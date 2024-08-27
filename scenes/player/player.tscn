@@ -38,6 +38,7 @@ collision_mask = 3
 script = ExtResource("1_ne7vt")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_jhh56")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
