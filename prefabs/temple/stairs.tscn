@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlgjbjwqlvaln"]
 
-[ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/stairs/stairs_steps.glb" id="1_vlfly"]
-[ext_resource type="PackedScene" uid="uid://h682cudtrt30" path="res://assets/models/stairs/stairs_slope.glb" id="2_a3q0x"]
-[ext_resource type="PackedScene" uid="uid://dx5ktq68neuft" path="res://assets/models/stairs/stairs_side.glb" id="3_bbvn8"]
+[ext_resource type="PackedScene" uid="uid://lels5yj7mcip" path="res://assets/models/world_temple/stairs/stairs_steps.glb" id="1_vlfly"]
+[ext_resource type="PackedScene" uid="uid://h682cudtrt30" path="res://assets/models/world_temple/stairs/stairs_slope.glb" id="2_a3q0x"]
+[ext_resource type="PackedScene" uid="uid://dx5ktq68neuft" path="res://assets/models/world_temple/stairs/stairs_side.glb" id="3_bbvn8"]
 [ext_resource type="PackedScene" uid="uid://dmftuq1vpiqy8" path="res://assets/models/columns/column_stairs.glb" id="4_647s7"]
 
 [node name="Stairs" type="Node3D"]

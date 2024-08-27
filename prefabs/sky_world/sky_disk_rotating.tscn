@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmgytkc2rtat5"]
 
-[ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/sky_world/sky_disk.glb" id="1_ipknw"]
+[ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/world_sky/sky_disk.glb" id="1_ipknw"]
 
 [sub_resource type="Animation" id="Animation_ucqq5"]
 length = 0.001

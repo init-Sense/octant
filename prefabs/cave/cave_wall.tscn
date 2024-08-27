@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cajfis5w5wtp0"]
 
-[ext_resource type="PackedScene" uid="uid://bxn6asuk0m5ew" path="res://assets/models/cave/cave_wall.glb" id="1_cf2yk"]
+[ext_resource type="PackedScene" uid="uid://bxn6asuk0m5ew" path="res://assets/models/world_frozen/cave/cave_wall.glb" id="1_cf2yk"]
 
 [node name="CaveWall" type="Node3D"]
 

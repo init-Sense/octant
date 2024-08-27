@@ -1,16 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=19 format=3 uid="uid://ckuna2c8v1tpx"]
 
+[ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="1_f88pe"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="2_w0tsl"]
 [ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://prefabs/cave/cave_floor.tscn" id="3_yv3yc"]
-[ext_resource type="PackedScene" uid="uid://dwl04hgr7ko2x" path="res://assets/models/cave/cave_rock.glb" id="4_ghekc"]
+[ext_resource type="PackedScene" uid="uid://dwl04hgr7ko2x" path="res://assets/models/world_frozen/cave/cave_rock.glb" id="4_ghekc"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="5_6vmuf"]
-[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/cave/stalactite_a.glb" id="6_3umyr"]
-[ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/cave/stalactite_b.glb" id="7_gsqdm"]
-[ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/cave/stalactite_c.glb" id="8_ndtdm"]
-[ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/cave/stalagmite_a.glb" id="9_7wy6g"]
-[ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/cave/stalagmite_b.glb" id="10_vnec2"]
-[ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/cave/stalagmite_c.glb" id="11_1v2ev"]
+[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/cave/stalactite_a.glb" id="6_3umyr"]
+[ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/cave/stalactite_b.glb" id="7_gsqdm"]
+[ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/cave/stalactite_c.glb" id="8_ndtdm"]
+[ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="9_7wy6g"]
+[ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/cave/stalagmite_b.glb" id="10_vnec2"]
+[ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/cave/stalagmite_c.glb" id="11_1v2ev"]
 [ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://prefabs/cave/cave_wall.tscn" id="12_6a7qw"]
+[ext_resource type="PackedScene" uid="uid://bs5xf6waxfyvi" path="res://assets/models/world_frozen/ice_tunnel.glb" id="12_17slt"]
+[ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="13_72hgm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
 sky_top_color = Color(0.33478, 0.31395, 1, 1)
@@ -56,6 +59,21 @@ environment = SubResource("Environment_jv8p7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
 shadow_enabled = true
+
+[node name="ice_terrain" parent="Environment" instance=ExtResource("1_f88pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
+
+[node name="ice_terrain2" parent="Environment" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80, 0, 32)
+
+[node name="ice_terrain3" parent="Environment" instance=ExtResource("1_f88pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 88)
+
+[node name="ice_terrain4" parent="Environment" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0, 88)
+
+[node name="ice_terrain5" parent="Environment" instance=ExtResource("1_f88pe")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
 
 [node name="Player" parent="." instance=ExtResource("5_6vmuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43013, 0)
@@ -173,3 +191,9 @@ transform = Transform3D(-0.346772, 0, -0.937949, 0, 1, 0, 0.937949, 0, -0.346772
 
 [node name="CaveWall_3" parent="CaveWalls" instance=ExtResource("12_6a7qw")]
 transform = Transform3D(-0.0360508, 0, -0.99935, 0, 1, 0, 0.99935, 0, -0.0360508, 12.7765, -0.967201, -8.41893)
+
+[node name="ice_tunnel" parent="." instance=ExtResource("12_17slt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 0)
+
+[node name="mountains" parent="." instance=ExtResource("13_72hgm")]
+transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)

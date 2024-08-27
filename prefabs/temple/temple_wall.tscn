@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccwt6ib0jvshx"]
 
-[ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/corridor/corridor_vault.glb" id="1_io7me"]
-[ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/temple/door_entrance.glb" id="3_lwv6q"]
+[ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/world_temple/corridor/corridor_vault.glb" id="1_io7me"]
+[ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/world_temple/door_entrance.glb" id="3_lwv6q"]
 [ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="4_tlil4"]
 [ext_resource type="PackedScene" uid="uid://bwt1xodku6ibw" path="res://prefabs/temple/womb.tscn" id="5_kswtj"]
 [ext_resource type="PackedScene" uid="uid://euykgxuvdlro" path="res://assets/models/columns/column_womb.glb" id="5_owcu1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg05p7gdq7ga0"]
 
-[ext_resource type="PackedScene" uid="uid://pb54bv1bvsk7" path="res://assets/models/sky_world/sky_ring.glb" id="1_0xj77"]
+[ext_resource type="PackedScene" uid="uid://pb54bv1bvsk7" path="res://assets/models/world_sky/sky_ring.glb" id="1_0xj77"]
 
 [sub_resource type="Animation" id="Animation_d6j6p"]
 length = 0.001

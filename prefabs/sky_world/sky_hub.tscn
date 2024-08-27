@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0dl55ei83bc6"]
 
-[ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/sky_world/sky_disk.glb" id="1_r8le4"]
+[ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/world_sky/sky_disk.glb" id="1_r8le4"]
 [ext_resource type="PackedScene" uid="uid://bmgytkc2rtat5" path="res://prefabs/sky_world/sky_disk_rotating.tscn" id="2_e4tg0"]
 [ext_resource type="PackedScene" uid="uid://bg05p7gdq7ga0" path="res://prefabs/sky_world/sky_ring.tscn" id="2_g7ddg"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="3_k0drt"]
 [ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://assets/environments/sky_world.tres" id="4_gd3wc"]
-[ext_resource type="PackedScene" uid="uid://bhsnsb0b2jqay" path="res://assets/models/sky_world/sky_portal_gate.glb" id="5_b4vmk"]
-[ext_resource type="PackedScene" uid="uid://bsh2slcxc7bnq" path="res://prefabs/portals/portal_default.tscn" id="7_igkkb"]
+[ext_resource type="PackedScene" uid="uid://bhsnsb0b2jqay" path="res://assets/models/world_sky/sky_portal_gate.glb" id="5_b4vmk"]
+[ext_resource type="PackedScene" uid="uid://cfb5bgtllral2" path="res://prefabs/portals/portal_default.tscn" id="7_igkkb"]
 
 [node name="SkyHub" type="Node3D"]
 
