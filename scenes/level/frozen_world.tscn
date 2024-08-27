@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=18 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
 [ext_resource type="PackedScene" uid="uid://bs5xf6waxfyvi" path="res://assets/models/world_frozen/ice_tunnel.glb" id="3_fxllx"]
+[ext_resource type="Script" path="res://scripts/transport.gd" id="4_hcbny"]
 [ext_resource type="PackedScene" uid="uid://ciyxhhwkeo3wj" path="res://prefabs/cave/cave_floor.tscn" id="4_ru2do"]
 [ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://prefabs/cave/cave_wall.tscn" id="5_sn6mg"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
+[ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
 [ext_resource type="PackedScene" uid="uid://5ahbiwq4qjpb" path="res://assets/models/debug/ramp.glb" id="8_nynvy"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
 
@@ -37,6 +39,9 @@ volumetric_fog_length = 85.94
 volumetric_fog_detail_spread = 0.5
 volumetric_fog_sky_affect = 0.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1dy4a"]
+radius = 2.0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_cnuu1"]
 lightmap_size_hint = Vector2i(4002, 4002)
 material = ExtResource("6_kad0g")
@@ -51,10 +56,8 @@ size = Vector3(179, 21, 134)
 metadata/slippery = false
 metadata/zero_g = false
 
-[node name="Player" parent="." instance=ExtResource("1_4ntkc")]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.43013, -2)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 
 [node name="Environment" type="Node" parent="."]
 
@@ -72,6 +75,35 @@ transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
 
 [node name="ice_tunnel" parent="Surface" instance=ExtResource("3_fxllx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9999, 0, -2)
+
+[node name="UpperArea" type="Area3D" parent="Surface/ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.685652, 0)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("4_hcbny")
+player_path = NodePath("../../../Player")
+target_position_node = NodePath("../LowerArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface/ice_tunnel/UpperArea"]
+shape = SubResource("SphereShape3D_1dy4a")
+
+[node name="LowerArea" type="Area3D" parent="Surface/ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.8806, 0)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("4_hcbny")
+player_path = NodePath("../../../Player")
+target_position_node = NodePath("../UpperArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface/ice_tunnel/LowerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564514, 0)
+shape = SubResource("SphereShape3D_1dy4a")
+
+[node name="LowerArrival" type="Node3D" parent="Surface/ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.52, 0)
+
+[node name="UpperArrival" type="Node3D" parent="Surface/ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36109, 6.80981, -0.469925)
 
 [node name="CaveFloors" type="Node3D" parent="Surface"]
 
@@ -116,8 +148,7 @@ metadata/_edit_lock_ = true
 
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
-metadata/slippery = true
-metadata/zero_g = false
+script = ExtResource("7_nk82h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)
@@ -148,3 +179,5 @@ transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 18, 2, 12)
 
 [node name="frozen_nucleus" parent="Nucleus" instance=ExtResource("8_pydxi")]
 transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, -8, -297, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_4ntkc")]

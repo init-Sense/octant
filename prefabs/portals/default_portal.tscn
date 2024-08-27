@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://b4a6dgs5ubqui"]
+[gd_scene load_steps=7 format=4 uid="uid://b7rorp56ee7qx"]
 
 [ext_resource type="Script" path="res://scripts/portal/portal.gd" id="1_grocl"]
 [ext_resource type="Script" path="res://scripts/portal/portal_teleport.gd" id="2_7utvc"]
@@ -52,6 +52,8 @@ fade_out_color = Color(0, 0, 0, 1)
 
 [node name="Teleport" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+collision_layer = 6
+collision_mask = 6
 monitorable = false
 script = ExtResource("2_7utvc")
 

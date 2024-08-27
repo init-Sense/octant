@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=26 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="1_mm148"]
+[ext_resource type="Script" path="res://scripts/environment_area.gd" id="2_bof07"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="3_bu1ib"]
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="3_k6j5q"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="4_guomw"]
@@ -16,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
 [ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/world_temple/bridge.glb" id="16_tyh20"]
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/world_temple/bridge_junction.glb" id="17_d2kk4"]
-[ext_resource type="PackedScene" uid="uid://b4a6dgs5ubqui" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
+[ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
 
@@ -92,9 +93,12 @@ environment = SubResource("Environment_yuqp5")
 transform = Transform3D(0.612373, -0.5, -0.612373, 0.707107, -3.09086e-08, 0.707107, -0.353553, -0.866025, 0.353553, 0, 0, 0)
 light_energy = 0.3
 
+[node name="Player" parent="." instance=ExtResource("1_agx3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.2, 1.7, 0.300001)
+
 [node name="Level" type="Area3D" parent="."]
-metadata/slippery = false
-metadata/zero_g = true
+script = ExtResource("2_bof07")
+is_slippery = true
 
 [node name="ColumnsInner" type="Node3D" parent="Level"]
 
@@ -309,7 +313,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.755221, 0)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("14_1ystk")
-scene_to_load = "res://scenes/level/water_world.tscn"
+scene_to_load = "res://scenes/level/frozen_world.tscn"
 
 [node name="TeleportCollision" type="CollisionShape3D" parent="Level/Pool/Teleport"]
 shape = SubResource("BoxShape3D_bwye7")
@@ -353,9 +357,6 @@ transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 25.3, 26
 
 [node name="bridge_junction_1" parent="Level/Bridges" instance=ExtResource("17_d2kk4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2, 26.8, -5.68434e-14)
-
-[node name="Player" parent="Level" instance=ExtResource("1_agx3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8, 1.7, 0.300001)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level"]
 shape = SubResource("BoxShape3D_6ylgx")
