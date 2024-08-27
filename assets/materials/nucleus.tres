@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bimicc3nd8uvt"]
+
+[ext_resource type="Texture2D" uid="uid://dxbs708jh8qfh" path="res://assets/textures/gray-mountain-rock-2048x2048.jpg" id="1_ve8oc"]
+
+[resource]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.190622, 0.190622, 0.190622, 1)
+albedo_texture = ExtResource("1_ve8oc")
+disable_receive_shadows = true
