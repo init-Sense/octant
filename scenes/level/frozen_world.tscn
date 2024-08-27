@@ -45,7 +45,7 @@ subdivide_width = 128
 subdivide_depth = 128
 
 [node name="FrozenWorld" type="Node3D"]
-metadata/slippery = true
+metadata/slippery = false
 metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
@@ -112,7 +112,7 @@ skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
 
 [node name="Caves" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -76, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
 
 [node name="IceTerrain" type="Node3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -63)
@@ -132,27 +132,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0
 [node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
 
-[node name="IceCeiling" type="Node3D" parent="Caves"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 99, 20, -70)
-visible = false
-
-[node name="ice_terrain_1" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
-
-[node name="ice_terrain_2" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80, 0, 32)
-
-[node name="ice_terrain_3" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 88)
-
-[node name="ice_terrain_4" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0, 88)
-
-[node name="ice_terrain_5" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
-
 [node name="ramp" parent="Caves" instance=ExtResource("8_nynvy")]
-transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 31, 2, 12)
+transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 18, 2, 12)
 
 [node name="Nucleus" type="Node3D" parent="."]
 

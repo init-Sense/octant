@@ -2,191 +2,288 @@
 
 [ext_resource type="PackedScene" uid="uid://cfne75pkig76r" path="res://assets/models/world_temple/corridor/corridor_vault.glb" id="1_io7me"]
 [ext_resource type="PackedScene" uid="uid://bbuux8upp0sin" path="res://assets/models/world_temple/door_entrance.glb" id="3_lwv6q"]
-[ext_resource type="PackedScene" uid="uid://dsqlaaa7ogbqu" path="res://assets/models/columns/column_wall.glb" id="4_tlil4"]
 [ext_resource type="PackedScene" uid="uid://bwt1xodku6ibw" path="res://prefabs/temple/womb.tscn" id="5_kswtj"]
 [ext_resource type="PackedScene" uid="uid://euykgxuvdlro" path="res://assets/models/columns/column_womb.glb" id="5_owcu1"]
+[ext_resource type="PackedScene" uid="uid://6ipbik58ookn" path="res://assets/models/world_temple/wall_base.glb" id="5_pp4ku"]
 
 [node name="TempleWall" type="Node3D"]
 
-[node name="corridor_vault" parent="." instance=ExtResource("1_io7me")]
+[node name="Offset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.2)
+
+[node name="corridor_vault" parent="Offset" instance=ExtResource("1_io7me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7968)
-
-[node name="door_entrance" parent="." instance=ExtResource("3_lwv6q")]
-
-[node name="ColumnWall" parent="." instance=ExtResource("4_tlil4")]
-transform = Transform3D(0.994522, 0, 0.104528, 0, 1, 0, -0.104528, 0, 0.994522, 16.5, 0, 1)
 visible = false
 
-[node name="Wombs" type="Node3D" parent="."]
+[node name="door_entrance" parent="Offset" instance=ExtResource("3_lwv6q")]
+visible = false
+
+[node name="Wombs" type="Node3D" parent="Offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73695e-07, 36.5, 0)
 
-[node name="Womb_1" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+[node name="Womb_1" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.53265, 0)
 
-[node name="Womb_2" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+[node name="Womb_2" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.53265, 0)
 
-[node name="Womb_3" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+[node name="Womb_3" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1.53265, 0)
 
-[node name="Womb_15" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 11.6, 0)
+[node name="Womb_15" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 10.0674, 0)
 
-[node name="Womb_16" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11.6, 0)
+[node name="Womb_16" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 10.0674, 0)
 
-[node name="Womb_17" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 11.6, 0)
+[node name="Womb_17" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 10.0674, 0)
 
-[node name="Womb_8" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -11.6, 0)
+[node name="Womb_8" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -13.1326, 0)
 
-[node name="Womb_9" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -11.6, 0)
+[node name="Womb_9" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -13.1326, 0)
 
-[node name="Womb_10" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -11.6, 0)
+[node name="Womb_10" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -13.1326, 0)
 
-[node name="Womb_4" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -5.8, 0)
+[node name="Womb_4" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -7.33265, 0)
 
-[node name="Womb_5" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, -5.8, 0)
+[node name="Womb_5" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, -7.33265, 0)
 
-[node name="Womb_7" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -5.8, 0)
+[node name="Womb_7" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -7.33265, 0)
 
-[node name="Womb_11" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5.8, 0)
+[node name="Womb_11" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.26735, 0)
 
-[node name="Womb_12" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 5.8, 0)
+[node name="Womb_12" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 4.26735, 0)
 
-[node name="Womb_13" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5.8, 0)
+[node name="Womb_13" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.26735, 0)
 
-[node name="Womb_18" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 17.4, 0)
+[node name="Womb_18" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 15.8674, 0)
 
-[node name="Womb_19" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 17.4, 0)
+[node name="Womb_19" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 15.8674, 0)
 
-[node name="Womb_20" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17.4, 0)
+[node name="Womb_20" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 15.8674, 0)
 
-[node name="Womb_22" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 34.8, 0)
+[node name="Womb_22" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 33.2674, 0)
 
-[node name="Womb_23" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 34.8, 0)
+[node name="Womb_23" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 33.2674, 0)
 
-[node name="Womb_24" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 34.8, 0)
+[node name="Womb_24" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 33.2674, 0)
 
-[node name="Womb_25" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 46.4, 0)
+[node name="Womb_25" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 44.8674, 0)
 
-[node name="Womb_26" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 46.4, 0)
+[node name="Womb_26" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 44.8674, 0)
 
-[node name="Womb_27" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 46.4, 0)
+[node name="Womb_27" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 44.8674, 0)
 
-[node name="Womb_28" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 23.2, 0)
+[node name="Womb_28" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 21.6674, 0)
 
-[node name="Womb_29" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 23.2, 0)
+[node name="Womb_29" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 21.6674, 0)
 
-[node name="Womb_30" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 23.2, 0)
+[node name="Womb_30" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 21.6674, 0)
 
-[node name="Womb_31" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 29, 0)
+[node name="Womb_31" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 27.4674, 0)
 
-[node name="Womb_32" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 29, 0)
+[node name="Womb_32" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 27.4674, 0)
 
-[node name="Womb_33" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 29, 0)
+[node name="Womb_33" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 27.4674, 0)
 
-[node name="Womb_35" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 40.6, 0)
+[node name="Womb_35" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 39.0674, 0)
 
-[node name="Womb_36" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 40.6, 0)
+[node name="Womb_36" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 39.0674, 0)
 
-[node name="Womb_37" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 40.6, 0)
+[node name="Womb_37" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 39.0674, 0)
 
-[node name="Womb_39" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 52.2, 0)
+[node name="Womb_39" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 50.6674, 0)
 
-[node name="Womb_40" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 52.2, 0)
+[node name="Womb_40" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 50.6674, 0)
 
-[node name="Womb_41" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 52.2, 0)
+[node name="Womb_41" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 50.6674, 0)
 
-[node name="Womb_43" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+[node name="Womb_43" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1.53265, 0)
 
-[node name="Womb_44" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 11.6, 0)
+[node name="Womb_44" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 10.0674, 0)
 
-[node name="Womb_45" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -11.6, 0)
+[node name="Womb_45" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -13.1326, 0)
 
-[node name="Womb_46" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -5.8, 0)
+[node name="Womb_46" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -7.33265, 0)
 
-[node name="Womb_47" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5.8, 0)
+[node name="Womb_47" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.26735, 0)
 
-[node name="Womb_48" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 17.4, 0)
+[node name="Womb_48" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 15.8674, 0)
 
-[node name="Womb_49" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 34.8, 0)
+[node name="Womb_49" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 33.2674, 0)
 
-[node name="Womb_50" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 46.4, 0)
+[node name="Womb_50" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 44.8674, 0)
 
-[node name="Womb_51" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 23.2, 0)
+[node name="Womb_51" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 21.6674, 0)
 
-[node name="Womb_52" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 29, 0)
+[node name="Womb_52" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 27.4674, 0)
 
-[node name="Womb_53" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 40.6, 0)
+[node name="Womb_53" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 39.0674, 0)
 
-[node name="Womb_54" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 52.2, 0)
+[node name="Womb_54" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 50.6674, 0)
 
-[node name="Womb_55" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 58.1, 0)
+[node name="Womb_55" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 56.4674, 0)
 
-[node name="Womb_56" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 58.1, 0)
+[node name="Womb_56" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 56.4674, 0)
 
-[node name="Womb_57" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 58.1, 0)
+[node name="Womb_57" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 56.4674, 0)
 
-[node name="Womb_58" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 63.9, 0)
+[node name="Womb_58" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 62.2674, 0)
 
-[node name="Womb_59" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 63.9, 0)
+[node name="Womb_59" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 62.2674, 0)
 
-[node name="Womb_60" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 63.9, 0)
+[node name="Womb_60" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 62.2674, 0)
 
-[node name="Womb_61" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 58.1, 0)
+[node name="Womb_61" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 56.4674, 0)
 
-[node name="Womb_62" parent="Wombs" instance=ExtResource("5_kswtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 63.9, 0)
+[node name="Womb_62" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 62.2674, 0)
 
-[node name="column_womb" parent="." instance=ExtResource("5_owcu1")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 16, 7.4, -7.15486)
+[node name="Womb_63" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 68.0674, 0)
+
+[node name="Womb_64" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 68.0674, 0)
+
+[node name="Womb_65" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 68.0674, 0)
+
+[node name="Womb_66" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 73.8674, 0)
+
+[node name="Womb_6" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -7.33265, 0)
+
+[node name="Womb_14" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.26735, 0)
+
+[node name="Womb_73" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -24.7326, 0)
+
+[node name="Womb_74" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -24.7326, 0)
+
+[node name="Womb_75" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -24.7326, 0)
+
+[node name="Womb_79" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -30.5326, 0)
+
+[node name="Womb_80" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, -30.5326, 0)
+
+[node name="Womb_81" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -30.5326, 0)
+
+[node name="Womb_82" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -18.9326, 0)
+
+[node name="Womb_83" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, -18.9326, 0)
+
+[node name="Womb_84" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -18.9326, 0)
+
+[node name="Womb_85" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -24.7326, 0)
+
+[node name="Womb_87" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -30.5326, 0)
+
+[node name="Womb_88" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -18.9326, 0)
+
+[node name="Womb_89" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -30.5326, 0)
+
+[node name="Womb_90" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -18.9326, 0)
+
+[node name="Womb_21" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 15.8674, 0)
+
+[node name="Womb_34" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 27.4674, 0)
+
+[node name="Womb_38" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 39.0674, 0)
+
+[node name="Womb_42" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 50.6674, 0)
+
+[node name="Womb_71" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 62.2674, 0)
+
+[node name="Womb_72" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 73.8674, 0)
+
+[node name="Womb_67" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21543e-08, 73.8674, 0)
+
+[node name="Womb_68" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 73.8674, 0)
+
+[node name="Womb_69" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 68.0674, 0)
+
+[node name="Womb_70" parent="Offset/Wombs" instance=ExtResource("5_kswtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 73.8674, 0)
+
+[node name="column_womb" parent="Offset" instance=ExtResource("5_owcu1")]
+transform = Transform3D(0.991444, 0, 0.130526, 0, 1, 0, -0.130526, 0, 0.991444, 19.7, 0, 0)
+
+[node name="wall_base_bottom" parent="Offset" instance=ExtResource("5_pp4ku")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, 0)
+
+[node name="wall_base_top" parent="Offset" instance=ExtResource("5_pp4ku")]
+transform = Transform3D(4.37114e-08, -8.74228e-08, -1, -3.82137e-15, -1, 8.74228e-08, -1, 0, -4.37114e-08, -15, 115.7, 0)
