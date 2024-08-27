@@ -3,12 +3,12 @@ class_name Transport
 
 @export var player_path: NodePath
 @export var target_position_node: NodePath
-@export var transition_duration: float = 3.0
+@export var transition_duration: float = 1.0
 @export var post_transport_ignore_time: float = 5.0
 @export_flags_3d_physics var floor_collision_layer: int = 1
-@export var inertia_factor: float = 0.5
 
 @onready var player: Player = get_node(player_path)
+@onready var player_movement: Jump = player.get_node("Modules/Jump") if player else null
 @onready var target_y_position: float = get_node(target_position_node).global_position.y
 
 var is_transitioning: bool = false
@@ -16,6 +16,7 @@ var transition_progress: float = 0.0
 var start_y_position: float
 var original_collision_mask: int
 var last_y_velocity: float = 0.0
+var is_upward_transport: bool = false
 
 static var is_any_elevator_active: bool = false
 static var cooldown_timer: float = 0.0
@@ -30,7 +31,6 @@ func _physics_process(delta):
 			_finish_transition()
 		else:
 			_update_player_position(delta)
-
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
 
@@ -52,28 +52,32 @@ func start_transition():
 	is_any_elevator_active = true
 	transition_progress = 0.0
 	start_y_position = player.global_position.y
+	is_upward_transport = target_y_position > start_y_position
 	_modify_player_collisions()
 	cooldown_timer = transition_duration + post_transport_ignore_time
 	last_y_velocity = 0.0
-	print("Starting vertical transition")
+	print("Starting vertical transition. Direction: ", "Up" if is_upward_transport else "Down")
 
 func _update_player_position(delta):
-	var previous_y: float     = player.global_position.y
+	var previous_y: float = player.global_position.y
 	var new_y_position: float = lerp(start_y_position, target_y_position, ease(transition_progress, 0.35))
 	player.global_position.y = new_y_position
-
 	last_y_velocity = (new_y_position - previous_y) / delta
 
 func _finish_transition():
 	is_transitioning = false
 	is_any_elevator_active = false
 	player.global_position.y = target_y_position
-
-	player.velocity.y = last_y_velocity * inertia_factor
-
+	
+	if is_upward_transport and player_movement:
+		player_movement.execute_jump()
+		print("Executed jump at end of upward transport")
+	else:
+		player.velocity.y = 0
+	
 	print("Vertical transition finished. Final Y position: ", player.global_position.y)
-	print("Applied vertical inertia: ", player.velocity.y)
-
+	print("Final vertical velocity: ", player.velocity.y)
+	
 	get_tree().create_timer(post_transport_ignore_time).connect("timeout", _restore_player_collisions)
 
 func _modify_player_collisions():
