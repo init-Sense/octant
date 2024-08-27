@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://prefabs/sky_world/bridge_tutorial.tscn" id="2_yovbx"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="3_i84he"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="3_oeidr"]
-[ext_resource type="PackedScene" path="res://prefabs/portals/default_portal.tscn" id="4_scep7"]
+[ext_resource type="PackedScene" uid="uid://b4a6dgs5ubqui" path="res://prefabs/portals/default_portal.tscn" id="4_scep7"]
 
 [node name="SkyWorld" type="Node3D"]
 
