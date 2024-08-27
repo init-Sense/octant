@@ -64,33 +64,36 @@ var slippery_momentum: Vector3 = Vector3.ZERO
 @onready var crouch: Crouch = %Crouch
 @onready var gravity: Gravity = %Gravity
 @onready var jump: Jump = %Jump
+@onready var area_detector: Area3D = $AreaDetector
 #endregion
 
 
 #region LIFECYCLE
 func _ready() -> void:
-	player.tree_entered.connect(_on_player_tree_entered)
+	area_detector.area_entered.connect(_on_area_entered)
+	area_detector.area_exited.connect(_on_area_exited)
 
 
 func _physics_process(delta: float) -> void:
-	update_environment()
 	update_input_direction()
 	update_velocity(delta)
 	update_walk_timer(delta)
 	apply_movement(delta)
-
-
-func _on_player_tree_entered() -> void:
-	update_environment()
 #endregion
 
 
 #region ENVIRONMENT
-func update_environment() -> void:
-	var current_scene: Node = player.get_tree().current_scene
+func _on_area_entered(area: Area3D) -> void:
+	update_environment(area)
 
-	is_zero_g = current_scene.has_meta("zero_g") and current_scene.get_meta("zero_g")
-	slippery = not is_zero_g and current_scene.has_meta("slippery") and current_scene.get_meta("slippery")
+func _on_area_exited(_area: Area3D) -> void:
+	is_zero_g = false
+	slippery = false
+	gravity.set_gravity(Gravity.DEFAULT_GRAVITY)
+
+func update_environment(area: Area3D) -> void:
+	is_zero_g = area.has_meta("zero_g") and area.get_meta("zero_g")
+	slippery = not is_zero_g and area.has_meta("slippery") and area.get_meta("slippery")
 
 	if is_zero_g:
 		gravity.set_gravity(0.0)

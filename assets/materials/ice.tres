@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bsxa1obpasnsu" path="res://assets/textures/ice_normal_map.png" id="2_uqgvg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kao53"]
-load_path = "res://.godot/imported/NormalMap.jpg-02f268f98393a74aeb0831c5feb185b2.s3tc.ctex"
 
 [resource]
 albedo_color = Color(4.81307e-07, 0.954264, 0.568536, 1)

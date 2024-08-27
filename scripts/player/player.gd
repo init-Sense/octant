@@ -81,7 +81,7 @@ var print_previous_state: bool = false
 #endregion
 
 
-#region LIFECYCLE
+#region LIFECYCLEa
 func _ready():
 	pass
 	#print_tree_pretty()
