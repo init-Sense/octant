@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=14 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cajfis5w5wtp0" path="res://prefabs/cave/cave_wall.tscn" id="5_sn6mg"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
+[ext_resource type="PackedScene" uid="uid://5ahbiwq4qjpb" path="res://assets/models/debug/ramp.glb" id="8_nynvy"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
@@ -44,9 +45,11 @@ subdivide_width = 128
 subdivide_depth = 128
 
 [node name="FrozenWorld" type="Node3D"]
+metadata/slippery = true
+metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 2.43013, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.43013, -2)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 
@@ -109,9 +112,10 @@ skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
 
 [node name="Caves" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -76, 0)
 
 [node name="IceTerrain" type="Node3D" parent="Caves"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -93, -55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -63)
 
 [node name="ice_terrain_1" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
@@ -127,6 +131,28 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0
 
 [node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
+
+[node name="IceCeiling" type="Node3D" parent="Caves"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 99, 20, -70)
+visible = false
+
+[node name="ice_terrain_1" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
+
+[node name="ice_terrain_2" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80, 0, 32)
+
+[node name="ice_terrain_3" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 88)
+
+[node name="ice_terrain_4" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0, 88)
+
+[node name="ice_terrain_5" parent="Caves/IceCeiling" instance=ExtResource("7_7k0oj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
+
+[node name="ramp" parent="Caves" instance=ExtResource("8_nynvy")]
+transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 31, 2, 12)
 
 [node name="Nucleus" type="Node3D" parent="."]
 
