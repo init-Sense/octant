@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu3wtrebnb1dy"]
+[gd_scene load_steps=18 format=3 uid="uid://cu3wtrebnb1dy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ne7vt"]
 [ext_resource type="PackedScene" uid="uid://bhcc5cpghylya" path="res://scenes/player/movement.tscn" id="1_tw8pf"]
@@ -28,6 +28,9 @@ height = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_4dquj"]
 radius = 0.001
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n88f8"]
+size = Vector3(1, 1.8, 1)
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 collision_layer = 4
@@ -35,7 +38,6 @@ collision_mask = 3
 script = ExtResource("1_ne7vt")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_jhh56")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -75,6 +77,12 @@ shape = SubResource("SphereShape3D_4dquj")
 
 [node name="Movement" parent="Modules" instance=ExtResource("1_tw8pf")]
 unique_name_in_owner = true
+
+[node name="AreaDetector" type="Area3D" parent="Modules/Movement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Modules/Movement/AreaDetector"]
+shape = SubResource("BoxShape3D_n88f8")
 
 [node name="Jump" parent="Modules" instance=ExtResource("2_8258e")]
 unique_name_in_owner = true
