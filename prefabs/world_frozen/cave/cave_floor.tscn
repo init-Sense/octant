@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciyxhhwkeo3wj"]
+
+[ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="1_38y8t"]
+
+[node name="CaveFloor" type="Node3D"]
+
+[node name="ice_terrain" parent="." instance=ExtResource("1_38y8t")]

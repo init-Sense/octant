@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=17 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/ice_platform.glb" id="5_r3qnj"]
+[ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
@@ -42,15 +43,15 @@ volumetric_fog_length = 85.94
 volumetric_fog_detail_spread = 0.5
 volumetric_fog_sky_affect = 0.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
+size = Vector3(300, 32, 300)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_cnuu1"]
 lightmap_size_hint = Vector2i(4002, 4002)
 material = ExtResource("6_kad0g")
 size = Vector2(800, 800)
 subdivide_width = 128
 subdivide_depth = 128
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
-size = Vector3(300, 32, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7iyap"]
 size = Vector3(179, 21, 134)
@@ -72,6 +73,7 @@ environment = SubResource("Environment_jv8p7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
+light_energy = 0.9
 shadow_enabled = true
 
 [node name="Surface" type="Area3D" parent="."]
@@ -79,8 +81,8 @@ script = ExtResource("7_nk82h")
 gravity_modifier = 16.0
 player_path = NodePath("../Player")
 
-[node name="mountains" parent="Surface" instance=ExtResource("2_5pjcx")]
-transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
+shape = SubResource("BoxShape3D_eumbd")
 
 [node name="Sea" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45952, 0)
@@ -92,19 +94,72 @@ metadata/_edit_lock_ = true
 [node name="IcePlatforms" type="Node3D" parent="Surface"]
 
 [node name="ice_platform_1" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3, 0.4, 4.2)
 
 [node name="ice_platform_2" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(-0.776457, 0, -2.89778, 0, 3, 0, 2.89778, 0, -0.776457, 19, 0, 9)
 
 [node name="ice_platform_3" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, -2.89778, 34, 0, 18)
+transform = Transform3D(-2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, -2.89778, 31.9, 1.1, -2)
 
 [node name="ice_platform_4" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, 45, 0, 15)
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, 41.5, 2.5, 6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
-shape = SubResource("BoxShape3D_eumbd")
+[node name="IceTunnel" parent="Surface" instance=ExtResource("5_wp6ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 0, 0.3)
+
+[node name="Background" type="Node3D" parent="Surface"]
+
+[node name="mountains" parent="Surface/Background" instance=ExtResource("2_5pjcx")]
+transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
+
+[node name="ice_platform_5" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, 19, 0, 54)
+
+[node name="ice_platform_7" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-0.54352, 0, -2.02845, 0, 2.1, 0, 2.02845, 0, -0.54352, 32.2, -1.2, 54.6)
+
+[node name="ice_platform_6" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 33.6, 4.1, 67.7)
+
+[node name="ice_platform_8" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-3, 0, 5.19616, 0, 6, 0, -5.19616, 0, -3, 78.3784, 10.2333, 55.9974)
+
+[node name="ice_platform_9" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, 67.5521, 7.83333, 89.4085)
+
+[node name="ice_platform_10" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, 42.9695, 18.4333, 98.8941)
+
+[node name="ice_platform_11" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, -28.2, 0, -59.7)
+
+[node name="ice_platform_12" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-0.54352, 0, -2.02845, 0, 2.1, 0, 2.02845, 0, -0.54352, -0.299995, 4.8, -44.3)
+
+[node name="ice_platform_13" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 41.5, 4.1, -54.9)
+
+[node name="ice_platform_14" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-3, 0, 5.19616, 0, 6, 0, -5.19616, 0, -3, -8.02163, 14.8333, -64.9026)
+
+[node name="ice_platform_15" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, -18.8479, 7.83333, -31.4915)
+
+[node name="ice_platform_16" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, -43.4305, 21.0333, -22.0059)
+
+[node name="ice_platform_17" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(2.6226e-06, 0, -8.40001, 0, 8.4, 0, 8.40001, 0, 2.6226e-06, -89.9305, 7.83333, 63.0941)
+
+[node name="ice_platform_18" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, -66.7305, 36.7333, 153.094)
+
+[node name="ice_platform_19" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, 182.57, 49.0333, -46.2059)
+
+[node name="ice_platform_20" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-30.3456, 0, -8.13108, 0, 31.416, 0, 8.13108, 0, -30.3456, -243.23, 100.333, -170.706)
 
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
