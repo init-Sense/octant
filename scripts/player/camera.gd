@@ -44,12 +44,16 @@ const FOV_WALKING: float = 75.0
 const FOV_CROUCHING: float = 65.0
 const FOV_CROUCHED: float = 60.0
 const FOV_JUMP_OFFSET: float = 8.0
+
 const FOV_CHANGE_SPEED_RUNNING: float = 3.0
 const FOV_CHANGE_SPEED_WALKING: float = 4.0
 const FOV_CHANGE_SPEED_CROUCHING: float = 6.0
+const FOV_CHANGE_SPEED_JUMPING: float = 6.0
+
 const FOV_RESET_SPEED_RUNNING: float = 8.0
 const FOV_RESET_SPEED_WALKING: float = 6.0
 const FOV_RESET_SPEED_CROUCHING: float = 30.0
+const FOV_RESET_SPEED_JUMPING: float = 3.0
 #endregion
 
 
@@ -144,9 +148,17 @@ func update_fov(delta: float) -> void:
 			fov_reset_speed = FOV_RESET_SPEED_WALKING
 			fov_change_speed = FOV_CHANGE_SPEED_WALKING
 			is_moving = false
+	else:
+		target_fov = FOV_DEFAULT
+		fov_change_speed = FOV_CHANGE_SPEED_JUMPING
+		fov_reset_speed = FOV_RESET_SPEED_JUMPING
 
 	if player.is_jumping():
-		target_fov += FOV_JUMP_OFFSET
+		current_fov_change = FOV_JUMP_OFFSET
+	elif current_fov_change > 0:
+		current_fov_change = max(0, current_fov_change - (FOV_JUMP_OFFSET * 10 * delta))
+
+	target_fov += current_fov_change
 
 	if abs(fov - target_fov) < 0.1:
 		fov = target_fov
