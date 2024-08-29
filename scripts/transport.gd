@@ -1,14 +1,18 @@
 extends Area3D
+
 class_name Transport
 
-@export var player_path: NodePath
 @export var target_position_node: NodePath
+
 @export var transition_duration: float = 1.0
+
 @export var post_transport_ignore_time: float = 5.0
+
 @export_flags_3d_physics var floor_collision_layer: int = 1
 
-@onready var player: Player = get_node(player_path)
-@onready var player_movement: Jump = player.get_node("Modules/Jump") if player else null
+var player: Player
+var player_movement: Jump
+
 @onready var target_y_position: float = get_node(target_position_node).global_position.y
 
 var is_transitioning: bool = false
@@ -23,6 +27,16 @@ static var cooldown_timer: float = 0.0
 
 func _ready():
 	area_entered.connect(_on_area_entered)
+	
+	var frozen_world = get_tree().get_root().get_node("FrozenWorld")
+	if frozen_world:
+		player = frozen_world.get_node("Player")
+		if player:
+			player_movement = player.get_node("Modules/Jump") if player.has_node("Modules/Jump") else null
+		else:
+			push_error("Player node not found in FrozenWorld scene")
+	else:
+		push_error("FrozenWorld scene not found")
 
 func _physics_process(delta):
 	if is_transitioning:
