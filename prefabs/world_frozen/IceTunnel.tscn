@@ -19,7 +19,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.685652, 0)
 collision_layer = 3
 collision_mask = 6
 script = ExtResource("2_elxsy")
-player_path = NodePath("../../../Player")
 target_position_node = NodePath("../LowerArrival")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ice_tunnel/UpperArea"]
@@ -30,7 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.8806, 0)
 collision_layer = 3
 collision_mask = 6
 script = ExtResource("2_elxsy")
-player_path = NodePath("../../../Player")
 target_position_node = NodePath("../UpperArrival")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ice_tunnel/LowerArea"]

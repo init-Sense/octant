@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=16 format=3 uid="uid://clg8qt4kqf8lp"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
@@ -66,6 +66,9 @@ shadow_enabled = true
 
 [node name="Surface" type="Node3D" parent="."]
 
+[node name="IceTunnel" parent="Surface" instance=ExtResource("5_wp6ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3393, 0, 0)
+
 [node name="mountains" parent="Surface" instance=ExtResource("2_5pjcx")]
 transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
 
@@ -110,14 +113,12 @@ mesh = SubResource("PlaneMesh_cnuu1")
 skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
 
-[node name="IceTunnel" parent="Surface" instance=ExtResource("5_wp6ac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 9)
-
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_zero_g = true
+player_path = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)

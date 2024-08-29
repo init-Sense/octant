@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=25 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_agx3r"]
+[ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_fu1dj"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="1_mm148"]
-[ext_resource type="Script" path="res://scripts/environment_area.gd" id="2_bof07"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="3_bu1ib"]
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="3_k6j5q"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="4_guomw"]
@@ -11,13 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://came0orlh5e0u" path="res://prefabs/columns/column_sphere.tscn" id="7_6rd6f"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://prefabs/temple/stairs.tscn" id="7_w6sy5"]
 [ext_resource type="PackedScene" uid="uid://btuwttqwlnc4e" path="res://prefabs/temple/corridor.tscn" id="8_vnct2"]
+[ext_resource type="PackedScene" path="res://assets/models/temple_roof.glb" id="9_4enfk"]
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/world_temple/door_polygon.glb" id="10_65mrv"]
 [ext_resource type="PackedScene" uid="uid://bbxj6i7gue40w" path="res://assets/models/debug/debug_slope.glb" id="13_nl0kj"]
 [ext_resource type="Script" path="res://scripts/scenes/to_loading_scene.gd" id="14_1ystk"]
 [ext_resource type="PackedScene" uid="uid://dbfsctkekqke7" path="res://assets/models/debug/debug_stairs.glb" id="14_wswlc"]
 [ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/world_temple/bridge.glb" id="16_tyh20"]
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/world_temple/bridge_junction.glb" id="17_d2kk4"]
-[ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/default_portal.tscn" id="19_n38hy"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
 
@@ -79,10 +79,12 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_bwye7"]
 size = Vector3(5, 4, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6ylgx"]
-size = Vector3(400, 400, 400)
-
 [node name="Temple" type="Node3D"]
+script = ExtResource("1_fu1dj")
+player_path = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("1_agx3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 2.68461, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
@@ -93,12 +95,7 @@ environment = SubResource("Environment_yuqp5")
 transform = Transform3D(0.612373, -0.5, -0.612373, 0.707107, -3.09086e-08, 0.707107, -0.353553, -0.866025, 0.353553, 0, 0, 0)
 light_energy = 0.3
 
-[node name="Player" parent="." instance=ExtResource("1_agx3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.2, 1.7, 0.300001)
-
-[node name="Level" type="Area3D" parent="."]
-script = ExtResource("2_bof07")
-is_slippery = true
+[node name="Level" type="Node3D" parent="."]
 
 [node name="ColumnsInner" type="Node3D" parent="Level"]
 
@@ -313,7 +310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.755221, 0)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("14_1ystk")
-scene_to_load = "res://scenes/level/frozen_world.tscn"
+scene_to_load = "res://scenes/level/water_world.tscn"
 
 [node name="TeleportCollision" type="CollisionShape3D" parent="Level/Pool/Teleport"]
 shape = SubResource("BoxShape3D_bwye7")
@@ -322,27 +319,30 @@ shape = SubResource("BoxShape3D_bwye7")
 
 [node name="hub_floor" parent="Level/Structure" instance=ExtResource("3_bu1ib")]
 
+[node name="hub_roof" parent="Level/Structure" instance=ExtResource("9_4enfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.7, 0)
+
 [node name="Walls" type="Node3D" parent="Level/Structure"]
 
 [node name="TempleWall_1" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
 
 [node name="TempleWall_2" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="TempleWall_3" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 
-[node name="TempleWall_4" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
-
-[node name="TempleWall_5" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
+[node name="TempleWall_3" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="TempleWall_4" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="TempleWall_5" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="TempleWall_6" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
 [node name="TempleWall_7" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="TempleWall_8" parent="Level/Structure/Walls" instance=ExtResource("1_mm148")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -358,15 +358,11 @@ transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 25.3, 26
 [node name="bridge_junction_1" parent="Level/Bridges" instance=ExtResource("17_d2kk4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2, 26.8, -5.68434e-14)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level"]
-shape = SubResource("BoxShape3D_6ylgx")
+[node name="LowerBoundary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -166.621, 0)
 
-[node name="CorridorPortalA" parent="." node_paths=PackedStringArray("exit_portal") instance=ExtResource("19_n38hy")]
-transform = Transform3D(-1.9, 0, -8.74228e-08, 0, 6.5, 0, 1.66103e-07, 0, -1, 42.5999, 1.3, 0.229999)
-vertical_viewport_resolution = 0
-exit_portal = NodePath("../CorridorPortalA2")
+[node name="UpperBoundary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 242.674, 0)
 
-[node name="CorridorPortalA2" parent="." node_paths=PackedStringArray("exit_portal") instance=ExtResource("19_n38hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.4, 1.4, -0.0499996)
-vertical_viewport_resolution = 0
-exit_portal = NodePath("../CorridorPortalA")
+[node name="SafeSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.5554, 0)
