@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=22 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
@@ -6,9 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
+[ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
-[ext_resource type="PackedScene" uid="uid://5ahbiwq4qjpb" path="res://assets/models/debug/ramp.glb" id="8_nynvy"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
+[ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/cave/stalagmite_b.glb" id="8_rj7kh"]
+[ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/cave/stalagmite_c.glb" id="9_u1kvt"]
+[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/cave/stalactite_a.glb" id="10_27yrr"]
+[ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/cave/stalactite_b.glb" id="11_veyyu"]
+[ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/cave/stalactite_c.glb" id="12_8qwt4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
 sky_top_color = Color(0.33478, 0.31395, 1, 1)
@@ -153,16 +158,16 @@ transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, 
 transform = Transform3D(2.6226e-06, 0, -8.40001, 0, 8.4, 0, 8.40001, 0, 2.6226e-06, -89.9305, 7.83333, 63.0941)
 
 [node name="ice_platform_18" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, -66.7305, 36.7333, 153.094)
+transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, -78.7305, 36.7333, 191.094)
 
 [node name="ice_platform_19" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, 182.57, 49.0333, -46.2059)
+transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, 200.57, 69.0333, -46.2059)
 
 [node name="ice_platform_20" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(-30.3456, 0, -8.13108, 0, 31.416, 0, 8.13108, 0, -30.3456, -243.23, 100.333, -170.706)
 
 [node name="Caves" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -65, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64, 0)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_slippery = true
@@ -191,8 +196,27 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0
 [node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
 
-[node name="ramp" parent="Caves" instance=ExtResource("8_nynvy")]
-transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 18, 2, 12)
+[node name="Stalagmites" type="Node3D" parent="Caves"]
+
+[node name="stalagmite_a" parent="Caves/Stalagmites" instance=ExtResource("7_dgnr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 0)
+
+[node name="stalagmite_b" parent="Caves/Stalagmites" instance=ExtResource("8_rj7kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 4)
+
+[node name="stalagmite_c" parent="Caves/Stalagmites" instance=ExtResource("9_u1kvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -8)
+
+[node name="Stalactites" type="Node3D" parent="Caves"]
+
+[node name="stalactite_a" parent="Caves/Stalactites" instance=ExtResource("10_27yrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 0)
+
+[node name="stalactite_b" parent="Caves/Stalactites" instance=ExtResource("11_veyyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 7)
+
+[node name="stalactite_c" parent="Caves/Stalactites" instance=ExtResource("12_8qwt4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -4)
 
 [node name="Nucleus" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
