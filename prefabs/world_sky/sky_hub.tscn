@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0dl55ei83bc6"]
+[gd_scene load_steps=6 format=3 uid="uid://b0dl55ei83bc6"]
 
 [ext_resource type="PackedScene" uid="uid://bmgytkc2rtat5" path="res://prefabs/world_sky/sky_disk_rotating.tscn" id="2_e4tg0"]
 [ext_resource type="PackedScene" uid="uid://bg05p7gdq7ga0" path="res://prefabs/world_sky/sky_ring.tscn" id="2_g7ddg"]
 [ext_resource type="PackedScene" uid="uid://c3r6fney3x6n5" path="res://assets/models/world_sky/sky_hub_disk.glb" id="2_op812"]
+[ext_resource type="PackedScene" uid="uid://drlkp2nfkhjtl" path="res://assets/models/world_sky/sky_portal_gate.glb" id="5_b4vmk"]
 [ext_resource type="PackedScene" uid="uid://b4r4hw5gixhq5" path="res://assets/models/world_sky/sky_bridge.glb" id="7_oja77"]
 
 [node name="SkyHub" type="Node3D"]
@@ -10,7 +11,7 @@
 [node name="Disks" type="Node3D" parent="."]
 
 [node name="SkyRotatingDisk_1" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -7.4, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -9.3, 0)
 
 [node name="SkyRotatingDisk_3" parent="Disks" instance=ExtResource("2_e4tg0")]
 transform = Transform3D(0.48, 0, 0, 0, -0.48, 7.2478e-08, 0, -7.2478e-08, -0.48, 0, -20.1, 0)
@@ -35,19 +36,29 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1,
 [node name="Bridges" type="Node3D" parent="."]
 
 [node name="sky_bridge_1" parent="Bridges" instance=ExtResource("7_oja77")]
-transform = Transform3D(3.5, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 24.2, 0, 0)
+transform = Transform3D(3.5, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 24.2, -3, 0)
 
 [node name="sky_bridge_2" parent="Bridges" instance=ExtResource("7_oja77")]
-transform = Transform3D(-3.5, 0, -8.45576e-07, 0, 5.6, 0, 5.28485e-07, 0, -5.6, -24.3, 0, 0)
+transform = Transform3D(-3.5, 0, -8.45576e-07, 0, 5.6, 0, 5.28485e-07, 0, -5.6, -24.3, -3, 0)
 
 [node name="sky_bridge_3" parent="Bridges" instance=ExtResource("7_oja77")]
-transform = Transform3D(-1.5299e-07, 0, -5.6, 0, 5.6, 0, 3.5, 0, -2.44784e-07, -0.0500003, 0, 24.25)
+transform = Transform3D(-1.5299e-07, 0, -5.6, 0, 5.6, 0, 3.5, 0, -2.44784e-07, -0.0500003, -3, 24.25)
 
 [node name="sky_bridge_4" parent="Bridges" instance=ExtResource("7_oja77")]
-transform = Transform3D(-1.5299e-07, 0, 5.6, 0, 5.6, 0, -3.5, 0, -2.44784e-07, -0.0499982, 0, -24.25)
+transform = Transform3D(-1.5299e-07, 0, 5.6, 0, 5.6, 0, -3.5, 0, -2.44784e-07, -0.0499982, -3, -24.25)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 64, 64)
 
 [node name="Node3D2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -64, -64)
+
+[node name="DirectionalLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(0.866025, 0.25, 0.433013, 0, -0.866025, 0.5, 0.5, -0.433013, -0.75, 0, 10, 0)
+light_energy = 6.513
+light_size = 10.0
+shadow_enabled = true
+omni_range = 32.0
+omni_attenuation = 0.9
+
+[node name="sky_portal_gate" parent="." instance=ExtResource("5_b4vmk")]
