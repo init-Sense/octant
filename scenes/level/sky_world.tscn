@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bguk4vbk6340g"]
+[gd_scene load_steps=5 format=3 uid="uid://cvjdp224let0l"]
 
 [ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://assets/environments/sky_world.tres" id="1_0ti8n"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="3_i84he"]

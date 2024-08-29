@@ -25,7 +25,9 @@ extends Node3D
 
 
 #region VARIABLES
-@export var teleport_offset: float = 0.01
+@export var teleport_offset_y: float = 0.01
+@export var teleport_offset_x: float = 0.5
+@export var teleport_offset_z: float = 0.5
 var player: CharacterBody3D
 var is_teleporting: bool = false
 var level_bounds: AABB
@@ -60,27 +62,27 @@ func check_and_teleport_player():
 	var teleport_needed: bool = false
 
 	if player_pos.y < lower_y:
-		new_pos.y = upper_y - teleport_offset
+		new_pos.y = upper_y - teleport_offset_y
 		teleport_needed = true
 	elif player_pos.y > upper_y:
-		new_pos.y = lower_y + teleport_offset
+		new_pos.y = lower_y + teleport_offset_y
 		teleport_needed = true
 
 	if player_pos.x < left_x:
-		new_pos.x = right_x - teleport_offset
+		new_pos.x = right_x - teleport_offset_x
 		new_pos.y = player_pos.y
 		teleport_needed = true
 	elif player_pos.x > right_x:
-		new_pos.x = left_x + teleport_offset
+		new_pos.x = left_x + teleport_offset_x
 		new_pos.y = player_pos.y
 		teleport_needed = true
 
 	if player_pos.z < back_z:
-		new_pos.z = front_z - teleport_offset
+		new_pos.z = front_z - teleport_offset_z
 		new_pos.y = player_pos.y
 		teleport_needed = true
 	elif player_pos.z > front_z:
-		new_pos.z = back_z + teleport_offset
+		new_pos.z = back_z + teleport_offset_z
 		new_pos.y = player_pos.y
 		teleport_needed = true
 
