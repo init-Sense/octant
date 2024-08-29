@@ -139,11 +139,11 @@ func update_fov(delta: float) -> void:
 			target_fov = FOV_CROUCHED
 			fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
 			fov_reset_speed = FOV_RESET_SPEED_CROUCHING
-	else:
-		target_fov = FOV_DEFAULT
-		fov_reset_speed = FOV_RESET_SPEED_WALKING
-		fov_change_speed = FOV_CHANGE_SPEED_WALKING
-		is_moving = false
+		else:
+			target_fov = FOV_DEFAULT
+			fov_reset_speed = FOV_RESET_SPEED_WALKING
+			fov_change_speed = FOV_CHANGE_SPEED_WALKING
+			is_moving = false
 
 	if player.is_jumping():
 		target_fov += FOV_JUMP_OFFSET
