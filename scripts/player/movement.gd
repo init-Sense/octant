@@ -31,13 +31,22 @@ class_name Movement
 const SPRINT_SPEED: float = 8.0
 const WALKING_SPEED: float = 4.0
 const SNEAKING_SPEED: float = 1.5
+
 const WALK_DELAY: float = 0.1
+
 const ACCELERATION: float = 30.0
 const DECELERATION: float = 15.0
+
 const MOVEMENT_DAMPING: float = 0.01
 const MIN_SPEED_FACTOR: float = 0.5
+
+const ZERO_G_ACCELERATION: float = 15.0
 const ZERO_G_DECELERATION: float = 5.0
+const ZERO_G_SPEED_LIMIT: float = 12.0
+
+const SLIPPERY_ACCELERATION: float = 15.0
 const SLIPPERY_DECELERATION: float = 1.2
+const SLIPPERY_SPEED_LIMIT: float = 10.0
 #endregion
 
 
@@ -135,24 +144,24 @@ func update_velocity(delta: float) -> void:
 
 func update_zero_g_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
-		zero_g_momentum += input_dir * ACCELERATION * delta
+		zero_g_momentum += input_dir * ZERO_G_ACCELERATION * delta
 	elif zero_g_momentum.length() > 0:
 		var deceleration_dir: Vector3 = -zero_g_momentum.normalized()
 		var deceleration_amount       = min(ZERO_G_DECELERATION * delta, zero_g_momentum.length())
 		zero_g_momentum += deceleration_dir * deceleration_amount
 
-	zero_g_momentum = zero_g_momentum.limit_length(SPRINT_SPEED)
+	zero_g_momentum = zero_g_momentum.limit_length(ZERO_G_SPEED_LIMIT)
 
 
 func update_slippery_momentum(delta: float) -> void:
 	if input_dir.length() > 0:
-		slippery_momentum += input_dir * ACCELERATION * delta
+		slippery_momentum += input_dir * SLIPPERY_ACCELERATION * delta
 	elif slippery_momentum.length() > 0:
 		var deceleration_dir: Vector3 = -slippery_momentum.normalized()
 		var deceleration_amount       = min(SLIPPERY_DECELERATION * delta, slippery_momentum.length())
 		slippery_momentum += deceleration_dir * deceleration_amount
 
-	slippery_momentum = slippery_momentum.limit_length(SPRINT_SPEED)
+	slippery_momentum = slippery_momentum.limit_length(SLIPPERY_SPEED_LIMIT)
 
 	slippery_momentum.y -= gravity.current_gravity * delta
 

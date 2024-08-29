@@ -55,7 +55,7 @@ const FOV_RESET_SPEED_CROUCHING: float = 30.0
 
 #region NODES
 @onready var movement: Movement = %Movement
-@onready var player = $"../../.."
+@onready var player: Player = $"../../.."
 #endregion
 
 
@@ -126,7 +126,7 @@ func update_fov(delta: float) -> void:
 		target_fov = FOV_RUNNING
 		fov_change_speed = FOV_CHANGE_SPEED_RUNNING
 		fov_reset_speed = FOV_RESET_SPEED_RUNNING
-	elif player.is_walking():
+	elif player.is_walking() and not player.is_jumping():
 		target_fov = FOV_WALKING
 		fov_change_speed = FOV_CHANGE_SPEED_WALKING
 		fov_reset_speed = FOV_RESET_SPEED_WALKING
