@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://pb54bv1bvsk7"
-path="res://.godot/imported/sky_ring.glb-062b2aac9d66e9182c3ac5bd8cd85172.scn"
+uid="uid://c3r6fney3x6n5"
+path="res://.godot/imported/sky_hub_disk.glb-ee68827135ff385b73c0ac289ab4785d.scn"
 
 [deps]
 
-source_file="res://assets/models/world_sky/sky_ring.glb"
-dest_files=["res://.godot/imported/sky_ring.glb-062b2aac9d66e9182c3ac5bd8cd85172.scn"]
+source_file="res://assets/models/world_sky/sky_hub_disk.glb"
+dest_files=["res://.godot/imported/sky_hub_disk.glb-ee68827135ff385b73c0ac289ab4785d.scn"]
 
 [params]
 
@@ -35,12 +35,7 @@ _subresources={
 "materials": {
 "SkyMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/emission.tres"
-}
-},
-"nodes": {
-"PATH:SkyRing": {
-"mesh_instance/cast_shadow": 0
+"use_external/path": "res://assets/materials/sky_stone.tres"
 }
 }
 }
