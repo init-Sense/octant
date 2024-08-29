@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bil5lpkrfw5my"]
+
+[ext_resource type="PackedScene" uid="uid://bs5xf6waxfyvi" path="res://assets/models/world_frozen/ice_tunnel.glb" id="1_30hrw"]
+[ext_resource type="Script" path="res://scripts/transport.gd" id="2_elxsy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d7doj"]
+radius = 2.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vmj2y"]
+radius = 1.0
+height = 8.0
+
+[node name="IceTunnel" type="Node3D"]
+
+[node name="ice_tunnel" parent="." instance=ExtResource("1_30hrw")]
+
+[node name="UpperArea" type="Area3D" parent="ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.685652, 0)
+collision_layer = 3
+collision_mask = 6
+script = ExtResource("2_elxsy")
+player_path = NodePath("../../../Player")
+target_position_node = NodePath("../LowerArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ice_tunnel/UpperArea"]
+shape = SubResource("SphereShape3D_d7doj")
+
+[node name="LowerArea" type="Area3D" parent="ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.8806, 0)
+collision_layer = 3
+collision_mask = 6
+script = ExtResource("2_elxsy")
+player_path = NodePath("../../../Player")
+target_position_node = NodePath("../UpperArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ice_tunnel/LowerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564514, 0)
+shape = SubResource("CapsuleShape3D_vmj2y")
+
+[node name="LowerArrival" type="Node3D" parent="ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.52, 0)
+
+[node name="UpperArrival" type="Node3D" parent="ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36109, 6.80981, -0.469925)
