@@ -12,19 +12,16 @@
 [node name="sky_disk_1" parent="Disks" instance=ExtResource("1_r8le4")]
 
 [node name="SkyRotatingDisk_1" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.6, 0, 0, 0, 2.04, 0, 0, 0, 0.6, 0, -2, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -7.4, 0)
 
 [node name="SkyRotatingDisk_3" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.48, 0, 0, 0, -1.632, 4.19629e-08, 0, -1.42674e-07, -0.48, 0, -15.8, 0)
+transform = Transform3D(0.48, 0, 0, 0, -0.48, 7.2478e-08, 0, -7.2478e-08, -0.48, 0, -20.1, 0)
 
 [node name="SkyRotatingDisk_4" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.36, 0, 0, 0, 0.7344, 0, 0, 8.52651e-15, 0.36, 0, -11.2, 0)
-
-[node name="SkyRotatingDisk_2" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.12, 0, 0, 0, -3.66, 1.04907e-08, 0, -3.19967e-07, -0.12, 0, -13.2, 0)
+transform = Transform3D(0.36, 0, 0, 0, 0.36, -4.17966e-15, 0, 4.17966e-15, 0.36, 0, -13.2, 0)
 
 [node name="SkyRotatingDisk_5" parent="Disks" instance=ExtResource("2_e4tg0")]
-transform = Transform3D(0.072, 0, 0, 0, -3.9528, 6.29444e-09, 0, -3.45565e-07, -0.072, 0, -22.6, 0)
+transform = Transform3D(0.18, 0, 0, 0, 0.18, -2.08983e-15, 0, 2.08983e-15, 0.18, 0, -24.5, 0)
 
 [node name="Rings" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)

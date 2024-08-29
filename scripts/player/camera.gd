@@ -121,23 +121,24 @@ func update_fov(delta: float) -> void:
 	var fov_change_speed: float
 	var fov_reset_speed: float
 	var is_moving: bool = true
-
-	if player.is_running():
-		target_fov = FOV_RUNNING
-		fov_change_speed = FOV_CHANGE_SPEED_RUNNING
-		fov_reset_speed = FOV_RESET_SPEED_RUNNING
-	elif player.is_walking() and not player.is_jumping():
-		target_fov = FOV_WALKING
-		fov_change_speed = FOV_CHANGE_SPEED_WALKING
-		fov_reset_speed = FOV_RESET_SPEED_WALKING
-	elif player.is_crouching():
-		target_fov = FOV_CROUCHING
-		fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
-		fov_reset_speed = FOV_RESET_SPEED_CROUCHING
-	elif player.is_crouched():
-		target_fov = FOV_CROUCHED
-		fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
-		fov_reset_speed = FOV_RESET_SPEED_CROUCHING
+	
+	if player.is_on_floor():
+		if player.is_running():
+			target_fov = FOV_RUNNING
+			fov_change_speed = FOV_CHANGE_SPEED_RUNNING
+			fov_reset_speed = FOV_RESET_SPEED_RUNNING
+		elif player.is_walking():
+			target_fov = FOV_WALKING
+			fov_change_speed = FOV_CHANGE_SPEED_WALKING
+			fov_reset_speed = FOV_RESET_SPEED_WALKING
+		elif player.is_crouching():
+			target_fov = FOV_CROUCHING
+			fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
+			fov_reset_speed = FOV_RESET_SPEED_CROUCHING
+		elif player.is_crouched():
+			target_fov = FOV_CROUCHED
+			fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
+			fov_reset_speed = FOV_RESET_SPEED_CROUCHING
 	else:
 		target_fov = FOV_DEFAULT
 		fov_reset_speed = FOV_RESET_SPEED_WALKING

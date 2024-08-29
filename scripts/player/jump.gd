@@ -35,8 +35,10 @@ class_name Jump
 const SPEED: float = 8.0
 const COYOTE_TIME: float = 0.01
 const MOMENTUM_FACTOR: float = 0.6
+
 const MIN_MOMENTUM_SPEED: float = 0.3
 const MAX_MOMENTUM_SPEED: float = 2.0
+
 const MOMENTUM_REDUCTION: float = 0.6
 const MOMENTUM_VARIATION: float = 0.15
 const MIDAIR_CONTROL: float = 0.8
