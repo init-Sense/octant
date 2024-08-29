@@ -1,32 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://ciyxhhwkeo3wj"]
 
-[ext_resource type="PackedScene" uid="uid://dwl04hgr7ko2x" path="res://assets/models/world_frozen/cave/cave_rock.glb" id="1_xthk5"]
+[ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="1_sbea4"]
 
 [node name="CaveFloor" type="Node3D"]
 
-[node name="cave_rock_1" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(0.895125, -1.49401e-08, -1.07956, 4.71892e-08, 0.443997, -2.21734e-08, 1.07956, -7.02011e-09, 0.895125, -2.00137, 0.0372912, 1.13713)
-
-[node name="cave_rock_2" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(1.00617, 0, -0.434263, 0, 0.439223, 0, 0.434263, 0, 1.00617, -0.701373, 0.00398049, 4.33713)
-
-[node name="cave_rock_3" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(0.739713, 5.6124e-09, 0.672922, -1.50569e-08, 0.433792, -2.67514e-09, -0.672922, -3.53684e-09, 0.739713, 2.29863, 0.0102874, 0.0371265)
-
-[node name="cave_rock_4" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(1.10723, 0, 0, 0, 0.443768, 0, 0, 0, 1.10723, 3.59863, -0.0450335, 4.33713)
-
-[node name="cave_rock_5" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(0.626074, -8.76924e-09, -0.335473, 1.4664e-08, 0.424761, -3.68116e-09, 0.335473, -2.20138e-09, 0.626074, 0.529625, -0.00116751, -3.78734)
-
-[node name="cave_rock_9" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(0.783147, 0, -0.423499, 0, 0.456437, 0, 0.423499, 0, 0.783147, -2.4066, -0.0378909, -2.33972)
-
-[node name="cave_rock_10" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(1.11515, -1.51578e-09, -0.850379, 5.81043e-09, 0.443997, -2.75988e-10, 0.850379, -1.046e-09, 1.11515, -6.23349, -0.00749068, 5.68012)
-
-[node name="cave_rock_11" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(0.682372, -9.44984e-09, -0.197176, 1.4664e-08, 0.444231, -3.68116e-09, 0.197176, -3.34124e-10, 0.682372, -6.82128, 0.00618544, 1.13481)
-
-[node name="cave_rock_12" parent="." instance=ExtResource("1_xthk5")]
-transform = Transform3D(1.03759, 0, 0.386475, 0, 0.443635, 0, -0.386475, 0, 1.03759, -7.00233, 0.0184627, -2.75521)
+[node name="ice_terrain" parent="." instance=ExtResource("1_sbea4")]

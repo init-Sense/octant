@@ -13,13 +13,13 @@ noise = SubResource("FastNoiseLite_ekhpq")
 [resource]
 render_priority = 0
 shader = ExtResource("1_crm8m")
-shader_parameter/albedo = Color(0.426724, 0.597497, 1, 1)
-shader_parameter/scroll_speed1 = Vector2(0.02, 0.01)
+shader_parameter/albedo = Color(0.819039, 0.508489, 0.560555, 1)
+shader_parameter/scroll_speed1 = Vector2(0.06, 0.03)
 shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
 shader_parameter/blend_factor = 8.305
 shader_parameter/scale1 = Vector2(32, 32)
 shader_parameter/scale2 = Vector2(1, 1)
-shader_parameter/wave_strength = 0.4
+shader_parameter/wave_strength = 0.9
 shader_parameter/wave_scale = 0.02
 shader_parameter/pixelation_level = 512
 shader_parameter/FoamSize = 0.5
