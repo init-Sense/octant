@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ne5o24hf54qk"]
+
+[ext_resource type="Texture2D" uid="uid://be7xk21arl0i7" path="res://assets/textures/white-broken-grunge-wall-2048x2048.jpg" id="1_qkag2"]
+
+[resource]
+albedo_color = Color(1, 0.845678, 0.27936, 1)
+albedo_texture = ExtResource("1_qkag2")
+uv1_scale = Vector3(15.22, 15.22, 15.22)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://con7klh2mai64"
-path="res://.godot/imported/sky_disk.glb-7a61be374231d0bc473994504f6fa7ca.scn"
+uid="uid://b4r4hw5gixhq5"
+path="res://.godot/imported/sky_bridge.glb-5d54c89dd04b043acb525c43f354b3cd.scn"
 
 [deps]
 
-source_file="res://assets/models/world_sky/sky_disk.glb"
-dest_files=["res://.godot/imported/sky_disk.glb-7a61be374231d0bc473994504f6fa7ca.scn"]
+source_file="res://assets/models/world_sky/sky_bridge.glb"
+dest_files=["res://.godot/imported/sky_bridge.glb-5d54c89dd04b043acb525c43f354b3cd.scn"]
 
 [params]
 
