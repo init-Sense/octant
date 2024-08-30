@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="3_oeidr"]
 [ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/default_portal.tscn" id="5_mhpie"]
 [ext_resource type="PackedScene" uid="uid://b0dl55ei83bc6" path="res://prefabs/world_sky/sky_hub.tscn" id="6_083o3"]
-[ext_resource type="PackedScene" uid="uid://b4um1gdrnusu1" path="res://assets/models/columns/column_sky.glb" id="6_fltlc"]
+[ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://prefabs/world_sky/bridge_tutorial.tscn" id="6_wgu60"]
 
 [node name="SkyWorld" type="Node3D"]
 
@@ -179,7 +179,7 @@ player_path = NodePath("../../../Player")
 
 [node name="CorridorPortalA" parent="Hub/LayerMid/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1.8, 0, 8.74228e-08, 0, -1, 0, 8.3, 0)
-exit_portal = NodePath("../../../../Bridge/CorridorPortalB")
+exit_portal = NodePath("../../../../Bridge/LayerMid/BridgeTutorial_REAL/CorridorPortalB")
 
 [node name="SkyHub_COPY_1" parent="Hub/LayerMid" instance=ExtResource("6_083o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
@@ -410,11 +410,91 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 [node name="Bridge" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1024)
 
-[node name="column_sky_1" parent="Bridge" instance=ExtResource("6_fltlc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 32)
+[node name="LayerMid" type="Node3D" parent="Bridge"]
 
-[node name="column_sky_2" parent="Bridge" instance=ExtResource("6_fltlc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -32)
+[node name="BridgeTutorial_REAL" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
 
-[node name="CorridorPortalB" parent="Bridge" instance=ExtResource("5_mhpie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -24)
+[node name="CorridorPortalB" parent="Bridge/LayerMid/BridgeTutorial_REAL" instance=ExtResource("5_mhpie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.3, 1.04907e-06)
+
+[node name="BridgeTutorial_1" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
+
+[node name="BridgeTutorial_2" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
+
+[node name="BridgeTutorial_3" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
+
+[node name="BridgeTutorial_4" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
+
+[node name="BridgeTutorial_5" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
+
+[node name="BridgeTutorial_7" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
+
+[node name="BridgeTutorial_8" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
+
+[node name="BridgeTutorial_6" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
+
+[node name="LayerBottom" type="Node3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
+
+[node name="BridgeTutorial_1" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
+
+[node name="BridgeTutorial_9" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+
+[node name="BridgeTutorial_2" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
+
+[node name="BridgeTutorial_3" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
+
+[node name="BridgeTutorial_4" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
+
+[node name="BridgeTutorial_5" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
+
+[node name="BridgeTutorial_7" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
+
+[node name="BridgeTutorial_8" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
+
+[node name="BridgeTutorial_6" parent="Bridge/LayerBottom" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
+
+[node name="LayerTop" type="Node3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 128, 0)
+
+[node name="BridgeTutorial_1" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
+
+[node name="BridgeTutorial_9" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+
+[node name="BridgeTutorial_2" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
+
+[node name="BridgeTutorial_3" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
+
+[node name="BridgeTutorial_4" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
+
+[node name="BridgeTutorial_5" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
+
+[node name="BridgeTutorial_7" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
+
+[node name="BridgeTutorial_8" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
+
+[node name="BridgeTutorial_6" parent="Bridge/LayerTop" instance=ExtResource("6_wgu60")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
