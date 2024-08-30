@@ -3,22 +3,15 @@
 #
 # This script extends the Camera3D node to provide smooth camera movement,
 # mouse look functionality, and dynamic field of view (FOV) adjustments based
-# on player state (running, walking, crouching, jumping).
+# on player state (running, walking, crouching, jumping, slippery movement).
 #
 # Key Components:
 # - Mouse Look: Handles mouse input for camera rotation
 # - Smooth Camera Movement: Interpolates camera rotation for smooth movement
 # - Dynamic FOV: Adjusts the camera's FOV based on player movement state
 # - Sensitivity Settings: Allows adjustment of mouse sensitivity
-#
-# Usage:
-# 1. Attach this script to a Camera3D node in your scene.
-# 2. Set up the necessary export variables (mouse sensitivity, smoothness, etc.)
-# 3. Ensure the Movement node is properly referenced.
-# 4. The script will automatically handle mouse input and FOV adjustments.
-#
-# Note: This script assumes the existence of specific player states (is_running,
-# is_walking, etc.) in the player node.
+# - Slippery Movement Handling: Maintains consistent FOV during slippery movement
+# - Improved Jump FOV: Provides a smooth and persistent FOV change during jumps
 
 extends Camera3D
 class_name Camera
@@ -34,6 +27,9 @@ class_name Camera
 var rotation_x: float = 0
 var target_rotation: Vector3
 var current_fov_change: float = 0.0
+var last_movement_state: bool = false
+var jump_fov_progress: float = 0.0
+var is_jumping: bool = false
 #endregion
 
 
@@ -43,22 +39,23 @@ const FOV_RUNNING: float = 80.0
 const FOV_WALKING: float = 75.0
 const FOV_CROUCHING: float = 65.0
 const FOV_CROUCHED: float = 60.0
-const FOV_JUMP_OFFSET: float = 8.0
+const FOV_JUMP_OFFSET: float = 10.0
+const FOV_SLIPPERY: float = 75.0
 
 const FOV_CHANGE_SPEED_RUNNING: float = 3.0
 const FOV_CHANGE_SPEED_WALKING: float = 4.0
 const FOV_CHANGE_SPEED_CROUCHING: float = 6.0
-const FOV_CHANGE_SPEED_JUMPING: float = 6.0
+const FOV_CHANGE_SPEED_JUMPING: float = 1.0
+const FOV_CHANGE_SPEED_SLIPPERY: float = 2.0
 
-const FOV_RESET_SPEED_RUNNING: float = 8.0
-const FOV_RESET_SPEED_WALKING: float = 6.0
-const FOV_RESET_SPEED_CROUCHING: float = 30.0
-const FOV_RESET_SPEED_JUMPING: float = 3.0
+const FOV_JUMP_SPEED: float = 5.0
+const FOV_LAND_SPEED: float = 10.0
 #endregion
 
 
 #region NODES
 @onready var movement: Movement = %Movement
+@onready var jump: Jump = %Jump
 @onready var player: Player = $"../../.."
 #endregion
 
@@ -68,6 +65,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target_rotation = rotation
 	fov = default_fov
+	jump.jumped.connect(on_player_jumped)
+	jump.landed.connect(on_player_landed)
 
 
 func _process(delta: float):
@@ -119,50 +118,53 @@ func set_sensitivity(x: float, y: float):
 #endregion
 
 
+#region JUMP HANDLING
+func on_player_jumped():
+	is_jumping = true
+	jump_fov_progress = 0.0
+
+func on_player_landed():
+	is_jumping = false
+#endregion
+
+
 #region FOV CHANGE
 func update_fov(delta: float) -> void:
 	var target_fov: float
 	var fov_change_speed: float
-	var fov_reset_speed: float
-	var is_moving: bool = true
-	
-	if player.is_on_floor():
+
+	if movement.slippery:
+		var is_moving = movement.velocity_vector.length() > 0.1
+		target_fov = FOV_SLIPPERY if is_moving else FOV_DEFAULT
+		fov_change_speed = FOV_CHANGE_SPEED_SLIPPERY
+	elif player.is_on_floor():
 		if player.is_running():
 			target_fov = FOV_RUNNING
 			fov_change_speed = FOV_CHANGE_SPEED_RUNNING
-			fov_reset_speed = FOV_RESET_SPEED_RUNNING
 		elif player.is_walking():
 			target_fov = FOV_WALKING
 			fov_change_speed = FOV_CHANGE_SPEED_WALKING
-			fov_reset_speed = FOV_RESET_SPEED_WALKING
 		elif player.is_crouching():
 			target_fov = FOV_CROUCHING
 			fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
-			fov_reset_speed = FOV_RESET_SPEED_CROUCHING
 		elif player.is_crouched():
 			target_fov = FOV_CROUCHED
 			fov_change_speed = FOV_CHANGE_SPEED_CROUCHING
-			fov_reset_speed = FOV_RESET_SPEED_CROUCHING
 		else:
 			target_fov = FOV_DEFAULT
-			fov_reset_speed = FOV_RESET_SPEED_WALKING
 			fov_change_speed = FOV_CHANGE_SPEED_WALKING
-			is_moving = false
 	else:
 		target_fov = FOV_DEFAULT
 		fov_change_speed = FOV_CHANGE_SPEED_JUMPING
-		fov_reset_speed = FOV_RESET_SPEED_JUMPING
 
-	if player.is_jumping():
-		current_fov_change = FOV_JUMP_OFFSET
-	elif current_fov_change > 0:
-		current_fov_change = max(0, current_fov_change - (FOV_JUMP_OFFSET * 10 * delta))
+	if is_jumping:
+		jump_fov_progress = min(jump_fov_progress + delta * FOV_JUMP_SPEED, 1.0)
+		var jump_fov_offset = FOV_JUMP_OFFSET * sin(jump_fov_progress * PI)
+		target_fov += jump_fov_offset
+	elif jump_fov_progress > 0:
+		jump_fov_progress = max(jump_fov_progress - delta * FOV_LAND_SPEED, 0.0)
+		var jump_fov_offset = FOV_JUMP_OFFSET * sin(jump_fov_progress * PI)
+		target_fov += jump_fov_offset
 
-	target_fov += current_fov_change
-
-	if abs(fov - target_fov) < 0.1:
-		fov = target_fov
-	else:
-		var current_fov_change_speed = fov_change_speed if is_moving else fov_reset_speed
-		fov = lerpf(fov, target_fov, current_fov_change_speed * delta)
+	fov = lerpf(fov, target_fov, fov_change_speed * delta)
 #endregion
