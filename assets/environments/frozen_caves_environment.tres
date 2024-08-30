@@ -1,31 +1,23 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://d4ksj2eichsko"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://d4ksj2eichsko"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
-sky_top_color = Color(0.804607, 0, 0.461716, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_curve = 0.270375
-ground_bottom_color = Color(1, 1, 1, 1)
-ground_horizon_color = Color(1, 1, 1, 1)
-ground_curve = 0.0721002
-ground_energy_multiplier = 1.1
-
-[sub_resource type="Sky" id="Sky_usx73"]
-sky_material = SubResource("ProceduralSkyMaterial_1wwuf")
+[ext_resource type="Sky" uid="uid://ch51jynex4bhp" path="res://assets/environments/skies/frozen_cave_sky.tres" id="1_j0tju"]
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_usx73")
-ambient_light_source = 3
+sky = ExtResource("1_j0tju")
+ambient_light_source = 2
+ambient_light_color = Color(0.922299, 0.377533, 3.85046e-07, 1)
+ambient_light_energy = 0.52
+fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(1, 1, 1, 1)
+fog_light_color = Color(0.257373, 0, 0.0698698, 1)
 fog_light_energy = 1.2
-fog_density = 0.7
-fog_sky_affect = 0.0
-fog_height = -6.0
-fog_height_density = 0.1
+fog_density = 0.9
+fog_height = -52.97
+fog_height_density = -0.2
 fog_depth_curve = 0.6
-fog_depth_begin = 0.0
-fog_depth_end = 200.0
+fog_depth_begin = 1.0
+fog_depth_end = 50.0
 volumetric_fog_density = 0.0286
 volumetric_fog_emission = Color(0.0927145, 0.330201, 1, 1)
 volumetric_fog_length = 85.94

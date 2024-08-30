@@ -6,7 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kao53"]
 
 [resource]
-albedo_color = Color(4.81307e-07, 0.954264, 0.568536, 1)
+albedo_color = Color(1, 0.357309, 0.304308, 1)
 albedo_texture = ExtResource("1_t4eql")
 roughness = 0.86
 roughness_texture = ExtResource("2_uqgvg")

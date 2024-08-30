@@ -3,17 +3,19 @@ class_name EnvironmentArea
 
 @export var is_zero_g: bool = false
 @export var is_slippery: bool = false
+@export var is_underwater: bool = false
+@export var has_vignette: bool = false
+
 @export var gravity_modifier: float = 0.0
 @export var player_path: NodePath
 
 @export var world_environment_node: NodePath
 @export var target_environment: Environment
 
-
 var player: Player
 var player_movement: Movement
 
-func _ready():
+func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	
@@ -25,16 +27,18 @@ func _ready():
 		push_warning("Player path not set in EnvironmentArea: " + name)
 
 
-func _on_area_entered(area: Area3D):
+func _on_area_entered(area: Area3D) -> void:
 	var player_node = find_player_node(area)
 	if player_node:
 		player = player_node
 		player_movement = player.get_node("Modules/Movement")
 		apply_gravity_and_slippery()
 		apply_target_environment()
+		apply_underwater_post_processing()
+		apply_vignette_post_processing()
 
 
-func _on_area_exited(area: Area3D):
+func _on_area_exited(area: Area3D) -> void:
 	var player_node = find_player_node(area)
 	if player_node == player:
 		reset_gravity_and_slippery()
@@ -71,6 +75,24 @@ func apply_target_environment() -> void:
 	var world_environment = get_node(world_environment_node)
 	world_environment.environment = target_environment
 	print("Environment disabled")
+
+
+func apply_underwater_post_processing() -> void:
+	var underwater_post_processing = player.get_node("Head/CameraSmooth/Camera/PostProcessing/UnderwaterCanvas")
+	if is_underwater:
+		underwater_post_processing.show()
+		print("underwater visible")
+	else:
+		underwater_post_processing.hide()
+		print("underwater not visible")
+
+
+func apply_vignette_post_processing() -> void:
+	var vignette_post_processing = player.get_node("Head/CameraSmooth/Camera/PostProcessing/VignetteCanvas")
+	if has_vignette:
+		vignette_post_processing.show()
+	else:
+		vignette_post_processing.hide()
 
 
 func reset_gravity_and_slippery() -> void:

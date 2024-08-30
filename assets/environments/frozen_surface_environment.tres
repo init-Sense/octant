@@ -1,20 +1,10 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://lc0jv4l8x5cn"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://lc0jv4l8x5cn"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
-sky_top_color = Color(0.33478, 0.31395, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_curve = 0.270375
-ground_bottom_color = Color(1, 1, 1, 1)
-ground_horizon_color = Color(1, 1, 1, 1)
-ground_curve = 0.0721002
-ground_energy_multiplier = 1.1
-
-[sub_resource type="Sky" id="Sky_usx73"]
-sky_material = SubResource("ProceduralSkyMaterial_1wwuf")
+[ext_resource type="Sky" uid="uid://byqqr5pd7x34n" path="res://assets/environments/skies/frozen_surface_sky.tres" id="1_hy7na"]
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_usx73")
+sky = ExtResource("1_hy7na")
 ambient_light_source = 3
 fog_enabled = true
 fog_mode = 1
