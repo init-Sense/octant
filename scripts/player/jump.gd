@@ -184,12 +184,13 @@ func apply_momentum(delta: float) -> void:
 func ground_check(delta: float) -> void:
 	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
 		handle_landing()
-	elif not jump_state.can_coyote_jump and not movement.slippery:
-		cancel_jump()
+	elif player.is_charging_jump():
+		if not movement.slippery:
+			cancel_jump()
 
 
 func handle_landing() -> void:
-	if player.is_jumping() and movement.velocity_vector.y <= 0:
+	if (player.is_jumping() or not player.is_on_floor()) and movement.velocity_vector.y <= 0:
 		player.set_no_action()
 		jump_state.momentum = Vector3.ZERO
 		jump_state.horizontal_momentum = Vector2.ZERO

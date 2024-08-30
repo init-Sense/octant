@@ -35,16 +35,16 @@ var is_jumping: bool = false
 
 #region CONSTANTS
 const FOV_DEFAULT: float = 70.0
-const FOV_RUNNING: float = 80.0
-const FOV_WALKING: float = 75.0
+const FOV_RUNNING: float = 78.0
+const FOV_WALKING: float = 73.0
 const FOV_CROUCHING: float = 65.0
 const FOV_CROUCHED: float = 60.0
 const FOV_JUMP_OFFSET: float = 10.0
 const FOV_SLIPPERY: float = 75.0
 
-const FOV_CHANGE_SPEED_RUNNING: float = 3.0
-const FOV_CHANGE_SPEED_WALKING: float = 4.0
-const FOV_CHANGE_SPEED_CROUCHING: float = 6.0
+const FOV_CHANGE_SPEED_RUNNING: float = 2.0
+const FOV_CHANGE_SPEED_WALKING: float = 3.0
+const FOV_CHANGE_SPEED_CROUCHING: float = 4.0
 const FOV_CHANGE_SPEED_JUMPING: float = 1.0
 const FOV_CHANGE_SPEED_SLIPPERY: float = 2.0
 

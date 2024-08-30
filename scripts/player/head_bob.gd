@@ -53,9 +53,9 @@ const IDLE_AMPLITUDE: float = 0.02
 const IDLE_FREQUENCY: float = 0.4
 const IDLE_NOISE_STRENGTH: float = 0.15
 
-const FALL_BOB_MAX_AMPLITUDE: float = 0.03
-const FALL_BOB_FREQUENCY: float = 10.0
-const FALL_BOB_VELOCITY_THRESHOLD: float = 20.0
+const FALL_BOB_MAX_AMPLITUDE: float = 0.05
+const FALL_BOB_FREQUENCY: float = 15.0
+const FALL_BOB_VELOCITY_THRESHOLD: float = 40.0
 #endregion
 
 
