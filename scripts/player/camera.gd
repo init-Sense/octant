@@ -39,7 +39,7 @@ const FOV_RUNNING: float = 78.0
 const FOV_WALKING: float = 73.0
 const FOV_CROUCHING: float = 65.0
 const FOV_CROUCHED: float = 60.0
-const FOV_JUMP_OFFSET: float = 10.0
+const FOV_JUMP_OFFSET: float = 5.0
 const FOV_SLIPPERY: float = 75.0
 
 const FOV_CHANGE_SPEED_RUNNING: float = 2.0
@@ -48,8 +48,8 @@ const FOV_CHANGE_SPEED_CROUCHING: float = 4.0
 const FOV_CHANGE_SPEED_JUMPING: float = 1.0
 const FOV_CHANGE_SPEED_SLIPPERY: float = 2.0
 
-const FOV_JUMP_SPEED: float = 5.0
-const FOV_LAND_SPEED: float = 10.0
+const FOV_JUMP_SPEED: float = 2.0
+const FOV_LAND_SPEED: float = 6.0
 #endregion
 
 
