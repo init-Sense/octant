@@ -40,27 +40,27 @@ metadata/zero_g = false
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.9, 8)
 
-[node name="Environment" type="Node" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_yipt2")
-
-[node name="SurfaceLight" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
-light_energy = 0.9
-shadow_enabled = true
 
 [node name="Surface" type="Area3D" parent="."]
 collision_mask = 4
 script = ExtResource("7_nk82h")
 gravity_modifier = 16.0
 player_path = NodePath("../Player")
-world_environment_node = NodePath("../Environment/WorldEnvironment")
+world_environment_node = NodePath("../WorldEnvironment")
 target_environment = ExtResource("1_8s4oo")
+directional_light_node = NodePath("SurfaceLight")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 shape = SubResource("BoxShape3D_eumbd")
+
+[node name="SurfaceLight" type="DirectionalLight3D" parent="Surface"]
+transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
+visible = false
+light_energy = 0.9
+shadow_enabled = true
 
 [node name="Sea" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45952, 0)
@@ -84,7 +84,7 @@ transform = Transform3D(-2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, -2.89778, 
 transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, 41.5, 2.5, 6)
 
 [node name="IceTunnel" parent="Surface" instance=ExtResource("5_wp6ac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 0, 0.3)
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 18.2, 3, 0.3)
 
 [node name="Background" type="Node3D" parent="Surface"]
 
@@ -144,11 +144,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64, 0)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_slippery = true
-is_underwater = true
 has_vignette = true
+has_directional_light = false
 gravity_modifier = 8.0
 player_path = NodePath("../Player")
-world_environment_node = NodePath("../Environment/WorldEnvironment")
+world_environment_node = NodePath("../WorldEnvironment")
 target_environment = ExtResource("2_yipt2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
@@ -195,12 +195,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 7)
 [node name="stalactite_c" parent="Caves/Stalactites" instance=ExtResource("12_8qwt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -4)
 
+[node name="Lights" type="Node3D" parent="Caves"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Caves/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3701, 4.55976, -3)
+light_color = Color(0.938528, 0.329835, 1.92523e-07, 1)
+light_energy = 5.0
+
 [node name="Nucleus" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_zero_g = true
+is_underwater = true
+has_vignette = true
+has_directional_light = false
 player_path = NodePath("../Player")
+world_environment_node = NodePath("../WorldEnvironment")
 
 [node name="frozen_nucleus" parent="Nucleus" instance=ExtResource("8_pydxi")]
 transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, 0, 0, 0)

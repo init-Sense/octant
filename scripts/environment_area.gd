@@ -5,12 +5,14 @@ class_name EnvironmentArea
 @export var is_slippery: bool = false
 @export var is_underwater: bool = false
 @export var has_vignette: bool = false
+@export var has_directional_light: bool = true
 
 @export var gravity_modifier: float = 0.0
 @export var player_path: NodePath
 
 @export var world_environment_node: NodePath
 @export var target_environment: Environment
+@export var directional_light_node: NodePath
 
 var player: Player
 var player_movement: Movement
@@ -34,6 +36,7 @@ func _on_area_entered(area: Area3D) -> void:
 		player_movement = player.get_node("Modules/Movement")
 		apply_gravity_and_slippery()
 		apply_target_environment()
+		show_directional_light()
 		apply_underwater_post_processing()
 		apply_vignette_post_processing()
 
@@ -42,6 +45,7 @@ func _on_area_exited(area: Area3D) -> void:
 	var player_node = find_player_node(area)
 	if player_node == player:
 		reset_gravity_and_slippery()
+		hide_directional_light()
 
 
 func find_player_node(node: Node) -> Player:
@@ -93,6 +97,19 @@ func apply_vignette_post_processing() -> void:
 		vignette_post_processing.show()
 	else:
 		vignette_post_processing.hide()
+
+
+func show_directional_light() -> void:
+	if has_directional_light:
+		var directional_light: DirectionalLight3D
+		directional_light = get_node(directional_light_node)
+		directional_light.show()
+
+func hide_directional_light() -> void:
+	if has_directional_light:
+		var directional_light: DirectionalLight3D
+		directional_light = get_node(directional_light_node)
+		directional_light.hide()
 
 
 func reset_gravity_and_slippery() -> void:

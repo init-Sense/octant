@@ -3,6 +3,4 @@
 [ext_resource type="Texture2D" uid="uid://v6a6vnw6s05i" path="res://assets/textures/ice-snow-2048x2048.jpg" id="1_7mo0c"]
 
 [resource]
-transparency = 1
-blend_mode = 1
 albedo_texture = ExtResource("1_7mo0c")
