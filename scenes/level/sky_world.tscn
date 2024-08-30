@@ -180,6 +180,7 @@ player_path = NodePath("../../../Player")
 [node name="CorridorPortalA" parent="Hub/LayerMid/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1.8, 0, 8.74228e-08, 0, -1, 0, 8.3, 0)
 exit_portal = NodePath("../../../../Bridge/LayerMid/BridgeTutorial_REAL/CorridorPortalB")
+metadata/boundaries_path = NodePath("..")
 
 [node name="SkyHub_COPY_1" parent="Hub/LayerMid" instance=ExtResource("6_083o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
