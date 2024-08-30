@@ -73,7 +73,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.
 
 [node name="Environment" type="Node" parent="."]
 
-[node name="Environment_1" type="WorldEnvironment" parent="Environment"]
+[node name="SurfaceEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_jv8p7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
@@ -85,6 +85,7 @@ shadow_enabled = true
 script = ExtResource("7_nk82h")
 gravity_modifier = 16.0
 player_path = NodePath("../Player")
+target_environment_node = NodePath("../Environment/SurfaceEnvironment")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
 shape = SubResource("BoxShape3D_eumbd")
@@ -173,6 +174,7 @@ script = ExtResource("7_nk82h")
 is_slippery = true
 gravity_modifier = 8.0
 player_path = NodePath("../Player")
+target_environment_node = NodePath("../Environment/SurfaceEnvironment")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)
