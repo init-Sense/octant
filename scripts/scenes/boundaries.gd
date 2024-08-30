@@ -1,23 +1,29 @@
 extends Node3D
 
 @export var player_path: NodePath
-@export var teleport_offset_y: float = 0.01
+@export var teleport_offset_y: float = 0.1
 @export var teleport_offset_x: float = 0.1
 @export var teleport_offset_z: float = 0.1
 @export var portal_cooldown: float = 1.0
+@export var is_initial_area: bool = false
 
-var player: CharacterBody3D
+var player: Player
 var is_teleporting: bool = false
 var level_bounds: AABB
 var boundaries_disabled: bool = false
 var portal_timer: float = 0.0
 var is_active: bool = false
 
+
 func _ready():
 	player = get_node(player_path)
 	if not player:
 		push_error("Player node not found!")
 	level_bounds = calculate_spatial_bounds(self, true)
+	
+	if is_initial_area:
+		call_deferred("on_portal_hit")
+
 
 func _physics_process(delta):
 	if player and is_active:
@@ -27,6 +33,7 @@ func _physics_process(delta):
 				boundaries_disabled = false
 		elif not is_teleporting:
 			check_and_teleport_player()
+
 
 func check_and_teleport_player():
 	var player_pos: Vector3 = player.global_transform.origin
@@ -68,6 +75,7 @@ func check_and_teleport_player():
 	if teleport_needed:
 		teleport_player(new_pos)
 
+
 func teleport_player(new_pos: Vector3):
 	is_teleporting = true
 	var current_velocity: Vector3 = player.velocity
@@ -75,6 +83,7 @@ func teleport_player(new_pos: Vector3):
 	player.velocity = current_velocity
 	await get_tree().create_timer(0.1).timeout
 	is_teleporting = false
+
 
 func calculate_spatial_bounds(parent: Node, exclude_top_level_transform: bool) -> AABB:
 	var bounds: AABB = AABB()
@@ -94,13 +103,16 @@ func calculate_spatial_bounds(parent: Node, exclude_top_level_transform: bool) -
 		bounds = parent.transform * bounds
 	return bounds
 
+
 func disable_boundaries():
 	boundaries_disabled = true
 	portal_timer = portal_cooldown
 
+
 func on_portal_hit():
 	is_active = true
 	disable_boundaries()
+
 
 func deactivate():
 	is_active = false

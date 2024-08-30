@@ -176,6 +176,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 [node name="SkyHub_REAL" parent="Hub/LayerMid" instance=ExtResource("6_083o3")]
 script = ExtResource("3_oeidr")
 player_path = NodePath("../../../Player")
+is_initial_area = true
 
 [node name="CorridorPortalA" parent="Hub/LayerMid/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1.8, 0, 8.74228e-08, 0, -1, 0, 8.3, 0)
@@ -414,6 +415,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1024)
 [node name="LayerMid" type="Node3D" parent="Bridge"]
 
 [node name="BridgeTutorial_REAL" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
+script = ExtResource("3_oeidr")
+player_path = NodePath("../../../Player")
 
 [node name="CorridorPortalB" parent="Bridge/LayerMid/BridgeTutorial_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.3, 1.04907e-06)
