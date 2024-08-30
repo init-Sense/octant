@@ -415,8 +415,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1024)
 
 [node name="BridgeTutorial_REAL" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
 
-[node name="CorridorPortalB" parent="Bridge/LayerMid/BridgeTutorial_REAL" instance=ExtResource("5_mhpie")]
+[node name="CorridorPortalB" parent="Bridge/LayerMid/BridgeTutorial_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.3, 1.04907e-06)
+exit_portal = NodePath("../../../../Hub/LayerMid/SkyHub_REAL/CorridorPortalA")
 
 [node name="BridgeTutorial_1" parent="Bridge/LayerMid" instance=ExtResource("6_wgu60")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
