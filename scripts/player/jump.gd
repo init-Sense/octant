@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	apply_midair_control(delta)
 	apply_momentum(delta)
 	handle_freefall(delta)
-	ground_check()
+	ground_check(delta)
 	update_charge_offset(delta)
 	update_coyote_time(delta)
 #endregion
@@ -94,15 +94,16 @@ func _physics_process(delta: float) -> void:
 
 #region JUMP MECHANICS
 func start_charge() -> void:
-	if (not player.is_jumping() and player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump:
+	if (not player.is_jumping() and (player.is_on_floor() or climb._snapped_to_stairs_last_frame)) or jump_state.can_coyote_jump or movement.slippery:
 		player.set_charging_jump()
 		jump_state.charge_start_time = Time.get_ticks_msec() / 1000.0
 		jump_state.current_charge = 0.0
-
+		jump_state.last_floor_normal = player.get_floor_normal()
+		jump_state.slope_check_timer = 0.0
 
 func release_jump() -> void:
 	if player.is_charging_jump():
-		if (player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump:
+		if (player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump or movement.slippery:
 			jump_state.is_requested = true
 			jump_state.horizontal_momentum = Vector2(movement.velocity_vector.x, movement.velocity_vector.z)
 			jump_state.initial_speed = jump_state.horizontal_momentum.length()
@@ -111,14 +112,13 @@ func release_jump() -> void:
 		else:
 			cancel_jump()
 
-
 func cancel_jump() -> void:
-	player.set_no_action()
-	jump_state.current_charge = 0.0
-
+	if not movement.slippery:
+		player.set_no_action()
+		jump_state.current_charge = 0.0
 
 func handle_jump() -> void:
-	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump):
+	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump or movement.slippery):
 		execute_jump()
 
 
@@ -181,10 +181,10 @@ func apply_momentum(delta: float) -> void:
 
 
 #region GROUND AND COYOTE TIME
-func ground_check() -> void:
+func ground_check(delta: float) -> void:
 	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
 		handle_landing()
-	elif player.is_charging_jump() and not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and not jump_state.can_coyote_jump:
+	elif not jump_state.can_coyote_jump and not movement.slippery:
 		cancel_jump()
 
 
