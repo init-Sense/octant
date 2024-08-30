@@ -57,18 +57,17 @@ func _input(_event) -> void:
 
 #region JUMP HANDLING
 func handle_jump_input() -> void:
-	if not movement.slippery:
-		if Input.is_action_pressed("jump"):
-			if not is_jump_charged:
-				jump.start_charge()
-				is_jump_charged = true
-		elif Input.is_action_just_released("jump"):
-			if is_jump_charged:
-				jump.release_jump()
-				is_jump_charged = false
-		elif not Input.is_action_pressed("jump") and is_jump_charged:
-			jump.cancel_jump()
+	if Input.is_action_pressed("jump"):
+		if not is_jump_charged:
+			jump.start_charge()
+			is_jump_charged = true
+	elif Input.is_action_just_released("jump"):
+		if is_jump_charged:
+			jump.release_jump()
 			is_jump_charged = false
+	elif not Input.is_action_pressed("jump") and is_jump_charged:
+		jump.cancel_jump()
+		is_jump_charged = false
 #endregion
 
 
