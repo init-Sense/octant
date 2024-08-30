@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=23 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/ice_platform.glb" id="5_r3qnj"]
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
+[ext_resource type="PackedScene" uid="uid://bb2pu2lxluq2t" path="res://assets/models/world_frozen/ice_terrain_smooooooth.glb" id="7_1a4pp"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
@@ -31,7 +32,6 @@ sky_material = SubResource("ProceduralSkyMaterial_1wwuf")
 background_mode = 2
 sky = SubResource("Sky_usx73")
 ambient_light_source = 3
-fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(1, 1, 1, 1)
 fog_light_energy = 1.2
@@ -197,6 +197,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0
 
 [node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
+
+[node name="ice_terrain_smooooooth" parent="Caves/IceTerrain" instance=ExtResource("7_1a4pp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 2, 58)
 
 [node name="Stalagmites" type="Node3D" parent="Caves"]
 
