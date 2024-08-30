@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0dl55ei83bc6"]
+[gd_scene load_steps=9 format=3 uid="uid://b0dl55ei83bc6"]
 
 [ext_resource type="PackedScene" uid="uid://bmgytkc2rtat5" path="res://prefabs/world_sky/sky_disk_rotating.tscn" id="2_e4tg0"]
 [ext_resource type="PackedScene" uid="uid://bg05p7gdq7ga0" path="res://prefabs/world_sky/sky_ring.tscn" id="2_g7ddg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cedr28aw6saix" path="res://assets/models/world_sky/sky_hub_sphere.glb" id="6_qkpiq"]
 [ext_resource type="PackedScene" uid="uid://bym8cjhpxwu8" path="res://assets/models/world_sky/sky_strand.glb" id="7_635u8"]
 [ext_resource type="PackedScene" uid="uid://b4r4hw5gixhq5" path="res://assets/models/world_sky/sky_bridge.glb" id="7_oja77"]
+[ext_resource type="PackedScene" uid="uid://dydq2woavludp" path="res://assets/models/world_sky/sky_hub_sphere_half.glb" id="8_8f47x"]
 
 [node name="SkyHub" type="Node3D"]
 
@@ -71,14 +72,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 [node name="sky_hub_sphere_1" parent="." instance=ExtResource("6_qkpiq")]
 transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 30, 0)
 
-[node name="sky_hub_sphere_3" parent="." instance=ExtResource("6_qkpiq")]
-transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 64, 0)
-
 [node name="sky_hub_sphere_2" parent="." instance=ExtResource("6_qkpiq")]
 transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, -30, 0)
 
 [node name="sky_strand_1" parent="." instance=ExtResource("7_635u8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+transform = Transform3D(1, 0, 0, 0, 1.03215, 0, 0, 0, 1, 0, 30, 0)
 
 [node name="sky_strand_2" parent="." instance=ExtResource("7_635u8")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -30, 0)
+transform = Transform3D(-1, 8.95064e-08, 0, -8.74228e-08, -1.02383, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="sky_hub_sphere_half_1" parent="." instance=ExtResource("8_8f47x")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 64, 0)
+
+[node name="sky_hub_sphere_half_2" parent="." instance=ExtResource("8_8f47x")]
+transform = Transform3D(-1.7, 1.48619e-07, 0, -1.48619e-07, -1.7, 0, 0, 0, 1.7, 0, -64, 0)
