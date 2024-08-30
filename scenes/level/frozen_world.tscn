@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=22 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
+[ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://assets/environments/frozen_surface_environment.tres" id="1_8s4oo"]
 [ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
+[ext_resource type="Environment" uid="uid://d4ksj2eichsko" path="res://assets/environments/frozen_caves_environment.tres" id="2_yipt2"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/ice_platform.glb" id="5_r3qnj"]
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
@@ -16,40 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/cave/stalactite_b.glb" id="11_veyyu"]
 [ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/cave/stalactite_c.glb" id="12_8qwt4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1wwuf"]
-sky_top_color = Color(0.33478, 0.31395, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_curve = 0.270375
-ground_bottom_color = Color(1, 1, 1, 1)
-ground_horizon_color = Color(1, 1, 1, 1)
-ground_curve = 0.0721002
-ground_energy_multiplier = 1.1
-
-[sub_resource type="Sky" id="Sky_usx73"]
-sky_material = SubResource("ProceduralSkyMaterial_1wwuf")
-
-[sub_resource type="Environment" id="Environment_jv8p7"]
-background_mode = 2
-sky = SubResource("Sky_usx73")
-ambient_light_source = 3
-fog_mode = 1
-fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 1.2
-fog_density = 0.7
-fog_sky_affect = 0.0
-fog_height = -6.0
-fog_height_density = 0.1
-fog_depth_curve = 0.6
-fog_depth_begin = 0.0
-fog_depth_end = 200.0
-volumetric_fog_density = 0.0286
-volumetric_fog_emission = Color(0.0927145, 0.330201, 1, 1)
-volumetric_fog_length = 85.94
-volumetric_fog_detail_spread = 0.5
-volumetric_fog_sky_affect = 0.0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
-size = Vector3(300, 32, 300)
+size = Vector3(300, 64, 300)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cnuu1"]
 lightmap_size_hint = Vector2i(4002, 4002)
@@ -68,13 +38,13 @@ radius = 198.0
 metadata/slippery = false
 metadata/zero_g = false
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 2.43013, -2)
+[node name="Player" parent="." instance=ExtResource("1_4ntkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.9, 8)
 
 [node name="Environment" type="Node" parent="."]
 
-[node name="SurfaceEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_jv8p7")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = ExtResource("1_8s4oo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(0.473612, -0.537485, 0.697712, 0, 0.792194, 0.61027, -0.880734, -0.289031, 0.375192, 0, 2.84967, 0)
@@ -82,12 +52,15 @@ light_energy = 0.9
 shadow_enabled = true
 
 [node name="Surface" type="Area3D" parent="."]
+collision_mask = 4
 script = ExtResource("7_nk82h")
 gravity_modifier = 16.0
 player_path = NodePath("../Player")
-target_environment_node = NodePath("../Environment/SurfaceEnvironment")
+world_environment_node = NodePath("../Environment/WorldEnvironment")
+target_environment = ExtResource("1_8s4oo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 shape = SubResource("BoxShape3D_eumbd")
 
 [node name="Sea" type="MeshInstance3D" parent="Surface"]
@@ -174,7 +147,8 @@ script = ExtResource("7_nk82h")
 is_slippery = true
 gravity_modifier = 8.0
 player_path = NodePath("../Player")
-target_environment_node = NodePath("../Environment/SurfaceEnvironment")
+world_environment_node = NodePath("../Environment/WorldEnvironment")
+target_environment = ExtResource("2_yipt2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)
@@ -225,6 +199,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -4)
 
 [node name="Nucleus" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
+collision_mask = 4
 script = ExtResource("7_nk82h")
 is_zero_g = true
 player_path = NodePath("../Player")
@@ -234,6 +209,3 @@ transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nucleus"]
 shape = SubResource("SphereShape3D_j0uty")
-
-[node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.9, 8)

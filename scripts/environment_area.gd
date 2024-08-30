@@ -5,7 +5,10 @@ class_name EnvironmentArea
 @export var is_slippery: bool = false
 @export var gravity_modifier: float = 0.0
 @export var player_path: NodePath
-@export var target_environment_node: NodePath
+
+@export var world_environment_node: NodePath
+@export var target_environment: Environment
+
 
 var player: Player
 var player_movement: Movement
@@ -27,14 +30,14 @@ func _on_area_entered(area: Area3D):
 	if player_node:
 		player = player_node
 		player_movement = player.get_node("Modules/Movement")
-		apply_environment_gravity()
-		apply_environment()
+		apply_gravity_and_slippery()
+		apply_target_environment()
 
 
 func _on_area_exited(area: Area3D):
 	var player_node = find_player_node(area)
 	if player_node == player:
-		reset_environment()
+		reset_gravity_and_slippery()
 
 
 func find_player_node(node: Node) -> Player:
@@ -46,7 +49,7 @@ func find_player_node(node: Node) -> Player:
 	return null
 
 
-func apply_environment_gravity() -> void:
+func apply_gravity_and_slippery() -> void:
 	if player_movement:
 		player_movement.is_zero_g = is_zero_g
 		player_movement.slippery = is_slippery
@@ -64,15 +67,13 @@ func apply_environment_gravity() -> void:
 		push_warning("Player movement not found in EnvironmentArea: " + name)
 
 
-func apply_environment() -> void:
-	var current_environment = get_node(target_environment_node)
-	if current_environment is WorldEnvironment:
-		if current_environment.environment:
-			current_environment.environment = null
-			print("Environment disabled")
+func apply_target_environment() -> void:
+	var world_environment = get_node(world_environment_node)
+	world_environment.environment = target_environment
+	print("Environment disabled")
 
 
-func reset_environment() -> void:
+func reset_gravity_and_slippery() -> void:
 	if player_movement:
 		player_movement.is_zero_g = false
 		player_movement.slippery = false
