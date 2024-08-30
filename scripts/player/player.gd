@@ -76,7 +76,7 @@ enum ActionState {
 
 
 #region DEBUG
-var print_state: bool = true
+var print_state: bool = false
 var print_previous_state: bool = false
 #endregion
 

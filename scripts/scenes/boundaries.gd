@@ -2,8 +2,8 @@ extends Node3D
 
 @export var player_path: NodePath
 @export var teleport_offset_y: float = 0.01
-@export var teleport_offset_x: float = 0.5
-@export var teleport_offset_z: float = 0.5
+@export var teleport_offset_x: float = 0.1
+@export var teleport_offset_z: float = 0.1
 @export var portal_cooldown: float = 1.0
 
 var player: CharacterBody3D
@@ -11,17 +11,16 @@ var is_teleporting: bool = false
 var level_bounds: AABB
 var boundaries_disabled: bool = false
 var portal_timer: float = 0.0
-var current_boundary_box: Node3D
+var is_active: bool = false
 
 func _ready():
 	player = get_node(player_path)
 	if not player:
 		push_error("Player node not found!")
 	level_bounds = calculate_spatial_bounds(self, true)
-	current_boundary_box = self
 
 func _physics_process(delta):
-	if player:
+	if player and is_active:
 		if boundaries_disabled:
 			portal_timer -= delta
 			if portal_timer <= 0:
@@ -31,11 +30,11 @@ func _physics_process(delta):
 
 func check_and_teleport_player():
 	var player_pos: Vector3 = player.global_transform.origin
-	var lower_y: float = current_boundary_box.global_transform.origin.y + level_bounds.position.y
+	var lower_y: float = global_transform.origin.y + level_bounds.position.y
 	var upper_y: float = lower_y + level_bounds.size.y
-	var left_x: float = current_boundary_box.global_transform.origin.x + level_bounds.position.x
+	var left_x: float = global_transform.origin.x + level_bounds.position.x
 	var right_x: float = left_x + level_bounds.size.x
-	var back_z: float = current_boundary_box.global_transform.origin.z + level_bounds.position.z
+	var back_z: float = global_transform.origin.z + level_bounds.position.z
 	var front_z: float = back_z + level_bounds.size.z
 	
 	var new_pos: Vector3 = player_pos
@@ -99,6 +98,9 @@ func disable_boundaries():
 	boundaries_disabled = true
 	portal_timer = portal_cooldown
 
-func on_portal_hit(new_boundary_box: Node3D):
-	current_boundary_box = new_boundary_box
+func on_portal_hit():
+	is_active = true
 	disable_boundaries()
+
+func deactivate():
+	is_active = false

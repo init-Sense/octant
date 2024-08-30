@@ -22,15 +22,12 @@ func on_area_entered(area: Area3D):
 	if area.has_meta("teleportable_root"):
 		var root: Node3D = area.get_node(area.get_meta("teleportable_root"))
 		
-		disable_boundaries()
+		var current_boundaries_node = parent_portal.get_parent()
+		if current_boundaries_node and current_boundaries_node.has_method("deactivate"):
+			current_boundaries_node.deactivate()
+		
+		var destination_boundaries_node = parent_portal.exit_portal.get_parent()
+		if destination_boundaries_node and destination_boundaries_node.has_method("on_portal_hit"):
+			destination_boundaries_node.on_portal_hit()
 		
 		root.global_transform = parent_portal.real_to_exit_transform(root.global_transform)
-
-func disable_boundaries():
-	var current_boundaries_node = parent_portal.get_parent()
-	var destination_boundaries_node = parent_portal.exit_portal.get_parent()
-	
-	if current_boundaries_node and current_boundaries_node.has_method("on_portal_hit"):
-		current_boundaries_node.on_portal_hit(destination_boundaries_node)
-	else:
-		push_warning("Parent node doesn't have on_portal_hit method")
