@@ -48,4 +48,4 @@ libraries = {
 "": SubResource("AnimationLibrary_7b7hl")
 }
 autoplay = "rotate"
-speed_scale = 0.01
+speed_scale = 0.02

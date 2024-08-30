@@ -1,9 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://7cbsw3jh0w14"]
 
 [resource]
-disable_fog = true
 albedo_color = Color(1, 0.965031, 0.533456, 1)
 emission_enabled = true
 emission = Color(0.88994, 0.88994, 0, 1)
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 1.1
 disable_receive_shadows = true
