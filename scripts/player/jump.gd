@@ -181,7 +181,7 @@ func apply_momentum(delta: float) -> void:
 
 
 #region GROUND AND COYOTE TIME
-func ground_check(delta: float) -> void:
+func ground_check(_delta: float) -> void:
 	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
 		handle_landing()
 	elif player.is_charging_jump():
