@@ -39,6 +39,7 @@ func _on_area_entered(area: Area3D) -> void:
 		show_directional_light()
 		apply_underwater_post_processing()
 		apply_vignette_post_processing()
+		print("entered!!")
 
 
 func _on_area_exited(area: Area3D) -> void:

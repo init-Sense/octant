@@ -1,0 +1,17 @@
+[gd_resource type="Environment" format=3 uid="uid://fy48f0jdrdej"]
+
+[resource]
+ssao_enabled = true
+ssao_intensity = 5.09
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.1
+glow_bloom = 0.01
+glow_blend_mode = 0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0.0473678, 0.101886, 1)
+fog_density = 0.98
+fog_depth_curve = 0.5
+fog_depth_begin = 0.0
+fog_depth_end = 24.0
