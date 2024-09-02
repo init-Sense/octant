@@ -40,15 +40,15 @@ shadow_mesh = SubResource("ArrayMesh_4457b")
 [sub_resource type="BoxShape3D" id="BoxShape3D_sph7j"]
 size = Vector3(2, 2.6, 2)
 
-[node name="CorridorPortalA" type="MeshInstance3D"]
+[node name="PortalDefault" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 mesh = SubResource("ArrayMesh_2ag8v")
 skeleton = NodePath("")
 script = ExtResource("1_grocl")
-disable_viewport_distance = 13.0
-fade_out_distance_max = 12.0
-fade_out_distance_min = 10.0
-fade_out_color = Color(0, 0, 0, 1)
+vertical_viewport_resolution = 1024
+disable_viewport_distance = 25.0
+fade_out_distance_max = 24.0
+fade_out_distance_min = 12.0
 
 [node name="Teleport" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

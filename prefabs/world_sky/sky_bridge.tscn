@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4um1gdrnusu1" path="res://assets/models/columns/column_sky.glb" id="1_s63sx"]
 
-[node name="BridgeTutorial" type="Node3D"]
+[node name="SkyBridge" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="column_sky_1" parent="." instance=ExtResource("1_s63sx")]
