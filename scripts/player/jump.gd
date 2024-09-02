@@ -41,7 +41,7 @@ const MAX_MOMENTUM_SPEED: float = 2.0
 
 const MOMENTUM_REDUCTION: float = 0.6
 const MOMENTUM_VARIATION: float = 0.15
-const MIDAIR_CONTROL: float = 0.8
+const MIDAIR_CONTROL: float = 1.0
 const MAX_CHARGE_TIME: float = 0.5
 const MAX_CHARGE_MULTIPLIER: float = 1.7
 const HEAD_CHARGE_OFFSET: float = 0.8
