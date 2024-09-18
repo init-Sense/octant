@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0dl55ei83bc6"]
+[gd_scene load_steps=10 format=3 uid="uid://b0dl55ei83bc6"]
 
 [ext_resource type="PackedScene" uid="uid://bmgytkc2rtat5" path="res://prefabs/world_sky/sky_disk_rotating.tscn" id="2_e4tg0"]
 [ext_resource type="PackedScene" uid="uid://bg05p7gdq7ga0" path="res://prefabs/world_sky/sky_ring.tscn" id="2_g7ddg"]
 [ext_resource type="PackedScene" uid="uid://c3r6fney3x6n5" path="res://assets/models/world_sky/sky_hub_disk.glb" id="2_op812"]
+[ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/world_sky/sky_disk.glb" id="3_w1x3g"]
 [ext_resource type="PackedScene" uid="uid://drlkp2nfkhjtl" path="res://assets/models/world_sky/sky_portal_gate.glb" id="5_b4vmk"]
 [ext_resource type="PackedScene" uid="uid://cedr28aw6saix" path="res://assets/models/world_sky/sky_hub_sphere.glb" id="6_qkpiq"]
 [ext_resource type="PackedScene" uid="uid://bym8cjhpxwu8" path="res://assets/models/world_sky/sky_strand.glb" id="7_635u8"]
@@ -27,6 +28,15 @@ transform = Transform3D(0.18, 0, 0, 0, 0.18, -2.08983e-15, 0, 2.08983e-15, 0.18,
 
 [node name="sky_hub_disk" parent="Disks" instance=ExtResource("2_op812")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="sky_disk" parent="Disks/sky_hub_disk" instance=ExtResource("3_w1x3g")]
+transform = Transform3D(0.510377, 0, 0, 0, 0.510377, 0, 0, 0, 0.510377, 0, 0.397045, 0)
+
+[node name="sky_disk2" parent="Disks/sky_hub_disk" instance=ExtResource("3_w1x3g")]
+transform = Transform3D(0.392769, 0, 0, 0, 0.392769, 0, 0, 0, 0.392769, 0, 0.789149, 0)
+
+[node name="sky_disk3" parent="Disks/sky_hub_disk" instance=ExtResource("3_w1x3g")]
+transform = Transform3D(0.284707, 0, 0, 0, 0.284707, 0, 0, 0, 0.284707, 0, 1.17749, 0)
 
 [node name="Rings" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -67,7 +77,7 @@ omni_range = 32.0
 omni_attenuation = 0.9
 
 [node name="sky_portal_gate" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, 0)
 
 [node name="sky_hub_sphere_1" parent="." instance=ExtResource("6_qkpiq")]
 transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 30, 0)

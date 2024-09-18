@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://assets/environments/frozen_surface_environment.tres" id="1_8s4oo"]
-[ext_resource type="PackedScene" uid="uid://bjloahkwdv7rv" path="res://assets/models/world_frozen/mountains.glb" id="2_5pjcx"]
 [ext_resource type="Environment" uid="uid://d4ksj2eichsko" path="res://assets/environments/frozen_caves_environment.tres" id="2_yipt2"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/ice_platform.glb" id="5_r3qnj"]
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://assets/materials/water_3d.tres" id="6_kad0g"]
+[ext_resource type="PackedScene" uid="uid://cwkb3p01vmo8j" path="res://assets/models/world_frozen/mountain_a.glb" id="7_2x7or"]
 [ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
@@ -41,7 +41,7 @@ metadata/zero_g = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.9, 8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_yipt2")
+environment = ExtResource("1_8s4oo")
 
 [node name="Surface" type="Area3D" parent="."]
 collision_mask = 4
@@ -88,26 +88,23 @@ transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, 18.2, 3, 0.3)
 
 [node name="Background" type="Node3D" parent="Surface"]
 
-[node name="mountains" parent="Surface/Background" instance=ExtResource("2_5pjcx")]
-transform = Transform3D(57.05, 0, 0, 0, 57.05, 0, 0, 0, 57.05, 959, 0, -353)
-
 [node name="ice_platform_5" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, 19, 0, 54)
+transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, 16, 0, -173)
 
 [node name="ice_platform_7" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-0.54352, 0, -2.02845, 0, 2.1, 0, 2.02845, 0, -0.54352, 32.2, -1.2, 54.6)
+transform = Transform3D(-0.54352, 0, -2.02845, 0, 2.1, 0, 2.02845, 0, -0.54352, 29.2, -1.2, -172.4)
 
 [node name="ice_platform_6" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 33.6, 4.1, 67.7)
+transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 30.6, 4.1, -159.3)
 
 [node name="ice_platform_8" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-3, 0, 5.19616, 0, 6, 0, -5.19616, 0, -3, 78.3784, 10.2333, 55.9974)
+transform = Transform3D(-3, 0, 5.19616, 0, 6, 0, -5.19616, 0, -3, 75.3784, 10.2333, -171.003)
 
 [node name="ice_platform_9" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, 67.5521, 7.83333, 89.4085)
+transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, 64.5521, 7.83333, -137.591)
 
 [node name="ice_platform_10" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, 42.9695, 18.4333, 98.8941)
+transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, 39.9695, 18.4333, -128.106)
 
 [node name="ice_platform_11" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, -28.2, 0, -59.7)
@@ -130,14 +127,23 @@ transform = Transform3D(-7.27462, 0, -4.20001, 0, 8.4, 0, 4.20001, 0, -7.27462, 
 [node name="ice_platform_17" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(2.6226e-06, 0, -8.40001, 0, 8.4, 0, 8.40001, 0, 2.6226e-06, -89.9305, 7.83333, 63.0941)
 
-[node name="ice_platform_18" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, -78.7305, 36.7333, 191.094)
-
 [node name="ice_platform_19" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(5.76973e-06, 0, -18.48, 0, 18.48, 0, 18.48, 0, 5.76973e-06, 200.57, 69.0333, -46.2059)
 
 [node name="ice_platform_20" parent="Surface/Background" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(-30.3456, 0, -8.13108, 0, 31.416, 0, 8.13108, 0, -30.3456, -243.23, 100.333, -170.706)
+
+[node name="mountain_a_1" parent="Surface/Background" instance=ExtResource("7_2x7or")]
+transform = Transform3D(9.4, 0, 0, 0, 9.4, 0, 0, 0, 9.4, 489, -11, 83)
+
+[node name="mountain_a_2" parent="Surface/Background" instance=ExtResource("7_2x7or")]
+transform = Transform3D(-10.6349, 0, -10.6349, 0, 15.04, 0, 10.6349, 0, -10.6349, 547, -11, 446)
+
+[node name="mountain_a_3" parent="Surface/Background" instance=ExtResource("7_2x7or")]
+transform = Transform3D(-23.2638, 0, -23.2638, 0, 13.16, 0, 23.2638, 0, -23.2638, -622, -13, 696)
+
+[node name="mountain_a_4" parent="Surface/Background" instance=ExtResource("7_2x7or")]
+transform = Transform3D(-9.0797, 0, 2.4329, 0, 9.4, 0, -2.4329, 0, -9.0797, -43, -11, 508)
 
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64, 0)

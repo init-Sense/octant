@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bjloahkwdv7rv"
-path="res://.godot/imported/mountains.glb-bc0a963264837042cb7199804965d782.scn"
+uid="uid://dxkrqycsfqh71"
+path="res://.godot/imported/test.glb-3807b6215215de609d7033e3a1fb5ad1.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/mountains.glb"
-dest_files=["res://.godot/imported/mountains.glb-bc0a963264837042cb7199804965d782.scn"]
+source_file="res://assets/models/debug/test.glb"
+dest_files=["res://.godot/imported/test.glb-3807b6215215de609d7033e3a1fb5ad1.scn"]
 
 [params]
 

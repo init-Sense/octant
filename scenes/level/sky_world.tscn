@@ -413,7 +413,7 @@ script = ExtResource("3_oeidr")
 player_path = NodePath("../../Player")
 
 [node name="PortalHub" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_mhpie")]
-transform = Transform3D(-3.4, 0, -1.50996e-07, 0, 5.7, 0, 5.13386e-07, 0, -1, 0, 13.3, 0)
+transform = Transform3D(-3.4, 0, -1.50996e-07, 0, 3.99, 0, 5.13386e-07, 0, -1, 0, 6.3, 0)
 exit_portal = NodePath("../../../Tower/SkyStairs_1/PortalStairs")
 metadata/boundaries_path = NodePath("..")
 
