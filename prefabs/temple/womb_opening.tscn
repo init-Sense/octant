@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://lmq1w8lnwpd7"]
+
+[ext_resource type="PackedScene" uid="uid://ct82h1qt1kmxq" path="res://assets/models/world_temple/womb/womb_shell_top.glb" id="1_8mn7r"]
+[ext_resource type="PackedScene" uid="uid://c2gykwco5opxs" path="res://assets/models/world_temple/womb/womb_interior_top.glb" id="2_m2pg3"]
+[ext_resource type="PackedScene" uid="uid://b5hckfqich7bk" path="res://assets/models/world_temple/womb/womb_shell_bottom.glb" id="3_hfl11"]
+[ext_resource type="Script" path="res://scripts/shell_opening.gd" id="3_vw4xx"]
+[ext_resource type="PackedScene" uid="uid://cafy4rnjhwwkl" path="res://assets/models/world_temple/womb/womb_interior_bottom.glb" id="4_vxs71"]
+[ext_resource type="PackedScene" uid="uid://dsfu0d3b8r4sl" path="res://assets/models/world_temple/womb/womb_cell.glb" id="5_yip5w"]
+[ext_resource type="PackedScene" uid="uid://cth3s3ydhuyfh" path="res://assets/models/world_temple/womb/womb_frame.glb" id="6_8uejo"]
+
+[sub_resource type="Animation" id="Animation_gqk8h"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("womb_shell_top:rotation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("womb_shell_bottom:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("womb_shell_bottom:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cotj0"]
+resource_name = "opening"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("womb_shell_top:rotation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.0472, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("womb_shell_bottom:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("womb_shell_bottom:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5r3ah"]
+_data = {
+"RESET": SubResource("Animation_gqk8h"),
+"opening": SubResource("Animation_cotj0")
+}
+
+[node name="WombOpening" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="womb_cell" parent="." instance=ExtResource("5_yip5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0)
+
+[node name="womb_frame" parent="." instance=ExtResource("6_8uejo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.3, 0)
+
+[node name="ShellOpening" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_vw4xx")
+
+[node name="ShellAnimation" type="AnimationPlayer" parent="ShellOpening"]
+libraries = {
+"": SubResource("AnimationLibrary_5r3ah")
+}
+speed_scale = 0.1
+
+[node name="womb_interior_top" parent="ShellOpening" instance=ExtResource("2_m2pg3")]
+
+[node name="womb_shell_top" parent="ShellOpening" instance=ExtResource("1_8mn7r")]
+
+[node name="womb_shell_bottom" parent="ShellOpening" instance=ExtResource("3_hfl11")]
+
+[node name="womb_interior_bottom" parent="ShellOpening/womb_shell_bottom" instance=ExtResource("4_vxs71")]

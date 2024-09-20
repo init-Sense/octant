@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=16 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="3_2mhdb"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://prefabs/temple/stairs.tscn" id="4_8btde"]
 [ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/world_temple/door_polygon.glb" id="6_62qsy"]
+[ext_resource type="PackedScene" uid="uid://dgi6xi1pie1ot" path="res://prefabs/temple/temple_wall_opening.tscn" id="7_80ljr"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="9_n4b31"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="10_abp4n"]
 [ext_resource type="PackedScene" uid="uid://n5iw7ewiffla" path="res://assets/models/columns/column_base.glb" id="11_4nnem"]
 [ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/world_temple/bridge.glb" id="12_3fqo0"]
+[ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/world_temple/bridge_junction.glb" id="13_ai348"]
 
 [sub_resource type="Animation" id="Animation_2fn5g"]
@@ -204,7 +206,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Walls" type="Node3D" parent="Structure"]
 
-[node name="TempleWall_1" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWallOpening" parent="Structure/Walls" instance=ExtResource("7_80ljr")]
 
 [node name="TempleWall_2" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
@@ -264,3 +266,6 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="column_base_8" parent="ColumnBases_1" instance=ExtResource("11_4nnem")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 16.9706, 0, 16.9706)
+
+[node name="WombOpening" parent="." instance=ExtResource("12_dt2yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 92.9, -47.2)
