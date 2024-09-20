@@ -22,8 +22,6 @@ fog_density = 0.12
 fog_sky_affect = 0.0
 
 [node name="WorldTemple" type="Node3D"]
-script = ExtResource("1_bkq7w")
-player_path = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_dc8de")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.92849, 92.6846, -46.9)
@@ -32,6 +30,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.928
 environment = SubResource("Environment_yuqp5")
 
 [node name="Temple" parent="." instance=ExtResource("3_ua2so")]
+script = ExtResource("1_bkq7w")
+player_path = NodePath("../Player")
 
 [node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115.7, 0)
