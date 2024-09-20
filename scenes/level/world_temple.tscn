@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp5a5hedvwug8"]
+
+[ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_bkq7w"]
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="2_dc8de"]
+[ext_resource type="PackedScene" uid="uid://5lck5gnh02ir" path="res://prefabs/temple/temple.tscn" id="3_ua2so"]
+
+[sub_resource type="Sky" id="Sky_ke064"]
+
+[sub_resource type="Environment" id="Environment_yuqp5"]
+background_mode = 2
+sky = SubResource("Sky_ke064")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ssao_enabled = true
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.19
+glow_bloom = 0.5
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.12
+fog_sky_affect = 0.0
+
+[node name="WorldTemple" type="Node3D"]
+script = ExtResource("1_bkq7w")
+player_path = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("2_dc8de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72849, 7.58461, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yuqp5")
+
+[node name="Temple" parent="." instance=ExtResource("3_ua2so")]
+
+[node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115.7, 0)
+
+[node name="TempleTop" parent="." instance=ExtResource("3_ua2so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 115.8, 0)
