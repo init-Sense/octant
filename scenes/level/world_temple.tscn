@@ -32,6 +32,8 @@ environment = SubResource("Environment_yuqp5")
 [node name="Temple" parent="." instance=ExtResource("3_ua2so")]
 script = ExtResource("1_bkq7w")
 player_path = NodePath("../Player")
+teleport_offset_y = 9.0
+is_initial_area = true
 
 [node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115.7, 0)

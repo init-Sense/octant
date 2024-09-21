@@ -133,7 +133,7 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.3848, 0, -18.3848)
 
 [node name="Staircase" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1.033, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Stairs_4" parent="Staircase" instance=ExtResource("4_8btde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8743e-07, 0)
