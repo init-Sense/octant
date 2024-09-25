@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dp5a5hedvwug8"]
 
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_bkq7w"]
-[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="2_dc8de"]
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="2_dc8de"]
 [ext_resource type="PackedScene" uid="uid://5lck5gnh02ir" path="res://prefabs/temple/temple.tscn" id="3_ua2so"]
 
 [sub_resource type="Sky" id="Sky_ke064"]

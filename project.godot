@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Octant"
-run/main_scene="res://scenes/level/world_temple.tscn"
+run/main_scene="res://scenes/world_temple.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,10 +19,18 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scripts/scenes/scene_manager.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [file_customization]
 
 folder_colors={
+"res://addons/": "gray",
 "res://assets/": "orange",
+"res://environments/": "purple",
+"res://materials/": "pink",
 "res://prefabs/": "yellow",
 "res://scenes/": "blue",
 "res://scripts/": "teal"

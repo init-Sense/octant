@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://d4ksj2eichsko"]
 
-[ext_resource type="Sky" uid="uid://ch51jynex4bhp" path="res://assets/environments/skies/frozen_cave_sky.tres" id="1_j0tju"]
+[ext_resource type="Sky" uid="uid://ch51jynex4bhp" path="res://environments/skies/frozen_cave_sky.tres" id="1_j0tju"]
 
 [resource]
 background_mode = 2

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfmoc3p6nmogg"]
+
+[ext_resource type="Environment" uid="uid://dya4i06kltfbw" path="res://environments/forest.tres" id="1_kpodi"]
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="2_0h6dd"]
+[ext_resource type="PackedScene" uid="uid://bvovyd3vok26a" path="res://assets/models/world_forest/forest_ground.glb" id="3_quggn"]
+[ext_resource type="PackedScene" uid="uid://cop8ri8q0c6ng" path="res://assets/models/world_forest/tree.glb" id="4_hj0wm"]
+[ext_resource type="PackedScene" uid="uid://b48vskui1txdg" path="res://prefabs/world_forest/root_c.tscn" id="5_2kqio"]
+[ext_resource type="PackedScene" uid="uid://bgha62tjn7p3e" path="res://prefabs/world_forest/root_b.tscn" id="6_uof3q"]
+[ext_resource type="PackedScene" uid="uid://b0fkgrgn7ysak" path="res://prefabs/world_forest/root_a.tscn" id="7_jth4y"]
+
+[node name="WorldForest" type="Node3D"]
+
+[node name="ForestEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_kpodi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70188, 0.654936, 0.280043, -0.712296, 0.645359, 0.275948, 0, -0.393156, 0.919472, 0, 27, 0)
+light_energy = 4.0
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="Player" parent="." instance=ExtResource("2_0h6dd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.545, -1.89562, -70.2986)
+
+[node name="forest_ground" parent="." instance=ExtResource("3_quggn")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+
+[node name="tree" parent="." instance=ExtResource("4_hj0wm")]
+transform = Transform3D(0.868709, 0, 0.495322, 0, 1, 0, -0.495322, 0, 0.868709, -20.6258, -9.20644, -21.5011)
+
+[node name="Roots" type="Node3D" parent="."]
+
+[node name="Root_C_01" parent="Roots" instance=ExtResource("5_2kqio")]
+transform = Transform3D(6.26178, -3.87169, -0.0957447, 2.66042, 4.43241, -5.24262, 2.81449, 4.42412, 5.16864, 19.2953, 18.6758, 5.06241)
+
+[node name="Root_B_01" parent="Roots" instance=ExtResource("6_uof3q")]
+transform = Transform3D(-6.35946, 0, -4.51993, 0, 7.80208, 0, 4.51993, 0, -6.35946, -20.0566, 19.7809, 5.8086)
+
+[node name="Root_A_01" parent="Roots" instance=ExtResource("7_jth4y")]
+transform = Transform3D(3.09473, 0, 6.64423, 0, 7.3296, 0, -6.64423, 0, 3.09473, 9.66496, 27.4698, -13.8638)
+
+[node name="Root_C_02" parent="Roots" instance=ExtResource("5_2kqio")]
+transform = Transform3D(-2.71987, 3.83939, 4.49411, -0.945087, 4.60095, -4.50264, -5.83479, -2.53496, -1.36561, -41.3488, 40.4569, -47.2135)
+
+[node name="Root_B_02" parent="Roots" instance=ExtResource("6_uof3q")]
+transform = Transform3D(7.47885, 0, -2.22244, -1.5627, -5.54763, -5.25873, -1.58025, 5.48601, -5.3178, 17.2063, 43.9047, -3.35246)
+
+[node name="TreeLights" type="Node3D" parent="."]
+
+[node name="TreeLight_01" type="OmniLight3D" parent="TreeLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1249, 18.3074, 12.438)
+light_energy = 12.0
+shadow_enabled = true
+omni_range = 42.577
+
+[node name="TreeLight_02" type="OmniLight3D" parent="TreeLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4477, 137.592, -21.6066)
+light_energy = 12.0
+shadow_enabled = true
+omni_range = 42.577

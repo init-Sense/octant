@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://lc0jv4l8x5cn"]
 
-[ext_resource type="Sky" uid="uid://byqqr5pd7x34n" path="res://assets/environments/skies/frozen_surface_sky.tres" id="1_hy7na"]
+[ext_resource type="Sky" uid="uid://byqqr5pd7x34n" path="res://environments/skies/frozen_surface_sky.tres" id="1_hy7na"]
 
 [resource]
 background_mode = 2

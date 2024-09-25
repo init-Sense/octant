@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvovyd3vok26a"
-path="res://.godot/imported/forest_ground.glb-baa4d9233a54d6d1e5135a4b23485e54.scn"
+uid="uid://bg0sdvg65qd5g"
+path="res://.godot/imported/plant_a.glb-5e575e106b7f24bedd93946db2ac0900.scn"
 
 [deps]
 
-source_file="res://assets/models/world_forest/forest_ground.glb"
-dest_files=["res://.godot/imported/forest_ground.glb-baa4d9233a54d6d1e5135a4b23485e54.scn"]
+source_file="res://assets/models/world_forest/plant_a.glb"
+dest_files=["res://.godot/imported/plant_a.glb-5e575e106b7f24bedd93946db2ac0900.scn"]
 
 [params]
 
@@ -19,34 +19,28 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/forest_ground.tres"
-}
-},
 "meshes": {
-"forest_ground_ForestGround": {
+"plant_a_Plant_a": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/models/world_forest/forest_ground_mesh.res"
+"save_to_file/path": "res://assets/models/world_forest/plant_a_mesh.res"
 }
 }
 }

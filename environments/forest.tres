@@ -1,0 +1,10 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dya4i06kltfbw"]
+
+[ext_resource type="Sky" uid="uid://bm7stba0tnawe" path="res://environments/skies/forest_sky.tres" id="1_ucmva"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_ucmva")
+fog_enabled = true
+fog_light_color = Color(0.104468, 0.000151756, 0.265093, 1)
+fog_sky_affect = 0.0

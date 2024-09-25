@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bguk4vbk6340g"]
 
-[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_mnsr1"]
-[ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://assets/environments/sky_world.tres" id="2_4j1gq"]
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_mnsr1"]
+[ext_resource type="Environment" uid="uid://b68yg07sceqk6" path="res://environments/sky_world.tres" id="2_4j1gq"]
 [ext_resource type="PackedScene" uid="uid://b0dl55ei83bc6" path="res://prefabs/world_sky/sky_hub.tscn" id="3_y4t5u"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="4_7diav"]
 [ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/portal_default.tscn" id="5_bhw6p"]
 [ext_resource type="PackedScene" uid="uid://b36me7hjod7sp" path="res://prefabs/portals/portal_90.tscn" id="6_hpmoj"]
 [ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://prefabs/world_sky/sky_bridge.tscn" id="7_ese3d"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="8_gvgt2"]
-[ext_resource type="Environment" uid="uid://fy48f0jdrdej" path="res://assets/environments/sky_tower.tres" id="9_pmu5m"]
+[ext_resource type="Environment" uid="uid://fy48f0jdrdej" path="res://environments/sky_tower.tres" id="9_pmu5m"]
 [ext_resource type="PackedScene" uid="uid://cnhf42p10uywl" path="res://prefabs/world_sky/sky_stairs.tscn" id="10_tb3fs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7qcl"]
