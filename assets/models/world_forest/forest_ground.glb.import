@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/forest_ground.tres"
+"use_external/path": "res://materials/forest_ground.tres"
 }
 },
 "meshes": {

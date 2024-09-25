@@ -32,6 +32,12 @@ animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/forest_plant.tres"
+}
+},
 "meshes": {
 "plant_a_Plant_a": {
 "generate/lightmap_uv": 0,
