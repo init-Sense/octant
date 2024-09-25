@@ -49,6 +49,10 @@ const SLIPPERY_DECELERATION: float = 1.2
 const SLIPPERY_SPEED_LIMIT: float = 10.0
 #endregion
 
+var is_transitioning_portal: bool = false
+var portal_transition_timer: float = 0.0
+const PORTAL_TRANSITION_DURATION: float = 0.1 
+
 
 #region VARIABLES
 var velocity_vector: Vector3 = Vector3.ZERO
@@ -75,51 +79,70 @@ var slippery_momentum: Vector3 = Vector3.ZERO
 @onready var jump: Jump = %Jump
 #endregion
 
-
 #region LIFECYCLE
 func _ready() -> void:
 	pass
 
 
 func _physics_process(delta: float) -> void:
-	update_input_direction()
-	update_velocity(delta)
-	update_walk_timer(delta)
+	if is_transitioning_portal:
+		handle_portal_transition(delta)
+	else:
+		update_input_direction()
+		update_velocity(delta)
+		update_walk_timer(delta)
+	
 	apply_movement(delta)
 #endregion
 
 
 #region MOVEMENT
 func apply_movement(delta: float) -> void:
-	if not is_zero_g and player.is_on_floor():
-		climb._last_frame_was_on_floor = Engine.get_physics_frames()
-
-	if is_zero_g:
+	if is_transitioning_portal:
+		# During portal transition, use the velocity set by handle_portal_transition
+		player.move_and_slide()
+	elif is_zero_g:
 		update_zero_g_momentum(delta)
 		player.velocity = zero_g_momentum
+		player.move_and_slide()
 	elif slippery:
 		update_slippery_momentum(delta)
 		player.velocity = slippery_momentum
+		player.move_and_slide()
 	else:
 		player.velocity = velocity_vector
-
-	if not is_zero_g:
 		if not climb._snap_up_stairs_check(delta):
 			player.move_and_slide()
 			climb._snap_down_the_stairs_check()
-	else:
-		player.move_and_slide()
 
 	reset_vertical_velocity()
 
+func start_portal_transition(new_transform: Transform3D, new_velocity: Vector3) -> void:
+	is_transitioning_portal = true
+	portal_transition_timer = 0.0
+	player.global_transform = new_transform
+	player.velocity = new_velocity
+	velocity_vector = new_velocity
+	if is_zero_g:
+		zero_g_momentum = new_velocity
+	elif slippery:
+		slippery_momentum = new_velocity
+
+
+func handle_portal_transition(delta: float) -> void:
+	portal_transition_timer += delta
+	if portal_transition_timer >= PORTAL_TRANSITION_DURATION:
+		is_transitioning_portal = false
+		portal_transition_timer = 0.0
+	# During transition, maintain the velocity set by start_portal_transition
+
 
 func reset_vertical_velocity() -> void:
-	if player.is_on_floor():
+	if player.is_on_floor() and not is_transitioning_portal:
 		if slippery:
 			slippery_momentum.y = -0.1
 		else:
 			velocity_vector.y = -0.1
-
 
 func update_velocity(delta: float) -> void:
 	var speed_modifier: float = calculate_tilt_speed_modifier()

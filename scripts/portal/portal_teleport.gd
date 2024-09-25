@@ -30,4 +30,13 @@ func on_area_entered(area: Area3D):
 		if destination_boundaries_node and destination_boundaries_node.has_method("on_portal_hit"):
 			destination_boundaries_node.on_portal_hit()
 		
-		root.global_transform = parent_portal.real_to_exit_transform(root.global_transform)
+		var new_transform = parent_portal.real_to_exit_transform(root.global_transform)
+		var new_velocity = parent_portal.real_to_exit_direction(root.velocity)
+		
+		var movement = root.get_node("Modules/Movement")
+		if movement and movement.has_method("start_portal_transition"):
+			movement.start_portal_transition(new_transform, new_velocity)
+		else:
+			root.global_transform = new_transform
+			if root is Player:
+				root.velocity = new_velocity
