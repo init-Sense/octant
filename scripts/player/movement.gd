@@ -43,6 +43,7 @@ const MIN_SPEED_FACTOR: float = 0.5
 const ZERO_G_ACCELERATION: float = 15.0
 const ZERO_G_DECELERATION: float = 5.0
 const ZERO_G_SPEED_LIMIT: float = 12.0
+const ZERO_G_BOUNCE_DAMPENING: float = 0.9
 
 const SLIPPERY_ACCELERATION: float = 15.0
 const SLIPPERY_DECELERATION: float = 1.2
@@ -101,9 +102,20 @@ func apply_movement(delta: float) -> void:
 	if is_transitioning_portal:
 		player.move_and_slide()
 	elif is_zero_g:
+		var collision = player.move_and_collide(zero_g_momentum * delta)
+		if collision:
+			var reflection = zero_g_momentum.bounce(collision.get_normal())
+			
+			var random_factor = Vector3(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
+						
+			var original_speed = zero_g_momentum.length()
+			zero_g_momentum = (reflection.normalized() + random_factor).normalized() * (original_speed * ZERO_G_BOUNCE_DAMPENING)
+			
+			zero_g_momentum += collision.get_normal() * 0.1
 		update_zero_g_momentum(delta)
 		player.velocity = zero_g_momentum
 		player.move_and_slide()
+
 	elif slippery:
 		update_slippery_momentum(delta)
 		player.velocity = slippery_momentum
