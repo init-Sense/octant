@@ -7,7 +7,7 @@ class_name EnvironmentArea
 @export var has_vignette: bool = false
 @export var has_directional_light: bool = true
 
-@export var gravity_modifier: float = 0.0
+@export var gravity_override: float = 0.0
 @export var player_path: NodePath
 
 @export var world_environment_node: NodePath
@@ -67,8 +67,8 @@ func apply_gravity_and_slippery() -> void:
 			player_movement.gravity.set_gravity(0.0)
 		else:
 			var applied_gravity = Gravity.DEFAULT_GRAVITY
-			if gravity_modifier != 0.0:
-				applied_gravity = gravity_modifier
+			if gravity_override != 0.0:
+				applied_gravity = gravity_override
 			player_movement.gravity.set_gravity(applied_gravity)
 		
 		print("Applied environment: Zero-G =", is_zero_g, ", Slippery =", is_slippery, ", Gravity =", player_movement.gravity.current_gravity)

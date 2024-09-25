@@ -1,11 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfmoc3p6nmogg"]
+[gd_scene load_steps=8 format=3 uid="uid://cfmoc3p6nmogg"]
 
+[ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://scenes/player/player.tscn" id="1_cwdfg"]
+[ext_resource type="Environment" uid="uid://dya4i06kltfbw" path="res://assets/environments/forest.tres" id="1_nx20k"]
+[ext_resource type="PackedScene" uid="uid://bvovyd3vok26a" path="res://assets/models/world_forest/forest_ground.glb" id="1_t11ks"]
 [ext_resource type="PackedScene" uid="uid://b0fkgrgn7ysak" path="res://prefabs/world_forest/root_a.tscn" id="1_v4uwa"]
 [ext_resource type="PackedScene" uid="uid://bgha62tjn7p3e" path="res://prefabs/world_forest/root_b.tscn" id="2_7lh1m"]
 [ext_resource type="PackedScene" uid="uid://b48vskui1txdg" path="res://prefabs/world_forest/root_c.tscn" id="3_k7pot"]
 [ext_resource type="PackedScene" uid="uid://cop8ri8q0c6ng" path="res://assets/models/world_forest/tree_trunk.glb" id="4_8xkvp"]
 
 [node name="WorldForest" type="Node3D"]
+
+[node name="ForestEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_nx20k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70188, 0.654936, 0.280043, -0.712296, 0.645359, 0.275948, 0, -0.393156, 0.919472, 0, 27, 0)
+light_energy = 4.0
+
+[node name="Player" parent="." instance=ExtResource("1_cwdfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5674, 34.7461)
+
+[node name="forest_ground" parent="." instance=ExtResource("1_t11ks")]
+transform = Transform3D(5.65297, 0, 0, 0, 5.65297, 0, 0, 0, 5.65297, 0, 8.86373, 0)
 
 [node name="tree_trunk" parent="." instance=ExtResource("4_8xkvp")]
 metadata/_edit_lock_ = true
