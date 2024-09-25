@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0fkgrgn7ysak"]
+
+[ext_resource type="PackedScene" uid="uid://dn2fy82qonebu" path="res://assets/models/world_forest/branch_a.glb" id="1_6u58e"]
+[ext_resource type="PackedScene" uid="uid://txcnyis1d2ka" path="res://assets/models/world_forest/branch_b.glb" id="2_af0sb"]
+[ext_resource type="PackedScene" uid="uid://bd26c2x6nynp1" path="res://assets/models/world_forest/branch_c.glb" id="3_2y8m5"]
+
+[node name="Root_A" type="Node3D"]
+
+[node name="branch_a_1" parent="." instance=ExtResource("1_6u58e")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="branch_a_2" parent="." instance=ExtResource("1_6u58e")]
+transform = Transform3D(0.86424, -0.214201, -0.455201, -0.450392, -0.732561, -0.510393, -0.224135, 0.646121, -0.729583, -0.420557, 0.00185251, -0.108602)
+
+[node name="branch_b" parent="." instance=ExtResource("2_af0sb")]
+transform = Transform3D(0.774812, 0, 0.632192, 0.222349, 0.936109, -0.27251, -0.5918, 0.351711, 0.725308, -1.77587, 0.00185251, -0.408541)
+
+[node name="branch_c" parent="." instance=ExtResource("3_2y8m5")]
+transform = Transform3D(0.877715, 0.0964922, 0.469366, 0, -0.979516, 0.201369, 0.479182, -0.176744, -0.859736, -0.880294, 0.00185251, -0.289661)
