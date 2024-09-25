@@ -1,6 +1,0 @@
-[gd_resource type="Sky" load_steps=2 format=3 uid="uid://byqqr5pd7x34n"]
-
-[ext_resource type="Material" uid="uid://dqspbn5ip7fot" path="res://assets/environments/skies/frozen_surface_sky_material.tres" id="1_uk8rx"]
-
-[resource]
-sky_material = ExtResource("1_uk8rx")

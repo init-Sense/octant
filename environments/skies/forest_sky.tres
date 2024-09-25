@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dya4i06kltfbw"]
+[gd_resource type="Sky" load_steps=2 format=3 uid="uid://bm7stba0tnawe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7taq"]
 sky_top_color = Color(0.304142, 0.000621464, 0.799923, 1)
@@ -9,11 +9,5 @@ ground_horizon_color = Color(0.145098, 0, 0.345098, 1)
 sun_angle_max = 40.0
 sun_curve = 0.0375
 
-[sub_resource type="Sky" id="Sky_3ehlk"]
-sky_material = SubResource("ProceduralSkyMaterial_p7taq")
-
 [resource]
-background_mode = 2
-sky = SubResource("Sky_3ehlk")
-fog_enabled = true
-fog_light_color = Color(0.104468, 0.000151756, 0.265093, 1)
+sky_material = SubResource("ProceduralSkyMaterial_p7taq")

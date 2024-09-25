@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cop8ri8q0c6ng"
-path="res://.godot/imported/tree_trunk.glb-a7630027ea271d100ac1ce5fb1fc6cd4.scn"
+uid="uid://dd7taa1y6rnde"
+path="res://.godot/imported/plant_b.glb-9f4da078463709a60951b5d77ba4cfdc.scn"
 
 [deps]
 
-source_file="res://assets/models/world_forest/tree_trunk.glb"
-dest_files=["res://.godot/imported/tree_trunk.glb-a7630027ea271d100ac1ce5fb1fc6cd4.scn"]
+source_file="res://assets/models/world_forest/plant_b.glb"
+dest_files=["res://.godot/imported/plant_b.glb-9f4da078463709a60951b5d77ba4cfdc.scn"]
 
 [params]
 
@@ -31,6 +31,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"plant_b_Plant_b": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/world_forest/plant_b_mesh.res"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
