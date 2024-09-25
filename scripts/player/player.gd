@@ -85,10 +85,6 @@ var print_previous_state: bool = false
 func _ready():
 	#print_tree_pretty()
 	pass
-
-
-func _process(_delta):
-	rotation.y = camera.rotation.y
 #endregion
 
 

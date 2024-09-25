@@ -63,15 +63,19 @@ const FOV_LAND_SPEED: float = 6.0
 #region LIFECYCLE
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	target_rotation = rotation
 	fov = default_fov
+	
+	target_rotation.y = player.rotation.y
+	target_rotation.x = player.rotation.x
+	rotation_x = player.rotation.x
+	
 	jump.jumped.connect(on_player_jumped)
 	jump.landed.connect(on_player_landed)
 
 
 func _process(delta: float):
-	rotation.y = lerp_angle(rotation.y, target_rotation.y, smoothness)
-	rotation.x = lerp(rotation.x, target_rotation.x, smoothness)
+	rotation.y = target_rotation.y
+	rotation.x = target_rotation.x
 	update_fov(delta)
 #endregion
 
