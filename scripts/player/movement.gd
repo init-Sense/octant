@@ -47,11 +47,9 @@ const ZERO_G_SPEED_LIMIT: float = 12.0
 const SLIPPERY_ACCELERATION: float = 15.0
 const SLIPPERY_DECELERATION: float = 1.2
 const SLIPPERY_SPEED_LIMIT: float = 10.0
-#endregion
 
-var is_transitioning_portal: bool = false
-var portal_transition_timer: float = 0.0
 const PORTAL_TRANSITION_DURATION: float = 0.1 
+#endregion
 
 
 #region VARIABLES
@@ -67,6 +65,8 @@ var is_zero_g: bool = false
 var zero_g_momentum: Vector3 = Vector3.ZERO
 var slippery: bool = false
 var slippery_momentum: Vector3 = Vector3.ZERO
+var is_transitioning_portal: bool = false
+var portal_transition_timer: float = 0.0
 #endregion
 
 
@@ -99,7 +99,6 @@ func _physics_process(delta: float) -> void:
 #region MOVEMENT
 func apply_movement(delta: float) -> void:
 	if is_transitioning_portal:
-		# During portal transition, use the velocity set by handle_portal_transition
 		player.move_and_slide()
 	elif is_zero_g:
 		update_zero_g_momentum(delta)
@@ -116,6 +115,7 @@ func apply_movement(delta: float) -> void:
 			climb._snap_down_the_stairs_check()
 
 	reset_vertical_velocity()
+
 
 func start_portal_transition(new_transform: Transform3D, new_velocity: Vector3) -> void:
 	is_transitioning_portal = true
@@ -134,7 +134,6 @@ func handle_portal_transition(delta: float) -> void:
 	if portal_transition_timer >= PORTAL_TRANSITION_DURATION:
 		is_transitioning_portal = false
 		portal_transition_timer = 0.0
-	# During transition, maintain the velocity set by start_portal_transition
 
 
 func reset_vertical_velocity() -> void:
