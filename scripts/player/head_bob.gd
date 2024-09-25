@@ -24,6 +24,7 @@
 extends Node
 class_name HeadBob
 
+
 #region NODES
 @onready var player: Player = $"../.."
 @onready var camera: Camera = %Camera
@@ -53,9 +54,11 @@ const IDLE_AMPLITUDE: float = 0.02
 const IDLE_FREQUENCY: float = 0.4
 const IDLE_NOISE_STRENGTH: float = 0.15
 
-const FALL_BOB_MAX_AMPLITUDE: float = 0.02
-const FALL_BOB_FREQUENCY: float = 5.0
+const FALL_BOB_MAX_AMPLITUDE: float = 0.3
+const FALL_BOB_FREQUENCY: float = 15.0
 const FALL_BOB_VELOCITY_THRESHOLD: float = 40.0
+const FALL_DURATION_THRESHOLD: float = 2.0
+const MAX_FALL_SHAKE_FACTOR: float = 10.0 
 #endregion
 
 
@@ -82,6 +85,7 @@ var idle_offset: Vector3 = Vector3.ZERO
 # Fall Bob Variables
 var fall_bob_time: float = 0.0
 var fall_bob_offset: Vector3 = Vector3.ZERO
+var fall_duration: float = 0.0
 
 # Noise Generator
 var noise: FastNoiseLite = FastNoiseLite.new()
@@ -97,6 +101,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if player.is_on_floor():
+		fall_duration = 0.0
 		if player.has_direction() and not player.is_jumping():
 			handle_head_bob(delta)
 		elif is_bobbing:
@@ -104,6 +109,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			apply_idle_movement(delta)
 	else:
+		fall_duration += delta
 		handle_fall_bob(delta)
 
 	handle_landing(delta)
@@ -203,22 +209,27 @@ func apply_idle_movement(delta: float) -> void:
 #region FALL BOB METHODS
 func handle_fall_bob(delta: float) -> void:
 	var fall_speed = abs(movement.velocity_vector.y)
-	if fall_speed > FALL_BOB_VELOCITY_THRESHOLD:
+	if fall_speed > abs(gravity.TERMINAL_VELOCITY):
 		apply_fall_bob(delta, fall_speed)
 	else:
 		smooth_reset_fall_bob(delta)
 
-
 func apply_fall_bob(delta: float, fall_speed: float) -> void:
 	fall_bob_time += FALL_BOB_FREQUENCY * delta
-	var speed_factor = clamp((fall_speed - FALL_BOB_VELOCITY_THRESHOLD) / (gravity.TERMINAL_VELOCITY - FALL_BOB_VELOCITY_THRESHOLD), 0, 1)
-	var amplitude = FALL_BOB_MAX_AMPLITUDE * speed_factor
+	var speed_factor = clamp((fall_speed - abs(gravity.TERMINAL_VELOCITY)) / (gravity.TERMINAL_VELOCITY - abs(gravity.TERMINAL_VELOCITY)), 0, 1)
+	
+	var shake_factor = 1.0
+	if fall_duration > FALL_DURATION_THRESHOLD:
+		shake_factor = min(1.0 + (fall_duration - FALL_DURATION_THRESHOLD), MAX_FALL_SHAKE_FACTOR)
+	
+	var amplitude = FALL_BOB_MAX_AMPLITUDE * speed_factor * shake_factor
 
 	var x_offset = cos(fall_bob_time * 0.7) * amplitude
 	var y_offset = sin(fall_bob_time) * amplitude
 
-	x_offset += noise.get_noise_1d(fall_bob_time * 15) * NOISE_STRENGTH * speed_factor
-	y_offset += noise.get_noise_1d(fall_bob_time * 15 + 100) * NOISE_STRENGTH * speed_factor
+	var noise_strength = NOISE_STRENGTH * shake_factor
+	x_offset += noise.get_noise_1d(fall_bob_time * 15) * noise_strength * speed_factor
+	y_offset += noise.get_noise_1d(fall_bob_time * 15 + 100) * noise_strength * speed_factor
 
 	fall_bob_offset = Vector3(x_offset, y_offset, 0)
 

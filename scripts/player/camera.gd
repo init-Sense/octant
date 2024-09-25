@@ -21,7 +21,6 @@ class_name Camera
 @export var mouse_sensitivity_x: float = 0.1
 @export var mouse_sensitivity_y: float = 0.002
 @export var invert_y: bool = false
-@export var smoothness: float = 0.1
 @export var default_fov: float = 90.0
 
 var rotation_x: float = 0
@@ -30,10 +29,12 @@ var current_fov_change: float = 0.0
 var last_movement_state: bool = false
 var jump_fov_progress: float = 0.0
 var is_jumping: bool = false
+var fall_fov_offset: float = 0.0
 #endregion
 
 
 #region CONSTANTS
+const CAMERA_SMOOTHNESS = 10.0
 const FOV_DEFAULT: float = 70.0
 const FOV_RUNNING: float = 78.0
 const FOV_WALKING: float = 73.0
@@ -50,6 +51,9 @@ const FOV_CHANGE_SPEED_SLIPPERY: float = 2.0
 
 const FOV_JUMP_SPEED: float = 2.0
 const FOV_LAND_SPEED: float = 6.0
+
+const FOV_FALL_MAX_OFFSET: float = 15.0
+const FOV_FALL_CHANGE_SPEED: float = 2.0 
 #endregion
 
 
@@ -57,6 +61,7 @@ const FOV_LAND_SPEED: float = 6.0
 @onready var movement: Movement = %Movement
 @onready var jump: Jump = %Jump
 @onready var player: Player = $"../../.."
+@onready var gravity: Gravity = %Gravity
 #endregion
 
 
@@ -74,8 +79,8 @@ func _ready():
 
 
 func _process(delta: float):
-	rotation.y = target_rotation.y
-	rotation.x = target_rotation.x
+	rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMERA_SMOOTHNESS)
+	rotation.x = lerp(rotation.x, target_rotation.x, delta * CAMERA_SMOOTHNESS)
 	update_fov(delta)
 #endregion
 
@@ -142,6 +147,7 @@ func update_fov(delta: float) -> void:
 		target_fov = FOV_SLIPPERY if is_moving else FOV_DEFAULT
 		fov_change_speed = FOV_CHANGE_SPEED_SLIPPERY
 	elif player.is_on_floor():
+		fall_fov_offset = 0.0
 		if player.is_running():
 			target_fov = FOV_RUNNING
 			fov_change_speed = FOV_CHANGE_SPEED_RUNNING
@@ -161,6 +167,11 @@ func update_fov(delta: float) -> void:
 		target_fov = FOV_DEFAULT
 		fov_change_speed = FOV_CHANGE_SPEED_JUMPING
 
+		var fall_speed = abs(movement.velocity_vector.y)
+		var fall_progress = clamp(fall_speed / abs(gravity.TERMINAL_VELOCITY), 0.0, 1.0)
+		var target_fall_fov_offset = FOV_FALL_MAX_OFFSET * fall_progress
+		fall_fov_offset = lerpf(fall_fov_offset, target_fall_fov_offset, FOV_FALL_CHANGE_SPEED * delta)
+
 	if is_jumping:
 		jump_fov_progress = min(jump_fov_progress + delta * FOV_JUMP_SPEED, 1.0)
 		var jump_fov_offset = FOV_JUMP_OFFSET * sin(jump_fov_progress * PI)
@@ -169,6 +180,8 @@ func update_fov(delta: float) -> void:
 		jump_fov_progress = max(jump_fov_progress - delta * FOV_LAND_SPEED, 0.0)
 		var jump_fov_offset = FOV_JUMP_OFFSET * sin(jump_fov_progress * PI)
 		target_fov += jump_fov_offset
+
+	target_fov += fall_fov_offset
 
 	fov = lerpf(fov, target_fov, fov_change_speed * delta)
 #endregion
