@@ -19,11 +19,12 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scripts/scenes/scene_manager.gd"
 SoundManager="*res://scenes/audio/sound_manager.tscn"
+MusicManager="*res://scenes/audio/music_manager.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 
 [file_customization]
 

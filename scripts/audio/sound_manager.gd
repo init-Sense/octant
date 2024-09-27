@@ -14,6 +14,7 @@ var _groups: Array[SoundGroup] = []
 var audio_players: Dictionary = {}
 #endregion
 
+
 #region LIFECYCLE
 func _ready():
 	_initialize_audio_players()
@@ -65,7 +66,6 @@ func play_from(group_key: String, sound_key: String, from: float, to: float):
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
 		var player = audio_players[group_key][sound_key]
 		player.play(from)
-		# Create a timer to stop the sound at the 'to' point
 		var timer: SceneTreeTimer = get_tree().create_timer(to - from)
 		timer.connect("timeout", Callable(self, "_on_play_sound_from_timeout").bind(player))
 		_debug_print("Sound played successfully from " + str(from) + " to " + str(to))
@@ -111,6 +111,7 @@ func change_volume(group_key: String, sound_key: String, volume: float):
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 #endregion
+
 
 #region UTILS
 func is_playing(group_key: String, sound_key: String) -> bool:

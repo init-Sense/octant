@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvut1ptye6cp"]
+
+[ext_resource type="Script" path="res://scripts/audio/music_manager.gd" id="1_x2i84"]
+[ext_resource type="Script" path="res://scripts/audio/music_group.gd" id="2_rhio3"]
+[ext_resource type="Script" path="res://scripts/audio/music.gd" id="3_fk5x3"]
+[ext_resource type="AudioStream" uid="uid://bevgjir046anp" path="res://assets/audio/music/Theme4.mp3" id="4_bgcis"]
+
+[sub_resource type="Resource" id="Resource_qbdl4"]
+script = ExtResource("3_fk5x3")
+key = "area_0"
+stems = Array[AudioStream]([ExtResource("4_bgcis")])
+
+[sub_resource type="Resource" id="Resource_yjrs2"]
+script = ExtResource("2_rhio3")
+key = "world_sky"
+bus = "Music"
+sounds = Array[ExtResource("3_fk5x3")]([SubResource("Resource_qbdl4")])
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_x2i84")
+groups = Array[ExtResource("2_rhio3")]([SubResource("Resource_yjrs2")])

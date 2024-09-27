@@ -84,6 +84,7 @@ var print_previous_state: bool = false
 #region LIFECYCLEa
 func _ready():
 	#print_tree_pretty()
+	MusicManager.play_varied("world_sky", "area_0", -13.0)
 	pass
 #endregion
 
