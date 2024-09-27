@@ -198,6 +198,7 @@ func handle_landing() -> void:
 		jump_state.current_charge = 0.0
 		freefall_time = 0.0
 		landed.emit()
+		AudioManager.play("player", "landing")
 	jump_state.can_coyote_jump = true
 	jump_state.coyote_timer = 0.0
 

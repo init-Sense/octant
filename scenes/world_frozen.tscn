@@ -46,7 +46,6 @@ environment = ExtResource("1_8s4oo")
 [node name="Surface" type="Area3D" parent="."]
 collision_mask = 4
 script = ExtResource("7_nk82h")
-gravity_modifier = 16.0
 player_path = NodePath("../Player")
 world_environment_node = NodePath("../WorldEnvironment")
 target_environment = ExtResource("1_8s4oo")
@@ -152,7 +151,6 @@ script = ExtResource("7_nk82h")
 is_slippery = true
 has_vignette = true
 has_directional_light = false
-gravity_modifier = 8.0
 player_path = NodePath("../Player")
 world_environment_node = NodePath("../WorldEnvironment")
 target_environment = ExtResource("2_yipt2")

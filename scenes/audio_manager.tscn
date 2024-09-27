@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://vsb6rrrwob7"]
+
+[ext_resource type="Script" path="res://scripts/audio/audio_manager.gd" id="1_j87tm"]
+[ext_resource type="Script" path="res://scripts/audio/audio_manager_group.gd" id="2_aygpc"]
+[ext_resource type="Script" path="res://scripts/audio/audio_manager_sound.gd" id="3_h8p15"]
+[ext_resource type="AudioStream" uid="uid://duc5dklciipj8" path="res://assets/sounds/player/landing.wav" id="4_jrnw3"]
+
+[sub_resource type="Resource" id="Resource_pfu5b"]
+script = ExtResource("3_h8p15")
+key = "landing"
+stream = ExtResource("4_jrnw3")
+
+[sub_resource type="Resource" id="Resource_iltew"]
+script = ExtResource("2_aygpc")
+key = "player"
+bus = "FX"
+sounds = Array[ExtResource("3_h8p15")]([SubResource("Resource_pfu5b")])
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_j87tm")
+groups = Array[ExtResource("2_aygpc")]([SubResource("Resource_iltew")])
