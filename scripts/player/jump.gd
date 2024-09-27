@@ -194,6 +194,8 @@ func ground_check(_delta: float) -> void:
 
 func handle_landing() -> void:
 	if movement.velocity_vector.y <= 0:
+		print("Freefall time before landing: ", freefall_time)
+
 		player.set_no_action()
 		jump_state.momentum = Vector3.ZERO
 		jump_state.horizontal_momentum = Vector2.ZERO
@@ -203,19 +205,12 @@ func handle_landing() -> void:
 
 		SoundManager.stop("player", "falling")
 
+		var volume: float = lerp(-30.0, -10.0, clamp(freefall_time / 2.0, 0.0, 1.0))
+
 		if player.is_jumping():
-			SoundManager.play_from_varied("player", "landing", -15.0, 1.0, 2, 2.5)
+			SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 		else:
-			SoundManager.play_from_varied("player", "landing", -30.0, 1.0, 1.5, 2.0)
-
-		freefall_time = 0.0
-
-	jump_state.can_coyote_jump = true
-	jump_state.coyote_timer = 0.0
-
-
-
-
+			SoundManager.play_from_varied("player", "landing", volume, 1.0, 1.5, 2.0)
 
 func update_coyote_time(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and jump_state.can_coyote_jump:
@@ -229,12 +224,20 @@ func update_coyote_time(delta: float) -> void:
 func handle_freefall(delta: float) -> void:
 	if not player.is_on_floor() and not climb._snapped_to_stairs_last_frame:
 		freefall_time += delta
+		print("Freefall time during freefall: ", freefall_time)
+
 		if freefall_time > 2.0 and freefall_time < 2.1:
 			SoundManager.play("player", "falling")
 		if freefall_time > FREEFALL_INERTIA_REDUCTION_START:
 			reduce_freefall_inertia(delta)
 	else:
+		if was_airborne:
+			handle_landing()
+		was_airborne = false
 		freefall_time = 0.0
+
+
+
 
 
 func reduce_freefall_inertia(delta: float) -> void:
