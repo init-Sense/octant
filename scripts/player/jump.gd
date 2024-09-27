@@ -198,7 +198,8 @@ func handle_landing() -> void:
 		jump_state.current_charge = 0.0
 		freefall_time = 0.0
 		landed.emit()
-		AudioManager.play("player", "landing")
+		SoundManager.stop("player", "falling")
+		SoundManager.play_from_varied("player", "landing",-15.0, 1.0, 2, 2.5)
 	jump_state.can_coyote_jump = true
 	jump_state.coyote_timer = 0.0
 
@@ -215,6 +216,8 @@ func update_coyote_time(delta: float) -> void:
 func handle_freefall(delta: float) -> void:
 	if not player.is_on_floor() and not climb._snapped_to_stairs_last_frame:
 		freefall_time += delta
+		if freefall_time > 2.0 and freefall_time < 2.1:
+			SoundManager.play("player", "falling")
 		if freefall_time > FREEFALL_INERTIA_REDUCTION_START:
 			reduce_freefall_inertia(delta)
 	else:
