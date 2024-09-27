@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=19 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://n5iw7ewiffla" path="res://assets/models/columns/column_base.glb" id="11_4nnem"]
 [ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/world_temple/bridge.glb" id="12_3fqo0"]
 [ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
+[ext_resource type="PackedScene" uid="uid://cyh2c8tucd5h4" path="res://assets/models/world_temple/bell_tower.glb" id="13_a523m"]
 [ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/world_temple/bridge_junction.glb" id="13_ai348"]
+[ext_resource type="PackedScene" uid="uid://bxei2ffwxya84" path="res://assets/models/world_temple/bell.glb" id="14_p8ert"]
+[ext_resource type="PackedScene" uid="uid://hnf1rjnklowj" path="res://assets/models/world_temple/bell_tongue.glb" id="15_6ib53"]
 
 [sub_resource type="Animation" id="Animation_2fn5g"]
 length = 0.001
@@ -168,15 +171,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
 [node name="Stairs_14" parent="Staircase" instance=ExtResource("4_8btde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 
-[node name="Stairs_15" parent="Staircase" instance=ExtResource("4_8btde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 88, 0)
-
-[node name="Stairs_16" parent="Staircase" instance=ExtResource("4_8btde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96, 0)
-
-[node name="Stairs_17" parent="Staircase" instance=ExtResource("4_8btde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104, 0)
-
 [node name="Polygon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7, 6.8, 0)
 
@@ -199,34 +193,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 0)
 light_color = Color(1, 0.460201, 0.591338, 1)
 light_energy = 2.0
 
-[node name="Structure" type="Node3D" parent="."]
-
-[node name="hub_floor" parent="Structure" instance=ExtResource("9_n4b31")]
+[node name="temple_floor" parent="." instance=ExtResource("9_n4b31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
-[node name="Walls" type="Node3D" parent="Structure"]
+[node name="Walls" type="Node3D" parent="."]
 
-[node name="TempleWallOpening" parent="Structure/Walls" instance=ExtResource("7_80ljr")]
+[node name="TempleWallOpening" parent="Walls" instance=ExtResource("7_80ljr")]
 
-[node name="TempleWall_2" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_2" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 
-[node name="TempleWall_3" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_3" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="TempleWall_4" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_4" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="TempleWall_5" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_5" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="TempleWall_6" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_6" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="TempleWall_7" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_7" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="TempleWall_8" parent="Structure/Walls" instance=ExtResource("10_abp4n")]
+[node name="TempleWall_8" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="Bridges" type="Node3D" parent="."]
@@ -269,3 +261,15 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="WombOpening" parent="." instance=ExtResource("12_dt2yr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 92.9, -47.2)
+
+[node name="Bell" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 106.5, 0)
+
+[node name="temple_floor_bell" parent="Bell" instance=ExtResource("9_n4b31")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -16.1, 0)
+
+[node name="bell_tower" parent="Bell" instance=ExtResource("13_a523m")]
+
+[node name="bell" parent="Bell" instance=ExtResource("14_p8ert")]
+
+[node name="bell_tongue" parent="Bell" instance=ExtResource("15_6ib53")]
