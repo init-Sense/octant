@@ -66,6 +66,7 @@ var jump_state: Dictionary = {
 	charge_offset = 0.0
 }
 
+var was_airborne: bool = false
 var freefall_time: float = 0.0
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 #endregion
@@ -183,25 +184,37 @@ func apply_momentum(delta: float) -> void:
 #region GROUND AND COYOTE TIME
 func ground_check(_delta: float) -> void:
 	if player.is_on_floor() or climb._snapped_to_stairs_last_frame:
-		handle_landing()
-	elif player.is_charging_jump():
-		if not movement.slippery:
-			cancel_jump()
+		if was_airborne:
+			handle_landing()
+		was_airborne = false
+	else:
+		was_airborne = true
+
 
 
 func handle_landing() -> void:
-	if (player.is_jumping() or not player.is_on_floor()) and movement.velocity_vector.y <= 0:
+	if movement.velocity_vector.y <= 0:
 		player.set_no_action()
 		jump_state.momentum = Vector3.ZERO
 		jump_state.horizontal_momentum = Vector2.ZERO
 		jump_state.initial_speed = 0.0
 		jump_state.current_charge = 0.0
-		freefall_time = 0.0
 		landed.emit()
+
 		SoundManager.stop("player", "falling")
-		SoundManager.play_from_varied("player", "landing",-15.0, 1.0, 2, 2.5)
+
+		if player.is_jumping():
+			SoundManager.play_from_varied("player", "landing", -15.0, 1.0, 2, 2.5)
+		else:
+			SoundManager.play_from_varied("player", "landing", -30.0, 1.0, 1.5, 2.0)
+
+		freefall_time = 0.0
+
 	jump_state.can_coyote_jump = true
 	jump_state.coyote_timer = 0.0
+
+
+
 
 
 func update_coyote_time(delta: float) -> void:
