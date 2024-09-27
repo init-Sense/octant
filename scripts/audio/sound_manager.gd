@@ -3,8 +3,8 @@ extends Node
 #region INSPECTOR
 @export var debug_mode: bool = false
 
-var _groups: Array[AudioManagerGroup] = []
-@export var groups: Array[AudioManagerGroup]:
+var _groups: Array[SoundGroup] = []
+@export var groups: Array[SoundGroup]:
 	get:
 		return _groups
 	set(value):
@@ -19,21 +19,21 @@ func _ready():
 	_initialize_audio_players()
 
 func _initialize_audio_players():
-	_debug_print("Initializing AudioManager...")
+	_debug_print("Initializing SoundManager...")
 	audio_players.clear()
 	for group in _groups:
-		if group is AudioManagerGroup:
+		if group is SoundGroup:
 			_debug_print("Processing group: " + group.key)
 			audio_players[group.key] = {}
 			for sound in group.sounds:
-				if sound is AudioManagerSound:
+				if sound is Sound:
 					_debug_print("Processing sound: " + sound.key + " in group: " + group.key)
 					var player = AudioStreamPlayer.new()
 					player.stream = sound.stream
 					player.bus = group.bus
 					add_child(player)
 					audio_players[group.key][sound.key] = player
-	_debug_print("AudioManager initialization complete. Total groups: " + str(_groups.size()))
+	_debug_print("SoundManager initialization complete. Total groups: " + str(_groups.size()))
 	_debug_print("Final audio_players dictionary: " + str(audio_players))
 #endregion
 
@@ -67,7 +67,7 @@ func play_from(group_key: String, sound_key: String, from: float, to: float):
 		player.play(from)
 		# Create a timer to stop the sound at the 'to' point
 		var timer: SceneTreeTimer = get_tree().create_timer(to - from)
-		timer.connect("timeout", Callable(self, "_on_play_from_timeout").bind(player))
+		timer.connect("timeout", Callable(self, "_on_play_sound_from_timeout").bind(player))
 		_debug_print("Sound played successfully from " + str(from) + " to " + str(to))
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
@@ -80,14 +80,13 @@ func play_from_varied(group_key: String, sound_key: String, volume: float = 0.0,
 		player.pitch_scale = pitch
 		player.play(from)
 		if to > from:
-			# Create a timer to stop the sound at the 'to' point
 			var timer: SceneTreeTimer = get_tree().create_timer((to - from) / pitch)
 			timer.connect("timeout", Callable(self, "_on_play_from_timeout").bind(player))
 		_debug_print("Sound played successfully with volume " + str(volume) + " and pitch " + str(pitch) + " from " + str(from) + " to " + str(to))
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 
-func _on_play_from_timeout(player: AudioStreamPlayer):
+func _on_play_sound_from_timeout(player: AudioStreamPlayer):
 	player.stop()
 
 func stop(group_key: String, sound_key: String):
@@ -105,7 +104,7 @@ func change_bus_volume(bus_name: String, amount: float):
 	else:
 		print("Bus not found: " + bus_name)
 
-func change_sound_volume(group_key: String, sound_key: String, volume: float):
+func change_volume(group_key: String, sound_key: String, volume: float):
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
 		audio_players[group_key][sound_key].volume_db = volume
 		_debug_print("Changed volume of " + group_key + "/" + sound_key + " to " + str(volume) + " dB")
@@ -114,7 +113,7 @@ func change_sound_volume(group_key: String, sound_key: String, volume: float):
 #endregion
 
 #region UTILS
-func is_sound_playing(group_key: String, sound_key: String) -> bool:
+func is_playing(group_key: String, sound_key: String) -> bool:
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
 		return audio_players[group_key][sound_key].playing
 	else:

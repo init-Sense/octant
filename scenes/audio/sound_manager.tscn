@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://vsb6rrrwob7"]
+
+[ext_resource type="Script" path="res://scripts/audio/sound_manager.gd" id="1_j87tm"]
+[ext_resource type="Script" path="res://scripts/audio/sound_group.gd" id="2_ubet5"]
+[ext_resource type="Script" path="res://scripts/audio/sound.gd" id="3_cjpyl"]
+[ext_resource type="AudioStream" uid="uid://duc5dklciipj8" path="res://assets/sounds/player/landing.wav" id="4_yvy1f"]
+[ext_resource type="AudioStream" uid="uid://djusas5ip3u7k" path="res://assets/sounds/player/falling.mp3" id="5_pek0m"]
+
+[sub_resource type="Resource" id="Resource_cgo8j"]
+script = ExtResource("3_cjpyl")
+key = "landing"
+stream = ExtResource("4_yvy1f")
+
+[sub_resource type="Resource" id="Resource_ms5id"]
+script = ExtResource("3_cjpyl")
+key = "falling"
+stream = ExtResource("5_pek0m")
+
+[sub_resource type="Resource" id="Resource_crtfk"]
+script = ExtResource("2_ubet5")
+key = "player"
+bus = "FX"
+sounds = Array[ExtResource("3_cjpyl")]([SubResource("Resource_cgo8j"), SubResource("Resource_ms5id")])
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_j87tm")
+groups = Array[ExtResource("2_ubet5")]([SubResource("Resource_crtfk")])

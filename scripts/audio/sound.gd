@@ -1,5 +1,5 @@
 extends Resource
-class_name AudioManagerSound
+class_name Sound
 
 @export var key: String
 @export var stream: AudioStream
