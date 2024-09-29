@@ -50,6 +50,8 @@ const VERTICAL_JUMP_FACTOR: float = 0.1
 
 const FREEFALL_INERTIA_REDUCTION_START: float = 0.5
 const FREEFALL_INERTIA_REDUCTION_RATE: float = 0.5
+
+const FALLING_SOUND_THRESHOLD: float = 3.0
 #endregion
 
 
@@ -122,7 +124,6 @@ func handle_jump() -> void:
 	if jump_state.is_requested and ((player.is_on_floor() or climb._snapped_to_stairs_last_frame) or jump_state.can_coyote_jump or movement.slippery):
 		execute_jump()
 
-
 func execute_jump() -> void:
 	var charge_multiplier: float = 1.0 + (jump_state.current_charge / MAX_CHARGE_TIME) * (MAX_CHARGE_MULTIPLIER - 1.0)
 	var jump_velocity: float = SPEED * charge_multiplier
@@ -191,7 +192,6 @@ func ground_check(_delta: float) -> void:
 		was_airborne = true
 
 
-
 func handle_landing() -> void:
 	if movement.velocity_vector.y <= 0:
 		print("Freefall time before landing: ", freefall_time)
@@ -205,12 +205,14 @@ func handle_landing() -> void:
 
 		SoundManager.stop("player", "falling")
 
-		var volume: float = lerp(-30.0, -10.0, clamp(freefall_time / 2.0, 0.0, 1.0))
+		if freefall_time > FALLING_SOUND_THRESHOLD:
+			var volume: float = lerp(-30.0, -10.0, clamp(freefall_time / 2.0, 0.0, 1.0))
+			
+			if player.is_jumping():
+				SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
+			else:
+				SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 
-		if player.is_jumping():
-			SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
-		else:
-			SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 
 func update_coyote_time(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and jump_state.can_coyote_jump:
@@ -226,8 +228,9 @@ func handle_freefall(delta: float) -> void:
 		freefall_time += delta
 		print("Freefall time during freefall: ", freefall_time)
 
-		if freefall_time > 2.0 and freefall_time < 2.1:
+		if freefall_time > FALLING_SOUND_THRESHOLD and not SoundManager.is_playing("player", "falling"):
 			SoundManager.play("player", "falling")
+		
 		if freefall_time > FREEFALL_INERTIA_REDUCTION_START:
 			reduce_freefall_inertia(delta)
 	else:
@@ -235,9 +238,7 @@ func handle_freefall(delta: float) -> void:
 			handle_landing()
 		was_airborne = false
 		freefall_time = 0.0
-
-
-
+		SoundManager.stop("player", "falling")
 
 
 func reduce_freefall_inertia(delta: float) -> void:
