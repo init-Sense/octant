@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://br28m3haa2ylb"]
+
+[ext_resource type="PackedScene" uid="uid://c223iusl73ird" path="res://assets/models/world_forest/light_plant_trunk.glb" id="1_u2ow1"]
+[ext_resource type="PackedScene" uid="uid://cnx2fe1uwvo2q" path="res://assets/models/world_forest/light_plant_bulb.glb" id="2_a2pxt"]
+
+[node name="LightPlant" type="Node3D"]
+
+[node name="light_plant_trunk" parent="." instance=ExtResource("1_u2ow1")]
+
+[node name="light_plant_bulb" parent="." instance=ExtResource("2_a2pxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49349, 0.802192, 0)
