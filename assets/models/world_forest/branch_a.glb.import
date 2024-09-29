@@ -33,8 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/forest_tree.tres"
 }
 }
 }
