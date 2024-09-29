@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=18 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
@@ -9,12 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="9_n4b31"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="10_abp4n"]
 [ext_resource type="PackedScene" uid="uid://n5iw7ewiffla" path="res://assets/models/columns/column_base.glb" id="11_4nnem"]
-[ext_resource type="PackedScene" uid="uid://rd2b3bahicq5" path="res://assets/models/world_temple/bridge.glb" id="12_3fqo0"]
 [ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
 [ext_resource type="PackedScene" uid="uid://cyh2c8tucd5h4" path="res://assets/models/world_temple/bell_tower.glb" id="13_a523m"]
-[ext_resource type="PackedScene" uid="uid://bvsgv8d8s331y" path="res://assets/models/world_temple/bridge_junction.glb" id="13_ai348"]
 [ext_resource type="PackedScene" uid="uid://bxei2ffwxya84" path="res://assets/models/world_temple/bell.glb" id="14_p8ert"]
 [ext_resource type="PackedScene" uid="uid://hnf1rjnklowj" path="res://assets/models/world_temple/bell_tongue.glb" id="15_6ib53"]
+[ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://prefabs/temple/pool.tscn" id="16_gfw2c"]
 
 [sub_resource type="Animation" id="Animation_2fn5g"]
 length = 0.001
@@ -223,15 +222,6 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="Bridges" type="Node3D" parent="."]
 
-[node name="bridge_1" parent="Bridges" instance=ExtResource("12_3fqo0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.9, 26.8, 0)
-
-[node name="bridge_2" parent="Bridges" instance=ExtResource("12_3fqo0")]
-transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 25.3, 26.8, 0.8)
-
-[node name="bridge_junction_1" parent="Bridges" instance=ExtResource("13_ai348")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.2, 26.8, -5.68434e-14)
-
 [node name="ColumnBases_1" type="Node3D" parent="."]
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 1.1, 0)
 
@@ -273,3 +263,6 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -16.1, 0)
 [node name="bell" parent="Bell" instance=ExtResource("14_p8ert")]
 
 [node name="bell_tongue" parent="Bell" instance=ExtResource("15_6ib53")]
+
+[node name="Pool" parent="." instance=ExtResource("16_gfw2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6, 90.6, 0)

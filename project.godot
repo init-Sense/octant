@@ -23,8 +23,8 @@ MusicManager="*res://scenes/audio/music_manager.tscn"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [file_customization]
 

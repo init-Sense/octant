@@ -103,7 +103,7 @@ script = ExtResource("3_vw4xx")
 libraries = {
 "": SubResource("AnimationLibrary_5r3ah")
 }
-speed_scale = 0.1
+speed_scale = 0.8
 
 [node name="womb_interior_top" parent="ShellOpening" instance=ExtResource("2_m2pg3")]
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cskl5bbc4k05v"]
+[gd_scene load_steps=5 format=3 uid="uid://cskl5bbc4k05v"]
 
 [ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/world_temple/pool.glb" id="1_hrp2w"]
-[ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="2_1bdjo"]
 [ext_resource type="PackedScene" uid="uid://dnim2fcq145wp" path="res://assets/models/columns/column_pool.glb" id="3_1qwwn"]
 [ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://materials/pool_water.tres" id="4_xg8ap"]
 
@@ -20,6 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, -0.5, 0)
 mesh = SubResource("PlaneMesh_v53lh")
 
 [node name="Columns" type="Node3D" parent="."]
+visible = false
 
 [node name="column_pool_1" parent="Columns" instance=ExtResource("3_1qwwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 0, -3)
@@ -44,9 +44,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 7.4)
 
 [node name="column_pool_8" parent="Columns" instance=ExtResource("3_1qwwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 4.8)
-
-[node name="column_outer_1" parent="Columns" instance=ExtResource("2_1bdjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -3)
-
-[node name="column_outer_2" parent="Columns" instance=ExtResource("2_1bdjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 3)
