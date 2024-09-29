@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b48vskui1txdg"]
+[gd_scene load_steps=5 format=3 uid="uid://b48vskui1txdg"]
 
 [ext_resource type="PackedScene" uid="uid://bd26c2x6nynp1" path="res://assets/models/world_forest/branch_c.glb" id="1_ys12y"]
 [ext_resource type="PackedScene" uid="uid://dn2fy82qonebu" path="res://assets/models/world_forest/branch_a.glb" id="2_xxm14"]
 [ext_resource type="PackedScene" uid="uid://txcnyis1d2ka" path="res://assets/models/world_forest/branch_b.glb" id="3_ly2wv"]
+[ext_resource type="PackedScene" uid="uid://b2tmah7ir8mr" path="res://assets/models/world_forest/leaf.glb" id="4_igb2o"]
 
-[node name="Root_C" type="Node3D"]
+[node name="BranchBig_c" type="Node3D"]
 
 [node name="branch_c_1" parent="." instance=ExtResource("1_ys12y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -17,3 +18,71 @@ transform = Transform3D(0.902623, 0.199617, -0.381346, 0, -0.885961, -0.46376, -
 
 [node name="branch_b" parent="." instance=ExtResource("3_ly2wv")]
 transform = Transform3D(0.973367, 0, -0.229251, 0, 1, 0, 0.229251, 0, 0.973367, -0.553782, 0, 0.351035)
+
+[node name="Leaves" type="Node3D" parent="."]
+
+[node name="leaf_01" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0241015, 0.0177147, 0.0129097, -0.0192942, 0.0262504, 0, -0.0104022, -0.00764563, 0.0299114, -0.968158, 0.0541735, 0.138774)
+
+[node name="leaf_06" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0325232, 0.0244297, -0.000374142, 0.0244308, 0.0325245, 1.45519e-11, 0.000299148, -0.000224705, -0.0406764, -0.959492, -0.093341, 0.958702)
+
+[node name="leaf_12" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0223907, -0.00920457, 0.00935307, 0.00986765, 0.0240037, 0, -0.00865064, 0.00355618, 0.0242089, -1.70904, 0.0470467, 0.855793)
+
+[node name="leaf_13" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0259519, 0, -0.000221044, 0, 0.0259528, 0, 0.000221044, 0, 0.0259519, -2.76202, 0.185732, 0.706081)
+
+[node name="leaf_16" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.00810036, -0.0172814, 0.0175865, -0.0234994, 0.0110149, 9.31323e-10, -0.00746408, -0.015924, -0.0190857, -3.09242, 0.233485, 0.689114)
+
+[node name="leaf_17" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0190857, 0, 0.0175865, 0, 0.0259528, 0, -0.0175865, 0, -0.0190857, -2.4528, 0.175372, 1.02633)
+
+[node name="leaf_18" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.00325625, -0.00155078, 0.00965317, -0.00443087, 0.00930372, 0, -0.00871527, -0.00415063, -0.00360667, -2.96635, -0.864694, 0.885264)
+
+[node name="leaf_19" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0105149, -0.00423634, -0.00110134, 0.00425628, 0.0105644, 2.91038e-11, 0.00102155, -0.00041157, 0.0113362, -2.84843, -0.864694, 0.976713)
+
+[node name="leaf_20" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0170172, -0.00749873, -0.00180666, 0.00753404, 0.0170973, 5.82077e-11, 0.00165326, -0.000728519, 0.0185961, -2.53368, -0.864694, 1.13839)
+
+[node name="leaf_21" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0168697, -0.00778597, 0.00890633, -0.00863429, 0.0187078, 0, -0.0080866, -0.00373225, -0.0185798, -2.26713, -0.864694, 1.2565)
+
+[node name="leaf_22" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0258635, 0.00810613, 0.0108782, -0.00873463, 0.0278688, 0, -0.0103803, -0.00325338, 0.0271041, -1.95526, -0.796741, 1.15315)
+
+[node name="leaf_14" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.00691224, -0.00156063, 0.0144125, -0.00354007, 0.0156654, -1.51794e-06, -0.0140579, -0.0031775, -0.00708623, -3.72579, 0.120832, 0.127103)
+
+[node name="leaf_15" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.0128667, 0.00645161, -0.00712469, -0.00719752, 0.0143573, 2.71108e-06, 0.00637025, 0.00319079, 0.0143936, -3.53757, 0.14928, 0.2421)
+
+[node name="leaf_07" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0221217, -0.0127787, -0.00739268, -0.0133029, 0.0230293, 0, 0.00640141, 0.00369779, -0.0255473, -1.91145, 0.0759609, 1.45208)
+
+[node name="leaf_08" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0180073, -0.00702183, -0.00174265, -0.00705031, 0.0180803, 0, 0.00162358, 0.000633105, -0.0193279, -2.40512, 0.13841, 1.73123)
+
+[node name="leaf_09" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.00678644, -0.00503473, 0.00645942, 0.00633723, 0.00854212, 0, -0.00518768, 0.00384864, 0.0084501, -2.86375, 0.106531, 1.78966)
+
+[node name="leaf_11" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.011081, -0.00716257, 0.0100576, 0.00834725, 0.0143035, 0.000989706, -0.00909842, 0.00439927, 0.0131572, -2.28569, 0.130108, 1.56239)
+
+[node name="leaf_10" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.00421454, 0, 0.00302311, 0, 0.00518667, 0, -0.00302311, 0, -0.00421454, -3.03353, 0.074934, 1.83082)
+
+[node name="leaf_02" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.0180035, 0, 0.00699067, 0, 0.0193131, 0, -0.00699067, 0, -0.0180035, -1.40756, 0.0988293, 0.188825)
+
+[node name="leaf_03" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(-0.00872313, -0.00762148, 0.00929949, -0.00977367, 0.0111864, 0, -0.00700305, -0.00611863, -0.0115836, -2.15823, 0.0593745, 0.114586)
+
+[node name="leaf_05" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.00814304, -0.00287209, -0.00117713, 0.00289865, 0.00821835, 2.91038e-11, 0.0011101, -0.000391538, 0.00863469, -2.30759, 0.029109, 0.0403958)
+
+[node name="leaf_04" parent="Leaves" instance=ExtResource("4_igb2o")]
+transform = Transform3D(0.00784445, -0.0176405, 0.000522071, 0.0176469, 0.00784732, -2.91038e-11, -0.000212129, 0.000477031, 0.019306, -1.94008, 0.087652, 0.135231)
