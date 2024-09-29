@@ -14,6 +14,7 @@ var _groups: Array[SoundGroup] = []
 var audio_players: Dictionary = {}
 #endregion
 
+var rng = RandomNumberGenerator.new()
 
 #region LIFECYCLE
 func _ready():
@@ -29,11 +30,13 @@ func _initialize_audio_players():
 			for sound in group.sounds:
 				if sound is Sound:
 					_debug_print("Processing sound: " + sound.key + " in group: " + group.key)
-					var player = AudioStreamPlayer.new()
-					player.stream = sound.stream
-					player.bus = group.bus
-					add_child(player)
-					audio_players[group.key][sound.key] = player
+					audio_players[group.key][sound.key] = []
+					for stream in sound.stream:
+						var player = AudioStreamPlayer.new()
+						player.stream = stream
+						player.bus = group.bus
+						add_child(player)
+						audio_players[group.key][sound.key].append(player)
 	_debug_print("SoundManager initialization complete. Total groups: " + str(_groups.size()))
 	_debug_print("Final audio_players dictionary: " + str(audio_players))
 #endregion
@@ -42,8 +45,11 @@ func _initialize_audio_players():
 func play(group_key: String, sound_key: String):
 	_debug_print("Attempting to play sound: " + group_key + "/" + sound_key)
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		audio_players[group_key][sound_key].play()
-		_debug_print("Sound played successfully: " + group_key + "/" + sound_key)
+		var players = audio_players[group_key][sound_key]
+		if players.size() > 0:
+			var random_player = players[rng.randi() % players.size()]
+			random_player.play()
+			_debug_print("Sound played successfully: " + group_key + "/" + sound_key)
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 		_debug_print("Available groups: " + str(audio_players.keys()))
@@ -53,36 +59,42 @@ func play(group_key: String, sound_key: String):
 func play_varied(group_key: String, sound_key: String, volume: float = 0.0, pitch: float = 1.0):
 	_debug_print("Attempting to play sound with variation: " + group_key + "/" + sound_key)
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		var player = audio_players[group_key][sound_key]
-		player.volume_db = volume
-		player.pitch_scale = pitch
-		player.play()
-		_debug_print("Sound played successfully with volume " + str(volume) + " and pitch " + str(pitch))
+		var players = audio_players[group_key][sound_key]
+		if players.size() > 0:
+			var random_player = players[rng.randi() % players.size()]
+			random_player.volume_db = volume
+			random_player.pitch_scale = pitch
+			random_player.play()
+			_debug_print("Sound played successfully with volume " + str(volume) + " and pitch " + str(pitch))
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 
 func play_from(group_key: String, sound_key: String, from: float, to: float):
 	_debug_print("Attempting to play sound from " + str(from) + " to " + str(to) + ": " + group_key + "/" + sound_key)
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		var player = audio_players[group_key][sound_key]
-		player.play(from)
-		var timer: SceneTreeTimer = get_tree().create_timer(to - from)
-		timer.connect("timeout", Callable(self, "_on_play_sound_from_timeout").bind(player))
-		_debug_print("Sound played successfully from " + str(from) + " to " + str(to))
+		var players = audio_players[group_key][sound_key]
+		if players.size() > 0:
+			var random_player = players[rng.randi() % players.size()]
+			random_player.play(from)
+			var timer: SceneTreeTimer = get_tree().create_timer(to - from)
+			timer.connect("timeout", Callable(self, "_on_play_sound_from_timeout").bind(random_player))
+			_debug_print("Sound played successfully from " + str(from) + " to " + str(to))
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 
 func play_from_varied(group_key: String, sound_key: String, volume: float = 0.0, pitch: float = 1.0, from: float = 0.0, to: float = -1.0):
 	_debug_print("Attempting to play sound with variation from " + str(from) + " to " + str(to) + ": " + group_key + "/" + sound_key)
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		var player = audio_players[group_key][sound_key]
-		player.volume_db = volume
-		player.pitch_scale = pitch
-		player.play(from)
-		if to > from:
-			var timer: SceneTreeTimer = get_tree().create_timer((to - from) / pitch)
-			timer.connect("timeout", Callable(self, "_on_play_from_timeout").bind(player))
-		_debug_print("Sound played successfully with volume " + str(volume) + " and pitch " + str(pitch) + " from " + str(from) + " to " + str(to))
+		var players = audio_players[group_key][sound_key]
+		if players.size() > 0:
+			var random_player = players[rng.randi() % players.size()]
+			random_player.volume_db = volume
+			random_player.pitch_scale = pitch
+			random_player.play(from)
+			if to > from:
+				var timer: SceneTreeTimer = get_tree().create_timer((to - from) / pitch)
+				timer.connect("timeout", Callable(self, "_on_play_from_timeout").bind(random_player))
+			_debug_print("Sound played successfully with volume " + str(volume) + " and pitch " + str(pitch) + " from " + str(from) + " to " + str(to))
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 
@@ -91,7 +103,10 @@ func _on_play_sound_from_timeout(player: AudioStreamPlayer):
 
 func stop(group_key: String, sound_key: String):
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		audio_players[group_key][sound_key].stop()
+		var players = audio_players[group_key][sound_key]
+		for player in players:
+			player.stop()
+		_debug_print("Stopped all players for sound: " + group_key + "/" + sound_key)
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 
@@ -106,8 +121,10 @@ func change_bus_volume(bus_name: String, amount: float):
 
 func change_volume(group_key: String, sound_key: String, volume: float):
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		audio_players[group_key][sound_key].volume_db = volume
-		_debug_print("Changed volume of " + group_key + "/" + sound_key + " to " + str(volume) + " dB")
+		var players = audio_players[group_key][sound_key]
+		for player in players:
+			player.volume_db = volume
+		_debug_print("Changed volume of all players for " + group_key + "/" + sound_key + " to " + str(volume) + " dB")
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 #endregion
@@ -116,7 +133,11 @@ func change_volume(group_key: String, sound_key: String, volume: float):
 #region UTILS
 func is_playing(group_key: String, sound_key: String) -> bool:
 	if audio_players.has(group_key) and audio_players[group_key].has(sound_key):
-		return audio_players[group_key][sound_key].playing
+		var players = audio_players[group_key][sound_key]
+		for player in players:
+			if player.playing:
+				return true
+		return false
 	else:
 		print("Sound not found: " + group_key + "/" + sound_key)
 		return false

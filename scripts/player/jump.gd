@@ -197,17 +197,19 @@ func handle_landing() -> void:
 		print("Freefall time before landing: ", freefall_time)
 
 		player.set_no_action()
+
 		jump_state.momentum = Vector3.ZERO
 		jump_state.horizontal_momentum = Vector2.ZERO
 		jump_state.initial_speed = 0.0
 		jump_state.current_charge = 0.0
+
 		landed.emit()
 
 		SoundManager.stop("player", "falling")
 
 		if freefall_time > FALLING_SOUND_THRESHOLD:
 			var volume: float = lerp(-30.0, -10.0, clamp(freefall_time / 2.0, 0.0, 1.0))
-			
+
 			if player.is_jumping():
 				SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 			else:
@@ -230,7 +232,7 @@ func handle_freefall(delta: float) -> void:
 
 		if freefall_time > FALLING_SOUND_THRESHOLD and not SoundManager.is_playing("player", "falling"):
 			SoundManager.play("player", "falling")
-		
+
 		if freefall_time > FREEFALL_INERTIA_REDUCTION_START:
 			reduce_freefall_inertia(delta)
 	else:
@@ -264,7 +266,6 @@ func update_charge_offset(delta: float) -> void:
 		target_offset = -(charge_progress * max_offset)
 
 	jump_state.charge_offset = move_toward(jump_state.charge_offset, target_offset, delta * 2)
-
 
 func get_charge_offset() -> float:
 	return jump_state.charge_offset

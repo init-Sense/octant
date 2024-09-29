@@ -9,18 +9,18 @@
 [sub_resource type="Resource" id="Resource_cgo8j"]
 script = ExtResource("3_cjpyl")
 key = "landing"
-stream = ExtResource("4_yvy1f")
+stream = Array[AudioStream]([ExtResource("4_yvy1f")])
 
-[sub_resource type="Resource" id="Resource_ms5id"]
+[sub_resource type="Resource" id="Resource_n2jnc"]
 script = ExtResource("3_cjpyl")
 key = "falling"
-stream = ExtResource("5_pek0m")
+stream = Array[AudioStream]([ExtResource("5_pek0m")])
 
 [sub_resource type="Resource" id="Resource_crtfk"]
 script = ExtResource("2_ubet5")
 key = "player"
 bus = "FX"
-sounds = Array[ExtResource("3_cjpyl")]([SubResource("Resource_cgo8j"), SubResource("Resource_ms5id")])
+sounds = Array[ExtResource("3_cjpyl")]([SubResource("Resource_cgo8j"), SubResource("Resource_n2jnc")])
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_j87tm")
