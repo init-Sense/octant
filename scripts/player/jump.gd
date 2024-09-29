@@ -210,7 +210,7 @@ func handle_landing() -> void:
 		if player.is_jumping():
 			SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 		else:
-			SoundManager.play_from_varied("player", "landing", volume, 1.0, 1.5, 2.0)
+			SoundManager.play_from_varied("player", "landing", volume, 1.0, 2, 2.5)
 
 func update_coyote_time(delta: float) -> void:
 	if not (player.is_on_floor() or climb._snapped_to_stairs_last_frame) and jump_state.can_coyote_jump:
