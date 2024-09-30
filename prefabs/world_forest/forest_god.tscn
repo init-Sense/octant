@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://deepqk5wgdegl"]
+
+[ext_resource type="PackedScene" uid="uid://cjpp1efrvtcik" path="res://assets/models/world_forest/forest_god_arms.glb" id="1_5no3j"]
+[ext_resource type="PackedScene" uid="uid://c1ubsbgwp3vds" path="res://assets/models/world_forest/forest_god_body.glb" id="2_lu6tb"]
+[ext_resource type="PackedScene" uid="uid://b483f8ehspnyu" path="res://assets/models/world_forest/forest_god_eye.glb" id="3_p1xyo"]
+[ext_resource type="PackedScene" uid="uid://qca6trw3jar0" path="res://assets/models/world_forest/forest_god_head.glb" id="4_isw5u"]
+[ext_resource type="PackedScene" uid="uid://bud37b52tbh11" path="res://assets/models/world_forest/forest_god_horns.glb" id="5_v1ffn"]
+[ext_resource type="PackedScene" uid="uid://uc8ybgx30gpl" path="res://assets/models/world_forest/forest_god_legs_a.glb" id="6_ovm2y"]
+[ext_resource type="PackedScene" uid="uid://d2ywad8g47edj" path="res://assets/models/world_forest/forest_god_legs_b.glb" id="7_ox2wo"]
+
+[node name="ForestGod" type="Node3D"]
+
+[node name="forest_god_arms" parent="." instance=ExtResource("1_5no3j")]
+
+[node name="forest_god_body" parent="." instance=ExtResource("2_lu6tb")]
+
+[node name="forest_god_eye" parent="." instance=ExtResource("3_p1xyo")]
+
+[node name="forest_god_head" parent="." instance=ExtResource("4_isw5u")]
+
+[node name="forest_god_horns" parent="." instance=ExtResource("5_v1ffn")]
+
+[node name="forest_god_legs" parent="." instance=ExtResource("6_ovm2y")]
+
+[node name="forest_god_legs_b" parent="." instance=ExtResource("7_ox2wo")]
