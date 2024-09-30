@@ -26,7 +26,7 @@ func _on_body_entered(body: Node3D):
 				audio_player.stream = teleport_audio
 				audio_player.play()
 			else:
-				call_deferred("_change_scene")
+				_change_scene()
 		else:
 			print("No scene specified to load!")
 
@@ -42,7 +42,19 @@ func _on_body_exited(body: Node3D):
 
 func _on_audio_finished():
 	if is_player_inside and audio_player.stream == teleport_audio:
-		call_deferred("_change_scene")
+		_change_scene()
 
 func _change_scene():
-	get_tree().change_scene_to_file("res://scenes/level/loading_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/loading.tscn")
+
+func reset_camera():
+	print("resetting camera")
+	# Find the player in the new scene
+	var player = get_tree().get_nodes_in_group("player")
+	if player.size() > 0:
+		player = player[0]
+		var camera = player.get_node("Camera")
+		# Reset FOV to default
+		camera.fov = player.camera.default_fov
+	else:
+		print("Player not found in the new scene!")

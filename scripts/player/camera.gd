@@ -63,7 +63,10 @@ const FOV_FALL_CHANGE_SPEED: float = 2.0
 @onready var player: Player = $"../../.."
 @onready var gravity: Gravity = %Gravity
 #endregion
+var fade_rect: ColorRect
+var fade_tween: Tween
 
+const FADE_DURATION: float = 1.5
 
 #region LIFECYCLE
 func _ready():
@@ -76,6 +79,23 @@ func _ready():
 	
 	jump.jumped.connect(on_player_jumped)
 	jump.landed.connect(on_player_landed)
+	
+	setup_fade_rect()
+	perform_fade_in()
+
+func setup_fade_rect():
+	fade_rect = ColorRect.new()
+	fade_rect.color = Color(0, 0, 0, 1)  # Start fully opaque
+	fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(fade_rect)
+
+func perform_fade_in():
+	if fade_tween:
+		fade_tween.kill()
+	fade_tween = create_tween()
+	fade_tween.tween_property(fade_rect, "color", Color(0, 0, 0, 0), FADE_DURATION)
+	fade_tween.tween_callback(fade_rect.queue_free)
 
 
 func _process(delta: float):
