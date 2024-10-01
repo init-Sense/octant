@@ -64,27 +64,20 @@ func _change_scene():
 
 func reset_camera():
 	print("resetting camera")
-	var player: Array[Node] = get_tree().get_nodes_in_group("player")
-	if player.size() > 0:
-		player = player[0]
-		var camera = player.get_node("Camera")
-		camera.fov = player.camera.default_fov
-	else:
-		print("Player not found in the new scene!")
+	var player: Player = get_tree().get_first_node_in_group("player")
+	var camera = player.get_node("Camera")
+	camera.fov = player.camera.default_fov
 
 func spawn_player_at_arrival():
 	var arrival_node: Node = get_node("Arrival")
 	if arrival_node:
-		var player: Array[Node] = get_tree().get_nodes_in_group("player")
-		if player.size() > 0:
-			player = player[0]
-			player.global_position = arrival_node.global_position
-			var new_rotation = arrival_node.global_rotation
-			new_rotation.y += PI
-			player.global_rotation = new_rotation
-			print("Player spawned at Arrival node and rotated 180 degrees")
-		else:
-			print("Player not found in the scene!")
+		var player: Player = get_tree().get_first_node_in_group("player")
+
+		player.global_position = arrival_node.global_position
+		var new_rotation = arrival_node.global_rotation
+		new_rotation.y += PI
+		player.global_rotation = new_rotation
+		print("Player spawned at Arrival node and rotated 180 degrees")
 	else:
 		print("Arrival node not found!")
 #endregion
