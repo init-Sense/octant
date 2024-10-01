@@ -11,7 +11,7 @@ height = 7.8
 radius = 2.3
 height = 13.6
 
-[node name="IceTunnel" type="Node3D"]
+[node name="FrozenTunnel" type="Node3D"]
 
 [node name="ice_tunnel" parent="." instance=ExtResource("1_30hrw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.1, 0)
@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
 shape = SubResource("CapsuleShape3D_cma74")
 
 [node name="LowerArea" type="Area3D" parent="ice_tunnel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -57.0806, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -112.681, 0)
 collision_layer = 3
 collision_mask = 6
 script = ExtResource("2_elxsy")
@@ -37,8 +37,8 @@ target_position_node = NodePath("../UpperArrival")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ice_tunnel/LowerArea"]
 shape = SubResource("CapsuleShape3D_vmj2y")
 
-[node name="LowerArrival" type="Node3D" parent="ice_tunnel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -59.72, 0)
-
 [node name="UpperArrival" type="Node3D" parent="ice_tunnel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62.71, 0)
+
+[node name="LowerArrival" type="Node3D" parent="ice_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -77.52, 0)

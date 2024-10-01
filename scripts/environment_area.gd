@@ -8,7 +8,6 @@ class_name EnvironmentArea
 @export var has_directional_light: bool = true
 
 @export var gravity_override: float = 0.0
-@export var player_path: NodePath
 
 @export var world_environment_node: NodePath
 @export var target_environment: Environment
@@ -21,12 +20,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	
-	if not player_path.is_empty():
-		player = get_node(player_path)
-		if player:
-			player_movement = player.get_node("Modules/Movement")
-	else:
-		push_warning("Player path not set in EnvironmentArea: " + name)
+	player = get_tree().get_first_node_in_group("player")
 
 
 func _on_area_entered(area: Area3D) -> void:
