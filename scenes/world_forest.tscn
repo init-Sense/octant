@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://br28m3haa2ylb" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
 [ext_resource type="PackedScene" uid="uid://deepqk5wgdegl" path="res://prefabs/world_forest/forest_god.tscn" id="15_iupkp"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="16_d2j8p"]
-[ext_resource type="PackedScene" uid="uid://d3322b1hemwnc" path="res://prefabs/world_forest/tree_tunnel.tscn" id="17_slps3"]
+[ext_resource type="PackedScene" uid="uid://mpqpbbdurix7" path="res://prefabs/world_forest/forest_temple.tscn" id="18_ht1vt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u442v"]
 size = Vector3(126.387, 619.584, 78.7616)
@@ -24,7 +24,7 @@ size = Vector3(126.387, 619.584, 78.7616)
 [node name="WorldForest" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_0h6dd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.13591, 154.538, 17.5284)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.13591, 275.319, 7.95527)
 
 [node name="ForestEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_kpodi")
@@ -68,7 +68,7 @@ transform = Transform3D(-94.283, 36.4952, -58.6534, -20.449, -109.537, -35.2845,
 transform = Transform3D(-7.80972, 47.3829, 26.3342, -23.2376, 21.1114, -44.877, -48.9759, -17.5724, 17.0935, 15.1563, -16.9622, 22.3144)
 
 [node name="BranchBig_c2" parent="BranchesBig" instance=ExtResource("7_acfbv")]
-transform = Transform3D(-13.0627, 41.7576, 56.5182, -69.0684, -18.2187, -2.50274, 12.9441, -55.0729, 43.6814, 3.33737, 7.87296, 21.4794)
+transform = Transform3D(-18.38, 68.707, 7.08275, -68.7247, -17.4584, -8.98622, -6.90826, -9.12109, 70.553, 3.33737, 7.87296, 21.4794)
 
 [node name="Plants" type="Node3D" parent="."]
 
@@ -489,5 +489,5 @@ directional_light_node = NodePath("../DirectionalLight3D")
 transform = Transform3D(0.892082, 0, -0.451874, 0, 1, 0, 0.451874, 0, 0.892082, 6.2385, 202.456, -2.93707)
 shape = SubResource("BoxShape3D_u442v")
 
-[node name="TreeTunnel" parent="." instance=ExtResource("17_slps3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29601, 180.886, 1.68184)
+[node name="ForestTemple" parent="." instance=ExtResource("18_ht1vt")]
+transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 110.389, 262.487, 21.4391)

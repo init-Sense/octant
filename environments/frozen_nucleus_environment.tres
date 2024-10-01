@@ -1,0 +1,28 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://c17v2rcpyommv"]
+
+[ext_resource type="Sky" uid="uid://ch51jynex4bhp" path="res://environments/skies/frozen_cave_sky.tres" id="1_smctx"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_smctx")
+ssao_enabled = true
+ssao_intensity = 3.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.86
+glow_strength = 1.38
+glow_bloom = 0.07
+glow_blend_mode = 0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 1.2
+fog_density = 1.0
+fog_depth_curve = 0.3
+fog_depth_begin = 0.0
+fog_depth_end = 30.0
+volumetric_fog_density = 0.0286
+volumetric_fog_emission = Color(0.0927145, 0.330201, 1, 1)
+volumetric_fog_length = 85.94
+volumetric_fog_detail_spread = 0.5
+volumetric_fog_sky_affect = 0.0

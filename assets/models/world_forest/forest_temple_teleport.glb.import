@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4vvw252r032r"
-path="res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"
+uid="uid://dvvw5t0a3lmdj"
+path="res://.godot/imported/forest_temple_teleport.glb-cf380c1a30eb8f9bf722650c1364e741.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/frozen_nucleus.glb"
-dest_files=["res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"]
+source_file="res://assets/models/world_forest/forest_temple_teleport.glb"
+dest_files=["res://.godot/imported/forest_temple_teleport.glb-cf380c1a30eb8f9bf722650c1364e741.scn"]
 
 [params]
 
@@ -19,23 +19,23 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"IceMaterial": {
+"Material": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/frozen_nucleus.tres"
+"use_external/path": "res://materials/teleport_forest.tres"
 }
 }
 }

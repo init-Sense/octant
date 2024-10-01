@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4vvw252r032r"
-path="res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"
+uid="uid://ii5aoy12sbqi"
+path="res://.godot/imported/forest_temple_base.glb-01dc1bdbf437a5a17748d49351e7bcf4.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/frozen_nucleus.glb"
-dest_files=["res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"]
+source_file="res://assets/models/world_forest/forest_temple_base.glb"
+dest_files=["res://.godot/imported/forest_temple_base.glb-01dc1bdbf437a5a17748d49351e7bcf4.scn"]
 
 [params]
 
@@ -32,10 +32,9 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"materials": {
-"IceMaterial": {
-"use_external/enabled": true,
-"use_external/path": "res://materials/frozen_nucleus.tres"
+"nodes": {
+"PATH:ForestTempleBase": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }
