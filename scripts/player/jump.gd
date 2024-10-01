@@ -228,7 +228,7 @@ func update_coyote_time(delta: float) -> void:
 func handle_freefall(delta: float) -> void:
 	if not player.is_on_floor() and not climb._snapped_to_stairs_last_frame:
 		freefall_time += delta
-		print("Freefall time during freefall: ", freefall_time)
+		#print("Freefall time during freefall: ", freefall_time)
 
 		if freefall_time > FALLING_SOUND_THRESHOLD and not SoundManager.is_playing("player", "falling"):
 			SoundManager.play("player", "falling")

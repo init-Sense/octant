@@ -7,7 +7,7 @@ class_name Transport
 @export_flags_3d_physics var floor_collision_layer: int = 1
 
 var player: CharacterBody3D
-var player_movement: Node
+var player_jump: Jump
 @onready var target_y_position: float = get_node(target_position_node).global_position.y
 var is_transitioning: bool = false
 var transition_progress: float = 0.0
@@ -23,7 +23,7 @@ func _ready():
 	
 	player = get_tree().get_first_node_in_group("player")
 	if player:
-		player_movement = player.get_node("Modules/Movement") if player.has_node("Modules/Movement") else null
+		player_jump = player.get_node("Modules/Jump") if player.has_node("Modules/Jump") else null
 	else:
 		push_error("Player node not found in the scene")
 
@@ -72,8 +72,8 @@ func finish_transition():
 	is_any_transport_active = false
 	player.global_position.y = target_y_position
 	
-	if is_upward_transport and player_movement:
-		player_movement.apply_vertical_boost()
+	if is_upward_transport and player_jump:
+		player_jump.execute_jump()
 		print("Applied vertical boost at end of upward transport")
 	else:
 		player.velocity.y = 0
