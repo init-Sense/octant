@@ -17,12 +17,11 @@ var is_player_inside: bool = false
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	
+
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
 	audio_player.finished.connect(_on_audio_finished)
 
-	# Check if we need to spawn the player at the Arrival node
 	if SceneManager.previous_scene == scene_name:
 		call_deferred("spawn_player_at_arrival")
 #endregion
@@ -65,7 +64,7 @@ func _change_scene():
 
 func reset_camera():
 	print("resetting camera")
-	var player = get_tree().get_nodes_in_group("player")
+	var player: Array[Node] = get_tree().get_nodes_in_group("player")
 	if player.size() > 0:
 		player = player[0]
 		var camera = player.get_node("Camera")
@@ -74,13 +73,16 @@ func reset_camera():
 		print("Player not found in the new scene!")
 
 func spawn_player_at_arrival():
-	var arrival_node = get_node("Arrival")
+	var arrival_node: Node = get_node("Arrival")
 	if arrival_node:
-		var player = get_tree().get_nodes_in_group("player")
+		var player: Array[Node] = get_tree().get_nodes_in_group("player")
 		if player.size() > 0:
 			player = player[0]
-			player.global_transform = arrival_node.global_transform
-			print("Player spawned at Arrival node")
+			player.global_position = arrival_node.global_position
+			var new_rotation = arrival_node.global_rotation
+			new_rotation.y += PI
+			player.global_rotation = new_rotation
+			print("Player spawned at Arrival node and rotated 180 degrees")
 		else:
 			print("Player not found in the scene!")
 	else:
