@@ -493,4 +493,4 @@ shape = SubResource("BoxShape3D_u442v")
 transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 110.389, 262.487, 21.4391)
 
 [node name="TreeTunnel" parent="." instance=ExtResource("18_h042b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193, 180.867, 2.07367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193, 177.668, 4.77306)
