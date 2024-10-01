@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dosrvv00bg0mk"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.0588235)
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.23
+uv1_scale = Vector3(15.22, 15.22, 15.22)

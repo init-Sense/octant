@@ -41,4 +41,4 @@ shape = SubResource("CapsuleShape3D_vmj2y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27.82, 0)
 
 [node name="UpperArrival" type="Node3D" parent="ice_tunnel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36109, 39.5098, -0.469925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.51, 0)
