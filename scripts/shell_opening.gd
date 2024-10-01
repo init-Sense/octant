@@ -6,4 +6,4 @@ extends Node3D
 func _ready():
 	await get_tree().create_timer(2).timeout 
 	shell_animation.play("opening")
-	pass # Replace with function body.
+	pass

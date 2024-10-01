@@ -4,7 +4,6 @@ extends Node3D
 ## A script to manage boundary areas with teleportation functionality for the player.
 
 #region EXPORTS
-@export var player_path: NodePath ## Path to the player node
 @export var teleport_offset_y: float = 0.1 ## Vertical offset when teleporting
 @export var teleport_offset_x: float = 0.1 ## Horizontal X offset when teleporting
 @export var teleport_offset_z: float = 0.1 ## Horizontal Z offset when teleporting
@@ -26,7 +25,7 @@ var is_active: bool = false ## Flag to indicate if this boundary is currently ac
 #region LIFECYCLE METHODS
 func _ready():
 	## Initialize the boundary area
-	player = get_node(player_path)
+	player = get_tree().get_first_node_in_group("player")
 	if not player:
 		push_error("Player node not found!")
 	level_bounds = calculate_spatial_bounds(self, true)
