@@ -30,6 +30,8 @@ var last_movement_state: bool = false
 var jump_fov_progress: float = 0.0
 var is_jumping: bool = false
 var fall_fov_offset: float = 0.0
+var fade_rect: ColorRect
+var fade_tween: Tween
 #endregion
 
 
@@ -54,6 +56,8 @@ const FOV_LAND_SPEED: float = 6.0
 
 const FOV_FALL_MAX_OFFSET: float = 15.0
 const FOV_FALL_CHANGE_SPEED: float = 2.0 
+
+const FADE_DURATION: float = 1.5
 #endregion
 
 
@@ -63,10 +67,7 @@ const FOV_FALL_CHANGE_SPEED: float = 2.0
 @onready var player: Player = $"../../.."
 @onready var gravity: Gravity = %Gravity
 #endregion
-var fade_rect: ColorRect
-var fade_tween: Tween
 
-const FADE_DURATION: float = 1.5
 
 #region LIFECYCLE
 func _ready():
@@ -83,25 +84,38 @@ func _ready():
 	setup_fade_rect()
 	perform_fade_in()
 
+	player.tree_exiting.connect(perform_fade_out)
+
+func _process(delta: float):
+	rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMERA_SMOOTHNESS)
+	rotation.x = lerp(rotation.x, target_rotation.x, delta * CAMERA_SMOOTHNESS)
+	update_fov(delta)
+#endregion
+
+
+#region FADE
 func setup_fade_rect():
-	fade_rect = ColorRect.new()
-	fade_rect.color = Color(0, 0, 0, 1)  # Start fully opaque
-	fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
-	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(fade_rect)
+	if not is_instance_valid(fade_rect):
+		fade_rect = ColorRect.new()
+		fade_rect.color = Color(0, 0, 0, 1)
+		fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+		fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(fade_rect)
 
 func perform_fade_in():
 	if fade_tween:
 		fade_tween.kill()
 	fade_tween = create_tween()
 	fade_tween.tween_property(fade_rect, "color", Color(0, 0, 0, 0), FADE_DURATION)
-	fade_tween.tween_callback(fade_rect.queue_free)
+	fade_tween.tween_callback(func(): if is_instance_valid(fade_rect): fade_rect.queue_free())
 
-
-func _process(delta: float):
-	rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMERA_SMOOTHNESS)
-	rotation.x = lerp(rotation.x, target_rotation.x, delta * CAMERA_SMOOTHNESS)
-	update_fov(delta)
+func perform_fade_out():
+	setup_fade_rect()
+	fade_rect.color = Color(0, 0, 0, 0)
+	if fade_tween:
+		fade_tween.kill()
+	fade_tween = create_tween()
+	fade_tween.tween_property(fade_rect, "color", Color(0, 0, 0, 1), FADE_DURATION)
 #endregion
 
 

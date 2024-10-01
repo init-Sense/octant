@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfl0gbew3tt14"]
 
-[ext_resource type="Texture2D" uid="uid://3i74wixpayju" path="res://assets/textures/azazello.svg" id="1_a70rj"]
+[ext_resource type="Texture2D" path="res://assets/textures/azazello.svg" id="1_a70rj"]
 [ext_resource type="Script" path="res://scripts/scenes/loading_screen.gd" id="1_tj5sw"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("progress_sprite")]

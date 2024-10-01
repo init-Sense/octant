@@ -24,7 +24,7 @@ fog_sky_affect = 0.0
 [node name="WorldTemple" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_dc8de")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.8, 92.6, -47.3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 92.6, -47.3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yuqp5")
@@ -37,6 +37,7 @@ is_initial_area = true
 
 [node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115.7, 0)
+visible = false
 
 [node name="TempleTop" parent="." instance=ExtResource("3_ua2so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 115.8, 0)
