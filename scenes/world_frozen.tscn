@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=27 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
+[ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_mtdip"]
 [ext_resource type="Environment" uid="uid://d4ksj2eichsko" path="res://environments/frozen_caves_environment.tres" id="2_yipt2"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/frozen_platform.glb" id="5_r3qnj"]
-[ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/frozen_tunnel.tscn" id="5_wp6ac"]
+[ext_resource type="PackedScene" path="res://prefabs/world_frozen/frozen_tunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
@@ -20,6 +21,7 @@
 [ext_resource type="Environment" uid="uid://c17v2rcpyommv" path="res://environments/frozen_nucleus_environment.tres" id="17_of3fl"]
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
+[ext_resource type="PackedScene" uid="uid://quwqm3swor0w" path="res://scenes/teleport/teleport.tscn" id="22_0pt55"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(300, 64, 300)
@@ -38,11 +40,13 @@ size = Vector3(917.831, 143.068, 991.908)
 radius = 198.0
 
 [node name="FrozenWorld" type="Node3D"]
+script = ExtResource("1_mtdip")
+scene_name = "frozen"
 metadata/slippery = false
 metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4421, 52.5231, -123.622)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7147, 52.5231, -124.228)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_8s4oo")
@@ -311,3 +315,8 @@ transform = Transform3D(3.06594, 0.765123, 2.47854, -2.34247, 2.46494, 2.1367, -
 
 [node name="frozen_nucleus_tunnel" parent="Nucleus" instance=ExtResource("20_bhnjb")]
 transform = Transform3D(3.54576, 0, 0, 0, 3.54576, 0, 0, 0, 3.54576, 0, 189.196, 0)
+
+[node name="Teleport" parent="." instance=ExtResource("22_0pt55")]
+transform = Transform3D(-0.415424, 0, 0.909628, 0, 1, 0, -0.909628, 0, -0.415424, -46.5489, 27.6517, -93.651)
+scene_to_load = "res://scenes/world_temple.tscn"
+scene_name = "frozen"

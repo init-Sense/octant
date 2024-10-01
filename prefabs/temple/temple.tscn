@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=18 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cyh2c8tucd5h4" path="res://assets/models/world_temple/bell_tower.glb" id="13_a523m"]
 [ext_resource type="PackedScene" uid="uid://bxei2ffwxya84" path="res://assets/models/world_temple/bell.glb" id="14_p8ert"]
 [ext_resource type="PackedScene" uid="uid://hnf1rjnklowj" path="res://assets/models/world_temple/bell_tongue.glb" id="15_6ib53"]
-[ext_resource type="Script" path="res://scripts/scenes/to_loading_scene.gd" id="15_lr34a"]
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://prefabs/temple/pool.tscn" id="16_gfw2c"]
 
 [sub_resource type="Animation" id="Animation_2fn5g"]
@@ -54,9 +53,6 @@ _data = {
 "RESET": SubResource("Animation_2fn5g"),
 "rotation": SubResource("Animation_k4vun")
 }
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4mrfi"]
-radius = 3.81
 
 [node name="Temple" type="Node3D"]
 
@@ -270,13 +266,3 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -16.1, 0)
 
 [node name="Pool" parent="." instance=ExtResource("16_gfw2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6, 90.6, 0)
-
-[node name="Area3D" type="Area3D" parent="Pool"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("15_lr34a")
-scene_to_load = "res://scenes/world_frozen.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pool/Area3D"]
-shape = SubResource("CylinderShape3D_4mrfi")

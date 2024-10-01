@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://quwqm3swor0w"]
+
+[ext_resource type="Script" path="res://scripts/scenes/to_loading_scene.gd" id="1_dhuvf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4mrfi"]
+radius = 3.81
+
+[node name="Teleport" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_dhuvf")
+scene_to_load = "res://scenes/world_frozen.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_4mrfi")
+
+[node name="Arrival" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46456, 5.71057, 0)
