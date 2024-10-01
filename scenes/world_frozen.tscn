@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=25 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/IceTunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://materials/water_3d.tres" id="6_kad0g"]
 [ext_resource type="PackedScene" uid="uid://cwkb3p01vmo8j" path="res://assets/models/mountains/mountain_a.glb" id="7_2x7or"]
-[ext_resource type="PackedScene" uid="uid://pqtlcqkjgua4" path="res://assets/models/world_frozen/ice_terrain.glb" id="7_7k0oj"]
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
@@ -15,8 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/cave/stalagmite_b.glb" id="8_rj7kh"]
 [ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/cave/stalagmite_c.glb" id="9_u1kvt"]
 [ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/cave/stalactite_a.glb" id="10_27yrr"]
+[ext_resource type="PackedScene" uid="uid://bo2jrd2fdboay" path="res://assets/models/world_frozen/cave/frozen_ground.glb" id="10_muqd7"]
 [ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/cave/stalactite_b.glb" id="11_veyyu"]
 [ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/cave/stalactite_c.glb" id="12_8qwt4"]
+[ext_resource type="Environment" uid="uid://c17v2rcpyommv" path="res://environments/frozen_nucleus_environment.tres" id="17_of3fl"]
+[ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
+[ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(300, 64, 300)
@@ -163,23 +166,8 @@ target_environment = ExtResource("2_yipt2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5.5, -3)
 shape = SubResource("BoxShape3D_7iyap")
 
-[node name="IceTerrain" type="Node3D" parent="Caves"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -63)
-
-[node name="ice_terrain_1" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
-
-[node name="ice_terrain_2" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80, 0, 32)
-
-[node name="ice_terrain_3" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 88)
-
-[node name="ice_terrain_4" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 110, 0, 88)
-
-[node name="ice_terrain_5" parent="Caves/IceTerrain" instance=ExtResource("7_7k0oj")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 88)
+[node name="frozen_ground" parent="Caves" instance=ExtResource("10_muqd7")]
+transform = Transform3D(1, 0, 0, 0, 0.301703, 0, 0, 0, 1, -11, -3.69635, -63)
 
 [node name="Stalagmites" type="Node3D" parent="Caves"]
 
@@ -205,13 +193,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -4)
 
 [node name="Lights" type="Node3D" parent="Caves"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Caves/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3701, 4.55976, -3)
+[node name="CaveLight_01" type="OmniLight3D" parent="Caves/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3701, 8.21241, -3)
 light_color = Color(0.938528, 0.329835, 1.92523e-07, 1)
-light_energy = 5.0
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 18.5468
+
+[node name="CaveLight_02" type="OmniLight3D" parent="Caves/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2931, 8.21241, -37.3431)
+light_color = Color(0.938528, 0.329835, 1.92523e-07, 1)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 18.5468
 
 [node name="Nucleus" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -547.022, 0)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_zero_g = true
@@ -220,9 +217,16 @@ has_vignette = true
 has_directional_light = false
 player_path = NodePath("../Player")
 world_environment_node = NodePath("../WorldEnvironment")
+target_environment = ExtResource("17_of3fl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nucleus"]
+shape = SubResource("SphereShape3D_j0uty")
 
 [node name="frozen_nucleus" parent="Nucleus" instance=ExtResource("8_pydxi")]
 transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Nucleus"]
-shape = SubResource("SphereShape3D_j0uty")
+[node name="FrozenTemple" parent="Nucleus" instance=ExtResource("18_6nhqs")]
+transform = Transform3D(3.06594, 0.765123, 2.47854, -2.34247, 2.46494, 2.1367, -1.11418, -3.07689, 2.32807, 0, 0, 0)
+
+[node name="frozen_nucleus_tunnel" parent="Nucleus" instance=ExtResource("20_bhnjb")]
+transform = Transform3D(3.54576, 0, 0, 0, 3.54576, 0, 0, 0, 3.54576, 0, 189.196, 0)

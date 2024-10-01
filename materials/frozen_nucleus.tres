@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bimicc3nd8uvt"]
+
+[resource]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.190622, 0.190622, 0.190622, 1)
+disable_receive_shadows = true

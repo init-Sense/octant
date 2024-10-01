@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4vvw252r032r"
-path="res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"
+uid="uid://bmqq2og55ianw"
+path="res://.godot/imported/frozen_temple_column.glb-47f5a7f1f2373f0c26a8365893cebf7d.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/frozen_nucleus.glb"
-dest_files=["res://.godot/imported/frozen_nucleus.glb-08883da59afdc3b23f70fc01841453e8.scn"]
+source_file="res://assets/models/world_frozen/frozen_temple_column.glb"
+dest_files=["res://.godot/imported/frozen_temple_column.glb-47f5a7f1f2373f0c26a8365893cebf7d.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"IceMaterial": {
-"use_external/enabled": true,
-"use_external/path": "res://materials/frozen_nucleus.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
