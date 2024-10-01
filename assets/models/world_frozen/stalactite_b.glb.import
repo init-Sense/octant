@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c1yxjn8c8310t"
-path="res://.godot/imported/stalactite_a.glb-50eb85701d3715f8553d9891d59fe5ff.scn"
+uid="uid://dx1wy8bwchdi6"
+path="res://.godot/imported/stalactite_b.glb-02d420ce8df78d91c52f14cf076db24e.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/cave/stalactite_a.glb"
-dest_files=["res://.godot/imported/stalactite_a.glb-50eb85701d3715f8553d9891d59fe5ff.scn"]
+source_file="res://assets/models/world_frozen/stalactite_b.glb"
+dest_files=["res://.godot/imported/stalactite_b.glb-02d420ce8df78d91c52f14cf076db24e.scn"]
 
 [params]
 

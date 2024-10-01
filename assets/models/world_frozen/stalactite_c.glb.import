@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bo2jrd2fdboay"
-path="res://.godot/imported/frozen_ground.glb-f195a19c0a4f04f9519b8794bc2042f6.scn"
+uid="uid://cvf1godef1001"
+path="res://.godot/imported/stalactite_c.glb-eb05cda3b08c6cc7f45d606f65c52118.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/cave/frozen_ground.glb"
-dest_files=["res://.godot/imported/frozen_ground.glb-f195a19c0a4f04f9519b8794bc2042f6.scn"]
+source_file="res://assets/models/world_frozen/stalactite_c.glb"
+dest_files=["res://.godot/imported/stalactite_c.glb-eb05cda3b08c6cc7f45d606f65c52118.scn"]
 
 [params]
 
@@ -33,9 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
+"IceMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/frozen_ground.tres"
+"use_external/path": "res://assets/materials/ice_platform.tres"
 }
 }
 }

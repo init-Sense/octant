@@ -191,13 +191,13 @@ transform = Transform3D(0.661636, 0, 0.610113, 0, 0.9, 0, -0.610113, 0, 0.661636
 transform = Transform3D(-1.20287, 0, 0.375112, 0, 1.26, 0, -0.375112, 0, -1.20287, -39.0717, 19, -106.212)
 
 [node name="plant_a_43" parent="Plants" instance=ExtResource("8_vnqwc")]
-transform = Transform3D(0.424961, 0, 0.909342, 0, 1.00374, 0, -0.909342, 0, 0.424961, -64.0293, 9.2675, 15.6277)
+transform = Transform3D(0.424961, 0, 0.909342, 0, 1.00374, 0, -0.909342, 0, 0.424961, -74.1763, 15.769, 17.8178)
 
 [node name="plant_b_43" parent="Plants" instance=ExtResource("9_ltvp3")]
-transform = Transform3D(-0.897423, 0, 0.818541, 0, 1.21465, 0, -0.818541, 0, -0.897423, -62.4752, 16.5918, 40.2523)
+transform = Transform3D(-0.897423, 0, 0.818541, 0, 1.21465, 0, -0.818541, 0, -0.897423, -80.4744, 26.3618, 41.0699)
 
 [node name="plant_b_44" parent="Plants" instance=ExtResource("9_ltvp3")]
-transform = Transform3D(0.901265, 0, -1.40753, 0, 1.67135, 0, 1.40753, 0, 0.901265, -73.9438, 13.227, -1.15895)
+transform = Transform3D(0.901265, 0, -1.40753, 0, 1.67135, 0, 1.40753, 0, 0.901265, -79.0623, 15.1676, -1.15895)
 
 [node name="plant_a_34" parent="Plants" instance=ExtResource("8_vnqwc")]
 transform = Transform3D(-1.3, 0, -5.96046e-08, 0, 1.3, 0, 5.96046e-08, 0, -1.3, 82.19, 1.49525, -42.0041)
@@ -360,7 +360,7 @@ transform = Transform3D(4.22589, 0, 3.85647, 0, 5.72105, 0, -3.85647, 0, 4.22589
 transform = Transform3D(0.911043, 0, -3.40006, 1.70003, 3.04841, 0.455522, 2.94454, -1.76, 0.788986, 10.5, 23.3124, 46.3)
 
 [node name="branch_bridge_a_02" parent="BranchBridges" instance=ExtResource("12_bskbt")]
-transform = Transform3D(-3.90879, 0.843735, 0.985257, 1.09568, 3.82197, 1.0739, -0.694332, 1.28136, -3.85191, -42.732, 60.7579, -21.436)
+transform = Transform3D(-4.18439, 0.903224, 1.05472, 1.17293, 4.09145, 1.14962, -0.743287, 1.37171, -4.1235, -49.737, 60.7579, -21.5555)
 
 [node name="branch_bridge_a_03" parent="BranchBridges" instance=ExtResource("12_bskbt")]
 transform = Transform3D(-1.63723, 0.328189, 2.8174, 0.865784, 3.15563, 0.135529, -2.70109, 0.812552, -1.66428, 3.62982, 96.3973, -34.8163)
@@ -386,16 +386,13 @@ transform = Transform3D(-0.237224, 0.14862, 1.9665, 0.280418, 1.96309, -0.114536
 [node name="branch_bridge_c2_05" parent="BranchBridges" instance=ExtResource("14_rsk3w")]
 transform = Transform3D(0.632762, -0.231585, -2.42008, 0.354649, 2.48275, -0.144855, 2.40513, -0.305168, 0.658056, 7.79903, 153.796, 32.4328)
 
-[node name="branch_bridge_c2_04" parent="BranchBridges" instance=ExtResource("14_rsk3w")]
-transform = Transform3D(2.69591, -0.959679, -0.124278, 0.952727, 2.69669, -0.156766, 0.169528, 0.106212, 2.85733, 26.4805, 108.785, 5.66019)
-
 [node name="LightPlants" type="Node3D" parent="."]
 
 [node name="LightPlant_01" parent="LightPlants" instance=ExtResource("15_0kmjh")]
 transform = Transform3D(-0.191167, 0.225794, -0.955234, 0.725788, 0.687701, 0.0173066, 0.660824, -0.689988, -0.295345, -6.09238, -9.09778, -35.973)
 
 [node name="BulbLight_01" type="OmniLight3D" parent="LightPlants/LightPlant_01"]
-transform = Transform3D(-0.456179, -0.337548, 0.823384, -0.434067, 0.892132, 0.125246, -0.776844, -0.300269, -0.553491, 7.33904, -0.527718, 1.11533)
+transform = Transform3D(-0.456179, -0.337548, 0.823384, -0.434067, 0.892132, 0.125246, -0.776844, -0.30027, -0.55349, 7.42669, -0.444668, 1.11742)
 light_energy = 6.0
 shadow_enabled = true
 omni_range = 102.742
@@ -467,7 +464,7 @@ omni_range = 34.8447
 transform = Transform3D(1.22198, 0.346248, 1.31154, -0.425612, 1.77396, -0.0717839, -1.28797, -0.2577, 1.26805, 19.7768, 32.0907, -30.6588)
 
 [node name="BulbLight_03" type="OmniLight3D" parent="LightPlants/LightPlant_04"]
-transform = Transform3D(-0.272765, 0.0268077, 0.474225, -0.00533488, 0.546651, -0.0339703, -0.474951, -0.0215359, -0.271967, 7.24927, -0.95438, 0.383214)
+transform = Transform3D(-0.272765, 0.0268077, 0.474224, -0.00533487, 0.546651, -0.0339703, -0.47495, -0.0215359, -0.271968, 7.25843, -0.992554, 0.384758)
 light_energy = 10.0
 shadow_enabled = true
 omni_range = 75.3302

@@ -8,7 +8,7 @@ radius = 5.4
 height = 12.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdxlg"]
-radius = 4.2
+radius = 7.5
 height = 20.0
 
 [node name="TreeTunnel" type="Node3D"]
@@ -34,7 +34,7 @@ script = ExtResource("2_7b3k3")
 target_position_node = NodePath("../UpperArrival")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tree_tunnel/LowerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.79, 0)
 shape = SubResource("CapsuleShape3D_jdxlg")
 
 [node name="LowerArrival" type="Node3D" parent="tree_tunnel"]
