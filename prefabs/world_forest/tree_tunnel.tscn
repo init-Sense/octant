@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3322b1hemwnc"]
+
+[ext_resource type="PackedScene" uid="uid://blsfx87y8o2oq" path="res://assets/models/world_forest/tree_tunnel.glb" id="1_tw1j2"]
+[ext_resource type="Script" path="res://scripts/transport.gd" id="2_7b3k3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jrkui"]
+radius = 5.4
+height = 12.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdxlg"]
+radius = 4.2
+height = 20.0
+
+[node name="TreeTunnel" type="Node3D"]
+
+[node name="tree_tunnel" parent="." instance=ExtResource("1_tw1j2")]
+
+[node name="UpperArea" type="Area3D" parent="tree_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 89.3143, 0)
+collision_layer = 3
+collision_mask = 6
+script = ExtResource("2_7b3k3")
+target_position_node = NodePath("../LowerArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree_tunnel/UpperArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.4, 0)
+shape = SubResource("CapsuleShape3D_jrkui")
+
+[node name="LowerArea" type="Area3D" parent="tree_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.6806, 0)
+collision_layer = 3
+collision_mask = 6
+script = ExtResource("2_7b3k3")
+target_position_node = NodePath("../UpperArrival")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree_tunnel/LowerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.189999, 0)
+shape = SubResource("CapsuleShape3D_jdxlg")
+
+[node name="LowerArrival" type="Node3D" parent="tree_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.52, 0)
+
+[node name="UpperArrival" type="Node3D" parent="tree_tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 94.91, 0)

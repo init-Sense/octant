@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=22 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
+[ext_resource type="PackedScene" uid="uid://clsooop2xiidg" path="res://assets/models/world_frozen/moon.glb" id="8_q7sv6"]
 [ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/cave/stalagmite_b.glb" id="8_rj7kh"]
 [ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/cave/stalagmite_c.glb" id="9_u1kvt"]
 [ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/cave/stalactite_a.glb" id="10_27yrr"]
@@ -143,6 +144,9 @@ transform = Transform3D(-23.2638, 0, -23.2638, 0, 13.16, 0, 23.2638, 0, -23.2638
 
 [node name="mountain_a_4" parent="Surface/Background" instance=ExtResource("7_2x7or")]
 transform = Transform3D(-9.0797, 0, 2.4329, 0, 9.4, 0, -2.4329, 0, -9.0797, -43, -11, 508)
+
+[node name="moon" parent="Surface" instance=ExtResource("8_q7sv6")]
+transform = Transform3D(136.425, 0, 0, 0, 136.425, 0, 0, 0, 136.425, -252.171, 468.283, -513.713)
 
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64, 0)
