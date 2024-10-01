@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=27 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
 [ext_resource type="PackedScene" uid="uid://cp36u8dmrv72w" path="res://assets/models/world_frozen/frozen_god_hand.glb" id="21_mvlug"]
+[ext_resource type="PackedScene" uid="uid://dumf2ykhijb5l" path="res://prefabs/world_frozen/frozen_god_eye.tscn" id="22_3xqs7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(300, 64, 300)
@@ -67,7 +68,6 @@ directional_shadow_max_distance = 200.0
 
 [node name="Sea" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45952, 0)
-visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_cnuu1")
 skeleton = NodePath("../..")
@@ -315,5 +315,17 @@ transform = Transform3D(3.06594, 0.765123, 2.47854, -2.34247, 2.46494, 2.1367, -
 [node name="frozen_nucleus_tunnel" parent="Nucleus" instance=ExtResource("20_bhnjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189.196, 0)
 
-[node name="frozen_god_hand" parent="Nucleus" instance=ExtResource("21_mvlug")]
-transform = Transform3D(1.19914, -19.2807, 19.0966, -26.6658, 2.70976, 4.41034, -5.03547, -18.9413, -18.8078, 112.006, -0.314685, 132.34)
+[node name="frozen_god_hand_01" parent="Nucleus" instance=ExtResource("21_mvlug")]
+transform = Transform3D(-6.44374, -18.2116, 19.0966, -23.4773, 12.9316, 4.41034, -12.048, -15.4588, -18.8078, 109.151, -62.2364, 114.921)
+
+[node name="frozen_god_hand_02" parent="Nucleus" instance=ExtResource("21_mvlug")]
+transform = Transform3D(17.9491, 37.6902, -7.79632, 31.1752, -19.2821, -21.4433, -22.5709, 3.33988, -35.8177, -155.711, 53.5344, -9.07364)
+
+[node name="frozen_god_hand_03" parent="Nucleus" instance=ExtResource("21_mvlug")]
+transform = Transform3D(9.0846, -34.5756, -22.9238, -28.4229, 11.906, -29.2214, 30.2178, 21.5935, -20.594, 142.368, -32.7853, -73.9578)
+
+[node name="FrozenGodEye" parent="Nucleus" instance=ExtResource("22_3xqs7")]
+transform = Transform3D(-37.2089, 1.40162, 1.91395, -2.37228, -21.9842, -30.02, -1.30148e-07, -30.0809, 22.0288, -14.2791, 108.742, 131.415)
+
+[node name="FrozenGodEye2" parent="Nucleus" instance=ExtResource("22_3xqs7")]
+transform = Transform3D(-8.77539, 17.9477, -31.4802, -28.8457, 16.1446, 17.2455, 21.9328, 28.4141, 10.0857, -78.1428, -72.2872, -129.205)

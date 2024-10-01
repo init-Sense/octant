@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dumf2ykhijb5l"]
+
+[ext_resource type="PackedScene" uid="uid://ussbml4pj115" path="res://assets/models/world_frozen/frozen_god_face.glb" id="1_nqx2g"]
+[ext_resource type="PackedScene" uid="uid://8ni0q82hr04n" path="res://assets/models/world_frozen/frozen_god_eye.glb" id="2_y6c3q"]
+
+[node name="FrozenGodEye" type="Node3D"]
+
+[node name="frozen_god_face" parent="." instance=ExtResource("1_nqx2g")]
+
+[node name="frozen_god_eye" parent="." instance=ExtResource("2_y6c3q")]
