@@ -194,7 +194,7 @@ func ground_check(_delta: float) -> void:
 
 func handle_landing() -> void:
 	if movement.velocity_vector.y <= 0:
-		print("Freefall time before landing: ", freefall_time)
+		#print("Freefall time before landing: ", freefall_time)
 
 		player.set_no_action()
 
