@@ -18,6 +18,7 @@ size = Vector3(22, 80, 22)
 script = ExtResource("1_om7oh")
 scene_name = "sky"
 soundtrack = "infinite"
+soundtrack_volume = -15.0
 
 [node name="Player" parent="." instance=ExtResource("1_mnsr1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.267, 7.9, -3.90002)

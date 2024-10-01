@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
 [ext_resource type="PackedScene" uid="uid://cp36u8dmrv72w" path="res://assets/models/world_frozen/frozen_god_hand.glb" id="21_mvlug"]
-[ext_resource type="PackedScene" uid="uid://dumf2ykhijb5l" path="res://prefabs/world_frozen/frozen_god_eye.tscn" id="22_3xqs7"]
+[ext_resource type="PackedScene" path="res://prefabs/world_frozen/frozen_god_eye.tscn" id="22_3xqs7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(300, 64, 300)

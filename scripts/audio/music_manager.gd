@@ -139,6 +139,15 @@ func stop(group_key: String, music_key: String):
 	else:
 		print("Music not found: " + group_key + "/" + music_key)
 
+func stop_all():
+	_debug_print("Stopping all music")
+	for group_key in music_players.keys():
+		for music_key in music_players[group_key].keys():
+			var players = music_players[group_key][music_key]
+			for player in players:
+				player.stop()
+	_debug_print("All music stopped")
+
 func change_bus_volume(bus_name: String, amount: float):
 	var bus_index: int = AudioServer.get_bus_index(bus_name)
 	if bus_index != -1:

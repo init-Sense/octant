@@ -60,6 +60,7 @@ func _on_audio_finished():
 
 #region SCENE
 func _change_scene():
+	MusicManager.stop_all()
 	get_tree().change_scene_to_file("res://scenes/loading.tscn")
 
 func reset_camera():
