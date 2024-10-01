@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckuna2c8v1tpx"]
+[gd_scene load_steps=26 format=3 uid="uid://ckuna2c8v1tpx"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -6,20 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/frozen_platform.glb" id="5_r3qnj"]
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/frozen_tunnel.tscn" id="5_wp6ac"]
 [ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://materials/water_3d.tres" id="6_kad0g"]
-[ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/cave/stalagmite_a.glb" id="7_dgnr3"]
+[ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/stalagmite_a.glb" id="7_dgnr3"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="7_nk82h"]
 [ext_resource type="PackedScene" uid="uid://c4vvw252r032r" path="res://assets/models/world_frozen/frozen_nucleus.glb" id="8_pydxi"]
 [ext_resource type="PackedScene" uid="uid://clsooop2xiidg" path="res://assets/models/world_frozen/moon.glb" id="8_q7sv6"]
-[ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/cave/stalagmite_b.glb" id="8_rj7kh"]
-[ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/cave/stalagmite_c.glb" id="9_u1kvt"]
-[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/cave/stalactite_a.glb" id="10_27yrr"]
-[ext_resource type="PackedScene" uid="uid://bo2jrd2fdboay" path="res://assets/models/world_frozen/cave/frozen_ground.glb" id="10_muqd7"]
-[ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/cave/stalactite_b.glb" id="11_veyyu"]
-[ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/cave/stalactite_c.glb" id="12_8qwt4"]
+[ext_resource type="PackedScene" uid="uid://bq1hr5sbi8uuu" path="res://assets/models/world_frozen/stalagmite_b.glb" id="8_rj7kh"]
+[ext_resource type="PackedScene" uid="uid://bmjmrk1pijvym" path="res://assets/models/world_frozen/stalagmite_c.glb" id="9_u1kvt"]
+[ext_resource type="PackedScene" uid="uid://c1yxjn8c8310t" path="res://assets/models/world_frozen/stalactite_a.glb" id="10_27yrr"]
+[ext_resource type="PackedScene" uid="uid://bo2jrd2fdboay" path="res://assets/models/world_frozen/frozen_ground.glb" id="10_muqd7"]
+[ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/stalactite_b.glb" id="11_veyyu"]
+[ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/stalactite_c.glb" id="12_8qwt4"]
 [ext_resource type="PackedScene" uid="uid://bfpyalxyncqtn" path="res://assets/models/miscellaneus/rock_a.glb" id="16_h8wxr"]
 [ext_resource type="Environment" uid="uid://c17v2rcpyommv" path="res://environments/frozen_nucleus_environment.tres" id="17_of3fl"]
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
+[ext_resource type="PackedScene" uid="uid://cp36u8dmrv72w" path="res://assets/models/world_frozen/frozen_god_hand.glb" id="21_mvlug"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(300, 64, 300)
@@ -35,14 +36,14 @@ subdivide_depth = 128
 size = Vector3(917.831, 143.068, 991.908)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0uty"]
-radius = 198.0
+radius = 189.846
 
 [node name="FrozenWorld" type="Node3D"]
 metadata/slippery = false
 metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4421, 52.5231, -123.622)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -264.751, -136.251, -44.603)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_8s4oo")
@@ -62,9 +63,11 @@ shape = SubResource("BoxShape3D_eumbd")
 transform = Transform3D(0.241736, -0.354512, 0.903264, 5.82116e-09, 0.930871, 0.365348, -0.970342, -0.0883176, 0.225025, 0, 2.84967, 0)
 light_energy = 0.9
 shadow_enabled = true
+directional_shadow_max_distance = 200.0
 
 [node name="Sea" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.45952, 0)
+visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_cnuu1")
 skeleton = NodePath("../..")
@@ -179,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24168, 47.2494, 44.6581)
 shape = SubResource("BoxShape3D_7iyap")
 
 [node name="frozen_ground" parent="Caves" instance=ExtResource("10_muqd7")]
-transform = Transform3D(1, 0, 0, 0, 0.301703, 0, 0, 0, 1, -11, -3.69635, -63)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -3.69635, -63)
 
 [node name="Stalagmites" type="Node3D" parent="Caves"]
 
@@ -290,7 +293,7 @@ transform = Transform3D(34.6179, 0, 0, 0, 34.6179, 0, 0, 0, 34.6179, -53.328, -2
 transform = Transform3D(23.3826, 0, 25.5275, 0, 34.6179, 0, -25.5275, 0, 23.3826, -50.5479, -2.96025, -107.926)
 
 [node name="Nucleus" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -547.022, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -283.125, -547.022, -46.3738)
 collision_mask = 4
 script = ExtResource("7_nk82h")
 is_zero_g = true
@@ -310,4 +313,7 @@ transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, 0, 0, 0)
 transform = Transform3D(3.06594, 0.765123, 2.47854, -2.34247, 2.46494, 2.1367, -1.11418, -3.07689, 2.32807, 0, 0, 0)
 
 [node name="frozen_nucleus_tunnel" parent="Nucleus" instance=ExtResource("20_bhnjb")]
-transform = Transform3D(3.54576, 0, 0, 0, 3.54576, 0, 0, 0, 3.54576, 0, 189.196, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189.196, 0)
+
+[node name="frozen_god_hand" parent="Nucleus" instance=ExtResource("21_mvlug")]
+transform = Transform3D(1.19914, -19.2807, 19.0966, -26.6658, 2.70976, 4.41034, -5.03547, -18.9413, -18.8078, 112.006, -0.314685, 132.34)

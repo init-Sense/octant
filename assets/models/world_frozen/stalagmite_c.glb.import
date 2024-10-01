@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bmjmrk1pijvym"
-path="res://.godot/imported/stalagmite_c.glb-721805de413b585a30d06788e07585fa.scn"
+path="res://.godot/imported/stalagmite_c.glb-f238732c7c2061c310d822d5d6216338.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/cave/stalagmite_c.glb"
-dest_files=["res://.godot/imported/stalagmite_c.glb-721805de413b585a30d06788e07585fa.scn"]
+source_file="res://assets/models/world_frozen/stalagmite_c.glb"
+dest_files=["res://.godot/imported/stalagmite_c.glb-f238732c7c2061c310d822d5d6216338.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bbrwo5ax534gk"
-path="res://.godot/imported/stalagmite_a.glb-2dd27f9040f4efe57a2a508a07751740.scn"
+uid="uid://bq1hr5sbi8uuu"
+path="res://.godot/imported/stalagmite_b.glb-d9c1abdb31d2cfbad3cad27c00ef9ef9.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/cave/stalagmite_a.glb"
-dest_files=["res://.godot/imported/stalagmite_a.glb-2dd27f9040f4efe57a2a508a07751740.scn"]
+source_file="res://assets/models/world_frozen/stalagmite_b.glb"
+dest_files=["res://.godot/imported/stalagmite_b.glb-d9c1abdb31d2cfbad3cad27c00ef9ef9.scn"]
 
 [params]
 

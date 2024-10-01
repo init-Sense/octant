@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bud37b52tbh11"
-path="res://.godot/imported/forest_god_horns.glb-6906ab57b8435dba62848dadb40e7f30.scn"
+uid="uid://bo2jrd2fdboay"
+path="res://.godot/imported/frozen_ground.glb-3232358cf3791c64518adbd536638bfb.scn"
 
 [deps]
 
-source_file="res://assets/models/world_forest/forest_god_horns.glb"
-dest_files=["res://.godot/imported/forest_god_horns.glb-6906ab57b8435dba62848dadb40e7f30.scn"]
+source_file="res://assets/models/world_frozen/frozen_ground.glb"
+dest_files=["res://.godot/imported/frozen_ground.glb-3232358cf3791c64518adbd536638bfb.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/forest_god_horns.tres"
+"use_external/path": "res://materials/frozen_ground.tres"
 }
 }
 }
