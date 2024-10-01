@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfmoc3p6nmogg"]
+[gd_scene load_steps=21 format=3 uid="uid://cfmoc3p6nmogg"]
 
 [ext_resource type="Environment" uid="uid://dya4i06kltfbw" path="res://environments/forest.tres" id="1_kpodi"]
+[ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_ls3bv"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="2_0h6dd"]
 [ext_resource type="PackedScene" uid="uid://bvovyd3vok26a" path="res://assets/models/world_forest/forest_ground.glb" id="3_quggn"]
 [ext_resource type="PackedScene" uid="uid://cop8ri8q0c6ng" path="res://assets/models/world_forest/tree.glb" id="4_hj0wm"]
@@ -23,6 +24,9 @@
 size = Vector3(126.387, 619.584, 78.7616)
 
 [node name="WorldForest" type="Node3D"]
+script = ExtResource("1_ls3bv")
+scene_name = "forest"
+soundtrack = "gods"
 
 [node name="Player" parent="." instance=ExtResource("2_0h6dd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.42326, 154.394, 20.0632)
