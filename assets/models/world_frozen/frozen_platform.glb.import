@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bs5xf6waxfyvi"
-path="res://.godot/imported/ice_tunnel.glb-44d49378774a683aad01a9ca9371b90b.scn"
+uid="uid://tulei3i2nhjg"
+path="res://.godot/imported/frozen_platform.glb-36295fe831f278903d1c850cc3fd6d4c.scn"
 
 [deps]
 
-source_file="res://assets/models/world_frozen/ice_tunnel.glb"
-dest_files=["res://.godot/imported/ice_tunnel.glb-44d49378774a683aad01a9ca9371b90b.scn"]
+source_file="res://assets/models/world_frozen/frozen_platform.glb"
+dest_files=["res://.godot/imported/frozen_platform.glb-36295fe831f278903d1c850cc3fd6d4c.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "IceMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/frozen_mountain.tres"
+"use_external/path": "res://materials/frozen_platform.tres"
 }
 }
 }
