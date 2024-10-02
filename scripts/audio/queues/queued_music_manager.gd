@@ -3,7 +3,9 @@ extends Node
 #region INSPECTOR
 @export var debug_mode: bool = false
 @export var groups: Array[QueuedMusicGroup]
+@export var fade_out_duration: float = 5.0
 #endregion
+
 
 #region VARIABLES
 var music_players: Dictionary = {}
@@ -13,7 +15,9 @@ var current_stem_index: int = -1
 var is_playing: bool = false
 var should_terminate: bool = false
 var should_terminate_stem: bool = false
+var fade_tween: Tween = null
 #endregion
+
 
 #region LIFECYCLE
 func _ready():
@@ -31,7 +35,7 @@ func _initialize_music_players():
 				var player = AudioStreamPlayer.new()
 				player.stream = stem
 				player.bus = group.bus
-				player.volume_db = -80  # Start all stems muted
+				player.volume_db = -80
 				add_child(player)
 				music_players[group.key][track.key].append(player)
 			track.duration = track.stems[0].get_length()
@@ -42,14 +46,13 @@ func _process(delta):
 		var current_group = _find_group(current_group_key)
 		if current_group and current_track_index >= 0 and current_track_index < current_group.tracks.size():
 			var current_track = current_group.tracks[current_track_index]
-			if not music_players[current_group_key][current_track.key][current_stem_index].playing:
+			if not music_players[current_group_key][current_track.key][current_stem_index].playing and not fade_tween:
 				if should_terminate:
 					play_next(false)
-				elif should_terminate_stem:
-					play_next_part(false)
 				else:
-					play_current_stem()
+					advance_stem()
 #endregion
+
 
 #region QUEUE CONTROLS
 func start_playback(group_key: String, track_key: String):
@@ -89,16 +92,41 @@ func play_previous():
 
 func play_next_part(terminate: bool = false):
 	should_terminate_stem = terminate
+	if terminate:
+		fade_out_current_stem()
+	else:
+		advance_stem()
+		
+func advance_stem():
 	var current_group = _find_group(current_group_key)
 	if current_group and current_track_index >= 0 and current_track_index < current_group.tracks.size():
 		var current_track = current_group.tracks[current_track_index]
 		if current_stem_index < current_track.stems.size() - 1:
-			if not terminate:
-				stop_current_stem()
-				current_stem_index += 1
-				play_current_stem()
+			stop_current_stem()
+			current_stem_index += 1
+			play_current_stem()
 		else:
 			_debug_print("End of stems reached for current track")
+			should_terminate_stem = false
+			play_next(true)
+
+func fade_out_current_stem():
+	var current_group = _find_group(current_group_key)
+	if current_group and current_track_index >= 0 and current_track_index < current_group.tracks.size():
+		var current_track = current_group.tracks[current_track_index]
+		if current_stem_index >= 0 and current_stem_index < current_track.stems.size():
+			var current_player = music_players[current_group_key][current_track.key][current_stem_index]
+			
+			if fade_tween:
+				fade_tween.kill()
+			
+			fade_tween = create_tween()
+			fade_tween.tween_property(current_player, "volume_db", -80.0, fade_out_duration)
+			fade_tween.tween_callback(func():
+				stop_current_stem()
+				advance_stem()
+				fade_tween = null
+			)
 
 func play_previous_part():
 	if current_stem_index > 0:
@@ -127,6 +155,10 @@ func resume():
 			_debug_print("Playback resumed")
 
 func stop_all():
+	if fade_tween:
+		fade_tween.kill()
+		fade_tween = null
+	
 	for group_key in music_players.keys():
 		for track_key in music_players[group_key].keys():
 			for player in music_players[group_key][track_key]:
@@ -145,16 +177,23 @@ func play_current_stem():
 		var current_track = current_group.tracks[current_track_index]
 		if current_stem_index >= 0 and current_stem_index < current_track.stems.size():
 			stop_current_stem()
-			music_players[current_group_key][current_track.key][current_stem_index].volume_db = 0
-			music_players[current_group_key][current_track.key][current_stem_index].play()
+			var current_player = music_players[current_group_key][current_track.key][current_stem_index]
+			current_player.volume_db = 0
+			current_player.play()
 			is_playing = true
 			_debug_print("Now playing: %s/%s - Stem %d" % [current_group_key, current_track.key, current_stem_index])
 		else:
 			_debug_print("Invalid stem index")
+			should_terminate_stem = false
+			play_next(true)
 	else:
 		_debug_print("No track to play")
 
 func stop_current_stem():
+	if fade_tween:
+		fade_tween.kill()
+		fade_tween = null
+	
 	var current_group = _find_group(current_group_key)
 	if current_group and current_track_index >= 0 and current_track_index < current_group.tracks.size():
 		var current_track = current_group.tracks[current_track_index]
@@ -167,6 +206,7 @@ func stop_current():
 	stop_current_stem()
 	current_stem_index = -1
 #endregion
+
 
 #region UTILS
 func _debug_print(message: String):

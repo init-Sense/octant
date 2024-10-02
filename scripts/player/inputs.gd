@@ -49,7 +49,7 @@ func _input(_event) -> void:
 	if Input.is_action_just_pressed("debug_queue"):
 		QueuedMusicManager.start_playback("zero_core", "main_theme")
 	if Input.is_action_just_pressed("debug_queue_next"):
-		QueuedMusicManager.play_next_part()
+		QueuedMusicManager.play_next_part(true)
 	if Input.is_action_just_pressed("debug_queue_previous"):
 		QueuedMusicManager.play_previous_part()
 	handle_jump_input()
