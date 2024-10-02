@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bcx36xhin580x" path="res://assets/models/world_forest/bridge_branch_a.glb" id="12_bskbt"]
 [ext_resource type="PackedScene" uid="uid://x8lackxx5yev" path="res://assets/models/world_forest/bridge_branch_b.glb" id="13_kvija"]
 [ext_resource type="PackedScene" uid="uid://cp0eqeuirl42t" path="res://assets/models/world_forest/bridge_branch_c.glb" id="14_rsk3w"]
-[ext_resource type="PackedScene" uid="uid://br28m3haa2ylb" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
+[ext_resource type="PackedScene" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
 [ext_resource type="PackedScene" uid="uid://deepqk5wgdegl" path="res://prefabs/world_forest/forest_god.tscn" id="15_iupkp"]
 [ext_resource type="Script" path="res://scripts/environment_area.gd" id="16_d2j8p"]
 [ext_resource type="PackedScene" uid="uid://d3322b1hemwnc" path="res://prefabs/world_forest/tree_tunnel.tscn" id="18_h042b"]
@@ -495,4 +495,4 @@ transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193, 177.668, 4.77306)
 
 [node name="Player" parent="." instance=ExtResource("2_0h6dd")]
-transform = Transform3D(0.83708, 0, -0.547081, 0, 1, 0, 0.547081, 0, 0.83708, 10.5836, 280.305, 0)
+transform = Transform3D(-0.28358, 0, -0.958948, 0, 1, 0, 0.958948, 0, -0.28358, 10.5836, 280.305, 0)
