@@ -34,7 +34,7 @@ import_script/path=""
 _subresources={
 "materials": {
 "Building": {
-"use_external/enabled": true,
+"use_external/enabled": false,
 "use_external/path": "res://assets/materials/stone.tres"
 }
 }

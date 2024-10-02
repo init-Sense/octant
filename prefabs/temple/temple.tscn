@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=19 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
@@ -12,10 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
 [ext_resource type="PackedScene" uid="uid://d4cfr5i5v3vb2" path="res://assets/models/world_temple/temple_cube.glb" id="12_vdtvp"]
 [ext_resource type="PackedScene" uid="uid://cyh2c8tucd5h4" path="res://assets/models/world_temple/bell_tower.glb" id="13_a523m"]
+[ext_resource type="PackedScene" uid="uid://vqtapcimp5km" path="res://assets/models/world_temple/pool.glb" id="13_n41xw"]
 [ext_resource type="PackedScene" uid="uid://b7wxixnj8x74h" path="res://assets/models/world_temple/pool_ruined_a.glb" id="15_oa0nj"]
 [ext_resource type="PackedScene" uid="uid://dp0sgbbod7qos" path="res://assets/models/world_temple/pool_ruined_b.glb" id="15_t71j3"]
 [ext_resource type="PackedScene" uid="uid://dsek4f63pxh8b" path="res://assets/models/world_temple/pool_ruined_c.glb" id="16_e6l7j"]
-[ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://prefabs/temple/pool.tscn" id="16_gfw2c"]
+[ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://materials/pool_water.tres" id="17_4y8tp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7ouib"]
+material = ExtResource("17_4y8tp")
+size = Vector2(18, 10)
+subdivide_width = 12
+subdivide_depth = 12
 
 [node name="Temple" type="Node3D"]
 
@@ -234,15 +241,6 @@ transform = Transform3D(0.36435, 0, 0, 0, 0.791793, 0, 0, 0, 2.77337, 2.14791, -
 [node name="Pools" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90.6, 0)
 
-[node name="PoolForest" parent="Pools" instance=ExtResource("16_gfw2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
-
-[node name="PoolSky" parent="Pools" instance=ExtResource("16_gfw2c")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 0, -23.3345)
-
-[node name="PoolFrozen" parent="Pools" instance=ExtResource("16_gfw2c")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 0, 23.3345)
-
 [node name="pool_ruined_a_01" parent="Pools" instance=ExtResource("15_oa0nj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33)
 
@@ -257,3 +255,27 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 
 [node name="pool_ruined_c_03" parent="Pools" instance=ExtResource("16_e6l7j")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -23.3345, 0, 23.3345)
+
+[node name="pool_frozen" parent="Pools" instance=ExtResource("13_n41xw")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 0, -23.3345)
+
+[node name="PoolWater_Frozen" type="MeshInstance3D" parent="Pools/pool_frozen"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 3, -0.580002, 9.53674e-07)
+mesh = SubResource("PlaneMesh_7ouib")
+skeleton = NodePath("../..")
+
+[node name="pool_forest" parent="Pools" instance=ExtResource("13_n41xw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
+
+[node name="PoolWater_Forest" type="MeshInstance3D" parent="Pools/pool_forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.580002, 0)
+mesh = SubResource("PlaneMesh_7ouib")
+skeleton = NodePath("../..")
+
+[node name="pool_sky" parent="Pools" instance=ExtResource("13_n41xw")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 0, 23.3345)
+
+[node name="PoolWater_Sky" type="MeshInstance3D" parent="Pools/pool_sky"]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 3, -0.580002, -9.53674e-07)
+mesh = SubResource("PlaneMesh_7ouib")
+skeleton = NodePath("../..")
