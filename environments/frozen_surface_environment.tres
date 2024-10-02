@@ -6,6 +6,7 @@
 background_mode = 2
 sky = ExtResource("1_hy7na")
 ambient_light_source = 3
+fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(1, 1, 1, 1)
 fog_light_energy = 1.2
