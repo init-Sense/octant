@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfmoc3p6nmogg"]
+[gd_scene load_steps=21 format=3 uid="uid://xlj4wjvhsl4w"]
 
 [ext_resource type="Environment" uid="uid://dya4i06kltfbw" path="res://environments/forest.tres" id="1_kpodi"]
 [ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_ls3bv"]
@@ -495,4 +495,4 @@ transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193, 177.668, 4.77306)
 
 [node name="Player" parent="." instance=ExtResource("2_0h6dd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5836, 280.305, 0)
+transform = Transform3D(0.83708, 0, -0.547081, 0, 1, 0, 0.547081, 0, 0.83708, 10.5836, 280.305, 0)

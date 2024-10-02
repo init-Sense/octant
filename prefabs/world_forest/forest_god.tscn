@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://deepqk5wgdegl"]
+[gd_scene load_steps=9 format=3 uid="uid://deepqk5wgdegl"]
 
 [ext_resource type="PackedScene" uid="uid://cjpp1efrvtcik" path="res://assets/models/world_forest/forest_god_arms.glb" id="1_5no3j"]
 [ext_resource type="PackedScene" uid="uid://c1ubsbgwp3vds" path="res://assets/models/world_forest/forest_god_body.glb" id="2_lu6tb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bud37b52tbh11" path="res://assets/models/world_forest/forest_god_horns.glb" id="5_v1ffn"]
 [ext_resource type="PackedScene" uid="uid://uc8ybgx30gpl" path="res://assets/models/world_forest/forest_god_legs_a.glb" id="6_ovm2y"]
 [ext_resource type="PackedScene" uid="uid://d2ywad8g47edj" path="res://assets/models/world_forest/forest_god_legs_b.glb" id="7_ox2wo"]
+[ext_resource type="PackedScene" uid="uid://cr1826rmjgiis" path="res://assets/models/world_forest/forest_god_pupil.glb" id="8_jpwow"]
 
 [node name="ForestGod" type="Node3D"]
 
@@ -23,3 +24,5 @@
 [node name="forest_god_legs" parent="." instance=ExtResource("6_ovm2y")]
 
 [node name="forest_god_legs_b" parent="." instance=ExtResource("7_ox2wo")]
+
+[node name="forest_god_pupil" parent="." instance=ExtResource("8_jpwow")]

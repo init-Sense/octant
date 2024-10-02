@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp5a5hedvwug8"]
+[gd_scene load_steps=8 format=3 uid="uid://1wyjcylyjxtq"]
 
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="1_bkq7w"]
 [ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_yjm14"]
