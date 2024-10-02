@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b0fkgrgn7ysak" path="res://prefabs/world_forest/branch_big_a.tscn" id="7_jth4y"]
 [ext_resource type="PackedScene" uid="uid://bg0sdvg65qd5g" path="res://assets/models/world_forest/plant_a.glb" id="8_vnqwc"]
 [ext_resource type="PackedScene" uid="uid://dd7taa1y6rnde" path="res://assets/models/world_forest/plant_b.glb" id="9_ltvp3"]
-[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/Landscapes/landscape_a.glb" id="10_hsl43"]
+[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/landscapes/landscape_a.glb" id="10_hsl43"]
 [ext_resource type="PackedScene" uid="uid://bcx36xhin580x" path="res://assets/models/world_forest/bridge_branch_a.glb" id="12_bskbt"]
 [ext_resource type="PackedScene" uid="uid://x8lackxx5yev" path="res://assets/models/world_forest/bridge_branch_b.glb" id="13_kvija"]
 [ext_resource type="PackedScene" uid="uid://cp0eqeuirl42t" path="res://assets/models/world_forest/bridge_branch_c.glb" id="14_rsk3w"]
