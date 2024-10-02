@@ -44,7 +44,7 @@ metadata/slippery = false
 metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(-1, 0, -2.96039e-07, 0, 1, 0, 2.96039e-07, 0, -1, 23.085, 5.22574, 16.6572)
+transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, 23.085, 5.22574, 16.6572)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_8s4oo")
