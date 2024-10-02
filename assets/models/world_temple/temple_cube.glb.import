@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d4amm7eqipb2t"
-path="res://.godot/imported/corridor_floor.glb-3a3b350d5e81d9a53d0f887b0ed75314.scn"
+uid="uid://d4cfr5i5v3vb2"
+path="res://.godot/imported/temple_cube.glb-75b2a4f0fbeaf152251a2a4b486345dd.scn"
 
 [deps]
 
-source_file="res://assets/models/world_temple/corridor/corridor_floor.glb"
-dest_files=["res://.godot/imported/corridor_floor.glb-3a3b350d5e81d9a53d0f887b0ed75314.scn"]
+source_file="res://assets/models/world_temple/temple_cube.glb"
+dest_files=["res://.godot/imported/temple_cube.glb-75b2a4f0fbeaf152251a2a4b486345dd.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"CorridorFloor": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/stone.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

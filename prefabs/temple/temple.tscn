@@ -1,58 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=17 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/buildings/building_c.glb" id="2_4fdgv"]
 [ext_resource type="PackedScene" uid="uid://b77afiips05e2" path="res://assets/models/columns/column_outer.glb" id="3_2mhdb"]
 [ext_resource type="PackedScene" uid="uid://dlgjbjwqlvaln" path="res://prefabs/temple/stairs.tscn" id="4_8btde"]
-[ext_resource type="PackedScene" uid="uid://doap8gflmeimv" path="res://assets/models/world_temple/door_polygon.glb" id="6_62qsy"]
-[ext_resource type="PackedScene" uid="uid://dgi6xi1pie1ot" path="res://prefabs/temple/temple_wall_opening.tscn" id="7_80ljr"]
+[ext_resource type="PackedScene" uid="uid://c2newsi5cutdc" path="res://assets/models/world_temple/womb/womb_disabled.glb" id="7_1vl0s"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="9_n4b31"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="10_abp4n"]
+[ext_resource type="PackedScene" uid="uid://clru4rkwu65ve" path="res://prefabs/temple/bell.tscn" id="11_2rj34"]
 [ext_resource type="PackedScene" uid="uid://n5iw7ewiffla" path="res://assets/models/columns/column_base.glb" id="11_4nnem"]
 [ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
+[ext_resource type="PackedScene" uid="uid://d4cfr5i5v3vb2" path="res://assets/models/world_temple/temple_cube.glb" id="12_vdtvp"]
 [ext_resource type="PackedScene" uid="uid://cyh2c8tucd5h4" path="res://assets/models/world_temple/bell_tower.glb" id="13_a523m"]
-[ext_resource type="PackedScene" uid="uid://bxei2ffwxya84" path="res://assets/models/world_temple/bell.glb" id="14_p8ert"]
-[ext_resource type="PackedScene" uid="uid://hnf1rjnklowj" path="res://assets/models/world_temple/bell_tongue.glb" id="15_6ib53"]
+[ext_resource type="PackedScene" uid="uid://b7wxixnj8x74h" path="res://assets/models/world_temple/pool_ruined_a.glb" id="15_oa0nj"]
+[ext_resource type="PackedScene" uid="uid://dp0sgbbod7qos" path="res://assets/models/world_temple/pool_ruined_b.glb" id="15_t71j3"]
+[ext_resource type="PackedScene" uid="uid://dsek4f63pxh8b" path="res://assets/models/world_temple/pool_ruined_c.glb" id="16_e6l7j"]
 [ext_resource type="PackedScene" uid="uid://cskl5bbc4k05v" path="res://prefabs/temple/pool.tscn" id="16_gfw2c"]
-
-[sub_resource type="Animation" id="Animation_2fn5g"]
-length = 0.001
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_k4vun"]
-resource_name = "rotation"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4wiy"]
-_data = {
-"RESET": SubResource("Animation_2fn5g"),
-"rotation": SubResource("Animation_k4vun")
-}
 
 [node name="Temple" type="Node3D"]
 
@@ -170,34 +133,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
 [node name="Stairs_14" parent="Staircase" instance=ExtResource("4_8btde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 
-[node name="Polygon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7, 6.8, 0)
-
-[node name="door_polygon" parent="Polygon" instance=ExtResource("6_62qsy")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Polygon/door_polygon"]
-libraries = {
-"": SubResource("AnimationLibrary_i4wiy")
-}
-autoplay = "rotation"
-speed_scale = 0.3
-
-[node name="PolygonLight_1" type="OmniLight3D" parent="Polygon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
-light_color = Color(1, 0.460201, 0.591338, 1)
-light_energy = 2.0
-
-[node name="PolygonLight_2" type="OmniLight3D" parent="Polygon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 0)
-light_color = Color(1, 0.460201, 0.591338, 1)
-light_energy = 2.0
-
 [node name="temple_floor" parent="." instance=ExtResource("9_n4b31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Walls" type="Node3D" parent="."]
-
-[node name="TempleWallOpening" parent="Walls" instance=ExtResource("7_80ljr")]
 
 [node name="TempleWall_2" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
@@ -208,17 +147,40 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="TempleWall_4" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="TempleWall_5" parent="Walls" instance=ExtResource("10_abp4n")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-
 [node name="TempleWall_6" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="TempleWall_5" parent="Walls" instance=ExtResource("10_abp4n")]
+
+[node name="TempleWall_9" parent="Walls" instance=ExtResource("10_abp4n")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="TempleWall_7" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="TempleWall_8" parent="Walls" instance=ExtResource("10_abp4n")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="womb_disabled_01" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6965, 92.6678, -2.93288)
+
+[node name="womb_disabled_02" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -45.696, 92.668, 2.96074)
+
+[node name="womb_disabled_03" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 34.3961, 92.6678, 30.2423)
+
+[node name="womb_disabled_04" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -34.3956, 92.668, -30.2145)
+
+[node name="womb_disabled_05" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -30.2282, 92.6678, 34.4098)
+
+[node name="womb_disabled_06" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 30.2287, 92.668, -34.3819)
+
+[node name="womb_disabled_07" parent="Walls" instance=ExtResource("7_1vl0s")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 2.94706, 92.6678, 45.7102)
 
 [node name="Bridges" type="Node3D" parent="."]
 
@@ -250,19 +212,48 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 16.9706, 0, 16.9706)
 
 [node name="WombOpening" parent="." instance=ExtResource("12_dt2yr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 92.9, -47.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 92.9, -45.9088)
 
-[node name="Bell" type="Node3D" parent="."]
+[node name="BellTower" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 106.5, 0)
 
-[node name="temple_floor_bell" parent="Bell" instance=ExtResource("9_n4b31")]
+[node name="temple_floor_bell" parent="BellTower" instance=ExtResource("9_n4b31")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -16.1, 0)
 
-[node name="bell_tower" parent="Bell" instance=ExtResource("13_a523m")]
+[node name="bell_tower" parent="BellTower" instance=ExtResource("13_a523m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.809212, 0)
 
-[node name="bell" parent="Bell" instance=ExtResource("14_p8ert")]
+[node name="Bell" parent="BellTower" instance=ExtResource("11_2rj34")]
 
-[node name="bell_tongue" parent="Bell" instance=ExtResource("15_6ib53")]
+[node name="temple_cube" parent="BellTower" instance=ExtResource("12_vdtvp")]
+transform = Transform3D(2.31183, 0, 0, 0, 0.735283, 0, 0, 0, 2.77337, 4.77212, -15.9182, -1.78824)
 
-[node name="Pool" parent="." instance=ExtResource("16_gfw2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6, 90.6, 0)
+[node name="temple_cube2" parent="BellTower" instance=ExtResource("12_vdtvp")]
+transform = Transform3D(0.36435, 0, 0, 0, 0.791793, 0, 0, 0, 2.77337, 2.14791, -15.5555, -1.78824)
+
+[node name="Pools" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90.6, 0)
+
+[node name="PoolForest" parent="Pools" instance=ExtResource("16_gfw2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
+
+[node name="PoolSky" parent="Pools" instance=ExtResource("16_gfw2c")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 0, -23.3345)
+
+[node name="PoolFrozen" parent="Pools" instance=ExtResource("16_gfw2c")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 0, 23.3345)
+
+[node name="pool_ruined_a_01" parent="Pools" instance=ExtResource("15_oa0nj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -33)
+
+[node name="pool_ruined_b_01" parent="Pools" instance=ExtResource("15_t71j3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 33)
+
+[node name="pool_ruined_b_03" parent="Pools" instance=ExtResource("15_t71j3")]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 33, 0, -1.23978e-05)
+
+[node name="pool_ruined_c_02" parent="Pools" instance=ExtResource("16_e6l7j")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -23.3345, 0, -23.3345)
+
+[node name="pool_ruined_c_03" parent="Pools" instance=ExtResource("16_e6l7j")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -23.3345, 0, 23.3345)
