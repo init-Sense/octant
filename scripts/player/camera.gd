@@ -74,9 +74,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	fov = default_fov
 	
-	target_rotation.y = player.rotation.y
-	target_rotation.x = player.rotation.x
-	rotation_x = player.rotation.x
+	rotation.x = global_rotation.x
+	rotation.y = global_rotation.y
 	
 	jump.jumped.connect(on_player_jumped)
 	jump.landed.connect(on_player_landed)
@@ -87,8 +86,9 @@ func _ready():
 	player.tree_exiting.connect(perform_fade_out)
 
 func _process(delta: float):
-	rotation.y = lerp(rotation.y, target_rotation.y, delta * CAMERA_SMOOTHNESS)
-	rotation.x = lerp(rotation.x, target_rotation.x, delta * CAMERA_SMOOTHNESS)
+	rotation.y = lerpf(rotation.y, target_rotation.y, delta * CAMERA_SMOOTHNESS)
+	rotation.x = lerpf(rotation.x, target_rotation.x, delta * CAMERA_SMOOTHNESS)
+	
 	update_fov(delta)
 #endregion
 
