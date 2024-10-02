@@ -1,44 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvut1ptye6cp"]
+[gd_scene load_steps=7 format=3 uid="uid://dvut1ptye6cp"]
 
-[ext_resource type="Script" path="res://scripts/audio/music_manager.gd" id="1_x2i84"]
-[ext_resource type="Script" path="res://scripts/audio/music_group.gd" id="2_rhio3"]
-[ext_resource type="Script" path="res://scripts/audio/music.gd" id="3_fk5x3"]
-[ext_resource type="AudioStream" uid="uid://dgnjbgyrjvi1f" path="res://assets/audio/music/sky/infinite.mp3" id="4_2hecl"]
-[ext_resource type="AudioStream" uid="uid://cjdxqbrn5gym1" path="res://assets/audio/music/temple/octant.mp3" id="5_nawou"]
-[ext_resource type="AudioStream" uid="uid://cg6e802lrnpt" path="res://assets/audio/music/forest/gods.mp3" id="6_caw1s"]
-
-[sub_resource type="Resource" id="Resource_qbdl4"]
-script = ExtResource("3_fk5x3")
-key = "infinite"
-stems = Array[AudioStream]([ExtResource("4_2hecl")])
+[ext_resource type="Script" path="res://scripts/audio/music/music_manager.gd" id="1_x2i84"]
+[ext_resource type="Script" path="res://scripts/audio/music/music_group.gd" id="2_rhio3"]
+[ext_resource type="Script" path="res://scripts/audio/music/music.gd" id="3_fk5x3"]
 
 [sub_resource type="Resource" id="Resource_yjrs2"]
 script = ExtResource("2_rhio3")
 key = "sky"
 bus = "Music"
-sounds = Array[ExtResource("3_fk5x3")]([SubResource("Resource_qbdl4")])
-
-[sub_resource type="Resource" id="Resource_pv02p"]
-script = ExtResource("3_fk5x3")
-key = "octant"
-stems = Array[AudioStream]([ExtResource("5_nawou")])
+tracks = Array[ExtResource("3_fk5x3")]([])
 
 [sub_resource type="Resource" id="Resource_mm3pf"]
 script = ExtResource("2_rhio3")
 key = "temple"
 bus = "Music"
-sounds = Array[ExtResource("3_fk5x3")]([SubResource("Resource_pv02p")])
-
-[sub_resource type="Resource" id="Resource_m6l4h"]
-script = ExtResource("3_fk5x3")
-key = "gods"
-stems = Array[AudioStream]([ExtResource("6_caw1s")])
+tracks = Array[ExtResource("3_fk5x3")]([])
 
 [sub_resource type="Resource" id="Resource_q64rs"]
 script = ExtResource("2_rhio3")
 key = "forest"
 bus = "Music"
-sounds = Array[ExtResource("3_fk5x3")]([SubResource("Resource_m6l4h")])
+tracks = Array[ExtResource("3_fk5x3")]([])
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_x2i84")

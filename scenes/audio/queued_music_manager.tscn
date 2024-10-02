@@ -1,0 +1,24 @@
+[gd_scene load_steps=9 format=3 uid="uid://wg67wx06631r"]
+
+[ext_resource type="Script" path="res://scripts/audio/queues/queued_music_manager.gd" id="1_3vya2"]
+[ext_resource type="Script" path="res://scripts/audio/queues/queued_music_group.gd" id="2_wgrqw"]
+[ext_resource type="Script" path="res://scripts/audio/queues/queued_music.gd" id="3_vhdoa"]
+[ext_resource type="AudioStream" uid="uid://digmdwd2y2yho" path="res://assets/audio/music/zero/drop1end.mp3" id="4_an5wm"]
+[ext_resource type="AudioStream" uid="uid://dnalvfdstm8bt" path="res://assets/audio/music/zero/breaktransition.mp3" id="5_1u354"]
+[ext_resource type="AudioStream" uid="uid://y00n3342gxvy" path="res://assets/audio/music/zero/d&bdrop.mp3" id="6_2thso"]
+
+[sub_resource type="Resource" id="Resource_5liu7"]
+script = ExtResource("3_vhdoa")
+key = "main_theme"
+stems = Array[AudioStream]([ExtResource("4_an5wm"), ExtResource("5_1u354"), ExtResource("6_2thso")])
+
+[sub_resource type="Resource" id="Resource_qa7qq"]
+script = ExtResource("2_wgrqw")
+key = "zero_core"
+bus = "Music"
+tracks = Array[ExtResource("3_vhdoa")]([SubResource("Resource_5liu7")])
+
+[node name="QueuedMusicManager" type="Node"]
+script = ExtResource("1_3vya2")
+debug_mode = true
+groups = Array[ExtResource("2_wgrqw")]([SubResource("Resource_qa7qq")])

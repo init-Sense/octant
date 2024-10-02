@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dsdvuw8q8m068"
-path="res://.godot/imported/landscape_a.glb-437e6be7ce2ce8b363e9e6bc74157b3b.scn"
+path="res://.godot/imported/landscape_a.glb-8c3d837926ec11658fa973a887cbfaff.scn"
 
 [deps]
 
-source_file="res://assets/models/landscapes/landscape_a.glb"
-dest_files=["res://.godot/imported/landscape_a.glb-437e6be7ce2ce8b363e9e6bc74157b3b.scn"]
+source_file="res://assets/models/Landscapes/landscape_a.glb"
+dest_files=["res://.godot/imported/landscape_a.glb-8c3d837926ec11658fa973a887cbfaff.scn"]
 
 [params]
 

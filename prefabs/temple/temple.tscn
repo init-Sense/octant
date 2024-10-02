@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2newsi5cutdc" path="res://assets/models/world_temple/womb/womb_disabled.glb" id="7_1vl0s"]
 [ext_resource type="PackedScene" uid="uid://c0vuxkseu3v47" path="res://assets/models/world_temple/temple_floor.glb" id="9_n4b31"]
 [ext_resource type="PackedScene" uid="uid://ccwt6ib0jvshx" path="res://prefabs/temple/temple_wall.tscn" id="10_abp4n"]
-[ext_resource type="PackedScene" uid="uid://clru4rkwu65ve" path="res://prefabs/temple/bell.tscn" id="11_2rj34"]
+[ext_resource type="PackedScene" path="res://prefabs/temple/bell.tscn" id="11_2rj34"]
 [ext_resource type="PackedScene" uid="uid://n5iw7ewiffla" path="res://assets/models/columns/column_base.glb" id="11_4nnem"]
 [ext_resource type="PackedScene" uid="uid://lmq1w8lnwpd7" path="res://prefabs/temple/womb_opening.tscn" id="12_dt2yr"]
 [ext_resource type="PackedScene" uid="uid://d4cfr5i5v3vb2" path="res://assets/models/world_temple/temple_cube.glb" id="12_vdtvp"]
