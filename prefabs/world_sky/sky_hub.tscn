@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0dl55ei83bc6"]
+[gd_scene load_steps=11 format=3 uid="uid://b0dl55ei83bc6"]
 
 [ext_resource type="PackedScene" uid="uid://bmgytkc2rtat5" path="res://prefabs/world_sky/sky_disk_rotating.tscn" id="2_e4tg0"]
 [ext_resource type="PackedScene" uid="uid://bg05p7gdq7ga0" path="res://prefabs/world_sky/sky_ring.tscn" id="2_g7ddg"]
 [ext_resource type="PackedScene" uid="uid://c3r6fney3x6n5" path="res://assets/models/world_sky/sky_hub_disk.glb" id="2_op812"]
 [ext_resource type="PackedScene" uid="uid://con7klh2mai64" path="res://assets/models/world_sky/sky_disk.glb" id="3_w1x3g"]
-[ext_resource type="PackedScene" uid="uid://drlkp2nfkhjtl" path="res://assets/models/world_sky/sky_portal_gate.glb" id="5_b4vmk"]
 [ext_resource type="PackedScene" uid="uid://cedr28aw6saix" path="res://assets/models/world_sky/sky_hub_sphere.glb" id="6_qkpiq"]
 [ext_resource type="PackedScene" uid="uid://bym8cjhpxwu8" path="res://assets/models/world_sky/sky_strand.glb" id="7_635u8"]
 [ext_resource type="PackedScene" uid="uid://b4r4hw5gixhq5" path="res://assets/models/world_sky/sky_bridge.glb" id="7_oja77"]
 [ext_resource type="PackedScene" uid="uid://dydq2woavludp" path="res://assets/models/world_sky/sky_hub_sphere_half.glb" id="8_8f47x"]
+[ext_resource type="PackedScene" uid="uid://hfwipb4gomkv" path="res://assets/models/world_sky/sky_portal_gate_big.glb" id="9_oyjbh"]
+[ext_resource type="PackedScene" uid="uid://cg1cdcvhlwj3t" path="res://assets/models/world_sky/sky_floor_hole.glb" id="10_ydt8t"]
 
 [node name="SkyHub" type="Node3D"]
 
@@ -55,6 +56,18 @@ transform = Transform3D(3.5, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 22, 0, 0)
 [node name="sky_bridge_2" parent="Bridges" instance=ExtResource("7_oja77")]
 transform = Transform3D(-3.5, 0, -8.45576e-07, 0, 5.6, 0, 5.28485e-07, 0, -5.6, -22, 0, 0)
 
+[node name="sky_bridge_5" parent="Bridges" instance=ExtResource("7_oja77")]
+transform = Transform3D(2.47487, 0, -3.9598, 0, 5.6, 0, 2.47487, 0, 3.9598, 7.07107, 47, 7.07107)
+
+[node name="sky_bridge_6" parent="Bridges" instance=ExtResource("7_oja77")]
+transform = Transform3D(-2.47487, 0, 3.9598, 0, 5.6, 0, -2.47487, 0, -3.9598, -7.07107, 47, -7.07107)
+
+[node name="sky_bridge_7" parent="Bridges" instance=ExtResource("7_oja77")]
+transform = Transform3D(-2.47487, 0, -3.9598, 0, 5.6, 0, 2.47487, 0, -3.9598, -7.07107, 47, 7.07107)
+
+[node name="sky_bridge_8" parent="Bridges" instance=ExtResource("7_oja77")]
+transform = Transform3D(2.47487, 0, 3.9598, 0, 5.6, 0, -2.47487, 0, 3.9598, 7.07107, 47, -7.07107)
+
 [node name="sky_bridge_3" parent="Bridges" instance=ExtResource("7_oja77")]
 transform = Transform3D(-1.5299e-07, 0, -5.6, 0, 5.6, 0, 3.5, 0, -2.44784e-07, 0, 0, 22)
 
@@ -76,18 +89,6 @@ shadow_enabled = true
 omni_range = 32.0
 omni_attenuation = 0.9
 
-[node name="sky_portal_gate_01" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, 3)
-
-[node name="sky_portal_gate_03" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.51752, 0)
-
-[node name="sky_portal_gate_04" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.51752, 0)
-
-[node name="sky_portal_gate_02" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, -3)
-
 [node name="sky_hub_sphere_1" parent="." instance=ExtResource("6_qkpiq")]
 transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 30, 0)
 
@@ -105,3 +106,18 @@ transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 64, 0)
 
 [node name="sky_hub_sphere_half_2" parent="." instance=ExtResource("8_8f47x")]
 transform = Transform3D(-1.7, 1.48619e-07, 0, -1.48619e-07, -1.7, 0, 0, 0, 1.7, 0, -64, 0)
+
+[node name="sky_portal_gate_big" parent="." instance=ExtResource("9_oyjbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 5)
+
+[node name="sky_portal_gate_big2" parent="." instance=ExtResource("9_oyjbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, -5)
+
+[node name="sky_portal_gate_big3" parent="." instance=ExtResource("9_oyjbh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 35, -2.18557e-07)
+
+[node name="sky_portal_gate_big4" parent="." instance=ExtResource("9_oyjbh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 35, 2.18557e-07)
+
+[node name="sky_floor_hole" parent="." instance=ExtResource("10_ydt8t")]
+transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 34.8626, 0)

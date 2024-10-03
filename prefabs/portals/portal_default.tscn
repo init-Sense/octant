@@ -49,6 +49,7 @@ vertical_viewport_resolution = 1024
 disable_viewport_distance = 25.0
 fade_out_distance_max = 24.0
 fade_out_distance_min = 12.0
+fade_out_color = Color(1, 0.305529, 0.197201, 1)
 
 [node name="Teleport" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

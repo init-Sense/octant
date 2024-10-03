@@ -1222,22 +1222,22 @@ script = ExtResource("4_7diav")
 is_initial_area = true
 
 [node name="PortalHub" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-2, 0, -1.50996e-07, 0, 3.5, 0, 3.01992e-07, 0, -1, 0, 6.035, -3)
+transform = Transform3D(4.325, 0, 6.35732e-08, 0, 4, 0, -2.74954e-07, 0, 1, -1.27146e-07, 39.3637, -5)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
 [node name="PortalHub2" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(2, 0, 6.35732e-08, 0, 3.5, 0, -1.27146e-07, 0, 1, 0, 6.035, 3)
+transform = Transform3D(-4.325, 0, -1.50996e-07, 0, 4, 0, 6.53057e-07, 0, -1, -4.76992e-08, 39.3637, 5)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
 [node name="PortalHub3" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-2.14569e-07, 0, 1, 0, 3.5, 0, -2, 0, -1.07285e-07, 3, 6.035, 1.31134e-07)
+transform = Transform3D(3.26528e-07, 0, -1, 0, 4, 0, 4.325, 0, 7.54979e-08, 5, 39.3637, 9.14096e-08)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
 [node name="PortalHub4" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(3.97237e-08, 0, -1, 0, 3.5, 0, 2, 0, 1.98618e-08, -3, 6.035, -1.31134e-07)
+transform = Transform3D(3.26528e-07, 0, 1, 0, 4, 0, -4.325, 0, 7.54979e-08, -5, 39.3637, -2.66256e-07)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
