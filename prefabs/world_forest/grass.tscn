@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxmhc4n723i5"]
+
+[ext_resource type="PackedScene" uid="uid://dsfodxpvghptx" path="res://assets/models/world_forest/forest_grass.glb" id="1_2vyms"]
+
+[node name="Grass_01" type="Node3D"]
+transform = Transform3D(0.699469, 0, 0, 0, 0.699469, 0, 0, 0, 0.699469, 151.277, 40.2314, 0)
+
+[node name="forest_grass_01" parent="." instance=ExtResource("1_2vyms")]
+transform = Transform3D(27.5999, 0, 0, 0, 27.5999, 0, 0, 0, 27.5999, 0, 0, -5.46119)
+
+[node name="forest_grass_02" parent="." instance=ExtResource("1_2vyms")]
+transform = Transform3D(8.56072, 0, -18.0752, 0, 20, 0, 18.0752, 0, 8.56072, 0, 0, 0.798893)
+
+[node name="forest_grass_03" parent="." instance=ExtResource("1_2vyms")]
+transform = Transform3D(8.06584, 0, -11.642, 0, 14.1631, 0, 11.642, 0, 8.06584, -7.40027, 0, -7.16856)
