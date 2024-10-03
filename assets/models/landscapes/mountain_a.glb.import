@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://pb54bv1bvsk7"
-path="res://.godot/imported/sky_ring.glb-062b2aac9d66e9182c3ac5bd8cd85172.scn"
+uid="uid://cwkb3p01vmo8j"
+path="res://.godot/imported/mountain_a.glb-9296692e23d849409871eecb5c83bd95.scn"
 
 [deps]
 
-source_file="res://assets/models/world_sky/sky_ring.glb"
-dest_files=["res://.godot/imported/sky_ring.glb-062b2aac9d66e9182c3ac5bd8cd85172.scn"]
+source_file="res://assets/models/landscapes/mountain_a.glb"
+dest_files=["res://.godot/imported/mountain_a.glb-9296692e23d849409871eecb5c83bd95.scn"]
 
 [params]
 
@@ -33,14 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"SkyMaterial": {
+"Material": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/sky_energy.tres"
-}
-},
-"nodes": {
-"PATH:SkyRing": {
-"mesh_instance/cast_shadow": 0
+"use_external/path": "res://assets/materials/ice_platform.tres"
 }
 }
 }

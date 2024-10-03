@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cwt6leya44ua"
-path="res://.godot/imported/mountain_b.glb-0d98a956dc22c44e5032ea731f182ccb.scn"
+path="res://.godot/imported/mountain_b.glb-eb6624845acf76c760d915091eacd296.scn"
 
 [deps]
 
-source_file="res://assets/models/mountains/mountain_b.glb"
-dest_files=["res://.godot/imported/mountain_b.glb-0d98a956dc22c44e5032ea731f182ccb.scn"]
+source_file="res://assets/models/landscapes/mountain_b.glb"
+dest_files=["res://.godot/imported/mountain_b.glb-eb6624845acf76c760d915091eacd296.scn"]
 
 [params]
 

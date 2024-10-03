@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnub3rqonkkxq"
-path="res://.godot/imported/sky_tower_slope.glb-8dec0f2981a1dd3a0ba5b7f5755594dd.scn"
+uid="uid://bcbmlbairutuh"
+path="res://.godot/imported/sky_temple_base.glb-f556dc4c5c5177816e56634eab2ac265.scn"
 
 [deps]
 
-source_file="res://assets/models/world_sky/sky_tower_slope.glb"
-dest_files=["res://.godot/imported/sky_tower_slope.glb-8dec0f2981a1dd3a0ba5b7f5755594dd.scn"]
+source_file="res://assets/models/world_sky/sky_temple_base.glb"
+dest_files=["res://.godot/imported/sky_temple_base.glb-f556dc4c5c5177816e56634eab2ac265.scn"]
 
 [params]
 
@@ -31,13 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"SkyMaterial": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/sky_stone.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

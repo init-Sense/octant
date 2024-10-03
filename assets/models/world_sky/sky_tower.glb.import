@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "SkyMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/sky_stone.tres"
+"use_external/path": "res://materials/sky_stone_a.tres"
 }
 }
 }
