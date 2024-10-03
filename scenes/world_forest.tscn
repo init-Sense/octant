@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://xlj4wjvhsl4w"]
+[gd_scene load_steps=24 format=3 uid="uid://xlj4wjvhsl4w"]
 
 [ext_resource type="Environment" uid="uid://dya4i06kltfbw" path="res://environments/forest.tres" id="1_kpodi"]
 [ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_ls3bv"]
@@ -10,18 +10,53 @@
 [ext_resource type="PackedScene" uid="uid://b0fkgrgn7ysak" path="res://prefabs/world_forest/branch_big_a.tscn" id="7_jth4y"]
 [ext_resource type="PackedScene" uid="uid://bg0sdvg65qd5g" path="res://assets/models/world_forest/plant_a.glb" id="8_vnqwc"]
 [ext_resource type="PackedScene" uid="uid://dd7taa1y6rnde" path="res://assets/models/world_forest/plant_b.glb" id="9_ltvp3"]
-[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/Landscapes/landscape_a.glb" id="10_hsl43"]
+[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/landscapes/landscape_a.glb" id="10_hsl43"]
 [ext_resource type="PackedScene" uid="uid://bcx36xhin580x" path="res://assets/models/world_forest/bridge_branch_a.glb" id="12_bskbt"]
 [ext_resource type="PackedScene" uid="uid://x8lackxx5yev" path="res://assets/models/world_forest/bridge_branch_b.glb" id="13_kvija"]
 [ext_resource type="PackedScene" uid="uid://cp0eqeuirl42t" path="res://assets/models/world_forest/bridge_branch_c.glb" id="14_rsk3w"]
-[ext_resource type="PackedScene" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
+[ext_resource type="PackedScene" uid="uid://br28m3haa2ylb" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
 [ext_resource type="PackedScene" uid="uid://deepqk5wgdegl" path="res://prefabs/world_forest/forest_god.tscn" id="15_iupkp"]
-[ext_resource type="Script" path="res://scripts/environment_area.gd" id="16_d2j8p"]
+[ext_resource type="PackedScene" uid="uid://quwqm3swor0w" path="res://prefabs/teleport/teleport.tscn" id="18_8ma85"]
 [ext_resource type="PackedScene" uid="uid://d3322b1hemwnc" path="res://prefabs/world_forest/tree_tunnel.tscn" id="18_h042b"]
 [ext_resource type="PackedScene" uid="uid://mpqpbbdurix7" path="res://prefabs/world_forest/forest_temple.tscn" id="18_ht1vt"]
+[ext_resource type="PackedScene" uid="uid://c3ev5dvjsmof1" path="res://assets/models/world_sky/sky_wall.glb" id="20_vb0kv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u442v"]
-size = Vector3(126.387, 619.584, 78.7616)
+[sub_resource type="Animation" id="Animation_e0yvh"]
+resource_name = "sun"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.349066, 0.523599, 0), Vector3(-3.49066, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_el20t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nl6bj"]
+_data = {
+"RESET": SubResource("Animation_el20t"),
+"sun": SubResource("Animation_e0yvh")
+}
 
 [node name="WorldForest" type="Node3D"]
 script = ExtResource("1_ls3bv")
@@ -29,17 +64,28 @@ scene_name = "forest"
 soundtrack = "gods"
 soundtrack_volume = -12.0
 
+[node name="Player" parent="." instance=ExtResource("2_0h6dd")]
+transform = Transform3D(-0.28358, 0, -0.958948, 0, 1, 0, 0.958948, 0, -0.28358, 7.6274, 274.849, -3.33091)
+
 [node name="ForestEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_kpodi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.70188, 0.654936, 0.280043, -0.712296, 0.645359, 0.275948, 0, -0.393156, 0.919472, 44.9459, 45.9515, -219.735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9459, 45.9515, -219.735)
 light_energy = 4.0
 shadow_enabled = true
+shadow_blur = 0.8
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.229
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 300.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DirectionalLight3D"]
+libraries = {
+"": SubResource("AnimationLibrary_nl6bj")
+}
+autoplay = "sun"
+speed_scale = 0.02
 
 [node name="forest_ground" parent="." instance=ExtResource("3_quggn")]
 
@@ -466,7 +512,7 @@ omni_range = 34.8447
 transform = Transform3D(1.22198, 0.346248, 1.31154, -0.425612, 1.77396, -0.0717839, -1.28797, -0.2577, 1.26805, 19.7768, 32.0907, -30.6588)
 
 [node name="BulbLight_03" type="OmniLight3D" parent="LightPlants/LightPlant_04"]
-transform = Transform3D(-0.272765, 0.0268077, 0.474224, -0.00533487, 0.546651, -0.0339703, -0.47495, -0.0215359, -0.271968, 7.25843, -0.992554, 0.384758)
+transform = Transform3D(-0.272765, 0.0268077, 0.474224, -0.00533487, 0.546651, -0.0339703, -0.47495, -0.0215359, -0.271968, 7.1925, -0.993844, 0.26995)
 light_energy = 10.0
 shadow_enabled = true
 omni_range = 75.3302
@@ -474,25 +520,17 @@ omni_range = 75.3302
 [node name="ForestGod" parent="." instance=ExtResource("15_iupkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3314)
 
-[node name="EnvironmentArea" type="Area3D" parent="."]
-collision_layer = 3
-collision_mask = 4
-script = ExtResource("16_d2j8p")
-has_directional_light = false
-gravity_override = 8.0
-world_environment_node = NodePath("../ForestEnvironment")
-target_environment = ExtResource("1_kpodi")
-directional_light_node = NodePath("../DirectionalLight3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentArea"]
-transform = Transform3D(0.892082, 0, -0.451874, 0, 1, 0, 0.451874, 0, 0.892082, 6.2385, 202.456, -2.93707)
-shape = SubResource("BoxShape3D_u442v")
-
 [node name="ForestTemple" parent="." instance=ExtResource("18_ht1vt")]
 transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 110.389, 262.487, 21.4391)
+
+[node name="Teleport" parent="ForestTemple" instance=ExtResource("18_8ma85")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 0, -8.31501, 0)
+scene_to_load = "res://scenes/world_temple.tscn"
+scene_name = "world_temple"
+min_load_time = 0.2
 
 [node name="TreeTunnel" parent="." instance=ExtResource("18_h042b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193, 177.668, 4.77306)
 
-[node name="Player" parent="." instance=ExtResource("2_0h6dd")]
-transform = Transform3D(-0.28358, 0, -0.958948, 0, 1, 0, 0.958948, 0, -0.28358, 10.5836, 280.305, 0)
+[node name="sky_wall" parent="." instance=ExtResource("20_vb0kv")]
+transform = Transform3D(225.519, 0, 0, 0, -9.85775e-06, 225.519, 0, -225.519, -9.85775e-06, 638.906, -167.638, -18.3225)

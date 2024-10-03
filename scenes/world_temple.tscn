@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_yjm14"]
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="2_dc8de"]
 [ext_resource type="PackedScene" uid="uid://5lck5gnh02ir" path="res://prefabs/world_temple/temple.tscn" id="3_ua2so"]
-[ext_resource type="PackedScene" uid="uid://quwqm3swor0w" path="res://scenes/teleport/teleport.tscn" id="5_k284b"]
+[ext_resource type="PackedScene" uid="uid://quwqm3swor0w" path="res://prefabs/teleport/teleport.tscn" id="5_k284b"]
 
 [sub_resource type="Sky" id="Sky_ke064"]
 

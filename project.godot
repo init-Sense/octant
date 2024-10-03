@@ -18,9 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneManager="*res://scripts/scenes/scene_manager.gd"
-SoundManager="*res://scenes/audio/sound_manager.tscn"
-MusicManager="*res://scenes/audio/music_manager.tscn"
-QueuedMusicManager="*res://scenes/audio/queued_music_manager.tscn"
+SoundManager="*res://prefabs/audio/sound_manager.tscn"
+MusicManager="*res://prefabs/audio/music_manager.tscn"
+QueuedMusicManager="*res://prefabs/audio/queued_music_manager.tscn"
 
 [display]
 
