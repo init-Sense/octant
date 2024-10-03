@@ -26,7 +26,7 @@ func _initialize_music_players():
 		if group is MusicGroup:
 			_debug_print("Processing group: " + group.key)
 			music_players[group.key] = {}
-			for music in group.sounds:
+			for music in group.tracks:
 				if music is Music:
 					_debug_print("Processing music: " + music.key + " in group: " + group.key)
 					music_players[group.key][music.key] = []
