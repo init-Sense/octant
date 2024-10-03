@@ -19,7 +19,7 @@ soundtrack = "infinite"
 soundtrack_volume = -15.0
 
 [node name="Player" parent="." instance=ExtResource("1_mnsr1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.267, 7.9, 1476.14)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.267, 7.9, 11.14)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_4j1gq")
@@ -27,6 +27,304 @@ environment = ExtResource("2_4j1gq")
 [node name="Hub" type="Node3D" parent="."]
 
 [node name="HubCopies" type="Node3D" parent="Hub"]
+
+[node name="LayerTopperTopper" type="Node3D" parent="Hub/HubCopies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 512, 0)
+
+[node name="SkyHub_COPY_1" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+
+[node name="SkyHub_COPY_2" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="SkyHub_COPY_3" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="SkyHub_COPY_4" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+
+[node name="SkyHub_COPY_5" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+
+[node name="SkyHub_COPY_13" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="SkyHub_COPY_14" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
+
+[node name="SkyHub_COPY_15" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
+
+[node name="SkyHub_COPY_6" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+
+[node name="SkyHub_COPY_10" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
+
+[node name="SkyHub_COPY_11" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
+
+[node name="SkyHub_COPY_12" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
+
+[node name="SkyHub_COPY_7" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="SkyHub_COPY_16" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
+
+[node name="SkyHub_COPY_17" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
+
+[node name="SkyHub_COPY_18" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
+
+[node name="SkyHub_COPY_19" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
+
+[node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
+
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
+[node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+
+[node name="SkyHub_COPY_21" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
+
+[node name="SkyHub_COPY_22" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
+
+[node name="SkyHub_COPY_23" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
+
+[node name="SkyHub_COPY_24" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
+
+[node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
+
+[node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerTopperTopper" instance=ExtResource("3_y4t5u")]
+
+[node name="LayerTopperTop" type="Node3D" parent="Hub/HubCopies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 384, 0)
+
+[node name="SkyHub_COPY_1" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+
+[node name="SkyHub_COPY_2" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="SkyHub_COPY_3" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="SkyHub_COPY_4" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+
+[node name="SkyHub_COPY_5" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+
+[node name="SkyHub_COPY_13" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="SkyHub_COPY_14" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
+
+[node name="SkyHub_COPY_15" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
+
+[node name="SkyHub_COPY_6" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+
+[node name="SkyHub_COPY_10" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
+
+[node name="SkyHub_COPY_11" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
+
+[node name="SkyHub_COPY_12" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
+
+[node name="SkyHub_COPY_7" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="SkyHub_COPY_16" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
+
+[node name="SkyHub_COPY_17" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
+
+[node name="SkyHub_COPY_18" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
+
+[node name="SkyHub_COPY_19" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
+
+[node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
+
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
+[node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+
+[node name="SkyHub_COPY_21" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
+
+[node name="SkyHub_COPY_22" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
+
+[node name="SkyHub_COPY_23" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
+
+[node name="SkyHub_COPY_24" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
+
+[node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
+
+[node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerTopperTop" instance=ExtResource("3_y4t5u")]
 
 [node name="LayerTopper" type="Node3D" parent="Hub/HubCopies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 256, 0)
@@ -85,6 +383,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 [node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
 [node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
@@ -102,6 +415,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
 [node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
 
 [node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerTopper" instance=ExtResource("3_y4t5u")]
 
@@ -162,6 +532,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 [node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
 [node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
@@ -179,6 +564,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
 [node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
 
 [node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerTop" instance=ExtResource("3_y4t5u")]
 
@@ -238,6 +680,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 [node name="SkyHub_COPY_19" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
 [node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
@@ -255,6 +712,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 
 [node name="SkyHub_COPY_24" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerMid" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
 
 [node name="LayerBottomer" type="Node3D" parent="Hub/HubCopies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -256, 0)
@@ -313,6 +827,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 [node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
 [node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
@@ -331,7 +860,213 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 [node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
+
 [node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerBottomer" instance=ExtResource("3_y4t5u")]
+
+[node name="LayerBottomerBottom" type="Node3D" parent="Hub/HubCopies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -384, 0)
+
+[node name="SkyHub_COPY_1" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+
+[node name="SkyHub_COPY_2" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="SkyHub_COPY_3" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="SkyHub_COPY_4" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+
+[node name="SkyHub_COPY_5" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+
+[node name="SkyHub_COPY_13" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0)
+
+[node name="SkyHub_COPY_14" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 128)
+
+[node name="SkyHub_COPY_15" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -128)
+
+[node name="SkyHub_COPY_6" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+
+[node name="SkyHub_COPY_10" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
+
+[node name="SkyHub_COPY_11" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 128)
+
+[node name="SkyHub_COPY_12" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -128)
+
+[node name="SkyHub_COPY_7" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="SkyHub_COPY_16" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 256)
+
+[node name="SkyHub_COPY_17" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 256)
+
+[node name="SkyHub_COPY_18" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256)
+
+[node name="SkyHub_COPY_19" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
+
+[node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
+
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
+[node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+
+[node name="SkyHub_COPY_21" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -256)
+
+[node name="SkyHub_COPY_22" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -256)
+
+[node name="SkyHub_COPY_23" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -256)
+
+[node name="SkyHub_COPY_24" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
+
+[node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
+
+[node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerBottomerBottom" instance=ExtResource("3_y4t5u")]
 
 [node name="LayerBottom" type="Node3D" parent="Hub/HubCopies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
@@ -390,6 +1125,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 256)
 [node name="SkyHub_COPY_20" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256)
 
+[node name="SkyHub_COPY_31" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 383)
+
+[node name="SkyHub_COPY_32" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 383)
+
+[node name="SkyHub_COPY_33" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 383)
+
+[node name="SkyHub_COPY_34" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 383)
+
+[node name="SkyHub_COPY_35" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 383)
+
 [node name="SkyHub_COPY_8" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
@@ -408,6 +1158,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -256)
 [node name="SkyHub_COPY_25" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
+[node name="SkyHub_COPY_26" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -384)
+
+[node name="SkyHub_COPY_27" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, -384)
+
+[node name="SkyHub_COPY_43" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0)
+
+[node name="SkyHub_COPY_44" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 128)
+
+[node name="SkyHub_COPY_45" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -128)
+
+[node name="SkyHub_COPY_46" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 256)
+
+[node name="SkyHub_COPY_47" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 383)
+
+[node name="SkyHub_COPY_48" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -256)
+
+[node name="SkyHub_COPY_49" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, -384)
+
+[node name="SkyHub_COPY_28" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -384)
+
+[node name="SkyHub_COPY_29" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, -384)
+
+[node name="SkyHub_COPY_36" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 0)
+
+[node name="SkyHub_COPY_37" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 128)
+
+[node name="SkyHub_COPY_38" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -128)
+
+[node name="SkyHub_COPY_39" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 256)
+
+[node name="SkyHub_COPY_40" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, 383)
+
+[node name="SkyHub_COPY_41" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -256)
+
+[node name="SkyHub_COPY_42" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -384, 0, -384)
+
+[node name="SkyHub_COPY_30" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
+
 [node name="SkyHub_COPY_9" parent="Hub/HubCopies/LayerBottom" instance=ExtResource("3_y4t5u")]
 
 [node name="SkyHub_REAL" parent="Hub" instance=ExtResource("3_y4t5u")]
@@ -415,7 +1222,22 @@ script = ExtResource("4_7diav")
 is_initial_area = true
 
 [node name="PortalHub" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-2, 0, -1.50996e-07, 0, 3.5, 0, 3.01992e-07, 0, -1, 0, 6.03546, -0.102)
+transform = Transform3D(-2, 0, -1.50996e-07, 0, 3.5, 0, 3.01992e-07, 0, -1, 0, 6.035, -3)
+exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
+metadata/boundaries_path = NodePath("..")
+
+[node name="PortalHub2" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(2, 0, 6.35732e-08, 0, 3.5, 0, -1.27146e-07, 0, 1, 0, 6.035, 3)
+exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
+metadata/boundaries_path = NodePath("..")
+
+[node name="PortalHub3" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(-2.14569e-07, 0, 1, 0, 3.5, 0, -2, 0, -1.07285e-07, 3, 6.035, 1.31134e-07)
+exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
+metadata/boundaries_path = NodePath("..")
+
+[node name="PortalHub4" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(3.97237e-08, 0, -1, 0, 3.5, 0, 2, 0, 1.98618e-08, -3, 6.035, -1.31134e-07)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 

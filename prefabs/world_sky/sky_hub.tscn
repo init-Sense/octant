@@ -76,8 +76,17 @@ shadow_enabled = true
 omni_range = 32.0
 omni_attenuation = 0.9
 
-[node name="sky_portal_gate" parent="." instance=ExtResource("5_b4vmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, 0)
+[node name="sky_portal_gate_01" parent="." instance=ExtResource("5_b4vmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, 3)
+
+[node name="sky_portal_gate_03" parent="." instance=ExtResource("5_b4vmk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.51752, 0)
+
+[node name="sky_portal_gate_04" parent="." instance=ExtResource("5_b4vmk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.51752, 0)
+
+[node name="sky_portal_gate_02" parent="." instance=ExtResource("5_b4vmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51752, -3)
 
 [node name="sky_hub_sphere_1" parent="." instance=ExtResource("6_qkpiq")]
 transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 30, 0)
