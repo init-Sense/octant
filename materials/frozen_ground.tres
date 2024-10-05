@@ -2,8 +2,8 @@
 
 [resource]
 cull_mode = 2
-albedo_color = Color(0.890624, 0, 0.429573, 1)
-metallic = 0.39
-metallic_specular = 0.86
-roughness = 0.09
+albedo_color = Color(0.740287, 7.12335e-05, 0.596306, 1)
+metallic = 0.37
+metallic_specular = 0.68
+roughness = 0.49
 uv1_scale = Vector3(15.22, 15.22, 15.22)
