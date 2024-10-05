@@ -1,9 +1,12 @@
-[gd_resource type="Sky" load_steps=2 format=3 uid="uid://bm7stba0tnawe"]
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://bm7stba0tnawe"]
+
+[ext_resource type="Texture2D" uid="uid://lvwfv5i6dyj2" path="res://assets/textures/sky_space_stars.jpg" id="1_5h66x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p7taq"]
 sky_top_color = Color(0.304142, 0.000621464, 0.799923, 1)
 sky_horizon_color = Color(0.145098, 0, 0.345098, 1)
 sky_curve = 0.3
+sky_cover = ExtResource("1_5h66x")
 ground_bottom_color = Color(0.145098, 0, 0.345098, 1)
 ground_horizon_color = Color(0.145098, 0, 0.345098, 1)
 sun_angle_max = 40.0

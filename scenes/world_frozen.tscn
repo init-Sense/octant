@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
 [ext_resource type="Environment" uid="uid://d4ksj2eichsko" path="res://environments/frozen_caves_environment.tres" id="2_yipt2"]
-[ext_resource type="Material" uid="uid://cvcbknpx0jhvx" path="res://materials/frozen_water.tres" id="4_ca5av"]
+[ext_resource type="Material" uid="uid://cqrd122cj8s7i" path="res://materials/frozen_water.tres" id="4_ca5av"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/frozen_platform.glb" id="5_r3qnj"]
 [ext_resource type="PackedScene" uid="uid://bil5lpkrfw5my" path="res://prefabs/world_frozen/frozen_tunnel.tscn" id="5_wp6ac"]
 [ext_resource type="PackedScene" uid="uid://bbrwo5ax534gk" path="res://assets/models/world_frozen/stalagmite_a.glb" id="7_dgnr3"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bo2jrd2fdboay" path="res://assets/models/world_frozen/frozen_ground.glb" id="10_muqd7"]
 [ext_resource type="PackedScene" uid="uid://dx1wy8bwchdi6" path="res://assets/models/world_frozen/stalactite_b.glb" id="11_veyyu"]
 [ext_resource type="PackedScene" uid="uid://cvf1godef1001" path="res://assets/models/world_frozen/stalactite_c.glb" id="12_8qwt4"]
-[ext_resource type="PackedScene" uid="uid://bfpyalxyncqtn" path="res://assets/models/miscellaneus/rock_a.glb" id="16_h8wxr"]
+[ext_resource type="PackedScene" uid="uid://bfpyalxyncqtn" path="res://assets/models/world_frozen/frozen_rock_a.glb" id="16_h8wxr"]
 [ext_resource type="Environment" uid="uid://c17v2rcpyommv" path="res://environments/frozen_nucleus_environment.tres" id="17_of3fl"]
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
@@ -50,6 +50,7 @@ transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, 23.085, 
 environment = ExtResource("1_8s4oo")
 
 [node name="Surface" type="Area3D" parent="."]
+visible = false
 collision_mask = 4
 script = ExtResource("7_nk82h")
 world_environment_node = NodePath("../WorldEnvironment")

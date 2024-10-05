@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b0fkgrgn7ysak" path="res://prefabs/world_forest/branch_big_a.tscn" id="7_jth4y"]
 [ext_resource type="PackedScene" uid="uid://bg0sdvg65qd5g" path="res://assets/models/world_forest/plant_a.glb" id="8_vnqwc"]
 [ext_resource type="PackedScene" uid="uid://dd7taa1y6rnde" path="res://assets/models/world_forest/plant_b.glb" id="9_ltvp3"]
-[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/landscapes/landscape_a.glb" id="10_hsl43"]
+[ext_resource type="PackedScene" uid="uid://dsdvuw8q8m068" path="res://assets/models/miscellaneus/landscape_a.glb" id="10_hsl43"]
 [ext_resource type="PackedScene" uid="uid://bcx36xhin580x" path="res://assets/models/world_forest/bridge_branch_a.glb" id="12_bskbt"]
 [ext_resource type="PackedScene" uid="uid://x8lackxx5yev" path="res://assets/models/world_forest/bridge_branch_b.glb" id="13_kvija"]
 [ext_resource type="PackedScene" uid="uid://cp0eqeuirl42t" path="res://assets/models/world_forest/bridge_branch_c.glb" id="14_rsk3w"]
@@ -21,6 +21,21 @@
 [ext_resource type="PackedScene" uid="uid://mpqpbbdurix7" path="res://prefabs/world_forest/forest_temple.tscn" id="18_ht1vt"]
 [ext_resource type="PackedScene" uid="uid://c3ev5dvjsmof1" path="res://assets/models/world_sky/sky_wall.glb" id="20_vb0kv"]
 [ext_resource type="PackedScene" uid="uid://dfxmhc4n723i5" path="res://prefabs/world_forest/grass.tscn" id="21_x07vi"]
+
+[sub_resource type="Animation" id="Animation_el20t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.726057, 0.68766, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_e0yvh"]
 resource_name = "sun"
@@ -36,21 +51,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.349066, 0.523599, 0), Vector3(-3.49066, 1.5708, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_el20t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.726057, 0.68766, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nl6bj"]
@@ -72,7 +72,7 @@ transform = Transform3D(-0.28358, 0, -0.958948, 0, 1, 0, 0.958948, 0, -0.28358, 
 environment = ExtResource("1_kpodi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.772734, -0.421414, 0.47465, 0, 0.747798, 0.663926, -0.63473, -0.513038, 0.577848, 44.9459, 45.9515, -219.735)
+transform = Transform3D(0.772733, -0.421414, 0.47465, 0, 0.747798, 0.663926, -0.634731, -0.513038, 0.577848, 44.9459, 45.9515, -219.735)
 light_energy = 4.0
 shadow_enabled = true
 shadow_blur = 0.8
@@ -377,25 +377,18 @@ transform = Transform3D(-0.603579, 0, 5.05201, 0, 5.08794, 0, -5.05201, 0, -0.60
 [node name="Landscape" type="Node3D" parent="."]
 
 [node name="landscape_a_01" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(5.88156, 0, 0, 0, 5.88156, 0, 0, 0, 5.88156, 0, 0, -802.19)
 
 [node name="landscape_a_06" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(11.7567, 0, 4.4615, 0, 12.5748, 0, -4.4615, 0, 11.7567, 424.748, -33.0533, 887.299)
 
 [node name="landscape_a_07" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(-11.0051, 0, 6.08391, 0, 12.5748, 0, -6.08391, 0, -11.0051, -608.838, -33.0533, 895.933)
 
 [node name="landscape_a_05" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(-5.10569, 0, -3.83848, 0, 6.38765, 0, 3.83848, 0, -5.10569, -645.131, 0, -616.584)
 
 [node name="landscape_a_03" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(6.61258, 0, -1.10206, 0, 6.70379, 0, 1.10206, 0, 6.61258, 781.661, 0, 60.0854)
 
 [node name="landscape_a_04" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(9.08684, 0, 0.54718, 0, 9.1033, 0, -0.54718, 0, 9.08684, -911.155, -6.42916, 73.1835)
 
 [node name="landscape_a_02" parent="Landscape" instance=ExtResource("10_hsl43")]
-transform = Transform3D(4.22589, 0, 3.85647, 0, 5.72105, 0, -3.85647, 0, 4.22589, 629.23, 0, -573.534)
 
 [node name="BranchBridges" type="Node3D" parent="."]
 
