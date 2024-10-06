@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://clru4rkwu65ve"]
+[gd_scene load_steps=10 format=3 uid="uid://clru4rkwu65ve"]
 
+[ext_resource type="Script" path="res://scripts/bell.gd" id="1_5r8jx"]
 [ext_resource type="PackedScene" uid="uid://bxei2ffwxya84" path="res://assets/models/world_temple/bell.glb" id="1_rsmlo"]
 [ext_resource type="PackedScene" uid="uid://hnf1rjnklowj" path="res://assets/models/world_temple/bell_tongue.glb" id="2_on4e8"]
 
@@ -14,17 +15,6 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0.226893, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("bell_tongue:rotation:z")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -42,17 +32,6 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0.15708, -0.25, 0, 0.4, -0.000175133, -0.15708, -0.366667, 0.000509739, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("bell_tongue:rotation:z")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.139626, -0.25, 0, 0.433333, -9.00924e-05, 0.139626, -0.4, 0.000424698, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4vae"]
 _data = {
@@ -60,15 +39,58 @@ _data = {
 "bell": SubResource("Animation_vqc1r")
 }
 
+[sub_resource type="Animation" id="Animation_p1pjv"]
+resource_name = "tongue"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bell_tongue:rotation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.139626, -0.25, 0, 0.133333, -0.000314459, 0.139626, -0.133333, -9.91374e-05, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_gb8s4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bell_tongue:rotation:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.139626, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28icm"]
+_data = {
+"RESET": SubResource("Animation_gb8s4"),
+"tongue": SubResource("Animation_p1pjv")
+}
+
 [node name="Bell" type="Node3D"]
+script = ExtResource("1_5r8jx")
 
 [node name="bell" parent="." instance=ExtResource("1_rsmlo")]
 transform = Transform3D(0.97437, -0.224951, 0, 0.224951, 0.97437, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bell_tongue" parent="." instance=ExtResource("2_on4e8")]
+transform = Transform3D(0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationBell" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_b4vae")
+}
+speed_scale = 0.9
+
+[node name="AnimationTongue" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28icm")
 }
 speed_scale = 0.9
