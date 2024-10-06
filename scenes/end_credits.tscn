@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8toc2s63po6k"]
+
+[ext_resource type="FontFile" uid="uid://drmb22q27lvdj" path="res://assets/fonts/LibertinusMono-Regular.otf" id="2_idnqd"]
+
+[node name="EndCredits" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Octant" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_idnqd")
+theme_override_font_sizes/font_size = 64
+text = "Octant"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_idnqd")
+theme_override_font_sizes/font_size = 32
+text = "made by init.Sense"
+horizontal_alignment = 1
+vertical_alignment = 1

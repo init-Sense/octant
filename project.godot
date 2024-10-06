@@ -24,8 +24,9 @@ QueuedMusicManager="*res://prefabs/audio/queued_music_manager.tscn"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/size/mode=3
 
 [file_customization]
 
