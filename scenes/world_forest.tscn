@@ -514,7 +514,7 @@ transform = Transform3D(0.757485, 0, 0.652852, 0, 1, 0, -0.652852, 0, 0.757485, 
 [node name="Teleport" parent="ForestTemple" instance=ExtResource("18_8ma85")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 0, -8.31501, 0)
 scene_to_load = "res://scenes/world_temple.tscn"
-scene_name = "world_temple"
+scene_name = "WorldTemple"
 min_load_time = 0.2
 
 [node name="TreeTunnel" parent="." instance=ExtResource("18_h042b")]

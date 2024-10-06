@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5lck5gnh02ir"]
+[gd_scene load_steps=21 format=3 uid="uid://5lck5gnh02ir"]
 
 [ext_resource type="PackedScene" uid="uid://cnlnsu0vhsbkx" path="res://assets/models/columns/column_inner.glb" id="1_m3oyp"]
 [ext_resource type="PackedScene" uid="uid://vk0e2gr0y5rs" path="res://assets/models/world_temple/building_c.glb" id="2_4fdgv"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://b7wxixnj8x74h" path="res://assets/models/world_temple/pool_ruined_a.glb" id="15_oa0nj"]
 [ext_resource type="PackedScene" uid="uid://dp0sgbbod7qos" path="res://assets/models/world_temple/pool_ruined_b.glb" id="15_t71j3"]
 [ext_resource type="PackedScene" uid="uid://dsek4f63pxh8b" path="res://assets/models/world_temple/pool_ruined_c.glb" id="16_e6l7j"]
-[ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://materials/pool_water.tres" id="17_4y8tp"]
+[ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://materials/pool_water_frozen.tres" id="17_4y8tp"]
+[ext_resource type="Material" uid="uid://chctogq05x0cp" path="res://materials/pool_water_forest.tres" id="18_o6npc"]
+[ext_resource type="Material" uid="uid://dggj75s8818n0" path="res://materials/pool_water_sky.tres" id="19_gme6n"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7ouib"]
 material = ExtResource("17_4y8tp")
@@ -238,6 +240,19 @@ transform = Transform3D(2.31183, 0, 0, 0, 0.735283, 0, 0, 0, 2.77337, 4.77212, -
 [node name="temple_cube2" parent="BellTower" instance=ExtResource("12_vdtvp")]
 transform = Transform3D(0.36435, 0, 0, 0, 0.791793, 0, 0, 0, 2.77337, 2.14791, -15.5555, -1.78824)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="BellTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.64306, 0)
+light_energy = 3.0
+omni_range = 17.0653
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="BellTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2896, -0.125877, 0)
+omni_range = 9.65822
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="BellTower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2074, -4.97737, 0)
+omni_range = 9.65822
+
 [node name="Pools" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90.6, 0)
 
@@ -259,6 +274,11 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="pool_frozen" parent="Pools" instance=ExtResource("13_n41xw")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 0, -23.3345)
 
+[node name="LightFrozen" type="OmniLight3D" parent="Pools/pool_frozen"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.124561, 0.655922, 0.0940132)
+light_color = Color(1, 0.502013, 0.934444, 1)
+omni_range = 13.2393
+
 [node name="PoolWater_Frozen" type="MeshInstance3D" parent="Pools/pool_frozen"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 3, -0.580002, 9.53674e-07)
 mesh = SubResource("PlaneMesh_7ouib")
@@ -267,15 +287,33 @@ skeleton = NodePath("../..")
 [node name="pool_forest" parent="Pools" instance=ExtResource("13_n41xw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
 
+[node name="LightForest" type="OmniLight3D" parent="Pools/pool_forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207813, 0.655922, -0.136684)
+light_color = Color(0.380191, 0.00100632, 0.975882, 1)
+omni_range = 13.2393
+
 [node name="PoolWater_Forest" type="MeshInstance3D" parent="Pools/pool_forest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.580002, 0)
 mesh = SubResource("PlaneMesh_7ouib")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_o6npc")
 
 [node name="pool_sky" parent="Pools" instance=ExtResource("13_n41xw")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 0, 23.3345)
+
+[node name="LightSky" type="OmniLight3D" parent="Pools/pool_sky"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.345814, 0.655922, 0.127247)
+light_color = Color(0.856011, 0.589902, 3.85046e-07, 1)
+omni_range = 13.2393
 
 [node name="PoolWater_Sky" type="MeshInstance3D" parent="Pools/pool_sky"]
 transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 3, -0.580002, -9.53674e-07)
 mesh = SubResource("PlaneMesh_7ouib")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_gme6n")
+
+[node name="building_c" parent="." instance=ExtResource("2_4fdgv")]
+transform = Transform3D(1.58774, 0, 0, 0, 0.068731, 0, 0, 0, 1.58774, 0, 0.170496, 0)
+
+[node name="building_c2" parent="." instance=ExtResource("2_4fdgv")]
+transform = Transform3D(2.19255, 0, 0, 0, 0.325748, 0, 0, 0, 2.19255, 0, 114.429, 0)

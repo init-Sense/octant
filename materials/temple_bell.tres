@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2hxycl6lchxx"]
+
+[resource]
+metallic = 0.8
+metallic_specular = 0.78
+roughness = 0.17
+ao_light_affect = 0.58
+uv1_scale = Vector3(15.22, 15.22, 15.22)

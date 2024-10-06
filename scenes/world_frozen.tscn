@@ -48,10 +48,9 @@ metadata/zero_g = false
 transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -30.5193, 62.3161, -124.181)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_yipt2")
+environment = ExtResource("1_8s4oo")
 
 [node name="Surface" type="Area3D" parent="."]
-visible = false
 collision_mask = 4
 script = ExtResource("7_nk82h")
 world_environment_node = NodePath("../WorldEnvironment")

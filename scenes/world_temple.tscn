@@ -43,15 +43,18 @@ is_initial_area = true
 [node name="TeleportForest" parent="Temple" instance=ExtResource("5_k284b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 88.975, 0)
 scene_to_load = "res://scenes/world_forest.tscn"
-scene_name = "world_forest"
+scene_name = "WorldForest"
+min_load_time = 0.5
 
 [node name="TeleportSky" parent="Temple" instance=ExtResource("5_k284b")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 88.975, 23.3345)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23.3345, 87.4576, 23.3345)
 scene_to_load = "res://scenes/world_sky.tscn"
 scene_name = "world_sky"
+min_load_time = 0.5
 
 [node name="TeleportFrozen" parent="Temple" instance=ExtResource("5_k284b")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 88.975, -23.3345)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 87.8958, -23.3345)
+scene_to_load = "res://scenes/world_frozen.tscn"
 scene_name = "world_frozen"
 
 [node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
