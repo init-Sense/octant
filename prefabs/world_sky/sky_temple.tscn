@@ -7,24 +7,13 @@
 [node name="SkyTemple" type="Node3D"]
 
 [node name="sky_temple_base" parent="." instance=ExtResource("1_866ek")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.170104, 0, 0, 0, 0.170104, 0, 0, 0, 0.170104, 0, 0, 0)
 
 [node name="sky_temple_teleport" parent="." instance=ExtResource("2_m7ksr")]
-transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.170104, 0, 0, 0, 1.70104, 0, 0, 0, 0.170104, 0, 13.0424, 0)
 
 [node name="Columns" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-
-[node name="sky_temple_column_01" parent="Columns" instance=ExtResource("3_urxrf")]
-
-[node name="sky_temple_column_02" parent="Columns" instance=ExtResource("3_urxrf")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="sky_temple_column_03" parent="Columns" instance=ExtResource("3_urxrf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="sky_temple_column_04" parent="Columns" instance=ExtResource("3_urxrf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.170104, 0, 0, 0, 0.170104, 0, 0, 0, 0.170104, 0, 0, 0)
 
 [node name="sky_temple_column_05" parent="Columns" instance=ExtResource("3_urxrf")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
@@ -37,9 +26,3 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="sky_temple_column_08" parent="Columns" instance=ExtResource("3_urxrf")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-
-[node name="Boundary_1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 9, 10)
-
-[node name="Boundary_2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -9, -10)
