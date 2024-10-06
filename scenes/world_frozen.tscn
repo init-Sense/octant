@@ -213,7 +213,7 @@ transform = Transform3D(1.52771, 0, 0, 0, 1.52771, 0, 0, 0, 1.52771, -27.8547, -
 transform = Transform3D(-2.03862, 0, 0.949713, 0, 2.24898, 0, -0.949713, 0, -2.03862, -137.86, 5.26748, 38.5954)
 
 [node name="stalagmite_b_05" parent="Caves/Stalagmites" instance=ExtResource("8_rj7kh")]
-transform = Transform3D(-1.71324, 0, 0.79813, 0, 1.89002, 0, -0.79813, 0, -1.71324, -148.83, 7.8526, 15.441)
+transform = Transform3D(-1.71324, 0, 0.79813, 0, 1.89002, 0, -0.79813, 0, -1.71324, -148.83, 7.46989, 15.441)
 
 [node name="stalagmite_b_07" parent="Caves/Stalagmites" instance=ExtResource("8_rj7kh")]
 transform = Transform3D(-1.71324, 0, 0.79813, 0, 1.89002, 0, -0.79813, 0, -1.71324, -206.226, 4.40614, 1.20704)
@@ -376,6 +376,24 @@ transform = Transform3D(67.704, 0, -63.4539, 0, 92.7913, 0, 63.4539, 0, 67.704, 
 [node name="rock_a_11" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
 transform = Transform3D(-6.8144, 0, 24.0176, 0, 24.9656, 0, -24.0176, 0, -6.8144, -67.5501, 1.14262, 42.8078)
 
+[node name="rock_a_29" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(18.6073, -12.013, 11.5212, -13.9648, -20.6703, 1.00126, 9.05719, -7.19076, -22.1256, -109.152, 1.14262, 72.6485)
+
+[node name="rock_a_30" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(13.2882, -2.02927, 10.024, 6.02784, -11.723, -10.364, 8.26217, 11.8164, -8.56052, -123.225, 5.55847, 56.9857)
+
+[node name="rock_a_47" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(-10.2313, -11.3561, 6.89448, 6.02784, -11.723, -10.364, 11.8389, -3.84526, 11.2352, -164.276, 5.55847, -9.57415)
+
+[node name="rock_a_48" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(-6.80086, -7.54848, 4.58282, 4.00676, -7.79236, -6.88901, 7.86942, -2.55598, 7.46812, -179.966, 5.55847, 77.9154)
+
+[node name="rock_a_50" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(-13.3284, -14.7936, 8.98148, 7.8525, -15.2716, -13.5012, 15.4226, -5.00924, 14.6361, -298.331, -10.5593, 63.521)
+
+[node name="rock_a_49" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(3.16237, 2.94249, -4.68259, -2.00168, 5.63737, 2.19063, 5.1554, 0.383866, 3.7229, -142.012, 5.55847, 44.969)
+
 [node name="rock_a_12" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
 transform = Transform3D(-46.899, 0, -9.63638, 0, 47.8788, 0, 9.63638, 0, -46.899, -127.433, 1.14262, 77.2934)
 
@@ -389,7 +407,10 @@ transform = Transform3D(-12.2507, 0, -76.983, 0, 77.9518, 0, 76.983, 0, -12.2507
 transform = Transform3D(-14.2119, 0, 50.0904, 0, 52.0675, 0, -50.0904, 0, -14.2119, -212.256, -2.56258, -61.5329)
 
 [node name="rock_a_22" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
-transform = Transform3D(-16.9464, 0, 59.7281, -59.3729, -6.76123, -16.8456, 6.50449, -61.7164, 1.84549, -266.845, 1.14262, 128.671)
+transform = Transform3D(-16.9464, -1.90735e-06, 59.7281, -59.3729, -6.76123, -16.8456, 6.50449, -61.7164, 1.84549, -270.511, 1.14265, 142.372)
+
+[node name="rock_a_31" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(-2.31519, 70.8428, -20.2738, -70.5019, -8.02857, -20.0032, -21.4295, 18.7598, 67.9996, -203.353, 1.14262, 133.044)
 
 [node name="rock_a_14" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
 transform = Transform3D(-52.6658, 0, 185.622, 0, 192.949, 0, -185.622, 0, -52.6658, -133.68, -57.8854, 203.995)
@@ -410,7 +431,10 @@ transform = Transform3D(37.8779, 168.324, -48.1014, -104.137, 61.2249, 132.244, 
 transform = Transform3D(104.834, 144.375, 15.7115, -104.137, 61.2249, 132.244, 101.226, -86.5369, 119.775, -234.153, 30.2975, -150.415)
 
 [node name="rock_a_18" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
-transform = Transform3D(57.2022, 0, 43.5891, 0, 71.9173, 0, -43.5891, 0, 57.2022, -322.397, -19.5676, 55.2051)
+transform = Transform3D(83.5487, 0, -43.2908, 0, 94.0982, 0, 43.2908, 0, 83.5487, -336.439, -19.5676, -25.0774)
+
+[node name="rock_a_46" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
+transform = Transform3D(31.0674, -77.4956, 8.52722, 55.8725, 15.7289, -60.6162, 54.3741, 28.1157, 57.4145, -280.669, -19.5676, -63.5213)
 
 [node name="rock_a_10" parent="Caves/CaveWalls" instance=ExtResource("16_h8wxr")]
 transform = Transform3D(-123.951, 68.1323, -5.46384, -12.9436, -34.5076, -136.665, -67.1143, -119.176, 36.4481, -9.78248, 2.08566, 109.293)
@@ -482,7 +506,6 @@ transform = Transform3D(-31.757, 17.9905, -10.8925, 8.04207, 25.8892, 23.4437, 2
 transform = Transform3D(-2.95645, 5.75767, 6.90654, -5.547, 5.00962, -6.13245, -8.20805, -5.45936, 1.65666, -31.1563, 2.28113, 0.951509)
 
 [node name="CaveCeiling" type="Node3D" parent="Caves"]
-visible = false
 
 [node name="rock_a_24" parent="Caves/CaveCeiling" instance=ExtResource("16_h8wxr")]
 transform = Transform3D(8.61258, 44.7041, 41.4888, -68.3343, 9.47202, 0, -7.10801, -36.8945, 50.2708, -23.7325, 43.1901, -95.5153)
