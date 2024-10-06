@@ -10,7 +10,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_dhuvf")
-scene_to_load = "res://scenes/world_frozen.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_4mrfi")

@@ -12,6 +12,12 @@
 
 [node name="SkyTower" type="Node3D"]
 
+[node name="Boundary_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 40, 40)
+
+[node name="Boundary_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
+
 [node name="Stairs" type="Node3D" parent="."]
 
 [node name="sky_stairs_1" parent="Stairs" instance=ExtResource("1_hnunv")]
@@ -49,12 +55,6 @@ visible = false
 
 [node name="sky_stairs_plane_4" parent="Stairs/sky_stairs_4" instance=ExtResource("3_aqiwg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26, 10, -2)
-
-[node name="Boundary_1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 40, 40)
-
-[node name="Boundary_2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
 
 [node name="Columns" type="Node3D" parent="."]
 
@@ -113,23 +113,23 @@ transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -9.6, 0, -9.6)
 
 [node name="sky_tower" parent="." instance=ExtResource("7_vupk0")]
 
-[node name="sky_wall_2" parent="." instance=ExtResource("10_g5fru")]
-transform = Transform3D(-1.5, 0, 1.50996e-07, 0, 4, 0, -2.26494e-07, 0, -1, 2.7, 25.1, 0)
-
-[node name="sky_wall_3" parent="." instance=ExtResource("10_g5fru")]
-transform = Transform3D(-1.60927e-07, 0, -1, 0, 4, 0, 1.5, 0, -1.07285e-07, 3.26471, 25.1, -2.74862)
-
-[node name="sky_wall_4" parent="." instance=ExtResource("10_g5fru")]
-transform = Transform3D(-1.60927e-07, 0, -1, 0, 4, 0, 1.5, 0, -1.07285e-07, -3.17408, 25.1, -1.63267)
-
 [node name="sky_wall_5" parent="." instance=ExtResource("10_g5fru")]
 transform = Transform3D(-0.67, -3.5635e-07, -4.95018e-15, 0, -1.03159e-07, 0.75, -1.01167e-07, 2.36, 3.27835e-08, 12.0006, 9.61396, -19.1458)
 
 [node name="sky_wall_6" parent="." instance=ExtResource("10_g5fru")]
-transform = Transform3D(-1.165, -5.07346e-07, -4.95018e-15, 0, -1.4687e-07, 0.75, -1.7591e-07, 3.36, 3.27835e-08, -3.47547, 19.5418, -10.9583)
+transform = Transform3D(-2.10168e-07, 0.94, 3.27835e-08, 0, -4.10887e-08, 0.75, 1.29, 1.53145e-07, 5.34112e-15, 0, 19.623, -11.488)
 
 [node name="sky_wall_7" parent="." instance=ExtResource("10_g5fru")]
-transform = Transform3D(-1.165, -2.49143e-07, -4.95018e-15, 0, -7.21238e-08, 0.75, -1.7591e-07, 1.65, 3.27835e-08, -3.47547, 24.8656, -6.80796)
+transform = Transform3D(-3.83, -5.79069e-07, -4.95018e-15, 0, -1.67633e-07, 0.75, -5.78314e-07, 3.835, 3.27835e-08, -11.638, 19.5939, -0.0374513)
 
-[node name="sky_portal_gate" parent="." instance=ExtResource("11_t1mot")]
+[node name="sky_portal_gate_01" parent="." instance=ExtResource("11_t1mot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.944, 10.0095, -25.5211)
+
+[node name="sky_portal_gate_02" parent="." instance=ExtResource("11_t1mot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.955, 10.8)
+
+[node name="sky_portal_gate_03" parent="." instance=ExtResource("11_t1mot")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.8, 19.955, 0)
+
+[node name="sky_portal_gate_04" parent="." instance=ExtResource("11_t1mot")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.8, 19.955, 0)

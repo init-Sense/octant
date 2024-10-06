@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxcnrsk18452r"]
+[gd_scene load_steps=28 format=3 uid="uid://cxcnrsk18452r"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
 [ext_resource type="PackedScene" uid="uid://cp36u8dmrv72w" path="res://assets/models/world_frozen/frozen_god_hand.glb" id="21_mvlug"]
 [ext_resource type="PackedScene" uid="uid://dumf2ykhijb5l" path="res://prefabs/world_frozen/frozen_god_eye.tscn" id="22_3xqs7"]
+[ext_resource type="PackedScene" uid="uid://quwqm3swor0w" path="res://prefabs/teleport/teleport.tscn" id="23_fsw0f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eumbd"]
 size = Vector3(427.644, 105.765, 617.78)
@@ -498,3 +499,7 @@ transform = Transform3D(-37.2089, 1.40162, 1.91395, -2.37228, -21.9842, -30.02, 
 
 [node name="FrozenGodEye2" parent="Nucleus" instance=ExtResource("22_3xqs7")]
 transform = Transform3D(-8.77539, 17.9477, -31.4802, -28.8457, 16.1446, 17.2455, 21.9328, 28.4141, 10.0857, -78.1428, -72.2872, -129.205)
+
+[node name="Teleport" parent="Nucleus" instance=ExtResource("23_fsw0f")]
+transform = Transform3D(5.85775, 6.22036e-08, -1.67186, -0.722472, 5.97636, -6.63075, 0.738305, 5.84819, 6.77606, 2.55869, -2.09955, 0.322495)
+scene_to_load = "res://scenes/world_temple.tscn"

@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://b0dl55ei83bc6" path="res://prefabs/world_sky/sky_hub.tscn" id="3_y4t5u"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="4_7diav"]
 [ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/portal_default.tscn" id="5_bhw6p"]
-[ext_resource type="PackedScene" uid="uid://dquoxo4hj0hpa" path="res://prefabs/world_sky/sky_bridge.tscn" id="7_ese3d"]
 [ext_resource type="PackedScene" uid="uid://cnhf42p10uywl" path="res://prefabs/world_sky/sky_tower.tscn" id="10_tb3fs"]
 [ext_resource type="PackedScene" uid="uid://c3ev5dvjsmof1" path="res://assets/models/world_sky/sky_wall.glb" id="11_8oq4i"]
 [ext_resource type="PackedScene" uid="uid://b8756alkdqucw" path="res://prefabs/world_sky/sky_temple.tscn" id="11_trrtl"]
 [ext_resource type="PackedScene" uid="uid://bgs5g6oqoge4v" path="res://assets/models/columns/column_sky_stairs.glb" id="12_bjud8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2ey1"]
+size = Vector3(14, 23, 74)
 
 [node name="SkyWorld" type="Node3D"]
 script = ExtResource("1_om7oh")
@@ -19,7 +21,7 @@ soundtrack = "infinite"
 soundtrack_volume = -15.0
 
 [node name="Player" parent="." instance=ExtResource("1_mnsr1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.267, 7.9, 11.14)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.76056, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_4j1gq")
@@ -1221,121 +1223,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -384)
 script = ExtResource("4_7diav")
 is_initial_area = true
 
-[node name="PortalHub" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(4.325, 0, 6.35732e-08, 0, 4, 0, -2.74954e-07, 0, 1, -1.27146e-07, 39.3637, -5)
+[node name="PortalHub_01" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(-2.12132, 0, 0.707107, 0, 4, 0, -2.12132, 0, -0.707107, 8.92323, 51.5974, -8.92323)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
-[node name="PortalHub2" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-4.325, 0, -1.50996e-07, 0, 4, 0, 6.53057e-07, 0, -1, -4.76992e-08, 39.3637, 5)
+[node name="PortalHub_02" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(2.12132, 0, -0.707107, 0, 4, 0, 2.12132, 0, 0.707107, -8.92323, 51.5974, 8.92323)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
-[node name="PortalHub3" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(3.26528e-07, 0, -1, 0, 4, 0, 4.325, 0, 7.54979e-08, 5, 39.3637, 9.14096e-08)
+[node name="PortalHub_03" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(2.12132, 0, 0.707107, 0, 4, 0, -2.12132, 0, 0.707107, 8.92323, 51.5974, 8.92323)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
 
-[node name="PortalHub4" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(3.26528e-07, 0, 1, 0, 4, 0, -4.325, 0, 7.54979e-08, -5, 39.3637, -2.66256e-07)
+[node name="PortalHub_04" parent="Hub/SkyHub_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
+transform = Transform3D(-2.12132, 0, -0.707107, 0, 4, 0, 2.12132, 0, -0.707107, -8.92323, 51.5974, -8.92323)
 exit_portal = NodePath("../../../Tower/Tower_REAL/PortalTower")
 metadata/boundaries_path = NodePath("..")
-
-[node name="Bridge" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1024)
-
-[node name="BridgeCopies" type="Node3D" parent="Bridge"]
-
-[node name="LayerMid" type="Node3D" parent="Bridge/BridgeCopies"]
-
-[node name="BridgeTutorial_1" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
-
-[node name="BridgeTutorial_2" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
-
-[node name="BridgeTutorial_3" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
-
-[node name="BridgeTutorial_4" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
-
-[node name="BridgeTutorial_5" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
-
-[node name="BridgeTutorial_7" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
-
-[node name="BridgeTutorial_8" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
-
-[node name="BridgeTutorial_6" parent="Bridge/BridgeCopies/LayerMid" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
-
-[node name="LayerBottom" type="Node3D" parent="Bridge/BridgeCopies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
-
-[node name="BridgeTutorial_1" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
-
-[node name="BridgeTutorial_9" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-
-[node name="BridgeTutorial_2" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
-
-[node name="BridgeTutorial_3" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
-
-[node name="BridgeTutorial_4" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
-
-[node name="BridgeTutorial_5" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
-
-[node name="BridgeTutorial_7" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
-
-[node name="BridgeTutorial_8" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
-
-[node name="BridgeTutorial_6" parent="Bridge/BridgeCopies/LayerBottom" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
-
-[node name="LayerTop" type="Node3D" parent="Bridge/BridgeCopies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 128, 0)
-
-[node name="BridgeTutorial_1" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 0)
-
-[node name="BridgeTutorial_9" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-
-[node name="BridgeTutorial_2" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 0)
-
-[node name="BridgeTutorial_3" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, -128)
-
-[node name="BridgeTutorial_4" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, -128)
-
-[node name="BridgeTutorial_5" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128, 0, 128)
-
-[node name="BridgeTutorial_7" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -128)
-
-[node name="BridgeTutorial_8" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 128)
-
-[node name="BridgeTutorial_6" parent="Bridge/BridgeCopies/LayerTop" instance=ExtResource("7_ese3d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -128, 0, 128)
-
-[node name="Bridge_REAL" parent="Bridge" instance=ExtResource("7_ese3d")]
-script = ExtResource("4_7diav")
-
-[node name="PortalBridge" parent="Bridge/Bridge_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-1.48619e-07, 0, -1, 0, 5.7, 0, 3.4, 0, -4.37114e-08, 24, 7.785, 0)
-exit_portal = NodePath("../../../Hub/SkyHub_REAL/PortalHub")
 
 [node name="Tower" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2048)
@@ -1344,8 +1250,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2048)
 script = ExtResource("4_7diav")
 
 [node name="PortalTower" parent="Tower/Tower_REAL" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 1, 13.6765, 14.738, -25.2495)
-exit_portal = NodePath("../../../Hub/SkyHub_REAL/PortalHub")
+transform = Transform3D(3, 0, 0, 0, 4, 0, 0, 0, 1, 14.001, 14.5, -25.25)
+exit_portal = NodePath("../../../Hub/SkyHub_REAL/PortalHub_01")
 
 [node name="TowerCopies" type="Node3D" parent="Tower"]
 
@@ -1370,102 +1276,106 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 [node name="SkyStairs_3" parent="Tower/TowerCopies" instance=ExtResource("10_tb3fs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 
-[node name="PortalTower_B" parent="Tower" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-3, 0, -1.50996e-07, 0, 2, 0, 4.52987e-07, 0, -1, 0.0561404, 22.1643, -3.28711)
-exit_portal = NodePath("../PortalTower_C")
+[node name="PortalTower_B" parent="Tower" instance=ExtResource("5_bhw6p")]
+transform = Transform3D(-3, 0, -1.50996e-07, 0, 4, 0, 4.52987e-07, 0, -1, 0, 24.304, 10.342)
 
-[node name="PortalTower_C" parent="Tower" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 2.50419, 167.124, -24.7679)
-exit_portal = NodePath("../PortalTower_B")
+[node name="PortalTower_C" parent="Tower" instance=ExtResource("5_bhw6p")]
+transform = Transform3D(-3.21853e-07, 0, 1, 0, 4, 0, -3, 0, -1.07284e-07, -10.6984, 24.304, 0)
 
-[node name="PortalTower_D" parent="Tower" node_paths=PackedStringArray("exit_portal") instance=ExtResource("5_bhw6p")]
-transform = Transform3D(-2, 0, -8.74228e-08, 0, 3.5, 0, 1.74846e-07, 0, -1, 2.50419, 168.919, 25.1902)
-exit_portal = NodePath("../PortalTower_B")
+[node name="PortalTower_D" parent="Tower" instance=ExtResource("5_bhw6p")]
+transform = Transform3D(5.96046e-07, 0, -1, 0, 4, 0, 3, 0, 1.78814e-07, 10.4751, 24.304, 0)
 
-[node name="Corridor" type="Node3D" parent="Tower"]
+[node name="SkyTemple" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3000)
 
-[node name="sky_wall_01" parent="Tower/Corridor" instance=ExtResource("11_8oq4i")]
-transform = Transform3D(1.91069e-15, -3.83349e-07, 1, -1, -3.83349e-07, 0, 4.37114e-08, -8.77, -4.37114e-08, 4.51399, 164.201, 0)
-
-[node name="sky_wall_02" parent="Tower/Corridor" instance=ExtResource("11_8oq4i")]
-transform = Transform3D(-5.73206e-15, 1.15005e-06, -1, -1, -3.83349e-07, 0, -4.37114e-08, 8.77, 1.31134e-07, 0.516993, 164.201, 0)
-
-[node name="sky_wall_03" parent="Tower/Corridor" instance=ExtResource("11_8oq4i")]
-transform = Transform3D(1, 3.83349e-07, 4.37114e-08, 4.37114e-08, 1.15005e-06, -1, -4.37114e-08, 8.77, 1.31134e-07, 5.40904, 164.201, 0)
-
-[node name="sky_wall_04" parent="Tower/Corridor" instance=ExtResource("11_8oq4i")]
-transform = Transform3D(1, 3.83349e-07, 4.37114e-08, 4.37114e-08, 1.15005e-06, -1, -4.37114e-08, 8.77, 1.31134e-07, 5.40904, 169.88, 0)
-
-[node name="column_sky_stairs_01" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, -1.93188)
-
-[node name="column_sky_stairs_02" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, -1.93188)
-
-[node name="column_sky_stairs_03" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, -7.67542)
-
-[node name="column_sky_stairs_04" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, -7.67542)
-
-[node name="column_sky_stairs_05" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, -13.1039)
-
-[node name="column_sky_stairs_06" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, -13.1039)
-
-[node name="column_sky_stairs_07" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, -18.8474)
-
-[node name="column_sky_stairs_08" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, -18.8474)
-
-[node name="column_sky_stairs_09" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, 20.5984)
-
-[node name="column_sky_stairs_10" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, 20.5984)
-
-[node name="column_sky_stairs_11" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, 14.855)
-
-[node name="column_sky_stairs_12" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, 14.855)
-
-[node name="column_sky_stairs_13" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, 9.42627)
-
-[node name="column_sky_stairs_14" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, 9.42627)
-
-[node name="column_sky_stairs_15" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 4.07958, 164.601, 3.68286)
-
-[node name="column_sky_stairs_16" parent="Tower/Corridor" instance=ExtResource("12_bjud8")]
-transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 0.927079, 164.601, 3.68286)
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="SkyTemple" parent="Node3D" instance=ExtResource("11_trrtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2435.48)
+[node name="SkyTemple" parent="SkyTemple" instance=ExtResource("11_trrtl")]
 script = ExtResource("4_7diav")
 
-[node name="SkyTemple_COPIES" type="Node3D" parent="Node3D"]
+[node name="SkyTemple_COPIES" type="Node3D" parent="SkyTemple"]
 
-[node name="SkyTemple_02" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_02" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 2435.48)
 
-[node name="SkyTemple_03" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_03" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 2435.48)
 
-[node name="SkyTemple_04" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_04" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54, 2435.48)
 
-[node name="SkyTemple_05" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_05" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -54, 2435.48)
 
-[node name="SkyTemple_06" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_06" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, 2435.48)
 
-[node name="SkyTemple_07" parent="Node3D/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
+[node name="SkyTemple_07" parent="SkyTemple/SkyTemple_COPIES" instance=ExtResource("11_trrtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 2435.48)
+
+[node name="Corridor" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2304)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corridor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+shape = SubResource("BoxShape3D_o2ey1")
+
+[node name="sky_wall_01" parent="Corridor" instance=ExtResource("11_8oq4i")]
+transform = Transform3D(1.91069e-15, -3.83349e-07, 1, -1, -3.83349e-07, 0, 4.37114e-08, -8.77, -4.37114e-08, 2.03645, -3.84108, 0)
+
+[node name="sky_wall_02" parent="Corridor" instance=ExtResource("11_8oq4i")]
+transform = Transform3D(-5.73206e-15, 1.15005e-06, -1, -1, -3.83349e-07, 0, -4.37114e-08, 8.77, 1.31134e-07, -1.96055, -3.84108, 0)
+
+[node name="sky_wall_03" parent="Corridor" instance=ExtResource("11_8oq4i")]
+transform = Transform3D(1, 3.83349e-07, 4.37114e-08, 4.37114e-08, 1.15005e-06, -1, -4.37114e-08, 8.77, 1.31134e-07, 2.9315, -3.84108, 0)
+
+[node name="sky_wall_04" parent="Corridor" instance=ExtResource("11_8oq4i")]
+transform = Transform3D(1, 3.83349e-07, 4.37114e-08, 4.37114e-08, 1.15005e-06, -1, -4.37114e-08, 8.77, 1.31134e-07, 2.9315, 1.83792, 0)
+
+[node name="Columns" type="Node3D" parent="Corridor"]
+
+[node name="column_sky_stairs_01" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, -1.93188)
+
+[node name="column_sky_stairs_02" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, -1.93188)
+
+[node name="column_sky_stairs_03" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, -7.67554)
+
+[node name="column_sky_stairs_04" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, -7.67554)
+
+[node name="column_sky_stairs_05" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, -13.104)
+
+[node name="column_sky_stairs_06" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, -13.104)
+
+[node name="column_sky_stairs_07" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, -18.8474)
+
+[node name="column_sky_stairs_08" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, -18.8474)
+
+[node name="column_sky_stairs_09" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, 20.5984)
+
+[node name="column_sky_stairs_10" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, 20.5984)
+
+[node name="column_sky_stairs_11" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, 14.855)
+
+[node name="column_sky_stairs_12" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, 14.855)
+
+[node name="column_sky_stairs_13" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, 9.42627)
+
+[node name="column_sky_stairs_14" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, 9.42627)
+
+[node name="column_sky_stairs_15" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, 1.60204, -3.44109, 3.68286)
+
+[node name="column_sky_stairs_16" parent="Corridor/Columns" instance=ExtResource("12_bjud8")]
+transform = Transform3D(1, 0, 0, 0, 0.134028, 0, 0, 0, 1, -1.55047, -3.44109, 3.68286)
