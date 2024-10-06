@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://durei2rewe50p"]
+
+[ext_resource type="Script" path="res://scripts/scenes/title_screen.gd" id="1_02jyi"]
+[ext_resource type="FontFile" uid="uid://drmb22q27lvdj" path="res://assets/fonts/LibertinusMono-Regular.otf" id="2_6xqs1"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_02jyi")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6xqs1")
+theme_override_font_sizes/font_size = 64
+text = "Octant"
+horizontal_alignment = 1
+vertical_alignment = 1
