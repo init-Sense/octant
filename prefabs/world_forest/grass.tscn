@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dsfodxpvghptx" path="res://assets/models/world_forest/forest_grass.glb" id="1_2vyms"]
 
-[node name="Grass_01" type="Node3D"]
-transform = Transform3D(0.699469, 0, 0, 0, 0.699469, 0, 0, 0, 0.699469, 151.277, 40.2314, 0)
+[node name="Grass" type="Node3D"]
+transform = Transform3D(0.699469, 0, 0, 0, 0.699469, 0, 0, 0, 0.699469, 0, 0, 0)
 
 [node name="forest_grass_01" parent="." instance=ExtResource("1_2vyms")]
 transform = Transform3D(27.5999, 0, 0, 0, 27.5999, 0, 0, 0, 27.5999, 0, 0, -5.46119)

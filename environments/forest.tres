@@ -5,6 +5,10 @@
 [resource]
 background_mode = 2
 sky = ExtResource("1_ucmva")
+glow_enabled = true
+glow_intensity = 1.99
+glow_bloom = 0.24
+glow_hdr_threshold = 0.49
 fog_enabled = true
 fog_light_color = Color(0.145098, 0, 0.345098, 1)
 fog_density = 0.015

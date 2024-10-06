@@ -8,8 +8,8 @@ radius = 5.4
 height = 12.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdxlg"]
-radius = 7.5
-height = 20.0
+radius = 10.9715
+height = 29.13
 
 [node name="TreeTunnel" type="Node3D"]
 
