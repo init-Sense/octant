@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/audio/queues/queued_music_manager.gd" id="1_3vya2"]
 [ext_resource type="Script" path="res://scripts/audio/queues/queued_music_group.gd" id="2_wgrqw"]
 [ext_resource type="Script" path="res://scripts/audio/queues/queued_music.gd" id="3_vhdoa"]
-[ext_resource type="AudioStream" uid="uid://digmdwd2y2yho" path="res://assets/audio/music/zero/drop1end.mp3" id="4_an5wm"]
-[ext_resource type="AudioStream" uid="uid://dnalvfdstm8bt" path="res://assets/audio/music/zero/breaktransition.mp3" id="5_1u354"]
-[ext_resource type="AudioStream" uid="uid://y00n3342gxvy" path="res://assets/audio/music/zero/d&bdrop.mp3" id="6_2thso"]
+[ext_resource type="AudioStream" uid="uid://dw2vob1r0gasa" path="res://assets/audio/music/zero/drop1end.mp3" id="4_an5wm"]
+[ext_resource type="AudioStream" uid="uid://dxvaslj1m80ss" path="res://assets/audio/music/zero/breaktransition.mp3" id="5_1u354"]
+[ext_resource type="AudioStream" uid="uid://nnubmkhd8bug" path="res://assets/audio/music/zero/d&bdrop.mp3" id="6_2thso"]
 
 [sub_resource type="Resource" id="Resource_5liu7"]
 script = ExtResource("3_vhdoa")
