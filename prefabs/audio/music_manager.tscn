@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvut1ptye6cp"]
+[gd_scene load_steps=10 format=3 uid="uid://dvut1ptye6cp"]
 
 [ext_resource type="Script" path="res://scripts/audio/music/music_manager.gd" id="1_x2i84"]
 [ext_resource type="Script" path="res://scripts/audio/music/music_group.gd" id="2_rhio3"]
 [ext_resource type="Script" path="res://scripts/audio/music/music.gd" id="3_fk5x3"]
+[ext_resource type="AudioStream" uid="uid://dyahod21737c5" path="res://assets/audio/music/frozen/frozen.mp3" id="4_jtndh"]
 
 [sub_resource type="Resource" id="Resource_yjrs2"]
 script = ExtResource("2_rhio3")
@@ -22,6 +23,17 @@ key = "forest"
 bus = "Music"
 tracks = Array[ExtResource("3_fk5x3")]([])
 
+[sub_resource type="Resource" id="Resource_m3aim"]
+script = ExtResource("3_fk5x3")
+key = "frozen"
+stems = Array[AudioStream]([ExtResource("4_jtndh")])
+
+[sub_resource type="Resource" id="Resource_bykvv"]
+script = ExtResource("2_rhio3")
+key = "frozen"
+bus = "Music"
+tracks = Array[ExtResource("3_fk5x3")]([SubResource("Resource_m3aim")])
+
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_x2i84")
-groups = Array[ExtResource("2_rhio3")]([SubResource("Resource_yjrs2"), SubResource("Resource_mm3pf"), SubResource("Resource_q64rs")])
+groups = Array[ExtResource("2_rhio3")]([SubResource("Resource_yjrs2"), SubResource("Resource_mm3pf"), SubResource("Resource_q64rs"), SubResource("Resource_bykvv")])

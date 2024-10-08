@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxcnrsk18452r"]
+[gd_scene load_steps=30 format=3 uid="uid://cxcnrsk18452r"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
+[ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_vjqjl"]
 [ext_resource type="Environment" uid="uid://d4ksj2eichsko" path="res://environments/frozen_caves_environment.tres" id="2_yipt2"]
 [ext_resource type="Material" uid="uid://cqrd122cj8s7i" path="res://materials/frozen_water.tres" id="4_ca5av"]
 [ext_resource type="PackedScene" uid="uid://tulei3i2nhjg" path="res://assets/models/world_frozen/frozen_platform.glb" id="5_r3qnj"]
@@ -45,17 +46,19 @@ height = 18.5958
 radius = 1.86369
 
 [node name="FrozenWorld" type="Node3D"]
+script = ExtResource("1_vjqjl")
+scene_name = "frozen"
+soundtrack = "frozen"
 metadata/slippery = false
 metadata/zero_g = false
 
 [node name="Player" parent="." instance=ExtResource("1_4ntkc")]
-transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -30.5193, 62.3161, -124.181)
+transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, 22.7687, 1.09933, 18.4281)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("17_of3fl")
+environment = ExtResource("1_8s4oo")
 
 [node name="Surface" type="Area3D" parent="."]
-visible = false
 collision_mask = 4
 script = ExtResource("7_nk82h")
 world_environment_node = NodePath("../WorldEnvironment")
@@ -561,6 +564,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("20_2bfs0")
+scene_to_load = "res://scenes/world_temple.tscn"
+scene_name = "temple"
+min_load_time = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nucleus/FrozenTemple/Teleport"]
 shape = SubResource("CylinderShape3D_4mrfi")
