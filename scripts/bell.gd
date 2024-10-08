@@ -6,8 +6,9 @@ extends Node
 
 
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
-	animation_bell.play("bell")
-	
-	await get_tree().create_timer(0.1).timeout
-	animation_tongue.play("tongue")
+	if (SceneManager.forest_visited):
+		await get_tree().create_timer(1).timeout
+		animation_bell.play("bell")
+		
+		await get_tree().create_timer(0.1).timeout
+		animation_tongue.play("tongue")

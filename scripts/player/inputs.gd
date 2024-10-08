@@ -33,6 +33,8 @@ class_name Inputs
 
 #region CONSTANTS
 const DOUBLE_TAP_WINDOW: float = 0.3
+const INACTIVITY_TIMEOUT: float = 60.0
+const RESET_HOLD_TIME: float = 3.0
 #endregion
 
 
@@ -42,24 +44,63 @@ var last_backward_sprint_tap_time: float = 0.0
 var forward_sprint_tap_count: int = 0
 var backward_sprint_tap_count: int = 0
 var is_jump_charged: bool = false
+var last_input_time: float = 0.0
+var inactivity_timer: Timer
+var reset_hold_timer: Timer
+var is_reset_pressed: bool = false
 #endregion
 
 
-func _input(_event) -> void:
-	if Input.is_action_just_pressed("debug_queue"):
-		QueuedMusicManager.start_playback("zero_core", "main_theme")
-	if Input.is_action_just_pressed("debug_queue_next"):
-		QueuedMusicManager.play_next_part(true)
-	if Input.is_action_just_pressed("debug_queue_previous"):
-		QueuedMusicManager.play_previous_part()
+func _ready():
+	inactivity_timer = Timer.new()
+	inactivity_timer.one_shot = true
+	inactivity_timer.timeout.connect(on_inactivity_timeout)
+	add_child(inactivity_timer)
+	reset_inactivity_timer()
+
+	reset_hold_timer = Timer.new()
+	reset_hold_timer.one_shot = true
+	reset_hold_timer.timeout.connect(on_reset_hold_timeout)
+	add_child(reset_hold_timer)
+
+
+func _input(event) -> void:
+	if event is InputEvent and event.is_action_type():
+		reset_inactivity_timer()
+	
+	handle_reset_input(event)
 	handle_jump_input()
 	handle_movement_input()
-
 	handle_forward_sprint_input()
 	handle_backward_sprint_input()
-
 	handle_crouch_input()
 
+
+func reset_inactivity_timer():
+	inactivity_timer.stop()
+	inactivity_timer.start(INACTIVITY_TIMEOUT)
+
+func on_inactivity_timeout():
+	print("Player inactive for 1 minute. Resetting game.")
+	reset_game()
+
+func handle_reset_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset"):
+		is_reset_pressed = true
+		reset_hold_timer.start(RESET_HOLD_TIME)
+		print("started timer")
+	elif event.is_action_released("reset"):
+		is_reset_pressed = false
+		reset_hold_timer.stop()
+
+func on_reset_hold_timeout():
+	if is_reset_pressed:
+		print("Reset button held for 3 seconds. Resetting game.")
+		reset_game()
+
+func reset_game():
+	SceneManager.reset_all()
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 #region JUMP HANDLING
 func handle_jump_input() -> void:
