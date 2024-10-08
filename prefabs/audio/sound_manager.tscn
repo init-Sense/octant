@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound_manager.gd" id="1_j87tm"]
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound_group.gd" id="2_ubet5"]
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound.gd" id="3_cjpyl"]
-[ext_resource type="AudioStream" uid="uid://duc5dklciipj8" path="res://assets/audio/sounds/player/landing.wav" id="4_yvy1f"]
+[ext_resource type="AudioStream" uid="uid://bjmycdxso3fhs" path="res://assets/audio/sounds/player/landing.mp3" id="4_n8fcn"]
 [ext_resource type="AudioStream" uid="uid://djusas5ip3u7k" path="res://assets/audio/sounds/player/falling.mp3" id="5_pek0m"]
 
 [sub_resource type="Resource" id="Resource_cgo8j"]
 script = ExtResource("3_cjpyl")
 key = "landing"
-stream = Array[AudioStream]([ExtResource("4_yvy1f")])
+stream = Array[AudioStream]([ExtResource("4_n8fcn")])
 
 [sub_resource type="Resource" id="Resource_n2jnc"]
 script = ExtResource("3_cjpyl")
