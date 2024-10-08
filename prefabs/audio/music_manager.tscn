@@ -1,27 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvut1ptye6cp"]
+[gd_scene load_steps=16 format=3 uid="uid://dvut1ptye6cp"]
 
 [ext_resource type="Script" path="res://scripts/audio/music/music_manager.gd" id="1_x2i84"]
 [ext_resource type="Script" path="res://scripts/audio/music/music_group.gd" id="2_rhio3"]
 [ext_resource type="Script" path="res://scripts/audio/music/music.gd" id="3_fk5x3"]
+[ext_resource type="AudioStream" uid="uid://dgnjbgyrjvi1f" path="res://assets/audio/music/sky/infinite.mp3" id="4_cnv23"]
 [ext_resource type="AudioStream" uid="uid://dyahod21737c5" path="res://assets/audio/music/frozen/frozen.mp3" id="4_jtndh"]
+[ext_resource type="AudioStream" uid="uid://cjdxqbrn5gym1" path="res://assets/audio/music/temple/octant.mp3" id="4_tvime"]
+[ext_resource type="AudioStream" uid="uid://cg6e802lrnpt" path="res://assets/audio/music/forest/gods.mp3" id="5_upkfe"]
+
+[sub_resource type="Resource" id="Resource_rs34y"]
+script = ExtResource("3_fk5x3")
+key = "infinite"
+stems = Array[AudioStream]([ExtResource("4_cnv23")])
 
 [sub_resource type="Resource" id="Resource_yjrs2"]
 script = ExtResource("2_rhio3")
 key = "sky"
 bus = "Music"
-tracks = Array[ExtResource("3_fk5x3")]([])
+tracks = Array[ExtResource("3_fk5x3")]([SubResource("Resource_rs34y")])
+
+[sub_resource type="Resource" id="Resource_65nd2"]
+script = ExtResource("3_fk5x3")
+key = "octant"
+stems = Array[AudioStream]([ExtResource("4_tvime")])
 
 [sub_resource type="Resource" id="Resource_mm3pf"]
 script = ExtResource("2_rhio3")
 key = "temple"
 bus = "Music"
-tracks = Array[ExtResource("3_fk5x3")]([])
+tracks = Array[ExtResource("3_fk5x3")]([SubResource("Resource_65nd2")])
+
+[sub_resource type="Resource" id="Resource_0py5r"]
+script = ExtResource("3_fk5x3")
+key = "gods"
+stems = Array[AudioStream]([ExtResource("5_upkfe")])
 
 [sub_resource type="Resource" id="Resource_q64rs"]
 script = ExtResource("2_rhio3")
 key = "forest"
 bus = "Music"
-tracks = Array[ExtResource("3_fk5x3")]([])
+tracks = Array[ExtResource("3_fk5x3")]([SubResource("Resource_0py5r")])
 
 [sub_resource type="Resource" id="Resource_m3aim"]
 script = ExtResource("3_fk5x3")
