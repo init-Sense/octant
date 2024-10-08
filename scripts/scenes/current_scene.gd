@@ -7,8 +7,19 @@ extends Node
 func _ready():
 	if soundtrack:
 		MusicManager.play_varied(scene_name, soundtrack, soundtrack_volume)
+	
 	if scene_name:
 		SceneManager.current_scene = scene_name
 		print("Current scene set to: ", scene_name)
+		
+		match scene_name:
+			"sky":
+				SceneManager.sky_visited = true
+			"forest":
+				SceneManager.forest_visited = true
+			"frozen":
+				SceneManager.frozen_visited = true
+			_:
+				push_warning("Unknown scene name: " + scene_name)
 	else:
 		push_warning("No 'scene_name' metadata found on this node.")
