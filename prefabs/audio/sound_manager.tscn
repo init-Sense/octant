@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://vsb6rrrwob7"]
+[gd_scene load_steps=15 format=3 uid="uid://vsb6rrrwob7"]
 
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound_manager.gd" id="1_j87tm"]
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound_group.gd" id="2_ubet5"]
 [ext_resource type="Script" path="res://scripts/audio/sounds/sound.gd" id="3_cjpyl"]
 [ext_resource type="AudioStream" uid="uid://bjmycdxso3fhs" path="res://assets/audio/sounds/player/landing.mp3" id="4_n8fcn"]
 [ext_resource type="AudioStream" uid="uid://djusas5ip3u7k" path="res://assets/audio/sounds/player/falling.mp3" id="5_pek0m"]
+[ext_resource type="AudioStream" uid="uid://cjuuxrbqn3y4" path="res://assets/audio/sounds/player/steps/step_a.wav" id="6_85d4s"]
+[ext_resource type="AudioStream" uid="uid://bpix1kilp6ukx" path="res://assets/audio/sounds/player/steps/step_b.wav" id="7_4xmss"]
+[ext_resource type="AudioStream" uid="uid://bbtspwnyb2ro0" path="res://assets/audio/sounds/player/steps/step_c.wav" id="8_yym10"]
+[ext_resource type="AudioStream" uid="uid://b575kt6a2cfsh" path="res://assets/audio/sounds/player/steps/step_d.wav" id="9_ympmv"]
+[ext_resource type="AudioStream" uid="uid://b4j7vsjuqisj4" path="res://assets/audio/sounds/player/steps/step_e.wav" id="10_fd1br"]
 
 [sub_resource type="Resource" id="Resource_cgo8j"]
 script = ExtResource("3_cjpyl")
@@ -16,11 +21,16 @@ script = ExtResource("3_cjpyl")
 key = "falling"
 stream = Array[AudioStream]([ExtResource("5_pek0m")])
 
+[sub_resource type="Resource" id="Resource_n0prl"]
+script = ExtResource("3_cjpyl")
+key = "steps"
+stream = Array[AudioStream]([ExtResource("6_85d4s"), ExtResource("7_4xmss"), ExtResource("8_yym10"), ExtResource("9_ympmv"), ExtResource("10_fd1br")])
+
 [sub_resource type="Resource" id="Resource_crtfk"]
 script = ExtResource("2_ubet5")
 key = "player"
 bus = "FX"
-sounds = Array[ExtResource("3_cjpyl")]([SubResource("Resource_cgo8j"), SubResource("Resource_n2jnc")])
+sounds = Array[ExtResource("3_cjpyl")]([SubResource("Resource_cgo8j"), SubResource("Resource_n2jnc"), SubResource("Resource_n0prl")])
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_j87tm")

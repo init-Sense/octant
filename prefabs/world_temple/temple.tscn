@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://b7wxixnj8x74h" path="res://assets/models/world_temple/pool_ruined_a.glb" id="15_oa0nj"]
 [ext_resource type="PackedScene" uid="uid://dp0sgbbod7qos" path="res://assets/models/world_temple/pool_ruined_b.glb" id="15_t71j3"]
 [ext_resource type="PackedScene" uid="uid://dsek4f63pxh8b" path="res://assets/models/world_temple/pool_ruined_c.glb" id="16_e6l7j"]
-[ext_resource type="Material" uid="uid://cdr7ltqnab6wr" path="res://materials/pool_water_frozen.tres" id="17_4y8tp"]
-[ext_resource type="Material" uid="uid://chctogq05x0cp" path="res://materials/pool_water_forest.tres" id="18_o6npc"]
-[ext_resource type="Material" uid="uid://dggj75s8818n0" path="res://materials/pool_water_sky.tres" id="19_gme6n"]
+[ext_resource type="Material" uid="uid://ce6pbwxaykbs0" path="res://materials/pool_water_frozen.tres" id="17_4y8tp"]
+[ext_resource type="Material" uid="uid://8er6kv7nfiil" path="res://materials/pool_water_forest.tres" id="18_o6npc"]
+[ext_resource type="Material" uid="uid://b6jd51uhkb68j" path="res://materials/pool_water_sky.tres" id="19_gme6n"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7ouib"]
 material = ExtResource("17_4y8tp")

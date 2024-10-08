@@ -49,9 +49,15 @@ const SLIPPERY_ACCELERATION: float = 15.0
 const SLIPPERY_DECELERATION: float = 1.2
 const SLIPPERY_SPEED_LIMIT: float = 10.0
 
-const PORTAL_TRANSITION_DURATION: float = 0.1 
+const PORTAL_TRANSITION_DURATION: float = 0.1
+
+const NORMAL_STEP_INTERVAL: float = 0.5
+const RUNNING_STEP_INTERVAL: float = 0.3
+const STEP_VOLUME: float = -15.0
 #endregion
 
+var step_timer: float = 0.0
+var current_step_interval: float = NORMAL_STEP_INTERVAL
 
 #region VARIABLES
 var velocity_vector: Vector3 = Vector3.ZERO
@@ -92,7 +98,8 @@ func _physics_process(delta: float) -> void:
 		update_input_direction()
 		update_velocity(delta)
 		update_walk_timer(delta)
-	
+		update_step_sound(delta)
+
 	apply_movement(delta)
 #endregion
 
@@ -105,12 +112,12 @@ func apply_movement(delta: float) -> void:
 		var collision = player.move_and_collide(zero_g_momentum * delta)
 		if collision:
 			var reflection = zero_g_momentum.bounce(collision.get_normal())
-			
+
 			var random_factor = Vector3(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
-						
+
 			var original_speed = zero_g_momentum.length()
 			zero_g_momentum = (reflection.normalized() + random_factor).normalized() * (original_speed * ZERO_G_BOUNCE_DAMPENING)
-			
+
 			zero_g_momentum += collision.get_normal() * 0.1
 		update_zero_g_momentum(delta)
 		player.velocity = zero_g_momentum
@@ -127,6 +134,19 @@ func apply_movement(delta: float) -> void:
 			climb._snap_down_the_stairs_check()
 
 	reset_vertical_velocity()
+
+func update_step_sound(delta: float) -> void:
+	if player.is_on_floor() and input_dir.length() > 0:
+		step_timer += delta
+		if step_timer >= current_step_interval:
+			play_step_sound()
+			step_timer = 0.0
+	else:
+		step_timer = 0.0
+
+func play_step_sound() -> void:
+	var pitch: float = 1.0 if not player.is_running() else 1.2
+	SoundManager.play_varied("player", "steps", STEP_VOLUME, pitch)
 
 
 func start_portal_transition(new_transform: Transform3D, new_velocity: Vector3) -> void:
@@ -285,6 +305,8 @@ func update_movement_state() -> void:
 		run()
 	else:
 		walk()
+
+	current_step_interval = RUNNING_STEP_INTERVAL if player.is_running() else NORMAL_STEP_INTERVAL
 
 
 func start_sprint() -> void:

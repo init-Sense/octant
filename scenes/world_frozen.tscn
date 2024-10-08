@@ -49,6 +49,7 @@ radius = 1.86369
 script = ExtResource("1_vjqjl")
 scene_name = "frozen"
 soundtrack = "frozen"
+soundtrack_volume = -18.0
 metadata/slippery = false
 metadata/zero_g = false
 
