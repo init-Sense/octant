@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8toc2s63po6k"]
+[gd_scene load_steps=3 format=3 uid="uid://c8toc2s63po6k"]
 
+[ext_resource type="Script" path="res://scripts/scenes/end_credits.gd" id="1_03hhl"]
 [ext_resource type="FontFile" uid="uid://drmb22q27lvdj" path="res://assets/fonts/LibertinusMono-Regular.otf" id="2_idnqd"]
 
 [node name="EndCredits" type="CanvasLayer"]
+script = ExtResource("1_03hhl")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
