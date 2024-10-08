@@ -615,6 +615,7 @@ transform = Transform3D(225.519, 0, 0, 0, -9.85775e-06, 225.519, 0, -225.519, -9
 [node name="Grass" type="Node3D" parent="."]
 
 [node name="Grass_01" parent="Grass" instance=ExtResource("21_x07vi")]
+transform = Transform3D(0.699469, 0, 0, 0, 0.699469, 0, 0, 0, 0.699469, 0, -13.7105, 0)
 
 [node name="Grass_02" parent="Grass" instance=ExtResource("21_x07vi")]
 transform = Transform3D(0.477135, 0, 0.511468, 0, 0.699469, 0, -0.511468, 0, 0.477135, 42.5275, -11.1069, -36.3437)

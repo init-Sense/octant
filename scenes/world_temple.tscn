@@ -27,7 +27,6 @@ fog_sky_affect = 0.0
 script = ExtResource("1_yjm14")
 scene_name = "temple"
 soundtrack = "octant"
-soundtrack_volume = -15.0
 
 [node name="Player" parent="." instance=ExtResource("2_dc8de")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.8, 92.6, -46.0596)
@@ -56,6 +55,7 @@ min_load_time = 0.5
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 23.3345, 87.8958, -23.3345)
 scene_to_load = "res://scenes/world_frozen.tscn"
 scene_name = "world_frozen"
+min_load_time = 0.5
 
 [node name="TempleBottom" parent="." instance=ExtResource("3_ua2so")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115.7, 0)
