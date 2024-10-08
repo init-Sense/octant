@@ -93,10 +93,13 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-3, 0, 5.19616, 0, 6, 0, -5.19616, 0, -3, -2.57077, 13.3578, -105.305)
 
 [node name="ice_platform_18" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-2.91721, 0, -2.05177, 0, 3.56648, 0, 2.05177, 0, -2.91721, -20.1972, 18.9673, -100.009)
+transform = Transform3D(-2.91721, 0, -2.05177, 0, 3.56648, 0, 2.05177, 0, -2.91721, -26.6492, 20.4962, -95.788)
+
+[node name="ice_platform_19" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
+transform = Transform3D(-1.31553, 0, 2.43729, 0, 2.76965, 0, -2.43729, 0, -1.31553, -15.9094, 16.3589, -99.164)
 
 [node name="ice_platform_21" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-0.22949, 0, 2.21394, 0, 2.22579, 0, -2.21394, 0, -0.22949, -32.873, 22.1785, -94.7453)
+transform = Transform3D(-0.22949, 0, 2.21394, 0, 2.22579, 0, -2.21394, 0, -0.22949, -35.7149, 23.0425, -93.865)
 
 [node name="ice_platform_22" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(3.93418, 0, 1.12573, 0, 4.09206, 0, -1.12573, 0, 3.93418, -47.219, 25.8936, -94.5196)
@@ -105,10 +108,10 @@ transform = Transform3D(3.93418, 0, 1.12573, 0, 4.09206, 0, -1.12573, 0, 3.93418
 transform = Transform3D(0.429919, 0, 2.34037, 0, 2.37952, 0, -2.34037, 0, 0.429919, -52.7756, 28.6584, -108.226)
 
 [node name="ice_platform_24" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-1.49907, 0, 0.547928, 0, 1.59606, 0, -0.547928, 0, -1.49907, -43.5609, 33.4506, -108.364)
+transform = Transform3D(-1.90187, 0, 0.695156, 0, 2.02492, 0, -0.695156, 0, -1.90187, -43.5609, 33.1961, -108.364)
 
 [node name="ice_platform_25" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(0.504262, 0, 1.72477, 0, 1.79697, 0, -1.72477, 0, 0.504262, -45.3818, 36.3381, -117.318)
+transform = Transform3D(0.554688, 0, 1.89725, 0, 1.97667, 0, -1.89725, 0, 0.554688, -44.0286, 36.3381, -116.05)
 
 [node name="ice_platform_26" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(1.7956, 0, 1.65571, 0, 2.44244, 0, -1.65571, 0, 1.7956, -41.8317, 41.3718, -125.045)
@@ -138,7 +141,7 @@ transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, 
 transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, 17.1551, 2.19242, -46.8716)
 
 [node name="ice_platform_12" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-0.724029, 0, -2.70212, 0, 2.79743, 0, 2.70212, 0, -0.724029, 17.0974, 4.8, -57.2004)
+transform = Transform3D(-0.893224, 0, -3.33357, 0, 3.45115, 0, 3.33357, 0, -0.893224, 19.7686, 4.8, -58.9653)
 
 [node name="ice_platform_13" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 26.104, 7.88521, -73.0742)
