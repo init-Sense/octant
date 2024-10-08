@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxcnrsk18452r"]
+[gd_scene load_steps=31 format=3 uid="uid://cxcnrsk18452r"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -34,6 +34,10 @@ material = ExtResource("4_ca5av")
 size = Vector2(800, 800)
 subdivide_width = 128
 subdivide_depth = 128
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tc62"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7iyap"]
 size = Vector3(917.831, 147.963, 991.908)
@@ -113,7 +117,7 @@ transform = Transform3D(1.7956, 0, 1.65571, 0, 2.44244, 0, -1.65571, 0, 1.7956, 
 transform = Transform3D(1.1947, 0, 1.10162, 0, 1.62507, 0, -1.10162, 0, 1.1947, -35.1796, 43.1306, -131.372)
 
 [node name="ice_platform_1" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5123, -0.655999, -8.35439)
+transform = Transform3D(1.64424, 0, 0, 0, 1.64424, 0, 0, 0, 1.64424, 29.3218, -0.655999, -8.82386)
 
 [node name="ice_platform_2" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(-2.17283, 0, -8.10911, 0, 8.39516, 0, 8.10911, 0, -2.17283, 24.8538, -1.90788, 18.5189)
@@ -134,7 +138,7 @@ transform = Transform3D(-4.2, 0, -1.19209e-06, 0, 4.2, 0, 1.19209e-06, 0, -4.2, 
 transform = Transform3D(-2.89778, 0, -0.776458, 0, 3, 0, 0.776458, 0, -2.89778, 17.1551, 2.19242, -46.8716)
 
 [node name="ice_platform_12" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
-transform = Transform3D(-0.54352, 0, -2.02845, 0, 2.1, 0, 2.02845, 0, -0.54352, 17.0974, 4.8, -57.2004)
+transform = Transform3D(-0.724029, 0, -2.70212, 0, 2.79743, 0, 2.70212, 0, -0.724029, 17.0974, 4.8, -57.2004)
 
 [node name="ice_platform_13" parent="Surface/IcePlatforms" instance=ExtResource("5_r3qnj")]
 transform = Transform3D(1.08704, 0, -4.05689, 0, 4.2, 0, 4.05689, 0, 1.08704, 26.104, 7.88521, -73.0742)
@@ -181,14 +185,12 @@ transform = Transform3D(5.98635, 0, -0.404648, 0, 6, 0, 0.404648, 0, 5.98635, -4
 transform = Transform3D(2.34052, 0, 3.4874, 0, 4.2, 0, -3.4874, 0, 2.34052, -151.433, 7.83333, -177.968)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Surface"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.538, -35.9578, -63.3936)
-visible = false
-size = Vector3(387.005, 1, 652.731)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Surface"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -322.601, -45.1382, 77.1745)
-visible = false
-size = Vector3(387.005, 1, 652.731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9595, -3.9847, -63.3936)
+material_override = SubResource("StandardMaterial3D_8tc62")
+use_collision = true
+collision_layer = 3
+collision_mask = 4
+size = Vector3(784, 1, 652.731)
 
 [node name="Caves" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -132.138, 0)

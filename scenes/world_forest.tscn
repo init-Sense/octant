@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bcx36xhin580x" path="res://assets/models/world_forest/bridge_branch_a.glb" id="12_bskbt"]
 [ext_resource type="PackedScene" uid="uid://x8lackxx5yev" path="res://assets/models/world_forest/bridge_branch_b.glb" id="13_kvija"]
 [ext_resource type="PackedScene" uid="uid://cp0eqeuirl42t" path="res://assets/models/world_forest/bridge_branch_c.glb" id="14_rsk3w"]
-[ext_resource type="PackedScene" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
+[ext_resource type="PackedScene" uid="uid://br28m3haa2ylb" path="res://prefabs/world_forest/light_plant.tscn" id="15_0kmjh"]
 [ext_resource type="PackedScene" uid="uid://deepqk5wgdegl" path="res://prefabs/world_forest/forest_god.tscn" id="15_iupkp"]
 [ext_resource type="PackedScene" uid="uid://d3322b1hemwnc" path="res://prefabs/world_forest/tree_tunnel.tscn" id="18_h042b"]
 [ext_resource type="PackedScene" uid="uid://mpqpbbdurix7" path="res://prefabs/world_forest/forest_temple.tscn" id="18_ht1vt"]
