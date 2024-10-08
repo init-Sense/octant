@@ -1,6 +1,4 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bimicc3nd8uvt"]
 
 [resource]
-shading_mode = 0
-disable_ambient_light = true
-albedo_color = Color(0.205797, 0.0390645, 0.491167, 1)
+albedo_color = Color(0.0421756, 0.00361565, 0.148553, 1)

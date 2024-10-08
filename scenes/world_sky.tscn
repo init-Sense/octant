@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb5mu803m578h"]
+[gd_scene load_steps=16 format=3 uid="uid://bb5mu803m578h"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_mnsr1"]
 [ext_resource type="Script" path="res://scripts/scenes/current_scene.gd" id="1_om7oh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0dl55ei83bc6" path="res://prefabs/world_sky/sky_hub.tscn" id="3_y4t5u"]
 [ext_resource type="Script" path="res://scripts/scenes/boundaries.gd" id="4_7diav"]
 [ext_resource type="PackedScene" uid="uid://b7rorp56ee7qx" path="res://prefabs/portals/portal_default.tscn" id="5_bhw6p"]
+[ext_resource type="Script" path="res://scripts/scenes/change_scene.gd" id="9_0g22b"]
 [ext_resource type="PackedScene" uid="uid://cnhf42p10uywl" path="res://prefabs/world_sky/sky_tower.tscn" id="10_tb3fs"]
 [ext_resource type="PackedScene" uid="uid://drlkp2nfkhjtl" path="res://assets/models/world_sky/sky_portal_gate.glb" id="11_0g4uh"]
 [ext_resource type="PackedScene" uid="uid://c3ev5dvjsmof1" path="res://assets/models/world_sky/sky_wall.glb" id="11_8oq4i"]
@@ -15,6 +16,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2ey1"]
 size = Vector3(38.2518, 48.7292, 74)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2pxy8"]
+radius = 1.05593
+height = 6.47021
 
 [node name="SkyWorld" type="Node3D"]
 script = ExtResource("1_om7oh")
@@ -1301,7 +1306,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69281, -1.9491, 0.5)
 shape = SubResource("BoxShape3D_o2ey1")
 
 [node name="SkyTemple" parent="Corridor" instance=ExtResource("11_trrtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.80936, 29.4343)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.00465, 33.9067)
+
+[node name="Teleport" type="Area3D" parent="Corridor/SkyTemple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9977, 0)
+collision_layer = 3
+collision_mask = 7
+script = ExtResource("9_0g22b")
+scene_to_load = "res://scenes/world_temple.tscn"
+scene_name = "temple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corridor/SkyTemple/Teleport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77568, 0)
+shape = SubResource("CapsuleShape3D_2pxy8")
+
+[node name="Arrival" type="Node3D" parent="Corridor/SkyTemple/Teleport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46456, 5.71057, 0)
 
 [node name="sky_wall_03" parent="Corridor" instance=ExtResource("11_8oq4i")]
 transform = Transform3D(1, 3.83349e-07, 4.37114e-08, 4.37114e-08, 1.15005e-06, -1, -4.37114e-08, 8.77, 1.31134e-07, 2.9315, -5.09835, -1.83081)
@@ -1376,4 +1396,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.63877, -28.7151)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.63877, 25.0061)
 
 [node name="sky_disk" parent="Corridor" instance=ExtResource("12_shqte")]
-transform = Transform3D(0.21391, 0, 0, 0, 0.21391, 0, 0, 0, 0.21391, 0, -4.60563, 29.2271)
+transform = Transform3D(0.341186, 0, 0, 0, 0.341186, 0, 0, 0, 0.341186, 0, -4.65442, 33.5571)

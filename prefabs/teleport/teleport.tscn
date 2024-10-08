@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/scenes/change_scene.gd" id="1_dhuvf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4mrfi"]
-radius = 3.81
+height = 18.5958
+radius = 1.86369
 
 [node name="Teleport" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)

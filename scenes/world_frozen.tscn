@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxcnrsk18452r"]
+[gd_scene load_steps=29 format=3 uid="uid://cxcnrsk18452r"]
 
 [ext_resource type="PackedScene" uid="uid://cu3wtrebnb1dy" path="res://prefabs/player/player.tscn" id="1_4ntkc"]
 [ext_resource type="Environment" uid="uid://lc0jv4l8x5cn" path="res://environments/frozen_surface_environment.tres" id="1_8s4oo"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bfpyalxyncqtn" path="res://assets/models/world_frozen/frozen_rock_a.glb" id="16_h8wxr"]
 [ext_resource type="Environment" uid="uid://c17v2rcpyommv" path="res://environments/frozen_nucleus_environment.tres" id="17_of3fl"]
 [ext_resource type="PackedScene" uid="uid://ci5gjtjv4jviu" path="res://prefabs/world_frozen/frozen_temple.tscn" id="18_6nhqs"]
+[ext_resource type="Script" path="res://scripts/scenes/change_scene.gd" id="20_2bfs0"]
 [ext_resource type="PackedScene" uid="uid://f80qmxb1fovu" path="res://assets/models/world_frozen/frozen_nucleus_tunnel.glb" id="20_bhnjb"]
 [ext_resource type="PackedScene" uid="uid://cp36u8dmrv72w" path="res://assets/models/world_frozen/frozen_god_hand.glb" id="21_mvlug"]
 [ext_resource type="PackedScene" uid="uid://dumf2ykhijb5l" path="res://prefabs/world_frozen/frozen_god_eye.tscn" id="22_3xqs7"]
@@ -39,6 +40,10 @@ size = Vector3(917.831, 147.963, 991.908)
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0uty"]
 radius = 189.846
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4mrfi"]
+height = 18.5958
+radius = 1.86369
+
 [node name="FrozenWorld" type="Node3D"]
 metadata/slippery = false
 metadata/zero_g = false
@@ -47,7 +52,7 @@ metadata/zero_g = false
 transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -30.5193, 62.3161, -124.181)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_8s4oo")
+environment = ExtResource("17_of3fl")
 
 [node name="Surface" type="Area3D" parent="."]
 visible = false
@@ -551,6 +556,18 @@ transform = Transform3D(5.808, 0, 0, 0, 5.808, 0, 0, 0, 5.808, 0, 0, 0)
 [node name="FrozenTemple" parent="Nucleus" instance=ExtResource("18_6nhqs")]
 transform = Transform3D(3.06594, 0.765123, 2.47854, -2.34247, 2.46494, 2.1367, -1.11418, -3.07689, 2.32807, 0, 0, 0)
 
+[node name="Teleport" type="Area3D" parent="Nucleus/FrozenTemple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78397, 0)
+collision_layer = 3
+collision_mask = 7
+script = ExtResource("20_2bfs0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nucleus/FrozenTemple/Teleport"]
+shape = SubResource("CylinderShape3D_4mrfi")
+
+[node name="Arrival" type="Node3D" parent="Nucleus/FrozenTemple/Teleport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46456, 5.71057, 0)
+
 [node name="frozen_nucleus_tunnel" parent="Nucleus" instance=ExtResource("20_bhnjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189.196, 0)
 
@@ -568,3 +585,8 @@ transform = Transform3D(-37.2089, 1.40162, 1.91395, -2.37228, -21.9842, -30.02, 
 
 [node name="FrozenGodEye2" parent="Nucleus" instance=ExtResource("22_3xqs7")]
 transform = Transform3D(-8.77539, 17.9477, -31.4802, -28.8457, 16.1446, 17.2455, 21.9328, 28.4141, 10.0857, -78.1428, -72.2872, -129.205)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Nucleus"]
+light_energy = 48.0
+shadow_enabled = true
+omni_range = 301.999

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://mpqpbbdurix7"]
+[gd_scene load_steps=5 format=3 uid="uid://mpqpbbdurix7"]
 
 [ext_resource type="PackedScene" uid="uid://dvvw5t0a3lmdj" path="res://assets/models/world_forest/forest_temple_teleport.glb" id="1_385dy"]
 [ext_resource type="PackedScene" uid="uid://ii5aoy12sbqi" path="res://assets/models/world_forest/forest_temple_base.glb" id="2_78oda"]
 [ext_resource type="PackedScene" uid="uid://3mg6rlmqwwe8" path="res://assets/models/world_forest/forest_temple_column.glb" id="3_wn066"]
+[ext_resource type="PackedScene" uid="uid://cedr28aw6saix" path="res://assets/models/world_sky/sky_hub_sphere.glb" id="4_5g4p1"]
 
 [node name="ForestTemple" type="Node3D"]
 
@@ -23,7 +24,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 2.9)
 [node name="forest_temple_column_04" parent="." instance=ExtResource("3_wn066")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 0, 2.9)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_energy = 128.0
-shadow_enabled = true
-omni_range = 146.563
+[node name="sky_hub_sphere" parent="." instance=ExtResource("4_5g4p1")]
