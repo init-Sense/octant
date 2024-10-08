@@ -27,6 +27,7 @@ fog_sky_affect = 0.0
 script = ExtResource("1_yjm14")
 scene_name = "temple"
 soundtrack = "octant"
+soundtrack_volume = -15.0
 
 [node name="Player" parent="." instance=ExtResource("2_dc8de")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.8, 92.6, -46.0596)
